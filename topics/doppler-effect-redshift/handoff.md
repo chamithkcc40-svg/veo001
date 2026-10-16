@@ -10,7 +10,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - [x] T5 05-voiceover-v4.md
 - [x] T6 06-metadata.md (YouTube)
 - [x] T7 07-visual-treatment.md
-- [ ] T8 08-sound-design.md
+- [x] T8 08-sound-design.md
 - [ ] T9 09-resources-checklist.md
 - [ ] T10 10-self-check.md
 
@@ -41,6 +41,8 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Glowing blue-to-red galaxy is drawn with a "colours exaggerated" tag: real galaxies don't visibly change colour, and an honest diagram matters.
 - Historical figures drawn as respectful period-costume figures who never speak; only the narrator talks (no invented quotes).
 - Hubble diagram marked "schematic": no digitized data points were sourced; only the 24-galaxy count and Virgo ~1,000 km/s come from PNAS.
+- Score built on a falling two-note "siren interval" motif at 90 BPM so the music itself echoes the Doppler drop.
+- Synthetic siren only (no recordings tied to a real emergency service), for licensing and neutrality.
 - Voiceover split into parts for the free plan 2,500-char limit (2,300 safe part size).
 
 ## Script revision log
@@ -55,4 +57,4 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Unverified items in script: none.
 
 ## Next action
-Do T8: write 08-sound-design.md (music brief per chapter, ambience, SFX by moment, silences, mix targets, file list).
+Do T9: write 09-resources-checklist.md (contents of reference.zip).
