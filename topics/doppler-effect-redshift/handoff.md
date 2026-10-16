@@ -8,7 +8,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - [x] T3 03-script.md (two critique passes)
 - [x] T4 04-fact-check.md
 - [x] T5 05-voiceover-v4.md
-- [ ] T6 06-metadata.md (YouTube)
+- [x] T6 06-metadata.md (YouTube)
 - [ ] T7 07-visual-treatment.md
 - [ ] T8 08-sound-design.md
 - [ ] T9 09-resources-checklist.md
@@ -36,6 +36,8 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Length 492 words (about 197 s, +9%): kept because the Slipher and Lemaître credit lines are needed for honesty.
 - Voiceover split at Ch2/Ch3: the midpoint twist ends Part 1 on an open loop and keeps both parts under 2,300 characters.
 - IPA inlined only for Slipher and Lemaître (likely mispronounced); Doppler/Andromeda left plain (common words).
+- Best title is the search-first one ("Doppler Effect Explained: From a Passing Siren to the Expanding Universe"): it is honest and fully paid off; no title claims Hubble alone proved it.
+- No chapter timestamps in the description: video is under 5 minutes (rule applies over 5 minutes).
 - Voiceover split into parts for the free plan 2,500-char limit (2,300 safe part size).
 
 ## Script revision log
@@ -50,4 +52,4 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Unverified items in script: none.
 
 ## Next action
-Do T6: write 06-metadata.md for YouTube (titles, thumbnails, description, tags, pinned comment, end screen).
+Do T7: write 07-visual-treatment.md (art direction, original characters, scene list per beat, pond-ripple waves and blue-to-red glowing galaxy).
