@@ -6,7 +6,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - [x] T1 01-research-brief.md
 - [x] T2 02-script-draft.md
 - [x] T3 03-script.md (two critique passes)
-- [ ] T4 04-fact-check.md
+- [x] T4 04-fact-check.md
 - [ ] T5 05-voiceover-v4.md
 - [ ] T6 06-metadata.md (YouTube)
 - [ ] T7 07-visual-treatment.md
@@ -43,5 +43,9 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 ## Fact corrections and items left unverified
 - IDEA claim "Hubble used the Doppler effect to discover the universe is expanding": sources conflict on credit (NASA/ESA/PNAS credit Hubble 1929; IAU 2018 and Science note Lemaître 1927 first; Hubble's velocities mostly Slipher's). Left unchanged; context added. Links: https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-cosmological-redshift/ , https://www.esa.int/Science_Exploration/Space_Science/What_is_red_shift , https://www.pnas.org/doi/10.1073/pnas.1424299112 , https://iauarchive.eso.org/news/pressreleases/detail/iau1812/ , https://www.science.org/content/article/move-over-hubble-discovery-expanding-cosmos-assigned-little-known-belgian-astronomer
 
+- Self-corrections from fact-check (applied in 03): "biggest telescope" -> "most powerful telescope of its day" (NASA wording); "Every galaxy running from every other" -> the distance-speed law (Andromeda approaches); "paper wasn't about sound" -> "didn't name his paper after sound" (MacTutor). Confidence high.
+- SOURCE NOTES "glowing galaxy shifting from blue to red": used as a labelled visual metaphor, not a literal claim.
+- Unverified items in script: none.
+
 ## Next action
-Do T4: fact-check every claim in 03-script.md into 04-fact-check.md and apply the fact policy.
+Do T5: build 05-voiceover-v4.md (free plan, 2,300-char parts) from the final 03-script.md.
