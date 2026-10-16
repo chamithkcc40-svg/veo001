@@ -28,7 +28,7 @@ Production palette (tokens in src/theme.ts). Saturated, cool-violet shadows, war
 |---|---|---|
 | night | #1A0B45 | deepest space / shadow base (from #220750) |
 | violet | #35188B | space mid, dusk sky top, cel shadows on cool scenes |
-| purple | #7E1ABA | secondary surfaces, Pip's shorts? no (see characters), drapes, dome |
+| purple | #7E1ABA | secondary surfaces, drapes, domes, rowhouses |
 | plum | #7A255E | warm shadows (wood, study) |
 | magenta | #D80976 | warm accent, ambulance stripe glow, sunset horizon |
 | pink | #EE6289 | skin shadow, warm highlights |

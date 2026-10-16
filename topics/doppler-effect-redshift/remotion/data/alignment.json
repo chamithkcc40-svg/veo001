@@ -1,0 +1,3464 @@
+{
+ "part2_start": 79.307771,
+ "chapters": [
+  "Cold open",
+  "Chapter 1 - One Siren, Two Sounds",
+  "Chapter 2 - Ripples",
+  "Chapter 3 - Light Has a Siren Too",
+  "Chapter 4 - The Running Universe",
+  "Close"
+ ],
+ "words": [
+  {
+   "text": "Listen.",
+   "chapter": 0,
+   "sentence": "Listen.",
+   "start": 0.0,
+   "end": 0.48
+  },
+  {
+   "text": "A",
+   "chapter": 0,
+   "sentence": "A siren races toward you.",
+   "start": 0.98,
+   "end": 1.58
+  },
+  {
+   "text": "siren",
+   "chapter": 0,
+   "sentence": "A siren races toward you.",
+   "start": 1.58,
+   "end": 1.6600000000000001
+  },
+  {
+   "text": "races",
+   "chapter": 0,
+   "sentence": "A siren races toward you.",
+   "start": 1.58,
+   "end": 2.1
+  },
+  {
+   "text": "toward",
+   "chapter": 0,
+   "sentence": "A siren races toward you.",
+   "start": 2.1,
+   "end": 2.48
+  },
+  {
+   "text": "you.",
+   "chapter": 0,
+   "sentence": "A siren races toward you.",
+   "start": 2.48,
+   "end": 2.88
+  },
+  {
+   "text": "The",
+   "chapter": 0,
+   "sentence": "The moment it passes, its note drops.",
+   "start": 3.12,
+   "end": 3.28
+  },
+  {
+   "text": "moment",
+   "chapter": 0,
+   "sentence": "The moment it passes, its note drops.",
+   "start": 3.28,
+   "end": 3.48
+  },
+  {
+   "text": "it",
+   "chapter": 0,
+   "sentence": "The moment it passes, its note drops.",
+   "start": 3.48,
+   "end": 4.16
+  },
+  {
+   "text": "passes,",
+   "chapter": 0,
+   "sentence": "The moment it passes, its note drops.",
+   "start": 4.16,
+   "end": 4.24
+  },
+  {
+   "text": "its",
+   "chapter": 0,
+   "sentence": "The moment it passes, its note drops.",
+   "start": 4.48,
+   "end": 4.7
+  },
+  {
+   "text": "note",
+   "chapter": 0,
+   "sentence": "The moment it passes, its note drops.",
+   "start": 4.7,
+   "end": 4.96
+  },
+  {
+   "text": "drops.",
+   "chapter": 0,
+   "sentence": "The moment it passes, its note drops.",
+   "start": 4.96,
+   "end": 5.4
+  },
+  {
+   "text": "That",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 6.04,
+   "end": 6.18
+  },
+  {
+   "text": "tiny",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 6.18,
+   "end": 6.66
+  },
+  {
+   "text": "drop",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 6.66,
+   "end": 7.06
+  },
+  {
+   "text": "holds",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 7.06,
+   "end": 7.36
+  },
+  {
+   "text": "the",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 7.36,
+   "end": 7.8
+  },
+  {
+   "text": "clue",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 7.8,
+   "end": 7.94
+  },
+  {
+   "text": "that",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 7.94,
+   "end": 8.2
+  },
+  {
+   "text": "told",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 8.2,
+   "end": 8.44
+  },
+  {
+   "text": "us",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 8.44,
+   "end": 8.62
+  },
+  {
+   "text": "the",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 8.62,
+   "end": 8.82
+  },
+  {
+   "text": "whole",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 8.82,
+   "end": 9.42
+  },
+  {
+   "text": "universe",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 9.42,
+   "end": 9.56
+  },
+  {
+   "text": "is",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 9.56,
+   "end": 10.02
+  },
+  {
+   "text": "growing.",
+   "chapter": 0,
+   "sentence": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "start": 10.02,
+   "end": 10.36
+  },
+  {
+   "text": "Picture",
+   "chapter": 1,
+   "sentence": "Picture the ambulance driver.",
+   "start": 11.22,
+   "end": 11.3
+  },
+  {
+   "text": "the",
+   "chapter": 1,
+   "sentence": "Picture the ambulance driver.",
+   "start": 11.22,
+   "end": 11.52
+  },
+  {
+   "text": "ambulance",
+   "chapter": 1,
+   "sentence": "Picture the ambulance driver.",
+   "start": 11.52,
+   "end": 11.86
+  },
+  {
+   "text": "driver.",
+   "chapter": 1,
+   "sentence": "Picture the ambulance driver.",
+   "start": 11.86,
+   "end": 12.2
+  },
+  {
+   "text": "To",
+   "chapter": 1,
+   "sentence": "To her, the siren plays one steady note.",
+   "start": 12.7,
+   "end": 12.8
+  },
+  {
+   "text": "her,",
+   "chapter": 1,
+   "sentence": "To her, the siren plays one steady note.",
+   "start": 12.8,
+   "end": 13.12
+  },
+  {
+   "text": "the",
+   "chapter": 1,
+   "sentence": "To her, the siren plays one steady note.",
+   "start": 13.3,
+   "end": 13.72
+  },
+  {
+   "text": "siren",
+   "chapter": 1,
+   "sentence": "To her, the siren plays one steady note.",
+   "start": 13.72,
+   "end": 13.8
+  },
+  {
+   "text": "plays",
+   "chapter": 1,
+   "sentence": "To her, the siren plays one steady note.",
+   "start": 13.72,
+   "end": 14.08
+  },
+  {
+   "text": "one",
+   "chapter": 1,
+   "sentence": "To her, the siren plays one steady note.",
+   "start": 14.08,
+   "end": 14.66
+  },
+  {
+   "text": "steady",
+   "chapter": 1,
+   "sentence": "To her, the siren plays one steady note.",
+   "start": 14.66,
+   "end": 14.96
+  },
+  {
+   "text": "note.",
+   "chapter": 1,
+   "sentence": "To her, the siren plays one steady note.",
+   "start": 14.96,
+   "end": 15.24
+  },
+  {
+   "text": "But",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 15.64,
+   "end": 15.88
+  },
+  {
+   "text": "you,",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 15.88,
+   "end": 16.16
+  },
+  {
+   "text": "on",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 16.38,
+   "end": 16.459999999999997
+  },
+  {
+   "text": "the",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 16.44,
+   "end": 16.76
+  },
+  {
+   "text": "sidewalk,",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 16.76,
+   "end": 17.02
+  },
+  {
+   "text": "hear",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 17.34,
+   "end": 17.48
+  },
+  {
+   "text": "it",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 17.48,
+   "end": 17.76
+  },
+  {
+   "text": "high",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 17.76,
+   "end": 17.96
+  },
+  {
+   "text": "as",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 17.96,
+   "end": 18.1
+  },
+  {
+   "text": "it",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 18.1,
+   "end": 18.6
+  },
+  {
+   "text": "comes,",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 18.6,
+   "end": 18.68
+  },
+  {
+   "text": "and",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 18.6,
+   "end": 19.06
+  },
+  {
+   "text": "low",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 19.06,
+   "end": 19.3
+  },
+  {
+   "text": "as",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 19.3,
+   "end": 19.5
+  },
+  {
+   "text": "it",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 19.5,
+   "end": 20.02
+  },
+  {
+   "text": "goes.",
+   "chapter": 1,
+   "sentence": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "start": 20.02,
+   "end": 20.099999999999998
+  },
+  {
+   "text": "Same",
+   "chapter": 1,
+   "sentence": "Same siren.",
+   "start": 20.58,
+   "end": 20.78
+  },
+  {
+   "text": "siren.",
+   "chapter": 1,
+   "sentence": "Same siren.",
+   "start": 20.78,
+   "end": 21.12
+  },
+  {
+   "text": "Two",
+   "chapter": 1,
+   "sentence": "Two sounds.",
+   "start": 21.5,
+   "end": 21.78
+  },
+  {
+   "text": "sounds.",
+   "chapter": 1,
+   "sentence": "Two sounds.",
+   "start": 21.78,
+   "end": 22.1
+  },
+  {
+   "text": "And",
+   "chapter": 1,
+   "sentence": "And you're both right.",
+   "start": 22.36,
+   "end": 22.64
+  },
+  {
+   "text": "you're",
+   "chapter": 1,
+   "sentence": "And you're both right.",
+   "start": 22.64,
+   "end": 22.82
+  },
+  {
+   "text": "both",
+   "chapter": 1,
+   "sentence": "And you're both right.",
+   "start": 22.82,
+   "end": 23.06
+  },
+  {
+   "text": "right.",
+   "chapter": 1,
+   "sentence": "And you're both right.",
+   "start": 23.06,
+   "end": 23.44
+  },
+  {
+   "text": "So",
+   "chapter": 1,
+   "sentence": "So what changed?",
+   "start": 23.76,
+   "end": 24.02
+  },
+  {
+   "text": "what",
+   "chapter": 1,
+   "sentence": "So what changed?",
+   "start": 24.02,
+   "end": 24.16
+  },
+  {
+   "text": "changed?",
+   "chapter": 1,
+   "sentence": "So what changed?",
+   "start": 24.16,
+   "end": 24.64
+  },
+  {
+   "text": "Not",
+   "chapter": 1,
+   "sentence": "Not the siren.",
+   "start": 25.0,
+   "end": 25.26
+  },
+  {
+   "text": "the",
+   "chapter": 1,
+   "sentence": "Not the siren.",
+   "start": 25.26,
+   "end": 25.78
+  },
+  {
+   "text": "siren.",
+   "chapter": 1,
+   "sentence": "Not the siren.",
+   "start": 25.78,
+   "end": 25.86
+  },
+  {
+   "text": "Something",
+   "chapter": 1,
+   "sentence": "Something in the air between you.",
+   "start": 26.24,
+   "end": 26.52
+  },
+  {
+   "text": "in",
+   "chapter": 1,
+   "sentence": "Something in the air between you.",
+   "start": 26.52,
+   "end": 26.7
+  },
+  {
+   "text": "the",
+   "chapter": 1,
+   "sentence": "Something in the air between you.",
+   "start": 26.7,
+   "end": 26.8
+  },
+  {
+   "text": "air",
+   "chapter": 1,
+   "sentence": "Something in the air between you.",
+   "start": 26.8,
+   "end": 27.18
+  },
+  {
+   "text": "between",
+   "chapter": 1,
+   "sentence": "Something in the air between you.",
+   "start": 27.18,
+   "end": 27.66
+  },
+  {
+   "text": "you.",
+   "chapter": 1,
+   "sentence": "Something in the air between you.",
+   "start": 27.66,
+   "end": 28.12
+  },
+  {
+   "text": "Sound",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 28.82,
+   "end": 28.9
+  },
+  {
+   "text": "travels",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 28.82,
+   "end": 29.16
+  },
+  {
+   "text": "in",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 29.16,
+   "end": 29.54
+  },
+  {
+   "text": "waves,",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 29.54,
+   "end": 29.88
+  },
+  {
+   "text": "like",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 30.2,
+   "end": 30.36
+  },
+  {
+   "text": "ripples",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 30.36,
+   "end": 30.58
+  },
+  {
+   "text": "on",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 30.58,
+   "end": 30.84
+  },
+  {
+   "text": "a",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 30.84,
+   "end": 31.32
+  },
+  {
+   "text": "pond.",
+   "chapter": 2,
+   "sentence": "Sound travels in waves, like ripples on a pond.",
+   "start": 31.32,
+   "end": 31.4
+  },
+  {
+   "text": "Picture",
+   "chapter": 2,
+   "sentence": "Picture a bug sitting still, tapping the water.",
+   "start": 32.02,
+   "end": 32.1
+  },
+  {
+   "text": "a",
+   "chapter": 2,
+   "sentence": "Picture a bug sitting still, tapping the water.",
+   "start": 32.02,
+   "end": 32.58
+  },
+  {
+   "text": "bug",
+   "chapter": 2,
+   "sentence": "Picture a bug sitting still, tapping the water.",
+   "start": 32.58,
+   "end": 32.66
+  },
+  {
+   "text": "sitting",
+   "chapter": 2,
+   "sentence": "Picture a bug sitting still, tapping the water.",
+   "start": 32.58,
+   "end": 32.9
+  },
+  {
+   "text": "still,",
+   "chapter": 2,
+   "sentence": "Picture a bug sitting still, tapping the water.",
+   "start": 32.9,
+   "end": 33.46
+  },
+  {
+   "text": "tapping",
+   "chapter": 2,
+   "sentence": "Picture a bug sitting still, tapping the water.",
+   "start": 33.74,
+   "end": 33.82
+  },
+  {
+   "text": "the",
+   "chapter": 2,
+   "sentence": "Picture a bug sitting still, tapping the water.",
+   "start": 33.76,
+   "end": 34.04
+  },
+  {
+   "text": "water.",
+   "chapter": 2,
+   "sentence": "Picture a bug sitting still, tapping the water.",
+   "start": 34.04,
+   "end": 34.28
+  },
+  {
+   "text": "Perfect",
+   "chapter": 2,
+   "sentence": "Perfect rings spread out evenly.",
+   "start": 34.88,
+   "end": 35.12
+  },
+  {
+   "text": "rings",
+   "chapter": 2,
+   "sentence": "Perfect rings spread out evenly.",
+   "start": 35.12,
+   "end": 35.48
+  },
+  {
+   "text": "spread",
+   "chapter": 2,
+   "sentence": "Perfect rings spread out evenly.",
+   "start": 35.48,
+   "end": 35.86
+  },
+  {
+   "text": "out",
+   "chapter": 2,
+   "sentence": "Perfect rings spread out evenly.",
+   "start": 35.86,
+   "end": 36.28
+  },
+  {
+   "text": "evenly.",
+   "chapter": 2,
+   "sentence": "Perfect rings spread out evenly.",
+   "start": 36.28,
+   "end": 36.5
+  },
+  {
+   "text": "Now",
+   "chapter": 2,
+   "sentence": "Now the bug swims forward while it taps.",
+   "start": 37.04,
+   "end": 37.24
+  },
+  {
+   "text": "the",
+   "chapter": 2,
+   "sentence": "Now the bug swims forward while it taps.",
+   "start": 37.24,
+   "end": 37.6
+  },
+  {
+   "text": "bug",
+   "chapter": 2,
+   "sentence": "Now the bug swims forward while it taps.",
+   "start": 37.6,
+   "end": 37.68
+  },
+  {
+   "text": "swims",
+   "chapter": 2,
+   "sentence": "Now the bug swims forward while it taps.",
+   "start": 37.6,
+   "end": 37.92
+  },
+  {
+   "text": "forward",
+   "chapter": 2,
+   "sentence": "Now the bug swims forward while it taps.",
+   "start": 37.92,
+   "end": 38.42
+  },
+  {
+   "text": "while",
+   "chapter": 2,
+   "sentence": "Now the bug swims forward while it taps.",
+   "start": 38.42,
+   "end": 38.66
+  },
+  {
+   "text": "it",
+   "chapter": 2,
+   "sentence": "Now the bug swims forward while it taps.",
+   "start": 38.66,
+   "end": 39.08
+  },
+  {
+   "text": "taps.",
+   "chapter": 2,
+   "sentence": "Now the bug swims forward while it taps.",
+   "start": 39.08,
+   "end": 39.16
+  },
+  {
+   "text": "The",
+   "chapter": 2,
+   "sentence": "The rings in front get squeezed together.",
+   "start": 39.54,
+   "end": 39.72
+  },
+  {
+   "text": "rings",
+   "chapter": 2,
+   "sentence": "The rings in front get squeezed together.",
+   "start": 39.72,
+   "end": 39.82
+  },
+  {
+   "text": "in",
+   "chapter": 2,
+   "sentence": "The rings in front get squeezed together.",
+   "start": 39.82,
+   "end": 40.32
+  },
+  {
+   "text": "front",
+   "chapter": 2,
+   "sentence": "The rings in front get squeezed together.",
+   "start": 40.32,
+   "end": 40.4
+  },
+  {
+   "text": "get",
+   "chapter": 2,
+   "sentence": "The rings in front get squeezed together.",
+   "start": 40.32,
+   "end": 40.64
+  },
+  {
+   "text": "squeezed",
+   "chapter": 2,
+   "sentence": "The rings in front get squeezed together.",
+   "start": 40.64,
+   "end": 40.98
+  },
+  {
+   "text": "together.",
+   "chapter": 2,
+   "sentence": "The rings in front get squeezed together.",
+   "start": 40.98,
+   "end": 41.38
+  },
+  {
+   "text": "The",
+   "chapter": 2,
+   "sentence": "The rings behind get stretched apart.",
+   "start": 41.7,
+   "end": 42.0
+  },
+  {
+   "text": "rings",
+   "chapter": 2,
+   "sentence": "The rings behind get stretched apart.",
+   "start": 42.0,
+   "end": 42.08
+  },
+  {
+   "text": "behind",
+   "chapter": 2,
+   "sentence": "The rings behind get stretched apart.",
+   "start": 42.0,
+   "end": 42.54
+  },
+  {
+   "text": "get",
+   "chapter": 2,
+   "sentence": "The rings behind get stretched apart.",
+   "start": 42.54,
+   "end": 42.88
+  },
+  {
+   "text": "stretched",
+   "chapter": 2,
+   "sentence": "The rings behind get stretched apart.",
+   "start": 42.88,
+   "end": 43.14
+  },
+  {
+   "text": "apart.",
+   "chapter": 2,
+   "sentence": "The rings behind get stretched apart.",
+   "start": 43.14,
+   "end": 43.58
+  },
+  {
+   "text": "Sound",
+   "chapter": 2,
+   "sentence": "Sound does the same.",
+   "start": 44.18,
+   "end": 44.42
+  },
+  {
+   "text": "does",
+   "chapter": 2,
+   "sentence": "Sound does the same.",
+   "start": 44.42,
+   "end": 44.62
+  },
+  {
+   "text": "the",
+   "chapter": 2,
+   "sentence": "Sound does the same.",
+   "start": 44.62,
+   "end": 44.88
+  },
+  {
+   "text": "same.",
+   "chapter": 2,
+   "sentence": "Sound does the same.",
+   "start": 44.88,
+   "end": 45.16
+  },
+  {
+   "text": "Squeezed",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 46.0,
+   "end": 46.16
+  },
+  {
+   "text": "waves",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 46.16,
+   "end": 46.38
+  },
+  {
+   "text": "reach",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 46.38,
+   "end": 46.7
+  },
+  {
+   "text": "your",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 46.7,
+   "end": 46.96
+  },
+  {
+   "text": "ear",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 46.96,
+   "end": 47.08
+  },
+  {
+   "text": "more",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 47.08,
+   "end": 47.42
+  },
+  {
+   "text": "often,",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 47.42,
+   "end": 47.74
+  },
+  {
+   "text": "so",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 47.84,
+   "end": 48.06
+  },
+  {
+   "text": "the",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 48.06,
+   "end": 48.46
+  },
+  {
+   "text": "pitch",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 48.46,
+   "end": 48.54
+  },
+  {
+   "text": "sounds",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 48.46,
+   "end": 48.8
+  },
+  {
+   "text": "higher.",
+   "chapter": 2,
+   "sentence": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "start": 48.8,
+   "end": 49.14
+  },
+  {
+   "text": "Stretched",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 49.96,
+   "end": 50.34
+  },
+  {
+   "text": "waves",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 50.34,
+   "end": 50.42
+  },
+  {
+   "text": "arrive",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 50.36,
+   "end": 50.7
+  },
+  {
+   "text": "less",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 50.7,
+   "end": 51.02
+  },
+  {
+   "text": "often,",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 51.02,
+   "end": 51.32
+  },
+  {
+   "text": "so",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 51.44,
+   "end": 51.68
+  },
+  {
+   "text": "it",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 51.68,
+   "end": 51.9
+  },
+  {
+   "text": "sounds",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 51.9,
+   "end": 52.08
+  },
+  {
+   "text": "lower.",
+   "chapter": 2,
+   "sentence": "Stretched waves arrive less often, so it sounds lower.",
+   "start": 52.08,
+   "end": 52.44
+  },
+  {
+   "text": "The",
+   "chapter": 2,
+   "sentence": "The waves never speed up.",
+   "start": 52.64,
+   "end": 53.24
+  },
+  {
+   "text": "waves",
+   "chapter": 2,
+   "sentence": "The waves never speed up.",
+   "start": 53.24,
+   "end": 53.32
+  },
+  {
+   "text": "never",
+   "chapter": 2,
+   "sentence": "The waves never speed up.",
+   "start": 53.24,
+   "end": 53.68
+  },
+  {
+   "text": "speed",
+   "chapter": 2,
+   "sentence": "The waves never speed up.",
+   "start": 53.68,
+   "end": 54.04
+  },
+  {
+   "text": "up.",
+   "chapter": 2,
+   "sentence": "The waves never speed up.",
+   "start": 54.04,
+   "end": 54.44
+  },
+  {
+   "text": "Only",
+   "chapter": 2,
+   "sentence": "Only their spacing changes.",
+   "start": 54.52,
+   "end": 54.74
+  },
+  {
+   "text": "their",
+   "chapter": 2,
+   "sentence": "Only their spacing changes.",
+   "start": 54.74,
+   "end": 55.06
+  },
+  {
+   "text": "spacing",
+   "chapter": 2,
+   "sentence": "Only their spacing changes.",
+   "start": 55.06,
+   "end": 55.54
+  },
+  {
+   "text": "changes.",
+   "chapter": 2,
+   "sentence": "Only their spacing changes.",
+   "start": 55.54,
+   "end": 55.98
+  },
+  {
+   "text": "In",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 56.52,
+   "end": 56.6
+  },
+  {
+   "text": "eighteen",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 56.6,
+   "end": 57.09
+  },
+  {
+   "text": "forty-two,",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 57.09,
+   "end": 57.58
+  },
+  {
+   "text": "a",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 57.84,
+   "end": 58.16
+  },
+  {
+   "text": "frail",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 58.16,
+   "end": 58.38
+  },
+  {
+   "text": "math",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 58.38,
+   "end": 58.66
+  },
+  {
+   "text": "professor",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 58.66,
+   "end": 59.04
+  },
+  {
+   "text": "in",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 59.04,
+   "end": 59.38
+  },
+  {
+   "text": "Prague",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 59.38,
+   "end": 59.66
+  },
+  {
+   "text": "worked",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 59.66,
+   "end": 59.94
+  },
+  {
+   "text": "this",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 59.94,
+   "end": 60.18
+  },
+  {
+   "text": "out.",
+   "chapter": 2,
+   "sentence": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "start": 60.18,
+   "end": 60.42
+  },
+  {
+   "text": "His",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 60.8,
+   "end": 60.98
+  },
+  {
+   "text": "name",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 60.98,
+   "end": 61.2
+  },
+  {
+   "text": "was",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 61.2,
+   "end": 61.5
+  },
+  {
+   "text": "Christian",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 61.5,
+   "end": 61.94
+  },
+  {
+   "text": "Doppler,",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 61.94,
+   "end": 62.22
+  },
+  {
+   "text": "and",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 62.52,
+   "end": 62.72
+  },
+  {
+   "text": "he",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 62.72,
+   "end": 62.8
+  },
+  {
+   "text": "had",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 62.8,
+   "end": 62.98
+  },
+  {
+   "text": "once",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 62.98,
+   "end": 63.22
+  },
+  {
+   "text": "nearly",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 63.22,
+   "end": 63.54
+  },
+  {
+   "text": "quit",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 63.54,
+   "end": 63.82
+  },
+  {
+   "text": "and",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 63.82,
+   "end": 64.06
+  },
+  {
+   "text": "moved",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 64.06,
+   "end": 64.18
+  },
+  {
+   "text": "to",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 64.18,
+   "end": 64.48
+  },
+  {
+   "text": "America.",
+   "chapter": 2,
+   "sentence": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "start": 64.48,
+   "end": 64.8
+  },
+  {
+   "text": "Three",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 65.28,
+   "end": 65.48
+  },
+  {
+   "text": "years",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 65.48,
+   "end": 65.72
+  },
+  {
+   "text": "later,",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 65.72,
+   "end": 66.08
+  },
+  {
+   "text": "a",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 66.16,
+   "end": 66.58
+  },
+  {
+   "text": "Dutch",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 66.58,
+   "end": 66.66
+  },
+  {
+   "text": "scientist",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 66.66,
+   "end": 67.12
+  },
+  {
+   "text": "put",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 67.12,
+   "end": 67.42
+  },
+  {
+   "text": "horn",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 67.42,
+   "end": 67.74
+  },
+  {
+   "text": "players",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 67.74,
+   "end": 68.06
+  },
+  {
+   "text": "on",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 68.06,
+   "end": 68.28
+  },
+  {
+   "text": "an",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 68.28,
+   "end": 68.42
+  },
+  {
+   "text": "open",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 68.42,
+   "end": 68.74
+  },
+  {
+   "text": "train",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 68.74,
+   "end": 69.0
+  },
+  {
+   "text": "car.",
+   "chapter": 2,
+   "sentence": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "start": 69.0,
+   "end": 69.28
+  },
+  {
+   "text": "People",
+   "chapter": 2,
+   "sentence": "People beside the track heard the notes bend.",
+   "start": 69.72,
+   "end": 69.92
+  },
+  {
+   "text": "beside",
+   "chapter": 2,
+   "sentence": "People beside the track heard the notes bend.",
+   "start": 69.92,
+   "end": 70.34
+  },
+  {
+   "text": "the",
+   "chapter": 2,
+   "sentence": "People beside the track heard the notes bend.",
+   "start": 70.34,
+   "end": 70.58
+  },
+  {
+   "text": "track",
+   "chapter": 2,
+   "sentence": "People beside the track heard the notes bend.",
+   "start": 70.58,
+   "end": 70.8
+  },
+  {
+   "text": "heard",
+   "chapter": 2,
+   "sentence": "People beside the track heard the notes bend.",
+   "start": 70.8,
+   "end": 71.06
+  },
+  {
+   "text": "the",
+   "chapter": 2,
+   "sentence": "People beside the track heard the notes bend.",
+   "start": 71.06,
+   "end": 71.46
+  },
+  {
+   "text": "notes",
+   "chapter": 2,
+   "sentence": "People beside the track heard the notes bend.",
+   "start": 71.46,
+   "end": 71.53999999999999
+  },
+  {
+   "text": "bend.",
+   "chapter": 2,
+   "sentence": "People beside the track heard the notes bend.",
+   "start": 71.46,
+   "end": 71.9
+  },
+  {
+   "text": "But",
+   "chapter": 2,
+   "sentence": "But here's the twist.",
+   "start": 72.08,
+   "end": 72.54
+  },
+  {
+   "text": "here's",
+   "chapter": 2,
+   "sentence": "But here's the twist.",
+   "start": 72.54,
+   "end": 72.76
+  },
+  {
+   "text": "the",
+   "chapter": 2,
+   "sentence": "But here's the twist.",
+   "start": 72.76,
+   "end": 73.06
+  },
+  {
+   "text": "twist.",
+   "chapter": 2,
+   "sentence": "But here's the twist.",
+   "start": 73.06,
+   "end": 73.36
+  },
+  {
+   "text": "Doppler",
+   "chapter": 2,
+   "sentence": "Doppler didn't name his paper after sound.",
+   "start": 74.06,
+   "end": 74.14
+  },
+  {
+   "text": "didn't",
+   "chapter": 2,
+   "sentence": "Doppler didn't name his paper after sound.",
+   "start": 74.06,
+   "end": 74.44
+  },
+  {
+   "text": "name",
+   "chapter": 2,
+   "sentence": "Doppler didn't name his paper after sound.",
+   "start": 74.44,
+   "end": 74.68
+  },
+  {
+   "text": "his",
+   "chapter": 2,
+   "sentence": "Doppler didn't name his paper after sound.",
+   "start": 74.68,
+   "end": 74.92
+  },
+  {
+   "text": "paper",
+   "chapter": 2,
+   "sentence": "Doppler didn't name his paper after sound.",
+   "start": 74.92,
+   "end": 75.18
+  },
+  {
+   "text": "after",
+   "chapter": 2,
+   "sentence": "Doppler didn't name his paper after sound.",
+   "start": 75.18,
+   "end": 75.48
+  },
+  {
+   "text": "sound.",
+   "chapter": 2,
+   "sentence": "Doppler didn't name his paper after sound.",
+   "start": 75.48,
+   "end": 75.98
+  },
+  {
+   "text": "He",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 76.2,
+   "end": 76.52
+  },
+  {
+   "text": "named",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 76.52,
+   "end": 76.72
+  },
+  {
+   "text": "it",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 76.72,
+   "end": 76.92
+  },
+  {
+   "text": "after",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 76.92,
+   "end": 77.14
+  },
+  {
+   "text": "the",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 77.14,
+   "end": 77.42
+  },
+  {
+   "text": "colored",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 77.42,
+   "end": 77.7
+  },
+  {
+   "text": "light",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 77.7,
+   "end": 78.02
+  },
+  {
+   "text": "of",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 78.02,
+   "end": 78.42
+  },
+  {
+   "text": "stars.",
+   "chapter": 2,
+   "sentence": "He named it after the colored light of stars.",
+   "start": 78.42,
+   "end": 78.84
+  },
+  {
+   "text": "Light",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 79.307771,
+   "end": 79.84777100000001
+  },
+  {
+   "text": "is",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 79.84777100000001,
+   "end": 80.06777100000001
+  },
+  {
+   "text": "a",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 80.06777100000001,
+   "end": 80.427771
+  },
+  {
+   "text": "wave",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 80.427771,
+   "end": 80.507771
+  },
+  {
+   "text": "too,",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 80.48777100000001,
+   "end": 81.027771
+  },
+  {
+   "text": "and",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 81.527771,
+   "end": 81.607771
+  },
+  {
+   "text": "for",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 81.56777100000001,
+   "end": 81.807771
+  },
+  {
+   "text": "light,",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 81.807771,
+   "end": 82.367771
+  },
+  {
+   "text": "spacing",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 83.007771,
+   "end": 83.087771
+  },
+  {
+   "text": "means",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 83.007771,
+   "end": 83.447771
+  },
+  {
+   "text": "color.",
+   "chapter": 3,
+   "sentence": "Light is a wave too, and for light, spacing means color.",
+   "start": 83.447771,
+   "end": 84.047771
+  },
+  {
+   "text": "Squeeze",
+   "chapter": 3,
+   "sentence": "Squeeze the waves, and light shifts toward blue.",
+   "start": 85.527771,
+   "end": 85.607771
+  },
+  {
+   "text": "the",
+   "chapter": 3,
+   "sentence": "Squeeze the waves, and light shifts toward blue.",
+   "start": 85.56777100000001,
+   "end": 85.84777100000001
+  },
+  {
+   "text": "waves,",
+   "chapter": 3,
+   "sentence": "Squeeze the waves, and light shifts toward blue.",
+   "start": 85.84777100000001,
+   "end": 86.147771
+  },
+  {
+   "text": "and",
+   "chapter": 3,
+   "sentence": "Squeeze the waves, and light shifts toward blue.",
+   "start": 86.48777100000001,
+   "end": 86.667771
+  },
+  {
+   "text": "light",
+   "chapter": 3,
+   "sentence": "Squeeze the waves, and light shifts toward blue.",
+   "start": 86.667771,
+   "end": 86.947771
+  },
+  {
+   "text": "shifts",
+   "chapter": 3,
+   "sentence": "Squeeze the waves, and light shifts toward blue.",
+   "start": 86.947771,
+   "end": 87.20777100000001
+  },
+  {
+   "text": "toward",
+   "chapter": 3,
+   "sentence": "Squeeze the waves, and light shifts toward blue.",
+   "start": 87.20777100000001,
+   "end": 87.627771
+  },
+  {
+   "text": "blue.",
+   "chapter": 3,
+   "sentence": "Squeeze the waves, and light shifts toward blue.",
+   "start": 87.627771,
+   "end": 88.06777100000001
+  },
+  {
+   "text": "Stretch",
+   "chapter": 3,
+   "sentence": "Stretch them, and it shifts toward red.",
+   "start": 88.847771,
+   "end": 88.92777099999999
+  },
+  {
+   "text": "them,",
+   "chapter": 3,
+   "sentence": "Stretch them, and it shifts toward red.",
+   "start": 88.887771,
+   "end": 89.167771
+  },
+  {
+   "text": "and",
+   "chapter": 3,
+   "sentence": "Stretch them, and it shifts toward red.",
+   "start": 89.447771,
+   "end": 89.527771
+  },
+  {
+   "text": "it",
+   "chapter": 3,
+   "sentence": "Stretch them, and it shifts toward red.",
+   "start": 89.507771,
+   "end": 89.867771
+  },
+  {
+   "text": "shifts",
+   "chapter": 3,
+   "sentence": "Stretch them, and it shifts toward red.",
+   "start": 89.867771,
+   "end": 89.947771
+  },
+  {
+   "text": "toward",
+   "chapter": 3,
+   "sentence": "Stretch them, and it shifts toward red.",
+   "start": 89.887771,
+   "end": 90.287771
+  },
+  {
+   "text": "red.",
+   "chapter": 3,
+   "sentence": "Stretch them, and it shifts toward red.",
+   "start": 90.287771,
+   "end": 90.587771
+  },
+  {
+   "text": "That's",
+   "chapter": 3,
+   "sentence": "That's a redshift.",
+   "start": 91.087771,
+   "end": 91.407771
+  },
+  {
+   "text": "a",
+   "chapter": 3,
+   "sentence": "That's a redshift.",
+   "start": 91.407771,
+   "end": 91.687771
+  },
+  {
+   "text": "redshift.",
+   "chapter": 3,
+   "sentence": "That's a redshift.",
+   "start": 91.687771,
+   "end": 92.147771
+  },
+  {
+   "text": "Doppler",
+   "chapter": 3,
+   "sentence": "Doppler guessed wrong about star colors.",
+   "start": 92.727771,
+   "end": 93.307771
+  },
+  {
+   "text": "guessed",
+   "chapter": 3,
+   "sentence": "Doppler guessed wrong about star colors.",
+   "start": 93.307771,
+   "end": 93.667771
+  },
+  {
+   "text": "wrong",
+   "chapter": 3,
+   "sentence": "Doppler guessed wrong about star colors.",
+   "start": 93.667771,
+   "end": 93.98777100000001
+  },
+  {
+   "text": "about",
+   "chapter": 3,
+   "sentence": "Doppler guessed wrong about star colors.",
+   "start": 93.98777100000001,
+   "end": 94.307771
+  },
+  {
+   "text": "star",
+   "chapter": 3,
+   "sentence": "Doppler guessed wrong about star colors.",
+   "start": 94.307771,
+   "end": 94.627771
+  },
+  {
+   "text": "colors.",
+   "chapter": 3,
+   "sentence": "Doppler guessed wrong about star colors.",
+   "start": 94.627771,
+   "end": 94.927771
+  },
+  {
+   "text": "The",
+   "chapter": 3,
+   "sentence": "The shift was far too small to notice.",
+   "start": 95.367771,
+   "end": 95.507771
+  },
+  {
+   "text": "shift",
+   "chapter": 3,
+   "sentence": "The shift was far too small to notice.",
+   "start": 95.507771,
+   "end": 95.667771
+  },
+  {
+   "text": "was",
+   "chapter": 3,
+   "sentence": "The shift was far too small to notice.",
+   "start": 95.667771,
+   "end": 95.98777100000001
+  },
+  {
+   "text": "far",
+   "chapter": 3,
+   "sentence": "The shift was far too small to notice.",
+   "start": 95.98777100000001,
+   "end": 96.287771
+  },
+  {
+   "text": "too",
+   "chapter": 3,
+   "sentence": "The shift was far too small to notice.",
+   "start": 96.287771,
+   "end": 96.56777100000001
+  },
+  {
+   "text": "small",
+   "chapter": 3,
+   "sentence": "The shift was far too small to notice.",
+   "start": 96.56777100000001,
+   "end": 96.76777100000001
+  },
+  {
+   "text": "to",
+   "chapter": 3,
+   "sentence": "The shift was far too small to notice.",
+   "start": 96.76777100000001,
+   "end": 97.387771
+  },
+  {
+   "text": "notice.",
+   "chapter": 3,
+   "sentence": "The shift was far too small to notice.",
+   "start": 97.387771,
+   "end": 97.467771
+  },
+  {
+   "text": "But",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 97.727771,
+   "end": 97.927771
+  },
+  {
+   "text": "he",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 97.927771,
+   "end": 98.127771
+  },
+  {
+   "text": "predicted",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 98.127771,
+   "end": 98.547771
+  },
+  {
+   "text": "astronomers",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 98.547771,
+   "end": 99.247771
+  },
+  {
+   "text": "would",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 99.247771,
+   "end": 99.56777100000001
+  },
+  {
+   "text": "one",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 99.56777100000001,
+   "end": 99.887771
+  },
+  {
+   "text": "day",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 99.887771,
+   "end": 100.027771
+  },
+  {
+   "text": "use",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 100.027771,
+   "end": 100.327771
+  },
+  {
+   "text": "it",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 100.327771,
+   "end": 100.467771
+  },
+  {
+   "text": "to",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 100.467771,
+   "end": 100.807771
+  },
+  {
+   "text": "measure",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 100.807771,
+   "end": 100.947771
+  },
+  {
+   "text": "how",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 100.947771,
+   "end": 101.387771
+  },
+  {
+   "text": "stars",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 101.387771,
+   "end": 101.587771
+  },
+  {
+   "text": "move.",
+   "chapter": 3,
+   "sentence": "But he predicted astronomers would one day use it to measure how stars move.",
+   "start": 101.587771,
+   "end": 102.06777100000001
+  },
+  {
+   "text": "They",
+   "chapter": 3,
+   "sentence": "They did.",
+   "start": 102.26777100000001,
+   "end": 102.667771
+  },
+  {
+   "text": "did.",
+   "chapter": 3,
+   "sentence": "They did.",
+   "start": 102.667771,
+   "end": 103.027771
+  },
+  {
+   "text": "Starlight",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 103.70777100000001,
+   "end": 104.007771
+  },
+  {
+   "text": "carries",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 104.007771,
+   "end": 104.367771
+  },
+  {
+   "text": "a",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 104.367771,
+   "end": 104.70777100000001
+  },
+  {
+   "text": "barcode",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 104.70777100000001,
+   "end": 105.007771
+  },
+  {
+   "text": "of",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 105.007771,
+   "end": 105.307771
+  },
+  {
+   "text": "dark",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 105.307771,
+   "end": 105.607771
+  },
+  {
+   "text": "lines,",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 105.607771,
+   "end": 106.027771
+  },
+  {
+   "text": "set",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 106.027771,
+   "end": 106.467771
+  },
+  {
+   "text": "by",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 106.467771,
+   "end": 106.647771
+  },
+  {
+   "text": "its",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 106.647771,
+   "end": 106.927771
+  },
+  {
+   "text": "atoms.",
+   "chapter": 3,
+   "sentence": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "start": 106.927771,
+   "end": 107.147771
+  },
+  {
+   "text": "If",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 107.147771,
+   "end": 107.727771
+  },
+  {
+   "text": "the",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 107.727771,
+   "end": 108.027771
+  },
+  {
+   "text": "barcode",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 108.027771,
+   "end": 108.327771
+  },
+  {
+   "text": "slides",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 108.327771,
+   "end": 108.70777100000001
+  },
+  {
+   "text": "toward",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 108.70777100000001,
+   "end": 109.107771
+  },
+  {
+   "text": "red,",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 109.107771,
+   "end": 109.467771
+  },
+  {
+   "text": "the",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 109.867771,
+   "end": 109.947771
+  },
+  {
+   "text": "source",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 109.947771,
+   "end": 110.187771
+  },
+  {
+   "text": "is",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 110.187771,
+   "end": 110.407771
+  },
+  {
+   "text": "moving",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 110.407771,
+   "end": 110.627771
+  },
+  {
+   "text": "away.",
+   "chapter": 3,
+   "sentence": "If the barcode slides toward red, the source is moving away.",
+   "start": 110.627771,
+   "end": 111.107771
+  },
+  {
+   "text": "In",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 111.567771,
+   "end": 111.64777099999999
+  },
+  {
+   "text": "the",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 111.567771,
+   "end": 111.727771
+  },
+  {
+   "text": "nineteen",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 111.727771,
+   "end": 112.257771
+  },
+  {
+   "text": "tens,",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 112.257771,
+   "end": 112.78777099999999
+  },
+  {
+   "text": "Vesto",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 112.867771,
+   "end": 113.227771
+  },
+  {
+   "text": "Slipher",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 113.227771,
+   "end": 113.667771
+  },
+  {
+   "text": "read",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 113.667771,
+   "end": 114.007771
+  },
+  {
+   "text": "those",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 114.007771,
+   "end": 114.387771
+  },
+  {
+   "text": "barcodes",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 114.387771,
+   "end": 114.78777099999999
+  },
+  {
+   "text": "in",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 114.78777099999999,
+   "end": 115.187771
+  },
+  {
+   "text": "faint",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 115.187771,
+   "end": 115.427771
+  },
+  {
+   "text": "spirals",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 115.427771,
+   "end": 115.907771
+  },
+  {
+   "text": "in",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 115.907771,
+   "end": 116.127771
+  },
+  {
+   "text": "the",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 116.127771,
+   "end": 116.347771
+  },
+  {
+   "text": "sky.",
+   "chapter": 3,
+   "sentence": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "start": 116.347771,
+   "end": 116.647771
+  },
+  {
+   "text": "Andromeda",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 117.26777100000001,
+   "end": 117.587771
+  },
+  {
+   "text": "was",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 117.587771,
+   "end": 117.887771
+  },
+  {
+   "text": "coming",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 117.887771,
+   "end": 118.20777100000001
+  },
+  {
+   "text": "toward",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 118.20777100000001,
+   "end": 118.587771
+  },
+  {
+   "text": "us,",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 118.587771,
+   "end": 118.887771
+  },
+  {
+   "text": "about",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 119.067771,
+   "end": 119.32777100000001
+  },
+  {
+   "text": "three",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 119.32777100000001,
+   "end": 119.62777100000001
+  },
+  {
+   "text": "hundred",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 119.62777100000001,
+   "end": 119.927771
+  },
+  {
+   "text": "kilometers",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 119.927771,
+   "end": 120.447771
+  },
+  {
+   "text": "every",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 120.447771,
+   "end": 121.04777100000001
+  },
+  {
+   "text": "second.",
+   "chapter": 3,
+   "sentence": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "start": 121.04777100000001,
+   "end": 121.407771
+  },
+  {
+   "text": "But",
+   "chapter": 3,
+   "sentence": "But nearly all the others were rushing away.",
+   "start": 121.82777100000001,
+   "end": 122.04777100000001
+  },
+  {
+   "text": "nearly",
+   "chapter": 3,
+   "sentence": "But nearly all the others were rushing away.",
+   "start": 122.04777100000001,
+   "end": 122.28777099999999
+  },
+  {
+   "text": "all",
+   "chapter": 3,
+   "sentence": "But nearly all the others were rushing away.",
+   "start": 122.28777099999999,
+   "end": 122.70777100000001
+  },
+  {
+   "text": "the",
+   "chapter": 3,
+   "sentence": "But nearly all the others were rushing away.",
+   "start": 122.70777100000001,
+   "end": 123.187771
+  },
+  {
+   "text": "others",
+   "chapter": 3,
+   "sentence": "But nearly all the others were rushing away.",
+   "start": 123.187771,
+   "end": 123.267771
+  },
+  {
+   "text": "were",
+   "chapter": 3,
+   "sentence": "But nearly all the others were rushing away.",
+   "start": 123.187771,
+   "end": 123.48777100000001
+  },
+  {
+   "text": "rushing",
+   "chapter": 3,
+   "sentence": "But nearly all the others were rushing away.",
+   "start": 123.48777100000001,
+   "end": 123.76777100000001
+  },
+  {
+   "text": "away.",
+   "chapter": 3,
+   "sentence": "But nearly all the others were rushing away.",
+   "start": 123.76777100000001,
+   "end": 124.26777100000001
+  },
+  {
+   "text": "Why",
+   "chapter": 3,
+   "sentence": "Why would almost everything flee from us?",
+   "start": 124.76777100000001,
+   "end": 124.907771
+  },
+  {
+   "text": "would",
+   "chapter": 3,
+   "sentence": "Why would almost everything flee from us?",
+   "start": 124.907771,
+   "end": 125.127771
+  },
+  {
+   "text": "almost",
+   "chapter": 3,
+   "sentence": "Why would almost everything flee from us?",
+   "start": 125.127771,
+   "end": 125.48777100000001
+  },
+  {
+   "text": "everything",
+   "chapter": 3,
+   "sentence": "Why would almost everything flee from us?",
+   "start": 125.48777100000001,
+   "end": 126.087771
+  },
+  {
+   "text": "flee",
+   "chapter": 3,
+   "sentence": "Why would almost everything flee from us?",
+   "start": 126.087771,
+   "end": 126.367771
+  },
+  {
+   "text": "from",
+   "chapter": 3,
+   "sentence": "Why would almost everything flee from us?",
+   "start": 126.367771,
+   "end": 126.667771
+  },
+  {
+   "text": "us?",
+   "chapter": 3,
+   "sentence": "Why would almost everything flee from us?",
+   "start": 126.667771,
+   "end": 126.947771
+  },
+  {
+   "text": "Enter",
+   "chapter": 4,
+   "sentence": "Enter Edwin Hubble.",
+   "start": 127.407771,
+   "end": 127.747771
+  },
+  {
+   "text": "Edwin",
+   "chapter": 4,
+   "sentence": "Enter Edwin Hubble.",
+   "start": 127.747771,
+   "end": 128.307771
+  },
+  {
+   "text": "Hubble.",
+   "chapter": 4,
+   "sentence": "Enter Edwin Hubble.",
+   "start": 128.307771,
+   "end": 128.607771
+  },
+  {
+   "text": "In",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 129.127771,
+   "end": 129.247771
+  },
+  {
+   "text": "nineteen",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 129.247771,
+   "end": 129.717771
+  },
+  {
+   "text": "twenty-three,",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 129.717771,
+   "end": 130.187771
+  },
+  {
+   "text": "with",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 130.447771,
+   "end": 130.567771
+  },
+  {
+   "text": "the",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 130.567771,
+   "end": 130.72777100000002
+  },
+  {
+   "text": "most",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 130.72777100000002,
+   "end": 130.987771
+  },
+  {
+   "text": "powerful",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 130.987771,
+   "end": 131.407771
+  },
+  {
+   "text": "telescope",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 131.407771,
+   "end": 131.847771
+  },
+  {
+   "text": "of",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 131.847771,
+   "end": 132.16777100000002
+  },
+  {
+   "text": "its",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 132.16777100000002,
+   "end": 132.307771
+  },
+  {
+   "text": "day,",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 132.307771,
+   "end": 132.607771
+  },
+  {
+   "text": "he",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 132.907771,
+   "end": 133.107771
+  },
+  {
+   "text": "proved",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 133.107771,
+   "end": 133.407771
+  },
+  {
+   "text": "Andromeda",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 133.407771,
+   "end": 133.967771
+  },
+  {
+   "text": "was",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 133.967771,
+   "end": 134.267771
+  },
+  {
+   "text": "a",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 134.267771,
+   "end": 134.507771
+  },
+  {
+   "text": "whole",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 134.507771,
+   "end": 134.887771
+  },
+  {
+   "text": "galaxy,",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 134.887771,
+   "end": 135.307771
+  },
+  {
+   "text": "far",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 135.307771,
+   "end": 135.887771
+  },
+  {
+   "text": "beyond",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 135.887771,
+   "end": 136.16777100000002
+  },
+  {
+   "text": "our",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 136.16777100000002,
+   "end": 136.427771
+  },
+  {
+   "text": "own.",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "start": 136.427771,
+   "end": 136.707771
+  },
+  {
+   "text": "Next,",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 136.707771,
+   "end": 137.447771
+  },
+  {
+   "text": "he",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 137.707771,
+   "end": 137.867771
+  },
+  {
+   "text": "measured",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 137.867771,
+   "end": 138.107771
+  },
+  {
+   "text": "how",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 138.107771,
+   "end": 138.387771
+  },
+  {
+   "text": "far",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 138.387771,
+   "end": 138.66777100000002
+  },
+  {
+   "text": "away",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 138.66777100000002,
+   "end": 138.927771
+  },
+  {
+   "text": "other",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 138.927771,
+   "end": 139.327771
+  },
+  {
+   "text": "galaxies",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 139.327771,
+   "end": 139.647771
+  },
+  {
+   "text": "were.",
+   "chapter": 4,
+   "sentence": "Next, he measured how far away other galaxies were.",
+   "start": 139.647771,
+   "end": 140.16777100000002
+  },
+  {
+   "text": "In",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 140.627771,
+   "end": 140.707771
+  },
+  {
+   "text": "nineteen",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 140.627771,
+   "end": 141.10777099999999
+  },
+  {
+   "text": "twenty-nine,",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 141.10777099999999,
+   "end": 141.587771
+  },
+  {
+   "text": "he",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 141.907771,
+   "end": 142.027771
+  },
+  {
+   "text": "set",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 142.027771,
+   "end": 142.247771
+  },
+  {
+   "text": "his",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 142.247771,
+   "end": 142.607771
+  },
+  {
+   "text": "distances",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 142.607771,
+   "end": 142.927771
+  },
+  {
+   "text": "beside",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 142.927771,
+   "end": 143.427771
+  },
+  {
+   "text": "their",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 143.427771,
+   "end": 143.807771
+  },
+  {
+   "text": "speeds,",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 143.807771,
+   "end": 144.127771
+  },
+  {
+   "text": "most",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 144.587771,
+   "end": 144.687771
+  },
+  {
+   "text": "of",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 144.687771,
+   "end": 144.82777099999998
+  },
+  {
+   "text": "them",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 144.82777099999998,
+   "end": 145.007771
+  },
+  {
+   "text": "Slipher's.",
+   "chapter": 4,
+   "sentence": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "start": 145.007771,
+   "end": 145.547771
+  },
+  {
+   "text": "A",
+   "chapter": 4,
+   "sentence": "A pattern jumped out.",
+   "start": 145.987771,
+   "end": 146.16777100000002
+  },
+  {
+   "text": "pattern",
+   "chapter": 4,
+   "sentence": "A pattern jumped out.",
+   "start": 146.16777100000002,
+   "end": 146.507771
+  },
+  {
+   "text": "jumped",
+   "chapter": 4,
+   "sentence": "A pattern jumped out.",
+   "start": 146.507771,
+   "end": 146.84777100000002
+  },
+  {
+   "text": "out.",
+   "chapter": 4,
+   "sentence": "A pattern jumped out.",
+   "start": 146.84777100000002,
+   "end": 147.22777100000002
+  },
+  {
+   "text": "The",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 147.647771,
+   "end": 147.72777100000002
+  },
+  {
+   "text": "farther",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 147.647771,
+   "end": 148.107771
+  },
+  {
+   "text": "a",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 148.107771,
+   "end": 148.66777100000002
+  },
+  {
+   "text": "galaxy",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 148.66777100000002,
+   "end": 148.74777100000003
+  },
+  {
+   "text": "is,",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 148.66777100000002,
+   "end": 149.147771
+  },
+  {
+   "text": "the",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 149.34777100000002,
+   "end": 149.627771
+  },
+  {
+   "text": "faster",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 149.627771,
+   "end": 149.927771
+  },
+  {
+   "text": "it",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 149.927771,
+   "end": 150.16777100000002
+  },
+  {
+   "text": "moves",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 150.16777100000002,
+   "end": 150.367771
+  },
+  {
+   "text": "away.",
+   "chapter": 4,
+   "sentence": "The farther a galaxy is, the faster it moves away.",
+   "start": 150.367771,
+   "end": 150.807771
+  },
+  {
+   "text": "Not",
+   "chapter": 4,
+   "sentence": "Not just from us.",
+   "start": 151.247771,
+   "end": 151.367771
+  },
+  {
+   "text": "just",
+   "chapter": 4,
+   "sentence": "Not just from us.",
+   "start": 151.367771,
+   "end": 151.627771
+  },
+  {
+   "text": "from",
+   "chapter": 4,
+   "sentence": "Not just from us.",
+   "start": 151.627771,
+   "end": 151.76777099999998
+  },
+  {
+   "text": "us.",
+   "chapter": 4,
+   "sentence": "Not just from us.",
+   "start": 151.76777099999998,
+   "end": 152.147771
+  },
+  {
+   "text": "From",
+   "chapter": 4,
+   "sentence": "From each other.",
+   "start": 152.407771,
+   "end": 152.567771
+  },
+  {
+   "text": "each",
+   "chapter": 4,
+   "sentence": "From each other.",
+   "start": 152.567771,
+   "end": 152.84777100000002
+  },
+  {
+   "text": "other.",
+   "chapter": 4,
+   "sentence": "From each other.",
+   "start": 152.84777100000002,
+   "end": 153.147771
+  },
+  {
+   "text": "The",
+   "chapter": 4,
+   "sentence": "The universe is expanding.",
+   "start": 153.527771,
+   "end": 153.747771
+  },
+  {
+   "text": "universe",
+   "chapter": 4,
+   "sentence": "The universe is expanding.",
+   "start": 153.747771,
+   "end": 154.22777100000002
+  },
+  {
+   "text": "is",
+   "chapter": 4,
+   "sentence": "The universe is expanding.",
+   "start": 154.22777100000002,
+   "end": 154.78777100000002
+  },
+  {
+   "text": "expanding.",
+   "chapter": 4,
+   "sentence": "The universe is expanding.",
+   "start": 154.78777100000002,
+   "end": 155.34777100000002
+  },
+  {
+   "text": "A",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 155.927771,
+   "end": 156.107771
+  },
+  {
+   "text": "Belgian",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 156.107771,
+   "end": 156.407771
+  },
+  {
+   "text": "priest,",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 156.407771,
+   "end": 156.927771
+  },
+  {
+   "text": "Georges",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 157.247771,
+   "end": 157.467771
+  },
+  {
+   "text": "Lema\u00eetre,",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 157.467771,
+   "end": 157.927771
+  },
+  {
+   "text": "had",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 158.16777100000002,
+   "end": 158.407771
+  },
+  {
+   "text": "proposed",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 158.407771,
+   "end": 158.66777100000002
+  },
+  {
+   "text": "this",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 158.66777100000002,
+   "end": 158.967771
+  },
+  {
+   "text": "two",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 158.967771,
+   "end": 159.22777100000002
+  },
+  {
+   "text": "years",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 159.22777100000002,
+   "end": 159.487771
+  },
+  {
+   "text": "earlier.",
+   "chapter": 4,
+   "sentence": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "start": 159.487771,
+   "end": 159.867771
+  },
+  {
+   "text": "But",
+   "chapter": 4,
+   "sentence": "But Hubble's chart is what convinced astronomers.",
+   "start": 160.027771,
+   "end": 160.587771
+  },
+  {
+   "text": "Hubble's",
+   "chapter": 4,
+   "sentence": "But Hubble's chart is what convinced astronomers.",
+   "start": 160.587771,
+   "end": 161.067771
+  },
+  {
+   "text": "chart",
+   "chapter": 4,
+   "sentence": "But Hubble's chart is what convinced astronomers.",
+   "start": 161.067771,
+   "end": 161.147771
+  },
+  {
+   "text": "is",
+   "chapter": 4,
+   "sentence": "But Hubble's chart is what convinced astronomers.",
+   "start": 161.067771,
+   "end": 161.307771
+  },
+  {
+   "text": "what",
+   "chapter": 4,
+   "sentence": "But Hubble's chart is what convinced astronomers.",
+   "start": 161.307771,
+   "end": 161.627771
+  },
+  {
+   "text": "convinced",
+   "chapter": 4,
+   "sentence": "But Hubble's chart is what convinced astronomers.",
+   "start": 161.627771,
+   "end": 161.947771
+  },
+  {
+   "text": "astronomers.",
+   "chapter": 4,
+   "sentence": "But Hubble's chart is what convinced astronomers.",
+   "start": 161.947771,
+   "end": 162.607771
+  },
+  {
+   "text": "And",
+   "chapter": 4,
+   "sentence": "And one last twist.",
+   "start": 162.607771,
+   "end": 163.247771
+  },
+  {
+   "text": "one",
+   "chapter": 4,
+   "sentence": "And one last twist.",
+   "start": 163.247771,
+   "end": 163.627771
+  },
+  {
+   "text": "last",
+   "chapter": 4,
+   "sentence": "And one last twist.",
+   "start": 163.627771,
+   "end": 164.047771
+  },
+  {
+   "text": "twist.",
+   "chapter": 4,
+   "sentence": "And one last twist.",
+   "start": 164.047771,
+   "end": 164.427771
+  },
+  {
+   "text": "Far",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 165.147771,
+   "end": 165.26777099999998
+  },
+  {
+   "text": "galaxies",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 165.26777099999998,
+   "end": 165.707771
+  },
+  {
+   "text": "aren't",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 165.707771,
+   "end": 166.047771
+  },
+  {
+   "text": "really",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 166.047771,
+   "end": 166.807771
+  },
+  {
+   "text": "speeding",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 166.807771,
+   "end": 166.88777100000001
+  },
+  {
+   "text": "through",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 166.807771,
+   "end": 167.187771
+  },
+  {
+   "text": "space",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 167.187771,
+   "end": 167.507771
+  },
+  {
+   "text": "like",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 167.507771,
+   "end": 167.907771
+  },
+  {
+   "text": "sirens",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 167.907771,
+   "end": 168.207771
+  },
+  {
+   "text": "down",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 168.207771,
+   "end": 168.527771
+  },
+  {
+   "text": "a",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 168.527771,
+   "end": 169.047771
+  },
+  {
+   "text": "street.",
+   "chapter": 4,
+   "sentence": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "start": 169.047771,
+   "end": 169.12777100000002
+  },
+  {
+   "text": "Space",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 169.907771,
+   "end": 169.987771
+  },
+  {
+   "text": "itself",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 169.927771,
+   "end": 170.66777100000002
+  },
+  {
+   "text": "is",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 170.66777100000002,
+   "end": 171.087771
+  },
+  {
+   "text": "stretching,",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 171.087771,
+   "end": 171.467771
+  },
+  {
+   "text": "like",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 171.907771,
+   "end": 172.067771
+  },
+  {
+   "text": "rising",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 172.067771,
+   "end": 172.547771
+  },
+  {
+   "text": "dough",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 172.547771,
+   "end": 172.967771
+  },
+  {
+   "text": "pulling",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 172.967771,
+   "end": 173.307771
+  },
+  {
+   "text": "raisins",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 173.307771,
+   "end": 173.76777099999998
+  },
+  {
+   "text": "apart.",
+   "chapter": 4,
+   "sentence": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "start": 173.76777099999998,
+   "end": 174.16777100000002
+  },
+  {
+   "text": "Their",
+   "chapter": 4,
+   "sentence": "Their light stretches with it, toward red.",
+   "start": 174.387771,
+   "end": 174.76777099999998
+  },
+  {
+   "text": "light",
+   "chapter": 4,
+   "sentence": "Their light stretches with it, toward red.",
+   "start": 174.76777099999998,
+   "end": 175.22777100000002
+  },
+  {
+   "text": "stretches",
+   "chapter": 4,
+   "sentence": "Their light stretches with it, toward red.",
+   "start": 175.22777100000002,
+   "end": 175.627771
+  },
+  {
+   "text": "with",
+   "chapter": 4,
+   "sentence": "Their light stretches with it, toward red.",
+   "start": 175.627771,
+   "end": 176.007771
+  },
+  {
+   "text": "it,",
+   "chapter": 4,
+   "sentence": "Their light stretches with it, toward red.",
+   "start": 176.007771,
+   "end": 176.34777100000002
+  },
+  {
+   "text": "toward",
+   "chapter": 4,
+   "sentence": "Their light stretches with it, toward red.",
+   "start": 176.487771,
+   "end": 176.687771
+  },
+  {
+   "text": "red.",
+   "chapter": 4,
+   "sentence": "Their light stretches with it, toward red.",
+   "start": 176.687771,
+   "end": 177.107771
+  },
+  {
+   "text": "So",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 177.487771,
+   "end": 177.747771
+  },
+  {
+   "text": "the",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 177.747771,
+   "end": 177.84777100000002
+  },
+  {
+   "text": "next",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 177.84777100000002,
+   "end": 178.067771
+  },
+  {
+   "text": "time",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 178.067771,
+   "end": 178.26777099999998
+  },
+  {
+   "text": "a",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 178.26777099999998,
+   "end": 178.78777100000002
+  },
+  {
+   "text": "siren",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 178.78777100000002,
+   "end": 178.86777100000003
+  },
+  {
+   "text": "drops",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 178.78777100000002,
+   "end": 179.16777100000002
+  },
+  {
+   "text": "its",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 179.16777100000002,
+   "end": 179.467771
+  },
+  {
+   "text": "note",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 179.467771,
+   "end": 179.627771
+  },
+  {
+   "text": "as",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 179.627771,
+   "end": 179.78777100000002
+  },
+  {
+   "text": "it",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 179.78777100000002,
+   "end": 180.367771
+  },
+  {
+   "text": "passes,",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 180.367771,
+   "end": 180.44777100000002
+  },
+  {
+   "text": "listen.",
+   "chapter": 5,
+   "sentence": "So the next time a siren drops its note as it passes, listen.",
+   "start": 180.907771,
+   "end": 181.087771
+  },
+  {
+   "text": "You're",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 181.527771,
+   "end": 181.807771
+  },
+  {
+   "text": "hearing",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 181.807771,
+   "end": 182.047771
+  },
+  {
+   "text": "the",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 182.047771,
+   "end": 182.32777099999998
+  },
+  {
+   "text": "same",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 182.32777099999998,
+   "end": 182.807771
+  },
+  {
+   "text": "clue",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 182.807771,
+   "end": 183.007771
+  },
+  {
+   "text": "that",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 183.007771,
+   "end": 183.28777100000002
+  },
+  {
+   "text": "told",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 183.28777100000002,
+   "end": 183.527771
+  },
+  {
+   "text": "us",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 183.527771,
+   "end": 183.747771
+  },
+  {
+   "text": "the",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 183.747771,
+   "end": 184.147771
+  },
+  {
+   "text": "universe",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 184.147771,
+   "end": 184.28777100000002
+  },
+  {
+   "text": "is",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 184.28777100000002,
+   "end": 184.887771
+  },
+  {
+   "text": "growing.",
+   "chapter": 5,
+   "sentence": "You're hearing the same clue that told us the universe is growing.",
+   "start": 184.887771,
+   "end": 185.207771
+  }
+ ],
+ "diffs": [
+  {
+   "op": "replace",
+   "script": "Slipher's.",
+   "heard": "sliphers"
+  }
+ ]
+}

@@ -6,7 +6,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T1 Environment and skills
 - [x] T2 Intake and production plan (PRODUCTION_PLAN.md)
 - [x] T3 Style bible (STYLE_BIBLE.md)
-- [ ] T4 Voiceover timing
+- [x] T4 Voiceover timing
 - [ ] T5 Timed storyboard (STORYBOARD.md, data/video.json)
 - [ ] T6 Design system and kit
 - [ ] T7 Audio build
@@ -16,6 +16,8 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [ ] T11 Render kit and docs
 
 ## Resource inventory
+- VO timing (T4): parts concatenated with no gap (part_01 0.000-79.308 s, part_02 starts at 79.307771 s; total 185.678 s). Global timeline adds a 0.5 s head before "Listen." -> last word ends at 185.71 s global; end-screen tail to 193.0 s (5790 frames).
+- Transcript (whisper-1 word timings, remotion/data/transcript/) vs 03-script.md: 492/492 words aligned; only difference is "Slipher's" heard as "sliphers" (apostrophe/respelling only). Numbers (1842, 1910s, 300, 1923, 1929) were transcribed as digits and expanded back. No real word differences.
 - Location: topics/doppler-effect-redshift/resources/ (from resources.zip, 91 entries)
 - Voiceover: voiceover/part_01.mp3 (79.31 s, 44.1 kHz mono; Cold open + Ch1 + Ch2), voiceover/part_02.mp3 (106.37 s, 44.1 kHz mono; Ch3 + Ch4 + Close). Order: part_01 then part_02. Total 185.68 s.
 - Reference clips: 1 file, reference/BAACAgQ...PQQ.mp4: 71.91 s, 360x640 (9:16 portrait), 30 fps, stereo 48 kHz audio.

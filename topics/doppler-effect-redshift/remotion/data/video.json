@@ -1,0 +1,6395 @@
+{
+ "fps": 30,
+ "width": 1920,
+ "height": 1080,
+ "head": 0.5,
+ "durationInFrames": 5790,
+ "voice": {
+  "file": "audio/mix.wav",
+  "part2StartVoice": 79.307771,
+  "voiceDuration": 185.67839600000002
+ },
+ "chapters": [
+  {
+   "id": "Ch0-ColdOpen",
+   "title": "Cold open",
+   "start": 0,
+   "end": 339
+  },
+  {
+   "id": "Ch1-Siren",
+   "title": "1 \u00b7 One Siren, Two Sounds",
+   "start": 339,
+   "end": 869
+  },
+  {
+   "id": "Ch2-Ripples",
+   "title": "2 \u00b7 Ripples",
+   "start": 869,
+   "end": 2387
+  },
+  {
+   "id": "Ch3-Light",
+   "title": "3 \u00b7 Light Has a Siren Too",
+   "start": 2387,
+   "end": 3830
+  },
+  {
+   "id": "Ch4-Universe",
+   "title": "4 \u00b7 The Running Universe",
+   "start": 3830,
+   "end": 5334
+  },
+  {
+   "id": "Ch5-Close",
+   "title": "Close",
+   "start": 5334,
+   "end": 5790
+  }
+ ],
+ "cues": {
+  "start": 0,
+  "listen": 15,
+  "siren": 44,
+  "toward": 78,
+  "moment": 109,
+  "passes": 119,
+  "drops": 164,
+  "tinyDrop": 196,
+  "clue": 227,
+  "universe0": 274,
+  "growing0": 326,
+  "picture": 352,
+  "toHer": 396,
+  "steady": 437,
+  "butYou": 484,
+  "sidewalk": 506,
+  "high": 548,
+  "low": 573,
+  "sameSiren": 632,
+  "twoSounds": 660,
+  "bothRight": 686,
+  "right": 718,
+  "whatChanged": 728,
+  "notSiren": 765,
+  "something": 802,
+  "air": 816,
+  "ch1End": 859,
+  "soundTravels": 880,
+  "ripples": 921,
+  "bug": 976,
+  "tapping": 1027,
+  "perfect": 1061,
+  "swims": 1126,
+  "inFront": 1201,
+  "squeezed": 1234,
+  "behind": 1266,
+  "stretched": 1301,
+  "soundSame": 1340,
+  "squeezedWaves": 1395,
+  "higher": 1469,
+  "stretchedWaves": 1514,
+  "lower": 1572,
+  "neverSpeed": 1594,
+  "spacing": 1651,
+  "y1842": 1711,
+  "frail": 1750,
+  "prague": 1786,
+  "hisName": 1839,
+  "nearlyQuit": 1912,
+  "america": 1937,
+  "threeYears": 1973,
+  "dutch": 2000,
+  "horns": 2029,
+  "trainCar": 2068,
+  "people": 2107,
+  "bend": 2159,
+  "twist1": 2177,
+  "didnt": 2237,
+  "heNamed": 2301,
+  "stars1": 2346,
+  "ch2End": 2380,
+  "lightWave": 2394,
+  "spacingColor": 2505,
+  "squeezeWaves": 2581,
+  "blue": 2631,
+  "stretchThem": 2680,
+  "red1": 2712,
+  "redshift": 2748,
+  "guessedWrong": 2797,
+  "tooSmall": 2876,
+  "predicted": 2947,
+  "measure": 3029,
+  "theyDid": 3083,
+  "barcode": 3126,
+  "atoms": 3196,
+  "slides": 3229,
+  "movingAway": 3311,
+  "tens": 3362,
+  "slipher": 3401,
+  "faint": 3459,
+  "andromeda": 3533,
+  "kms300": 3587,
+  "nearlyAll": 3670,
+  "rushing": 3720,
+  "why": 3758,
+  "flee": 3798,
+  "ch3End": 3823,
+  "enter": 3837,
+  "hubble": 3847,
+  "y1923": 3889,
+  "telescope": 3937,
+  "proved": 4002,
+  "wholeGalaxy": 4043,
+  "farBeyond": 4074,
+  "next": 4116,
+  "howFar": 4158,
+  "y1929": 4234,
+  "distances": 4282,
+  "speeds": 4318,
+  "mostSlipher": 4353,
+  "pattern": 4395,
+  "farther": 4444,
+  "faster": 4495,
+  "notJust": 4552,
+  "eachOther": 4587,
+  "expanding": 4621,
+  "belgian": 4693,
+  "lemaitre": 4732,
+  "twoYears": 4784,
+  "hubblesChart": 4816,
+  "convinced": 4864,
+  "twist2": 4893,
+  "farGalaxies": 4969,
+  "sirensStreet": 5040,
+  "spaceItself": 5112,
+  "dough": 5172,
+  "raisins": 5204,
+  "theirLight": 5247,
+  "towardRed2": 5310,
+  "ch4End": 5328,
+  "soNext": 5340,
+  "dropsNote": 5379,
+  "asPasses": 5404,
+  "listen2": 5442,
+  "hearing": 5461,
+  "universe2": 5527,
+  "lastWord": 5571,
+  "end": 5790,
+  "ch0": 0,
+  "ch1": 339,
+  "ch2": 869,
+  "ch3": 2387,
+  "ch4": 3830,
+  "ch5": 5334
+ },
+ "scenes": [
+  {
+   "id": "s0_void",
+   "chapter": 0,
+   "start": 0,
+   "end": 44,
+   "beats": "1",
+   "shot": "CU",
+   "env": "Black void + ear",
+   "camera": "slow push-in",
+   "transitionIn": "fade from black"
+  },
+  {
+   "id": "s0_street",
+   "chapter": 0,
+   "start": 44,
+   "end": 196,
+   "beats": "2-3",
+   "shot": "WS",
+   "env": "Sunset Street (dusk)",
+   "camera": "pan follows ambulance, handheld",
+   "transitionIn": "ring match-cut"
+  },
+  {
+   "id": "s0_tilt",
+   "chapter": 0,
+   "start": 196,
+   "end": 274,
+   "beats": "4",
+   "shot": "WS->sky",
+   "env": "Street -> sky",
+   "camera": "whip-tilt up",
+   "transitionIn": "continuous"
+  },
+  {
+   "id": "s0_space",
+   "chapter": 0,
+   "start": 274,
+   "end": 339,
+   "beats": "5",
+   "shot": "WS",
+   "env": "Deep Space",
+   "camera": "slow drift + push",
+   "transitionIn": "rings become stars"
+  },
+  {
+   "id": "s1_cab",
+   "chapter": 1,
+   "start": 339,
+   "end": 396,
+   "beats": "6",
+   "shot": "MS",
+   "env": "Inside the Cab",
+   "camera": "gentle push, road bump shake",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s1_roof",
+   "chapter": 1,
+   "start": 396,
+   "end": 484,
+   "beats": "7",
+   "shot": "INS/MS",
+   "env": "Ambulance side, scrolling street",
+   "camera": "track with vehicle",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s1_split",
+   "chapter": 1,
+   "start": 484,
+   "end": 728,
+   "beats": "8-10",
+   "shot": "split",
+   "env": "Cab | Sidewalk",
+   "camera": "split drift, divider wipe",
+   "transitionIn": "split wipe"
+  },
+  {
+   "id": "s1_notsiren",
+   "chapter": 1,
+   "start": 728,
+   "end": 802,
+   "beats": "11",
+   "shot": "MS",
+   "env": "Street, parked ambulance roof",
+   "camera": "punch-in",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s1_air",
+   "chapter": 1,
+   "start": 802,
+   "end": 869,
+   "beats": "12",
+   "shot": "low WS",
+   "env": "Street ground level",
+   "camera": "drop low + slow dolly",
+   "transitionIn": "camera drop"
+  },
+  {
+   "id": "s2_pond",
+   "chapter": 2,
+   "start": 869,
+   "end": 976,
+   "beats": "13",
+   "shot": "TD",
+   "env": "Pond top-down",
+   "camera": "slow push-in",
+   "transitionIn": "ring match-cut"
+  },
+  {
+   "id": "s2_still",
+   "chapter": 2,
+   "start": 976,
+   "end": 1126,
+   "beats": "14-15",
+   "shot": "TD",
+   "env": "Pond",
+   "camera": "settle + hold drift",
+   "transitionIn": "continuous"
+  },
+  {
+   "id": "s2_swim",
+   "chapter": 2,
+   "start": 1126,
+   "end": 1340,
+   "beats": "16-18",
+   "shot": "TD",
+   "env": "Pond",
+   "camera": "pan with Skipper",
+   "transitionIn": "continuous"
+  },
+  {
+   "id": "s2_compare",
+   "chapter": 2,
+   "start": 1340,
+   "end": 1395,
+   "beats": "19",
+   "shot": "split",
+   "env": "Pond | Street",
+   "camera": "split slide-in",
+   "transitionIn": "slide split"
+  },
+  {
+   "id": "s2_ear",
+   "chapter": 2,
+   "start": 1395,
+   "end": 1594,
+   "beats": "20-21",
+   "shot": "INS",
+   "env": "Ear insert, abstract",
+   "camera": "slow push",
+   "transitionIn": "iris from ear"
+  },
+  {
+   "id": "s2_speed",
+   "chapter": 2,
+   "start": 1594,
+   "end": 1711,
+   "beats": "22",
+   "shot": "diagram",
+   "env": "Diagram stage",
+   "camera": "lateral track",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s2_study",
+   "chapter": 2,
+   "start": 1711,
+   "end": 1839,
+   "beats": "23",
+   "shot": "MS",
+   "env": "Prague Study 1842",
+   "camera": "push-in",
+   "transitionIn": "ripple -> candle glow"
+  },
+  {
+   "id": "s2_suitcase",
+   "chapter": 2,
+   "start": 1839,
+   "end": 1973,
+   "beats": "24",
+   "shot": "MS sepia",
+   "env": "Study memory (sepia)",
+   "camera": "slow drift",
+   "transitionIn": "sepia dissolve"
+  },
+  {
+   "id": "s2_train",
+   "chapter": 2,
+   "start": 1973,
+   "end": 2107,
+   "beats": "25",
+   "shot": "WS",
+   "env": "Dutch Railway 1845",
+   "camera": "pan with train",
+   "transitionIn": "whip pan"
+  },
+  {
+   "id": "s2_observers",
+   "chapter": 2,
+   "start": 2107,
+   "end": 2177,
+   "beats": "26",
+   "shot": "MS",
+   "env": "Railway trackside",
+   "camera": "low angle, train passes",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s2_twist",
+   "chapter": 2,
+   "start": 2177,
+   "end": 2237,
+   "beats": "27",
+   "shot": "sting",
+   "env": "Twist page-curl",
+   "camera": "none (graphic)",
+   "transitionIn": "page curl"
+  },
+  {
+   "id": "s2_paper",
+   "chapter": 2,
+   "start": 2237,
+   "end": 2387,
+   "beats": "28",
+   "shot": "CU->window",
+   "env": "Study, title page",
+   "camera": "tilt to window, push through",
+   "transitionIn": "page curl out"
+  },
+  {
+   "id": "s3_lab",
+   "chapter": 3,
+   "start": 2387,
+   "end": 2581,
+   "beats": "29",
+   "shot": "WS",
+   "env": "Light Lab",
+   "camera": "drift",
+   "transitionIn": "push-through stars"
+  },
+  {
+   "id": "s3_blue",
+   "chapter": 3,
+   "start": 2581,
+   "end": 2680,
+   "beats": "30",
+   "shot": "WS",
+   "env": "Light Lab",
+   "camera": "track star",
+   "transitionIn": "continuous"
+  },
+  {
+   "id": "s3_galaxy",
+   "chapter": 3,
+   "start": 2680,
+   "end": 2797,
+   "beats": "31-32",
+   "shot": "MS",
+   "env": "Deep space (lab dissolves)",
+   "camera": "push then pull",
+   "transitionIn": "star becomes galaxy"
+  },
+  {
+   "id": "s3_toosmall",
+   "chapter": 3,
+   "start": 2797,
+   "end": 2947,
+   "beats": "33",
+   "shot": "MS",
+   "env": "Prague Study",
+   "camera": "push to window",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s3_quill",
+   "chapter": 3,
+   "start": 2947,
+   "end": 3126,
+   "beats": "34-35",
+   "shot": "MS->WS",
+   "env": "Study -> night sky",
+   "camera": "follow quill arrow",
+   "transitionIn": "continuous"
+  },
+  {
+   "id": "s3_barcode",
+   "chapter": 3,
+   "start": 3126,
+   "end": 3362,
+   "beats": "36-37",
+   "shot": "INS",
+   "env": "Light Lab barcode",
+   "camera": "slow push",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s3_dome",
+   "chapter": 3,
+   "start": 3362,
+   "end": 3459,
+   "beats": "38a",
+   "shot": "WS",
+   "env": "Lowell dome, pine hill, night",
+   "camera": "crane-in to slit",
+   "transitionIn": "barcode wipe"
+  },
+  {
+   "id": "s3_slipher",
+   "chapter": 3,
+   "start": 3459,
+   "end": 3533,
+   "beats": "38b",
+   "shot": "MS",
+   "env": "Inside dome",
+   "camera": "push",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s3_andromeda",
+   "chapter": 3,
+   "start": 3533,
+   "end": 3670,
+   "beats": "39",
+   "shot": "WS",
+   "env": "Deep space",
+   "camera": "push as it approaches",
+   "transitionIn": "plate -> sky"
+  },
+  {
+   "id": "s3_map",
+   "chapter": 3,
+   "start": 3670,
+   "end": 3830,
+   "beats": "40-41",
+   "shot": "WS",
+   "env": "Sky map",
+   "camera": "pull back",
+   "transitionIn": "pull back"
+  },
+  {
+   "id": "s4_dome",
+   "chapter": 4,
+   "start": 3830,
+   "end": 3889,
+   "beats": "42",
+   "shot": "low WS",
+   "env": "Mount Wilson dome",
+   "camera": "tilt up",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s4_plate",
+   "chapter": 4,
+   "start": 3889,
+   "end": 4002,
+   "beats": "43a",
+   "shot": "INS",
+   "env": "Glass plate light table",
+   "camera": "slow push",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s4_scale",
+   "chapter": 4,
+   "start": 4002,
+   "end": 4116,
+   "beats": "43b",
+   "shot": "WS",
+   "env": "Deep space scale bar",
+   "camera": "pull to wide",
+   "transitionIn": "plate -> space"
+  },
+  {
+   "id": "s4_tapes",
+   "chapter": 4,
+   "start": 4116,
+   "end": 4234,
+   "beats": "44",
+   "shot": "WS",
+   "env": "Deep space galaxy row",
+   "camera": "lateral track",
+   "transitionIn": "continuous drift"
+  },
+  {
+   "id": "s4_chart",
+   "chapter": 4,
+   "start": 4234,
+   "end": 4552,
+   "beats": "45-47",
+   "shot": "MS",
+   "env": "Chart Room",
+   "camera": "push, punch-in on farther",
+   "transitionIn": "chalk wipe"
+  },
+  {
+   "id": "s4_grid",
+   "chapter": 4,
+   "start": 4552,
+   "end": 4621,
+   "beats": "48",
+   "shot": "WS",
+   "env": "Expansion sheet",
+   "camera": "slight rotate",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s4_peak",
+   "chapter": 4,
+   "start": 4621,
+   "end": 4693,
+   "beats": "49",
+   "shot": "WS",
+   "env": "Galaxy field",
+   "camera": "fast pull back",
+   "transitionIn": "scale-through"
+  },
+  {
+   "id": "s4_lemaitre",
+   "chapter": 4,
+   "start": 4693,
+   "end": 4893,
+   "beats": "50-51",
+   "shot": "split",
+   "env": "Study 1927 | Chart room 1929",
+   "camera": "drift",
+   "transitionIn": "panel slide"
+  },
+  {
+   "id": "s4_twist",
+   "chapter": 4,
+   "start": 4893,
+   "end": 4969,
+   "beats": "52",
+   "shot": "sting",
+   "env": "Twist page-curl",
+   "camera": "none (graphic)",
+   "transitionIn": "page curl"
+  },
+  {
+   "id": "s4_road",
+   "chapter": 4,
+   "start": 4969,
+   "end": 5112,
+   "beats": "53",
+   "shot": "WS",
+   "env": "Starry road",
+   "camera": "track tiny ambulance",
+   "transitionIn": "page curl out"
+  },
+  {
+   "id": "s4_dough",
+   "chapter": 4,
+   "start": 5112,
+   "end": 5247,
+   "beats": "54",
+   "shot": "MS",
+   "env": "Kitchen counter -> space",
+   "camera": "push, dissolve",
+   "transitionIn": "hard cut"
+  },
+  {
+   "id": "s4_ray",
+   "chapter": 4,
+   "start": 5247,
+   "end": 5334,
+   "beats": "55",
+   "shot": "WS",
+   "env": "Stretching space sheet",
+   "camera": "lateral track along ray",
+   "transitionIn": "dough -> space"
+  },
+  {
+   "id": "s5_street",
+   "chapter": 5,
+   "start": 5334,
+   "end": 5461,
+   "beats": "56",
+   "shot": "WS",
+   "env": "Sunset Street (dusk)",
+   "camera": "handheld, pan with ambulance",
+   "transitionIn": "match-cut ring"
+  },
+  {
+   "id": "s5_sky",
+   "chapter": 5,
+   "start": 5461,
+   "end": 5790,
+   "beats": "57",
+   "shot": "WS->sky",
+   "env": "Street -> night sky",
+   "camera": "crane-up, final hold",
+   "transitionIn": "continuous"
+  }
+ ],
+ "words": [
+  {
+   "i": 0,
+   "text": "Listen.",
+   "s": 15,
+   "e": 29,
+   "ch": 0
+  },
+  {
+   "i": 1,
+   "text": "A",
+   "s": 44,
+   "e": 62,
+   "ch": 0
+  },
+  {
+   "i": 2,
+   "text": "siren",
+   "s": 62,
+   "e": 65,
+   "ch": 0
+  },
+  {
+   "i": 3,
+   "text": "races",
+   "s": 62,
+   "e": 78,
+   "ch": 0
+  },
+  {
+   "i": 4,
+   "text": "toward",
+   "s": 78,
+   "e": 89,
+   "ch": 0
+  },
+  {
+   "i": 5,
+   "text": "you.",
+   "s": 89,
+   "e": 101,
+   "ch": 0
+  },
+  {
+   "i": 6,
+   "text": "The",
+   "s": 109,
+   "e": 113,
+   "ch": 0
+  },
+  {
+   "i": 7,
+   "text": "moment",
+   "s": 113,
+   "e": 119,
+   "ch": 0
+  },
+  {
+   "i": 8,
+   "text": "it",
+   "s": 119,
+   "e": 140,
+   "ch": 0
+  },
+  {
+   "i": 9,
+   "text": "passes,",
+   "s": 140,
+   "e": 142,
+   "ch": 0
+  },
+  {
+   "i": 10,
+   "text": "its",
+   "s": 149,
+   "e": 156,
+   "ch": 0
+  },
+  {
+   "i": 11,
+   "text": "note",
+   "s": 156,
+   "e": 164,
+   "ch": 0
+  },
+  {
+   "i": 12,
+   "text": "drops.",
+   "s": 164,
+   "e": 177,
+   "ch": 0
+  },
+  {
+   "i": 13,
+   "text": "That",
+   "s": 196,
+   "e": 200,
+   "ch": 0
+  },
+  {
+   "i": 14,
+   "text": "tiny",
+   "s": 200,
+   "e": 215,
+   "ch": 0
+  },
+  {
+   "i": 15,
+   "text": "drop",
+   "s": 215,
+   "e": 227,
+   "ch": 0
+  },
+  {
+   "i": 16,
+   "text": "holds",
+   "s": 227,
+   "e": 236,
+   "ch": 0
+  },
+  {
+   "i": 17,
+   "text": "the",
+   "s": 236,
+   "e": 249,
+   "ch": 0
+  },
+  {
+   "i": 18,
+   "text": "clue",
+   "s": 249,
+   "e": 253,
+   "ch": 0
+  },
+  {
+   "i": 19,
+   "text": "that",
+   "s": 253,
+   "e": 261,
+   "ch": 0
+  },
+  {
+   "i": 20,
+   "text": "told",
+   "s": 261,
+   "e": 268,
+   "ch": 0
+  },
+  {
+   "i": 21,
+   "text": "us",
+   "s": 268,
+   "e": 274,
+   "ch": 0
+  },
+  {
+   "i": 22,
+   "text": "the",
+   "s": 274,
+   "e": 280,
+   "ch": 0
+  },
+  {
+   "i": 23,
+   "text": "whole",
+   "s": 280,
+   "e": 298,
+   "ch": 0
+  },
+  {
+   "i": 24,
+   "text": "universe",
+   "s": 298,
+   "e": 302,
+   "ch": 0
+  },
+  {
+   "i": 25,
+   "text": "is",
+   "s": 302,
+   "e": 316,
+   "ch": 0
+  },
+  {
+   "i": 26,
+   "text": "growing.",
+   "s": 316,
+   "e": 326,
+   "ch": 0
+  },
+  {
+   "i": 27,
+   "text": "Picture",
+   "s": 352,
+   "e": 354,
+   "ch": 1
+  },
+  {
+   "i": 28,
+   "text": "the",
+   "s": 352,
+   "e": 361,
+   "ch": 1
+  },
+  {
+   "i": 29,
+   "text": "ambulance",
+   "s": 361,
+   "e": 371,
+   "ch": 1
+  },
+  {
+   "i": 30,
+   "text": "driver.",
+   "s": 371,
+   "e": 381,
+   "ch": 1
+  },
+  {
+   "i": 31,
+   "text": "To",
+   "s": 396,
+   "e": 399,
+   "ch": 1
+  },
+  {
+   "i": 32,
+   "text": "her,",
+   "s": 399,
+   "e": 409,
+   "ch": 1
+  },
+  {
+   "i": 33,
+   "text": "the",
+   "s": 414,
+   "e": 427,
+   "ch": 1
+  },
+  {
+   "i": 34,
+   "text": "siren",
+   "s": 427,
+   "e": 429,
+   "ch": 1
+  },
+  {
+   "i": 35,
+   "text": "plays",
+   "s": 427,
+   "e": 437,
+   "ch": 1
+  },
+  {
+   "i": 36,
+   "text": "one",
+   "s": 437,
+   "e": 455,
+   "ch": 1
+  },
+  {
+   "i": 37,
+   "text": "steady",
+   "s": 455,
+   "e": 464,
+   "ch": 1
+  },
+  {
+   "i": 38,
+   "text": "note.",
+   "s": 464,
+   "e": 472,
+   "ch": 1
+  },
+  {
+   "i": 39,
+   "text": "But",
+   "s": 484,
+   "e": 491,
+   "ch": 1
+  },
+  {
+   "i": 40,
+   "text": "you,",
+   "s": 491,
+   "e": 500,
+   "ch": 1
+  },
+  {
+   "i": 41,
+   "text": "on",
+   "s": 506,
+   "e": 509,
+   "ch": 1
+  },
+  {
+   "i": 42,
+   "text": "the",
+   "s": 508,
+   "e": 518,
+   "ch": 1
+  },
+  {
+   "i": 43,
+   "text": "sidewalk,",
+   "s": 518,
+   "e": 526,
+   "ch": 1
+  },
+  {
+   "i": 44,
+   "text": "hear",
+   "s": 535,
+   "e": 539,
+   "ch": 1
+  },
+  {
+   "i": 45,
+   "text": "it",
+   "s": 539,
+   "e": 548,
+   "ch": 1
+  },
+  {
+   "i": 46,
+   "text": "high",
+   "s": 548,
+   "e": 554,
+   "ch": 1
+  },
+  {
+   "i": 47,
+   "text": "as",
+   "s": 554,
+   "e": 558,
+   "ch": 1
+  },
+  {
+   "i": 48,
+   "text": "it",
+   "s": 558,
+   "e": 573,
+   "ch": 1
+  },
+  {
+   "i": 49,
+   "text": "comes,",
+   "s": 573,
+   "e": 575,
+   "ch": 1
+  },
+  {
+   "i": 50,
+   "text": "and",
+   "s": 573,
+   "e": 587,
+   "ch": 1
+  },
+  {
+   "i": 51,
+   "text": "low",
+   "s": 587,
+   "e": 594,
+   "ch": 1
+  },
+  {
+   "i": 52,
+   "text": "as",
+   "s": 594,
+   "e": 600,
+   "ch": 1
+  },
+  {
+   "i": 53,
+   "text": "it",
+   "s": 600,
+   "e": 616,
+   "ch": 1
+  },
+  {
+   "i": 54,
+   "text": "goes.",
+   "s": 616,
+   "e": 618,
+   "ch": 1
+  },
+  {
+   "i": 55,
+   "text": "Same",
+   "s": 632,
+   "e": 638,
+   "ch": 1
+  },
+  {
+   "i": 56,
+   "text": "siren.",
+   "s": 638,
+   "e": 649,
+   "ch": 1
+  },
+  {
+   "i": 57,
+   "text": "Two",
+   "s": 660,
+   "e": 668,
+   "ch": 1
+  },
+  {
+   "i": 58,
+   "text": "sounds.",
+   "s": 668,
+   "e": 678,
+   "ch": 1
+  },
+  {
+   "i": 59,
+   "text": "And",
+   "s": 686,
+   "e": 694,
+   "ch": 1
+  },
+  {
+   "i": 60,
+   "text": "you're",
+   "s": 694,
+   "e": 700,
+   "ch": 1
+  },
+  {
+   "i": 61,
+   "text": "both",
+   "s": 700,
+   "e": 707,
+   "ch": 1
+  },
+  {
+   "i": 62,
+   "text": "right.",
+   "s": 707,
+   "e": 718,
+   "ch": 1
+  },
+  {
+   "i": 63,
+   "text": "So",
+   "s": 728,
+   "e": 736,
+   "ch": 1
+  },
+  {
+   "i": 64,
+   "text": "what",
+   "s": 736,
+   "e": 740,
+   "ch": 1
+  },
+  {
+   "i": 65,
+   "text": "changed?",
+   "s": 740,
+   "e": 754,
+   "ch": 1
+  },
+  {
+   "i": 66,
+   "text": "Not",
+   "s": 765,
+   "e": 773,
+   "ch": 1
+  },
+  {
+   "i": 67,
+   "text": "the",
+   "s": 773,
+   "e": 788,
+   "ch": 1
+  },
+  {
+   "i": 68,
+   "text": "siren.",
+   "s": 788,
+   "e": 791,
+   "ch": 1
+  },
+  {
+   "i": 69,
+   "text": "Something",
+   "s": 802,
+   "e": 811,
+   "ch": 1
+  },
+  {
+   "i": 70,
+   "text": "in",
+   "s": 811,
+   "e": 816,
+   "ch": 1
+  },
+  {
+   "i": 71,
+   "text": "the",
+   "s": 816,
+   "e": 819,
+   "ch": 1
+  },
+  {
+   "i": 72,
+   "text": "air",
+   "s": 819,
+   "e": 830,
+   "ch": 1
+  },
+  {
+   "i": 73,
+   "text": "between",
+   "s": 830,
+   "e": 845,
+   "ch": 1
+  },
+  {
+   "i": 74,
+   "text": "you.",
+   "s": 845,
+   "e": 859,
+   "ch": 1
+  },
+  {
+   "i": 75,
+   "text": "Sound",
+   "s": 880,
+   "e": 882,
+   "ch": 2
+  },
+  {
+   "i": 76,
+   "text": "travels",
+   "s": 880,
+   "e": 890,
+   "ch": 2
+  },
+  {
+   "i": 77,
+   "text": "in",
+   "s": 890,
+   "e": 901,
+   "ch": 2
+  },
+  {
+   "i": 78,
+   "text": "waves,",
+   "s": 901,
+   "e": 911,
+   "ch": 2
+  },
+  {
+   "i": 79,
+   "text": "like",
+   "s": 921,
+   "e": 926,
+   "ch": 2
+  },
+  {
+   "i": 80,
+   "text": "ripples",
+   "s": 926,
+   "e": 932,
+   "ch": 2
+  },
+  {
+   "i": 81,
+   "text": "on",
+   "s": 932,
+   "e": 940,
+   "ch": 2
+  },
+  {
+   "i": 82,
+   "text": "a",
+   "s": 940,
+   "e": 955,
+   "ch": 2
+  },
+  {
+   "i": 83,
+   "text": "pond.",
+   "s": 955,
+   "e": 957,
+   "ch": 2
+  },
+  {
+   "i": 84,
+   "text": "Picture",
+   "s": 976,
+   "e": 978,
+   "ch": 2
+  },
+  {
+   "i": 85,
+   "text": "a",
+   "s": 976,
+   "e": 992,
+   "ch": 2
+  },
+  {
+   "i": 86,
+   "text": "bug",
+   "s": 992,
+   "e": 995,
+   "ch": 2
+  },
+  {
+   "i": 87,
+   "text": "sitting",
+   "s": 992,
+   "e": 1002,
+   "ch": 2
+  },
+  {
+   "i": 88,
+   "text": "still,",
+   "s": 1002,
+   "e": 1019,
+   "ch": 2
+  },
+  {
+   "i": 89,
+   "text": "tapping",
+   "s": 1027,
+   "e": 1030,
+   "ch": 2
+  },
+  {
+   "i": 90,
+   "text": "the",
+   "s": 1028,
+   "e": 1036,
+   "ch": 2
+  },
+  {
+   "i": 91,
+   "text": "water.",
+   "s": 1036,
+   "e": 1043,
+   "ch": 2
+  },
+  {
+   "i": 92,
+   "text": "Perfect",
+   "s": 1061,
+   "e": 1069,
+   "ch": 2
+  },
+  {
+   "i": 93,
+   "text": "rings",
+   "s": 1069,
+   "e": 1079,
+   "ch": 2
+  },
+  {
+   "i": 94,
+   "text": "spread",
+   "s": 1079,
+   "e": 1091,
+   "ch": 2
+  },
+  {
+   "i": 95,
+   "text": "out",
+   "s": 1091,
+   "e": 1103,
+   "ch": 2
+  },
+  {
+   "i": 96,
+   "text": "evenly.",
+   "s": 1103,
+   "e": 1110,
+   "ch": 2
+  },
+  {
+   "i": 97,
+   "text": "Now",
+   "s": 1126,
+   "e": 1132,
+   "ch": 2
+  },
+  {
+   "i": 98,
+   "text": "the",
+   "s": 1132,
+   "e": 1143,
+   "ch": 2
+  },
+  {
+   "i": 99,
+   "text": "bug",
+   "s": 1143,
+   "e": 1145,
+   "ch": 2
+  },
+  {
+   "i": 100,
+   "text": "swims",
+   "s": 1143,
+   "e": 1153,
+   "ch": 2
+  },
+  {
+   "i": 101,
+   "text": "forward",
+   "s": 1153,
+   "e": 1168,
+   "ch": 2
+  },
+  {
+   "i": 102,
+   "text": "while",
+   "s": 1168,
+   "e": 1175,
+   "ch": 2
+  },
+  {
+   "i": 103,
+   "text": "it",
+   "s": 1175,
+   "e": 1187,
+   "ch": 2
+  },
+  {
+   "i": 104,
+   "text": "taps.",
+   "s": 1187,
+   "e": 1190,
+   "ch": 2
+  },
+  {
+   "i": 105,
+   "text": "The",
+   "s": 1201,
+   "e": 1207,
+   "ch": 2
+  },
+  {
+   "i": 106,
+   "text": "rings",
+   "s": 1207,
+   "e": 1210,
+   "ch": 2
+  },
+  {
+   "i": 107,
+   "text": "in",
+   "s": 1210,
+   "e": 1225,
+   "ch": 2
+  },
+  {
+   "i": 108,
+   "text": "front",
+   "s": 1225,
+   "e": 1227,
+   "ch": 2
+  },
+  {
+   "i": 109,
+   "text": "get",
+   "s": 1225,
+   "e": 1234,
+   "ch": 2
+  },
+  {
+   "i": 110,
+   "text": "squeezed",
+   "s": 1234,
+   "e": 1244,
+   "ch": 2
+  },
+  {
+   "i": 111,
+   "text": "together.",
+   "s": 1244,
+   "e": 1256,
+   "ch": 2
+  },
+  {
+   "i": 112,
+   "text": "The",
+   "s": 1266,
+   "e": 1275,
+   "ch": 2
+  },
+  {
+   "i": 113,
+   "text": "rings",
+   "s": 1275,
+   "e": 1277,
+   "ch": 2
+  },
+  {
+   "i": 114,
+   "text": "behind",
+   "s": 1275,
+   "e": 1291,
+   "ch": 2
+  },
+  {
+   "i": 115,
+   "text": "get",
+   "s": 1291,
+   "e": 1301,
+   "ch": 2
+  },
+  {
+   "i": 116,
+   "text": "stretched",
+   "s": 1301,
+   "e": 1309,
+   "ch": 2
+  },
+  {
+   "i": 117,
+   "text": "apart.",
+   "s": 1309,
+   "e": 1322,
+   "ch": 2
+  },
+  {
+   "i": 118,
+   "text": "Sound",
+   "s": 1340,
+   "e": 1348,
+   "ch": 2
+  },
+  {
+   "i": 119,
+   "text": "does",
+   "s": 1348,
+   "e": 1354,
+   "ch": 2
+  },
+  {
+   "i": 120,
+   "text": "the",
+   "s": 1354,
+   "e": 1361,
+   "ch": 2
+  },
+  {
+   "i": 121,
+   "text": "same.",
+   "s": 1361,
+   "e": 1370,
+   "ch": 2
+  },
+  {
+   "i": 122,
+   "text": "Squeezed",
+   "s": 1395,
+   "e": 1400,
+   "ch": 2
+  },
+  {
+   "i": 123,
+   "text": "waves",
+   "s": 1400,
+   "e": 1406,
+   "ch": 2
+  },
+  {
+   "i": 124,
+   "text": "reach",
+   "s": 1406,
+   "e": 1416,
+   "ch": 2
+  },
+  {
+   "i": 125,
+   "text": "your",
+   "s": 1416,
+   "e": 1424,
+   "ch": 2
+  },
+  {
+   "i": 126,
+   "text": "ear",
+   "s": 1424,
+   "e": 1427,
+   "ch": 2
+  },
+  {
+   "i": 127,
+   "text": "more",
+   "s": 1427,
+   "e": 1438,
+   "ch": 2
+  },
+  {
+   "i": 128,
+   "text": "often,",
+   "s": 1438,
+   "e": 1447,
+   "ch": 2
+  },
+  {
+   "i": 129,
+   "text": "so",
+   "s": 1450,
+   "e": 1457,
+   "ch": 2
+  },
+  {
+   "i": 130,
+   "text": "the",
+   "s": 1457,
+   "e": 1469,
+   "ch": 2
+  },
+  {
+   "i": 131,
+   "text": "pitch",
+   "s": 1469,
+   "e": 1471,
+   "ch": 2
+  },
+  {
+   "i": 132,
+   "text": "sounds",
+   "s": 1469,
+   "e": 1479,
+   "ch": 2
+  },
+  {
+   "i": 133,
+   "text": "higher.",
+   "s": 1479,
+   "e": 1489,
+   "ch": 2
+  },
+  {
+   "i": 134,
+   "text": "Stretched",
+   "s": 1514,
+   "e": 1525,
+   "ch": 2
+  },
+  {
+   "i": 135,
+   "text": "waves",
+   "s": 1525,
+   "e": 1528,
+   "ch": 2
+  },
+  {
+   "i": 136,
+   "text": "arrive",
+   "s": 1526,
+   "e": 1536,
+   "ch": 2
+  },
+  {
+   "i": 137,
+   "text": "less",
+   "s": 1536,
+   "e": 1546,
+   "ch": 2
+  },
+  {
+   "i": 138,
+   "text": "often,",
+   "s": 1546,
+   "e": 1555,
+   "ch": 2
+  },
+  {
+   "i": 139,
+   "text": "so",
+   "s": 1558,
+   "e": 1565,
+   "ch": 2
+  },
+  {
+   "i": 140,
+   "text": "it",
+   "s": 1565,
+   "e": 1572,
+   "ch": 2
+  },
+  {
+   "i": 141,
+   "text": "sounds",
+   "s": 1572,
+   "e": 1577,
+   "ch": 2
+  },
+  {
+   "i": 142,
+   "text": "lower.",
+   "s": 1577,
+   "e": 1588,
+   "ch": 2
+  },
+  {
+   "i": 143,
+   "text": "The",
+   "s": 1594,
+   "e": 1612,
+   "ch": 2
+  },
+  {
+   "i": 144,
+   "text": "waves",
+   "s": 1612,
+   "e": 1615,
+   "ch": 2
+  },
+  {
+   "i": 145,
+   "text": "never",
+   "s": 1612,
+   "e": 1625,
+   "ch": 2
+  },
+  {
+   "i": 146,
+   "text": "speed",
+   "s": 1625,
+   "e": 1636,
+   "ch": 2
+  },
+  {
+   "i": 147,
+   "text": "up.",
+   "s": 1636,
+   "e": 1648,
+   "ch": 2
+  },
+  {
+   "i": 148,
+   "text": "Only",
+   "s": 1651,
+   "e": 1657,
+   "ch": 2
+  },
+  {
+   "i": 149,
+   "text": "their",
+   "s": 1657,
+   "e": 1667,
+   "ch": 2
+  },
+  {
+   "i": 150,
+   "text": "spacing",
+   "s": 1667,
+   "e": 1681,
+   "ch": 2
+  },
+  {
+   "i": 151,
+   "text": "changes.",
+   "s": 1681,
+   "e": 1694,
+   "ch": 2
+  },
+  {
+   "i": 152,
+   "text": "In",
+   "s": 1711,
+   "e": 1713,
+   "ch": 2
+  },
+  {
+   "i": 153,
+   "text": "eighteen",
+   "s": 1713,
+   "e": 1728,
+   "ch": 2
+  },
+  {
+   "i": 154,
+   "text": "forty-two,",
+   "s": 1728,
+   "e": 1742,
+   "ch": 2
+  },
+  {
+   "i": 155,
+   "text": "a",
+   "s": 1750,
+   "e": 1760,
+   "ch": 2
+  },
+  {
+   "i": 156,
+   "text": "frail",
+   "s": 1760,
+   "e": 1766,
+   "ch": 2
+  },
+  {
+   "i": 157,
+   "text": "math",
+   "s": 1766,
+   "e": 1775,
+   "ch": 2
+  },
+  {
+   "i": 158,
+   "text": "professor",
+   "s": 1775,
+   "e": 1786,
+   "ch": 2
+  },
+  {
+   "i": 159,
+   "text": "in",
+   "s": 1786,
+   "e": 1796,
+   "ch": 2
+  },
+  {
+   "i": 160,
+   "text": "Prague",
+   "s": 1796,
+   "e": 1805,
+   "ch": 2
+  },
+  {
+   "i": 161,
+   "text": "worked",
+   "s": 1805,
+   "e": 1813,
+   "ch": 2
+  },
+  {
+   "i": 162,
+   "text": "this",
+   "s": 1813,
+   "e": 1820,
+   "ch": 2
+  },
+  {
+   "i": 163,
+   "text": "out.",
+   "s": 1820,
+   "e": 1828,
+   "ch": 2
+  },
+  {
+   "i": 164,
+   "text": "His",
+   "s": 1839,
+   "e": 1844,
+   "ch": 2
+  },
+  {
+   "i": 165,
+   "text": "name",
+   "s": 1844,
+   "e": 1851,
+   "ch": 2
+  },
+  {
+   "i": 166,
+   "text": "was",
+   "s": 1851,
+   "e": 1860,
+   "ch": 2
+  },
+  {
+   "i": 167,
+   "text": "Christian",
+   "s": 1860,
+   "e": 1873,
+   "ch": 2
+  },
+  {
+   "i": 168,
+   "text": "Doppler,",
+   "s": 1873,
+   "e": 1882,
+   "ch": 2
+  },
+  {
+   "i": 169,
+   "text": "and",
+   "s": 1891,
+   "e": 1897,
+   "ch": 2
+  },
+  {
+   "i": 170,
+   "text": "he",
+   "s": 1897,
+   "e": 1899,
+   "ch": 2
+  },
+  {
+   "i": 171,
+   "text": "had",
+   "s": 1899,
+   "e": 1904,
+   "ch": 2
+  },
+  {
+   "i": 172,
+   "text": "once",
+   "s": 1904,
+   "e": 1912,
+   "ch": 2
+  },
+  {
+   "i": 173,
+   "text": "nearly",
+   "s": 1912,
+   "e": 1921,
+   "ch": 2
+  },
+  {
+   "i": 174,
+   "text": "quit",
+   "s": 1921,
+   "e": 1930,
+   "ch": 2
+  },
+  {
+   "i": 175,
+   "text": "and",
+   "s": 1930,
+   "e": 1937,
+   "ch": 2
+  },
+  {
+   "i": 176,
+   "text": "moved",
+   "s": 1937,
+   "e": 1940,
+   "ch": 2
+  },
+  {
+   "i": 177,
+   "text": "to",
+   "s": 1940,
+   "e": 1949,
+   "ch": 2
+  },
+  {
+   "i": 178,
+   "text": "America.",
+   "s": 1949,
+   "e": 1959,
+   "ch": 2
+  },
+  {
+   "i": 179,
+   "text": "Three",
+   "s": 1973,
+   "e": 1979,
+   "ch": 2
+  },
+  {
+   "i": 180,
+   "text": "years",
+   "s": 1979,
+   "e": 1987,
+   "ch": 2
+  },
+  {
+   "i": 181,
+   "text": "later,",
+   "s": 1987,
+   "e": 1997,
+   "ch": 2
+  },
+  {
+   "i": 182,
+   "text": "a",
+   "s": 2000,
+   "e": 2012,
+   "ch": 2
+  },
+  {
+   "i": 183,
+   "text": "Dutch",
+   "s": 2012,
+   "e": 2015,
+   "ch": 2
+  },
+  {
+   "i": 184,
+   "text": "scientist",
+   "s": 2015,
+   "e": 2029,
+   "ch": 2
+  },
+  {
+   "i": 185,
+   "text": "put",
+   "s": 2029,
+   "e": 2038,
+   "ch": 2
+  },
+  {
+   "i": 186,
+   "text": "horn",
+   "s": 2038,
+   "e": 2047,
+   "ch": 2
+  },
+  {
+   "i": 187,
+   "text": "players",
+   "s": 2047,
+   "e": 2057,
+   "ch": 2
+  },
+  {
+   "i": 188,
+   "text": "on",
+   "s": 2057,
+   "e": 2063,
+   "ch": 2
+  },
+  {
+   "i": 189,
+   "text": "an",
+   "s": 2063,
+   "e": 2068,
+   "ch": 2
+  },
+  {
+   "i": 190,
+   "text": "open",
+   "s": 2068,
+   "e": 2077,
+   "ch": 2
+  },
+  {
+   "i": 191,
+   "text": "train",
+   "s": 2077,
+   "e": 2085,
+   "ch": 2
+  },
+  {
+   "i": 192,
+   "text": "car.",
+   "s": 2085,
+   "e": 2093,
+   "ch": 2
+  },
+  {
+   "i": 193,
+   "text": "People",
+   "s": 2107,
+   "e": 2113,
+   "ch": 2
+  },
+  {
+   "i": 194,
+   "text": "beside",
+   "s": 2113,
+   "e": 2125,
+   "ch": 2
+  },
+  {
+   "i": 195,
+   "text": "the",
+   "s": 2125,
+   "e": 2132,
+   "ch": 2
+  },
+  {
+   "i": 196,
+   "text": "track",
+   "s": 2132,
+   "e": 2139,
+   "ch": 2
+  },
+  {
+   "i": 197,
+   "text": "heard",
+   "s": 2139,
+   "e": 2147,
+   "ch": 2
+  },
+  {
+   "i": 198,
+   "text": "the",
+   "s": 2147,
+   "e": 2159,
+   "ch": 2
+  },
+  {
+   "i": 199,
+   "text": "notes",
+   "s": 2159,
+   "e": 2161,
+   "ch": 2
+  },
+  {
+   "i": 200,
+   "text": "bend.",
+   "s": 2159,
+   "e": 2172,
+   "ch": 2
+  },
+  {
+   "i": 201,
+   "text": "But",
+   "s": 2177,
+   "e": 2191,
+   "ch": 2
+  },
+  {
+   "i": 202,
+   "text": "here's",
+   "s": 2191,
+   "e": 2198,
+   "ch": 2
+  },
+  {
+   "i": 203,
+   "text": "the",
+   "s": 2198,
+   "e": 2207,
+   "ch": 2
+  },
+  {
+   "i": 204,
+   "text": "twist.",
+   "s": 2207,
+   "e": 2216,
+   "ch": 2
+  },
+  {
+   "i": 205,
+   "text": "Doppler",
+   "s": 2237,
+   "e": 2239,
+   "ch": 2
+  },
+  {
+   "i": 206,
+   "text": "didn't",
+   "s": 2237,
+   "e": 2248,
+   "ch": 2
+  },
+  {
+   "i": 207,
+   "text": "name",
+   "s": 2248,
+   "e": 2255,
+   "ch": 2
+  },
+  {
+   "i": 208,
+   "text": "his",
+   "s": 2255,
+   "e": 2263,
+   "ch": 2
+  },
+  {
+   "i": 209,
+   "text": "paper",
+   "s": 2263,
+   "e": 2270,
+   "ch": 2
+  },
+  {
+   "i": 210,
+   "text": "after",
+   "s": 2270,
+   "e": 2279,
+   "ch": 2
+  },
+  {
+   "i": 211,
+   "text": "sound.",
+   "s": 2279,
+   "e": 2294,
+   "ch": 2
+  },
+  {
+   "i": 212,
+   "text": "He",
+   "s": 2301,
+   "e": 2311,
+   "ch": 2
+  },
+  {
+   "i": 213,
+   "text": "named",
+   "s": 2311,
+   "e": 2317,
+   "ch": 2
+  },
+  {
+   "i": 214,
+   "text": "it",
+   "s": 2317,
+   "e": 2323,
+   "ch": 2
+  },
+  {
+   "i": 215,
+   "text": "after",
+   "s": 2323,
+   "e": 2329,
+   "ch": 2
+  },
+  {
+   "i": 216,
+   "text": "the",
+   "s": 2329,
+   "e": 2338,
+   "ch": 2
+  },
+  {
+   "i": 217,
+   "text": "colored",
+   "s": 2338,
+   "e": 2346,
+   "ch": 2
+  },
+  {
+   "i": 218,
+   "text": "light",
+   "s": 2346,
+   "e": 2356,
+   "ch": 2
+  },
+  {
+   "i": 219,
+   "text": "of",
+   "s": 2356,
+   "e": 2368,
+   "ch": 2
+  },
+  {
+   "i": 220,
+   "text": "stars.",
+   "s": 2368,
+   "e": 2380,
+   "ch": 2
+  },
+  {
+   "i": 221,
+   "text": "Light",
+   "s": 2394,
+   "e": 2410,
+   "ch": 3
+  },
+  {
+   "i": 222,
+   "text": "is",
+   "s": 2410,
+   "e": 2417,
+   "ch": 3
+  },
+  {
+   "i": 223,
+   "text": "a",
+   "s": 2417,
+   "e": 2428,
+   "ch": 3
+  },
+  {
+   "i": 224,
+   "text": "wave",
+   "s": 2428,
+   "e": 2430,
+   "ch": 3
+  },
+  {
+   "i": 225,
+   "text": "too,",
+   "s": 2430,
+   "e": 2446,
+   "ch": 3
+  },
+  {
+   "i": 226,
+   "text": "and",
+   "s": 2461,
+   "e": 2463,
+   "ch": 3
+  },
+  {
+   "i": 227,
+   "text": "for",
+   "s": 2462,
+   "e": 2469,
+   "ch": 3
+  },
+  {
+   "i": 228,
+   "text": "light,",
+   "s": 2469,
+   "e": 2486,
+   "ch": 3
+  },
+  {
+   "i": 229,
+   "text": "spacing",
+   "s": 2505,
+   "e": 2508,
+   "ch": 3
+  },
+  {
+   "i": 230,
+   "text": "means",
+   "s": 2505,
+   "e": 2518,
+   "ch": 3
+  },
+  {
+   "i": 231,
+   "text": "color.",
+   "s": 2518,
+   "e": 2536,
+   "ch": 3
+  },
+  {
+   "i": 232,
+   "text": "Squeeze",
+   "s": 2581,
+   "e": 2583,
+   "ch": 3
+  },
+  {
+   "i": 233,
+   "text": "the",
+   "s": 2582,
+   "e": 2590,
+   "ch": 3
+  },
+  {
+   "i": 234,
+   "text": "waves,",
+   "s": 2590,
+   "e": 2599,
+   "ch": 3
+  },
+  {
+   "i": 235,
+   "text": "and",
+   "s": 2610,
+   "e": 2615,
+   "ch": 3
+  },
+  {
+   "i": 236,
+   "text": "light",
+   "s": 2615,
+   "e": 2623,
+   "ch": 3
+  },
+  {
+   "i": 237,
+   "text": "shifts",
+   "s": 2623,
+   "e": 2631,
+   "ch": 3
+  },
+  {
+   "i": 238,
+   "text": "toward",
+   "s": 2631,
+   "e": 2644,
+   "ch": 3
+  },
+  {
+   "i": 239,
+   "text": "blue.",
+   "s": 2644,
+   "e": 2657,
+   "ch": 3
+  },
+  {
+   "i": 240,
+   "text": "Stretch",
+   "s": 2680,
+   "e": 2683,
+   "ch": 3
+  },
+  {
+   "i": 241,
+   "text": "them,",
+   "s": 2682,
+   "e": 2690,
+   "ch": 3
+  },
+  {
+   "i": 242,
+   "text": "and",
+   "s": 2698,
+   "e": 2701,
+   "ch": 3
+  },
+  {
+   "i": 243,
+   "text": "it",
+   "s": 2700,
+   "e": 2711,
+   "ch": 3
+  },
+  {
+   "i": 244,
+   "text": "shifts",
+   "s": 2711,
+   "e": 2713,
+   "ch": 3
+  },
+  {
+   "i": 245,
+   "text": "toward",
+   "s": 2712,
+   "e": 2724,
+   "ch": 3
+  },
+  {
+   "i": 246,
+   "text": "red.",
+   "s": 2724,
+   "e": 2733,
+   "ch": 3
+  },
+  {
+   "i": 247,
+   "text": "That's",
+   "s": 2748,
+   "e": 2757,
+   "ch": 3
+  },
+  {
+   "i": 248,
+   "text": "a",
+   "s": 2757,
+   "e": 2766,
+   "ch": 3
+  },
+  {
+   "i": 249,
+   "text": "redshift.",
+   "s": 2766,
+   "e": 2779,
+   "ch": 3
+  },
+  {
+   "i": 250,
+   "text": "Doppler",
+   "s": 2797,
+   "e": 2814,
+   "ch": 3
+  },
+  {
+   "i": 251,
+   "text": "guessed",
+   "s": 2814,
+   "e": 2825,
+   "ch": 3
+  },
+  {
+   "i": 252,
+   "text": "wrong",
+   "s": 2825,
+   "e": 2835,
+   "ch": 3
+  },
+  {
+   "i": 253,
+   "text": "about",
+   "s": 2835,
+   "e": 2844,
+   "ch": 3
+  },
+  {
+   "i": 254,
+   "text": "star",
+   "s": 2844,
+   "e": 2854,
+   "ch": 3
+  },
+  {
+   "i": 255,
+   "text": "colors.",
+   "s": 2854,
+   "e": 2863,
+   "ch": 3
+  },
+  {
+   "i": 256,
+   "text": "The",
+   "s": 2876,
+   "e": 2880,
+   "ch": 3
+  },
+  {
+   "i": 257,
+   "text": "shift",
+   "s": 2880,
+   "e": 2885,
+   "ch": 3
+  },
+  {
+   "i": 258,
+   "text": "was",
+   "s": 2885,
+   "e": 2895,
+   "ch": 3
+  },
+  {
+   "i": 259,
+   "text": "far",
+   "s": 2895,
+   "e": 2904,
+   "ch": 3
+  },
+  {
+   "i": 260,
+   "text": "too",
+   "s": 2904,
+   "e": 2912,
+   "ch": 3
+  },
+  {
+   "i": 261,
+   "text": "small",
+   "s": 2912,
+   "e": 2918,
+   "ch": 3
+  },
+  {
+   "i": 262,
+   "text": "to",
+   "s": 2918,
+   "e": 2937,
+   "ch": 3
+  },
+  {
+   "i": 263,
+   "text": "notice.",
+   "s": 2937,
+   "e": 2939,
+   "ch": 3
+  },
+  {
+   "i": 264,
+   "text": "But",
+   "s": 2947,
+   "e": 2953,
+   "ch": 3
+  },
+  {
+   "i": 265,
+   "text": "he",
+   "s": 2953,
+   "e": 2959,
+   "ch": 3
+  },
+  {
+   "i": 266,
+   "text": "predicted",
+   "s": 2959,
+   "e": 2971,
+   "ch": 3
+  },
+  {
+   "i": 267,
+   "text": "astronomers",
+   "s": 2971,
+   "e": 2992,
+   "ch": 3
+  },
+  {
+   "i": 268,
+   "text": "would",
+   "s": 2992,
+   "e": 3002,
+   "ch": 3
+  },
+  {
+   "i": 269,
+   "text": "one",
+   "s": 3002,
+   "e": 3012,
+   "ch": 3
+  },
+  {
+   "i": 270,
+   "text": "day",
+   "s": 3012,
+   "e": 3016,
+   "ch": 3
+  },
+  {
+   "i": 271,
+   "text": "use",
+   "s": 3016,
+   "e": 3025,
+   "ch": 3
+  },
+  {
+   "i": 272,
+   "text": "it",
+   "s": 3025,
+   "e": 3029,
+   "ch": 3
+  },
+  {
+   "i": 273,
+   "text": "to",
+   "s": 3029,
+   "e": 3039,
+   "ch": 3
+  },
+  {
+   "i": 274,
+   "text": "measure",
+   "s": 3039,
+   "e": 3043,
+   "ch": 3
+  },
+  {
+   "i": 275,
+   "text": "how",
+   "s": 3043,
+   "e": 3057,
+   "ch": 3
+  },
+  {
+   "i": 276,
+   "text": "stars",
+   "s": 3057,
+   "e": 3063,
+   "ch": 3
+  },
+  {
+   "i": 277,
+   "text": "move.",
+   "s": 3063,
+   "e": 3077,
+   "ch": 3
+  },
+  {
+   "i": 278,
+   "text": "They",
+   "s": 3083,
+   "e": 3095,
+   "ch": 3
+  },
+  {
+   "i": 279,
+   "text": "did.",
+   "s": 3095,
+   "e": 3106,
+   "ch": 3
+  },
+  {
+   "i": 280,
+   "text": "Starlight",
+   "s": 3126,
+   "e": 3135,
+   "ch": 3
+  },
+  {
+   "i": 281,
+   "text": "carries",
+   "s": 3135,
+   "e": 3146,
+   "ch": 3
+  },
+  {
+   "i": 282,
+   "text": "a",
+   "s": 3146,
+   "e": 3156,
+   "ch": 3
+  },
+  {
+   "i": 283,
+   "text": "barcode",
+   "s": 3156,
+   "e": 3165,
+   "ch": 3
+  },
+  {
+   "i": 284,
+   "text": "of",
+   "s": 3165,
+   "e": 3174,
+   "ch": 3
+  },
+  {
+   "i": 285,
+   "text": "dark",
+   "s": 3174,
+   "e": 3183,
+   "ch": 3
+  },
+  {
+   "i": 286,
+   "text": "lines,",
+   "s": 3183,
+   "e": 3196,
+   "ch": 3
+  },
+  {
+   "i": 287,
+   "text": "set",
+   "s": 3196,
+   "e": 3209,
+   "ch": 3
+  },
+  {
+   "i": 288,
+   "text": "by",
+   "s": 3209,
+   "e": 3214,
+   "ch": 3
+  },
+  {
+   "i": 289,
+   "text": "its",
+   "s": 3214,
+   "e": 3223,
+   "ch": 3
+  },
+  {
+   "i": 290,
+   "text": "atoms.",
+   "s": 3223,
+   "e": 3229,
+   "ch": 3
+  },
+  {
+   "i": 291,
+   "text": "If",
+   "s": 3229,
+   "e": 3247,
+   "ch": 3
+  },
+  {
+   "i": 292,
+   "text": "the",
+   "s": 3247,
+   "e": 3256,
+   "ch": 3
+  },
+  {
+   "i": 293,
+   "text": "barcode",
+   "s": 3256,
+   "e": 3265,
+   "ch": 3
+  },
+  {
+   "i": 294,
+   "text": "slides",
+   "s": 3265,
+   "e": 3276,
+   "ch": 3
+  },
+  {
+   "i": 295,
+   "text": "toward",
+   "s": 3276,
+   "e": 3288,
+   "ch": 3
+  },
+  {
+   "i": 296,
+   "text": "red,",
+   "s": 3288,
+   "e": 3299,
+   "ch": 3
+  },
+  {
+   "i": 297,
+   "text": "the",
+   "s": 3311,
+   "e": 3313,
+   "ch": 3
+  },
+  {
+   "i": 298,
+   "text": "source",
+   "s": 3313,
+   "e": 3321,
+   "ch": 3
+  },
+  {
+   "i": 299,
+   "text": "is",
+   "s": 3321,
+   "e": 3327,
+   "ch": 3
+  },
+  {
+   "i": 300,
+   "text": "moving",
+   "s": 3327,
+   "e": 3334,
+   "ch": 3
+  },
+  {
+   "i": 301,
+   "text": "away.",
+   "s": 3334,
+   "e": 3348,
+   "ch": 3
+  },
+  {
+   "i": 302,
+   "text": "In",
+   "s": 3362,
+   "e": 3364,
+   "ch": 3
+  },
+  {
+   "i": 303,
+   "text": "the",
+   "s": 3362,
+   "e": 3367,
+   "ch": 3
+  },
+  {
+   "i": 304,
+   "text": "nineteen",
+   "s": 3367,
+   "e": 3383,
+   "ch": 3
+  },
+  {
+   "i": 305,
+   "text": "tens,",
+   "s": 3383,
+   "e": 3399,
+   "ch": 3
+  },
+  {
+   "i": 306,
+   "text": "Vesto",
+   "s": 3401,
+   "e": 3412,
+   "ch": 3
+  },
+  {
+   "i": 307,
+   "text": "Slipher",
+   "s": 3412,
+   "e": 3425,
+   "ch": 3
+  },
+  {
+   "i": 308,
+   "text": "read",
+   "s": 3425,
+   "e": 3435,
+   "ch": 3
+  },
+  {
+   "i": 309,
+   "text": "those",
+   "s": 3435,
+   "e": 3447,
+   "ch": 3
+  },
+  {
+   "i": 310,
+   "text": "barcodes",
+   "s": 3447,
+   "e": 3459,
+   "ch": 3
+  },
+  {
+   "i": 311,
+   "text": "in",
+   "s": 3459,
+   "e": 3471,
+   "ch": 3
+  },
+  {
+   "i": 312,
+   "text": "faint",
+   "s": 3471,
+   "e": 3478,
+   "ch": 3
+  },
+  {
+   "i": 313,
+   "text": "spirals",
+   "s": 3478,
+   "e": 3492,
+   "ch": 3
+  },
+  {
+   "i": 314,
+   "text": "in",
+   "s": 3492,
+   "e": 3499,
+   "ch": 3
+  },
+  {
+   "i": 315,
+   "text": "the",
+   "s": 3499,
+   "e": 3505,
+   "ch": 3
+  },
+  {
+   "i": 316,
+   "text": "sky.",
+   "s": 3505,
+   "e": 3514,
+   "ch": 3
+  },
+  {
+   "i": 317,
+   "text": "Andromeda",
+   "s": 3533,
+   "e": 3543,
+   "ch": 3
+  },
+  {
+   "i": 318,
+   "text": "was",
+   "s": 3543,
+   "e": 3552,
+   "ch": 3
+  },
+  {
+   "i": 319,
+   "text": "coming",
+   "s": 3552,
+   "e": 3561,
+   "ch": 3
+  },
+  {
+   "i": 320,
+   "text": "toward",
+   "s": 3561,
+   "e": 3573,
+   "ch": 3
+  },
+  {
+   "i": 321,
+   "text": "us,",
+   "s": 3573,
+   "e": 3582,
+   "ch": 3
+  },
+  {
+   "i": 322,
+   "text": "about",
+   "s": 3587,
+   "e": 3595,
+   "ch": 3
+  },
+  {
+   "i": 323,
+   "text": "three",
+   "s": 3595,
+   "e": 3604,
+   "ch": 3
+  },
+  {
+   "i": 324,
+   "text": "hundred",
+   "s": 3604,
+   "e": 3613,
+   "ch": 3
+  },
+  {
+   "i": 325,
+   "text": "kilometers",
+   "s": 3613,
+   "e": 3628,
+   "ch": 3
+  },
+  {
+   "i": 326,
+   "text": "every",
+   "s": 3628,
+   "e": 3646,
+   "ch": 3
+  },
+  {
+   "i": 327,
+   "text": "second.",
+   "s": 3646,
+   "e": 3657,
+   "ch": 3
+  },
+  {
+   "i": 328,
+   "text": "But",
+   "s": 3670,
+   "e": 3676,
+   "ch": 3
+  },
+  {
+   "i": 329,
+   "text": "nearly",
+   "s": 3676,
+   "e": 3684,
+   "ch": 3
+  },
+  {
+   "i": 330,
+   "text": "all",
+   "s": 3684,
+   "e": 3696,
+   "ch": 3
+  },
+  {
+   "i": 331,
+   "text": "the",
+   "s": 3696,
+   "e": 3711,
+   "ch": 3
+  },
+  {
+   "i": 332,
+   "text": "others",
+   "s": 3711,
+   "e": 3713,
+   "ch": 3
+  },
+  {
+   "i": 333,
+   "text": "were",
+   "s": 3711,
+   "e": 3720,
+   "ch": 3
+  },
+  {
+   "i": 334,
+   "text": "rushing",
+   "s": 3720,
+   "e": 3728,
+   "ch": 3
+  },
+  {
+   "i": 335,
+   "text": "away.",
+   "s": 3728,
+   "e": 3743,
+   "ch": 3
+  },
+  {
+   "i": 336,
+   "text": "Why",
+   "s": 3758,
+   "e": 3762,
+   "ch": 3
+  },
+  {
+   "i": 337,
+   "text": "would",
+   "s": 3762,
+   "e": 3769,
+   "ch": 3
+  },
+  {
+   "i": 338,
+   "text": "almost",
+   "s": 3769,
+   "e": 3780,
+   "ch": 3
+  },
+  {
+   "i": 339,
+   "text": "everything",
+   "s": 3780,
+   "e": 3798,
+   "ch": 3
+  },
+  {
+   "i": 340,
+   "text": "flee",
+   "s": 3798,
+   "e": 3806,
+   "ch": 3
+  },
+  {
+   "i": 341,
+   "text": "from",
+   "s": 3806,
+   "e": 3815,
+   "ch": 3
+  },
+  {
+   "i": 342,
+   "text": "us?",
+   "s": 3815,
+   "e": 3823,
+   "ch": 3
+  },
+  {
+   "i": 343,
+   "text": "Enter",
+   "s": 3837,
+   "e": 3847,
+   "ch": 4
+  },
+  {
+   "i": 344,
+   "text": "Edwin",
+   "s": 3847,
+   "e": 3864,
+   "ch": 4
+  },
+  {
+   "i": 345,
+   "text": "Hubble.",
+   "s": 3864,
+   "e": 3873,
+   "ch": 4
+  },
+  {
+   "i": 346,
+   "text": "In",
+   "s": 3889,
+   "e": 3892,
+   "ch": 4
+  },
+  {
+   "i": 347,
+   "text": "nineteen",
+   "s": 3892,
+   "e": 3907,
+   "ch": 4
+  },
+  {
+   "i": 348,
+   "text": "twenty-three,",
+   "s": 3907,
+   "e": 3921,
+   "ch": 4
+  },
+  {
+   "i": 349,
+   "text": "with",
+   "s": 3928,
+   "e": 3932,
+   "ch": 4
+  },
+  {
+   "i": 350,
+   "text": "the",
+   "s": 3932,
+   "e": 3937,
+   "ch": 4
+  },
+  {
+   "i": 351,
+   "text": "most",
+   "s": 3937,
+   "e": 3945,
+   "ch": 4
+  },
+  {
+   "i": 352,
+   "text": "powerful",
+   "s": 3945,
+   "e": 3957,
+   "ch": 4
+  },
+  {
+   "i": 353,
+   "text": "telescope",
+   "s": 3957,
+   "e": 3970,
+   "ch": 4
+  },
+  {
+   "i": 354,
+   "text": "of",
+   "s": 3970,
+   "e": 3980,
+   "ch": 4
+  },
+  {
+   "i": 355,
+   "text": "its",
+   "s": 3980,
+   "e": 3984,
+   "ch": 4
+  },
+  {
+   "i": 356,
+   "text": "day,",
+   "s": 3984,
+   "e": 3993,
+   "ch": 4
+  },
+  {
+   "i": 357,
+   "text": "he",
+   "s": 4002,
+   "e": 4008,
+   "ch": 4
+  },
+  {
+   "i": 358,
+   "text": "proved",
+   "s": 4008,
+   "e": 4017,
+   "ch": 4
+  },
+  {
+   "i": 359,
+   "text": "Andromeda",
+   "s": 4017,
+   "e": 4034,
+   "ch": 4
+  },
+  {
+   "i": 360,
+   "text": "was",
+   "s": 4034,
+   "e": 4043,
+   "ch": 4
+  },
+  {
+   "i": 361,
+   "text": "a",
+   "s": 4043,
+   "e": 4050,
+   "ch": 4
+  },
+  {
+   "i": 362,
+   "text": "whole",
+   "s": 4050,
+   "e": 4062,
+   "ch": 4
+  },
+  {
+   "i": 363,
+   "text": "galaxy,",
+   "s": 4062,
+   "e": 4074,
+   "ch": 4
+  },
+  {
+   "i": 364,
+   "text": "far",
+   "s": 4074,
+   "e": 4092,
+   "ch": 4
+  },
+  {
+   "i": 365,
+   "text": "beyond",
+   "s": 4092,
+   "e": 4100,
+   "ch": 4
+  },
+  {
+   "i": 366,
+   "text": "our",
+   "s": 4100,
+   "e": 4108,
+   "ch": 4
+  },
+  {
+   "i": 367,
+   "text": "own.",
+   "s": 4108,
+   "e": 4116,
+   "ch": 4
+  },
+  {
+   "i": 368,
+   "text": "Next,",
+   "s": 4116,
+   "e": 4138,
+   "ch": 4
+  },
+  {
+   "i": 369,
+   "text": "he",
+   "s": 4146,
+   "e": 4151,
+   "ch": 4
+  },
+  {
+   "i": 370,
+   "text": "measured",
+   "s": 4151,
+   "e": 4158,
+   "ch": 4
+  },
+  {
+   "i": 371,
+   "text": "how",
+   "s": 4158,
+   "e": 4167,
+   "ch": 4
+  },
+  {
+   "i": 372,
+   "text": "far",
+   "s": 4167,
+   "e": 4175,
+   "ch": 4
+  },
+  {
+   "i": 373,
+   "text": "away",
+   "s": 4175,
+   "e": 4183,
+   "ch": 4
+  },
+  {
+   "i": 374,
+   "text": "other",
+   "s": 4183,
+   "e": 4195,
+   "ch": 4
+  },
+  {
+   "i": 375,
+   "text": "galaxies",
+   "s": 4195,
+   "e": 4204,
+   "ch": 4
+  },
+  {
+   "i": 376,
+   "text": "were.",
+   "s": 4204,
+   "e": 4220,
+   "ch": 4
+  },
+  {
+   "i": 377,
+   "text": "In",
+   "s": 4234,
+   "e": 4236,
+   "ch": 4
+  },
+  {
+   "i": 378,
+   "text": "nineteen",
+   "s": 4234,
+   "e": 4248,
+   "ch": 4
+  },
+  {
+   "i": 379,
+   "text": "twenty-nine,",
+   "s": 4248,
+   "e": 4263,
+   "ch": 4
+  },
+  {
+   "i": 380,
+   "text": "he",
+   "s": 4272,
+   "e": 4276,
+   "ch": 4
+  },
+  {
+   "i": 381,
+   "text": "set",
+   "s": 4276,
+   "e": 4282,
+   "ch": 4
+  },
+  {
+   "i": 382,
+   "text": "his",
+   "s": 4282,
+   "e": 4293,
+   "ch": 4
+  },
+  {
+   "i": 383,
+   "text": "distances",
+   "s": 4293,
+   "e": 4303,
+   "ch": 4
+  },
+  {
+   "i": 384,
+   "text": "beside",
+   "s": 4303,
+   "e": 4318,
+   "ch": 4
+  },
+  {
+   "i": 385,
+   "text": "their",
+   "s": 4318,
+   "e": 4329,
+   "ch": 4
+  },
+  {
+   "i": 386,
+   "text": "speeds,",
+   "s": 4329,
+   "e": 4339,
+   "ch": 4
+  },
+  {
+   "i": 387,
+   "text": "most",
+   "s": 4353,
+   "e": 4356,
+   "ch": 4
+  },
+  {
+   "i": 388,
+   "text": "of",
+   "s": 4356,
+   "e": 4360,
+   "ch": 4
+  },
+  {
+   "i": 389,
+   "text": "them",
+   "s": 4360,
+   "e": 4365,
+   "ch": 4
+  },
+  {
+   "i": 390,
+   "text": "Slipher's.",
+   "s": 4365,
+   "e": 4381,
+   "ch": 4
+  },
+  {
+   "i": 391,
+   "text": "A",
+   "s": 4395,
+   "e": 4400,
+   "ch": 4
+  },
+  {
+   "i": 392,
+   "text": "pattern",
+   "s": 4400,
+   "e": 4410,
+   "ch": 4
+  },
+  {
+   "i": 393,
+   "text": "jumped",
+   "s": 4410,
+   "e": 4420,
+   "ch": 4
+  },
+  {
+   "i": 394,
+   "text": "out.",
+   "s": 4420,
+   "e": 4432,
+   "ch": 4
+  },
+  {
+   "i": 395,
+   "text": "The",
+   "s": 4444,
+   "e": 4447,
+   "ch": 4
+  },
+  {
+   "i": 396,
+   "text": "farther",
+   "s": 4444,
+   "e": 4458,
+   "ch": 4
+  },
+  {
+   "i": 397,
+   "text": "a",
+   "s": 4458,
+   "e": 4475,
+   "ch": 4
+  },
+  {
+   "i": 398,
+   "text": "galaxy",
+   "s": 4475,
+   "e": 4477,
+   "ch": 4
+  },
+  {
+   "i": 399,
+   "text": "is,",
+   "s": 4475,
+   "e": 4489,
+   "ch": 4
+  },
+  {
+   "i": 400,
+   "text": "the",
+   "s": 4495,
+   "e": 4504,
+   "ch": 4
+  },
+  {
+   "i": 401,
+   "text": "faster",
+   "s": 4504,
+   "e": 4513,
+   "ch": 4
+  },
+  {
+   "i": 402,
+   "text": "it",
+   "s": 4513,
+   "e": 4520,
+   "ch": 4
+  },
+  {
+   "i": 403,
+   "text": "moves",
+   "s": 4520,
+   "e": 4526,
+   "ch": 4
+  },
+  {
+   "i": 404,
+   "text": "away.",
+   "s": 4526,
+   "e": 4539,
+   "ch": 4
+  },
+  {
+   "i": 405,
+   "text": "Not",
+   "s": 4552,
+   "e": 4556,
+   "ch": 4
+  },
+  {
+   "i": 406,
+   "text": "just",
+   "s": 4556,
+   "e": 4564,
+   "ch": 4
+  },
+  {
+   "i": 407,
+   "text": "from",
+   "s": 4564,
+   "e": 4568,
+   "ch": 4
+  },
+  {
+   "i": 408,
+   "text": "us.",
+   "s": 4568,
+   "e": 4579,
+   "ch": 4
+  },
+  {
+   "i": 409,
+   "text": "From",
+   "s": 4587,
+   "e": 4592,
+   "ch": 4
+  },
+  {
+   "i": 410,
+   "text": "each",
+   "s": 4592,
+   "e": 4600,
+   "ch": 4
+  },
+  {
+   "i": 411,
+   "text": "other.",
+   "s": 4600,
+   "e": 4609,
+   "ch": 4
+  },
+  {
+   "i": 412,
+   "text": "The",
+   "s": 4621,
+   "e": 4627,
+   "ch": 4
+  },
+  {
+   "i": 413,
+   "text": "universe",
+   "s": 4627,
+   "e": 4642,
+   "ch": 4
+  },
+  {
+   "i": 414,
+   "text": "is",
+   "s": 4642,
+   "e": 4659,
+   "ch": 4
+  },
+  {
+   "i": 415,
+   "text": "expanding.",
+   "s": 4659,
+   "e": 4675,
+   "ch": 4
+  },
+  {
+   "i": 416,
+   "text": "A",
+   "s": 4693,
+   "e": 4698,
+   "ch": 4
+  },
+  {
+   "i": 417,
+   "text": "Belgian",
+   "s": 4698,
+   "e": 4707,
+   "ch": 4
+  },
+  {
+   "i": 418,
+   "text": "priest,",
+   "s": 4707,
+   "e": 4723,
+   "ch": 4
+  },
+  {
+   "i": 419,
+   "text": "Georges",
+   "s": 4732,
+   "e": 4739,
+   "ch": 4
+  },
+  {
+   "i": 420,
+   "text": "Lema\u00eetre,",
+   "s": 4739,
+   "e": 4753,
+   "ch": 4
+  },
+  {
+   "i": 421,
+   "text": "had",
+   "s": 4760,
+   "e": 4767,
+   "ch": 4
+  },
+  {
+   "i": 422,
+   "text": "proposed",
+   "s": 4767,
+   "e": 4775,
+   "ch": 4
+  },
+  {
+   "i": 423,
+   "text": "this",
+   "s": 4775,
+   "e": 4784,
+   "ch": 4
+  },
+  {
+   "i": 424,
+   "text": "two",
+   "s": 4784,
+   "e": 4792,
+   "ch": 4
+  },
+  {
+   "i": 425,
+   "text": "years",
+   "s": 4792,
+   "e": 4800,
+   "ch": 4
+  },
+  {
+   "i": 426,
+   "text": "earlier.",
+   "s": 4800,
+   "e": 4811,
+   "ch": 4
+  },
+  {
+   "i": 427,
+   "text": "But",
+   "s": 4816,
+   "e": 4833,
+   "ch": 4
+  },
+  {
+   "i": 428,
+   "text": "Hubble's",
+   "s": 4833,
+   "e": 4847,
+   "ch": 4
+  },
+  {
+   "i": 429,
+   "text": "chart",
+   "s": 4847,
+   "e": 4849,
+   "ch": 4
+  },
+  {
+   "i": 430,
+   "text": "is",
+   "s": 4847,
+   "e": 4854,
+   "ch": 4
+  },
+  {
+   "i": 431,
+   "text": "what",
+   "s": 4854,
+   "e": 4864,
+   "ch": 4
+  },
+  {
+   "i": 432,
+   "text": "convinced",
+   "s": 4864,
+   "e": 4873,
+   "ch": 4
+  },
+  {
+   "i": 433,
+   "text": "astronomers.",
+   "s": 4873,
+   "e": 4893,
+   "ch": 4
+  },
+  {
+   "i": 434,
+   "text": "And",
+   "s": 4893,
+   "e": 4912,
+   "ch": 4
+  },
+  {
+   "i": 435,
+   "text": "one",
+   "s": 4912,
+   "e": 4924,
+   "ch": 4
+  },
+  {
+   "i": 436,
+   "text": "last",
+   "s": 4924,
+   "e": 4936,
+   "ch": 4
+  },
+  {
+   "i": 437,
+   "text": "twist.",
+   "s": 4936,
+   "e": 4948,
+   "ch": 4
+  },
+  {
+   "i": 438,
+   "text": "Far",
+   "s": 4969,
+   "e": 4973,
+   "ch": 4
+  },
+  {
+   "i": 439,
+   "text": "galaxies",
+   "s": 4973,
+   "e": 4986,
+   "ch": 4
+  },
+  {
+   "i": 440,
+   "text": "aren't",
+   "s": 4986,
+   "e": 4996,
+   "ch": 4
+  },
+  {
+   "i": 441,
+   "text": "really",
+   "s": 4996,
+   "e": 5019,
+   "ch": 4
+  },
+  {
+   "i": 442,
+   "text": "speeding",
+   "s": 5019,
+   "e": 5022,
+   "ch": 4
+  },
+  {
+   "i": 443,
+   "text": "through",
+   "s": 5019,
+   "e": 5031,
+   "ch": 4
+  },
+  {
+   "i": 444,
+   "text": "space",
+   "s": 5031,
+   "e": 5040,
+   "ch": 4
+  },
+  {
+   "i": 445,
+   "text": "like",
+   "s": 5040,
+   "e": 5052,
+   "ch": 4
+  },
+  {
+   "i": 446,
+   "text": "sirens",
+   "s": 5052,
+   "e": 5061,
+   "ch": 4
+  },
+  {
+   "i": 447,
+   "text": "down",
+   "s": 5061,
+   "e": 5071,
+   "ch": 4
+  },
+  {
+   "i": 448,
+   "text": "a",
+   "s": 5071,
+   "e": 5086,
+   "ch": 4
+  },
+  {
+   "i": 449,
+   "text": "street.",
+   "s": 5086,
+   "e": 5089,
+   "ch": 4
+  },
+  {
+   "i": 450,
+   "text": "Space",
+   "s": 5112,
+   "e": 5115,
+   "ch": 4
+  },
+  {
+   "i": 451,
+   "text": "itself",
+   "s": 5113,
+   "e": 5135,
+   "ch": 4
+  },
+  {
+   "i": 452,
+   "text": "is",
+   "s": 5135,
+   "e": 5148,
+   "ch": 4
+  },
+  {
+   "i": 453,
+   "text": "stretching,",
+   "s": 5148,
+   "e": 5159,
+   "ch": 4
+  },
+  {
+   "i": 454,
+   "text": "like",
+   "s": 5172,
+   "e": 5177,
+   "ch": 4
+  },
+  {
+   "i": 455,
+   "text": "rising",
+   "s": 5177,
+   "e": 5191,
+   "ch": 4
+  },
+  {
+   "i": 456,
+   "text": "dough",
+   "s": 5191,
+   "e": 5204,
+   "ch": 4
+  },
+  {
+   "i": 457,
+   "text": "pulling",
+   "s": 5204,
+   "e": 5214,
+   "ch": 4
+  },
+  {
+   "i": 458,
+   "text": "raisins",
+   "s": 5214,
+   "e": 5228,
+   "ch": 4
+  },
+  {
+   "i": 459,
+   "text": "apart.",
+   "s": 5228,
+   "e": 5240,
+   "ch": 4
+  },
+  {
+   "i": 460,
+   "text": "Their",
+   "s": 5247,
+   "e": 5258,
+   "ch": 4
+  },
+  {
+   "i": 461,
+   "text": "light",
+   "s": 5258,
+   "e": 5272,
+   "ch": 4
+  },
+  {
+   "i": 462,
+   "text": "stretches",
+   "s": 5272,
+   "e": 5284,
+   "ch": 4
+  },
+  {
+   "i": 463,
+   "text": "with",
+   "s": 5284,
+   "e": 5295,
+   "ch": 4
+  },
+  {
+   "i": 464,
+   "text": "it,",
+   "s": 5295,
+   "e": 5305,
+   "ch": 4
+  },
+  {
+   "i": 465,
+   "text": "toward",
+   "s": 5310,
+   "e": 5316,
+   "ch": 4
+  },
+  {
+   "i": 466,
+   "text": "red.",
+   "s": 5316,
+   "e": 5328,
+   "ch": 4
+  },
+  {
+   "i": 467,
+   "text": "So",
+   "s": 5340,
+   "e": 5347,
+   "ch": 5
+  },
+  {
+   "i": 468,
+   "text": "the",
+   "s": 5347,
+   "e": 5350,
+   "ch": 5
+  },
+  {
+   "i": 469,
+   "text": "next",
+   "s": 5350,
+   "e": 5357,
+   "ch": 5
+  },
+  {
+   "i": 470,
+   "text": "time",
+   "s": 5357,
+   "e": 5363,
+   "ch": 5
+  },
+  {
+   "i": 471,
+   "text": "a",
+   "s": 5363,
+   "e": 5379,
+   "ch": 5
+  },
+  {
+   "i": 472,
+   "text": "siren",
+   "s": 5379,
+   "e": 5381,
+   "ch": 5
+  },
+  {
+   "i": 473,
+   "text": "drops",
+   "s": 5379,
+   "e": 5390,
+   "ch": 5
+  },
+  {
+   "i": 474,
+   "text": "its",
+   "s": 5390,
+   "e": 5399,
+   "ch": 5
+  },
+  {
+   "i": 475,
+   "text": "note",
+   "s": 5399,
+   "e": 5404,
+   "ch": 5
+  },
+  {
+   "i": 476,
+   "text": "as",
+   "s": 5404,
+   "e": 5409,
+   "ch": 5
+  },
+  {
+   "i": 477,
+   "text": "it",
+   "s": 5409,
+   "e": 5426,
+   "ch": 5
+  },
+  {
+   "i": 478,
+   "text": "passes,",
+   "s": 5426,
+   "e": 5428,
+   "ch": 5
+  },
+  {
+   "i": 479,
+   "text": "listen.",
+   "s": 5442,
+   "e": 5448,
+   "ch": 5
+  },
+  {
+   "i": 480,
+   "text": "You're",
+   "s": 5461,
+   "e": 5469,
+   "ch": 5
+  },
+  {
+   "i": 481,
+   "text": "hearing",
+   "s": 5469,
+   "e": 5476,
+   "ch": 5
+  },
+  {
+   "i": 482,
+   "text": "the",
+   "s": 5476,
+   "e": 5485,
+   "ch": 5
+  },
+  {
+   "i": 483,
+   "text": "same",
+   "s": 5485,
+   "e": 5499,
+   "ch": 5
+  },
+  {
+   "i": 484,
+   "text": "clue",
+   "s": 5499,
+   "e": 5505,
+   "ch": 5
+  },
+  {
+   "i": 485,
+   "text": "that",
+   "s": 5505,
+   "e": 5514,
+   "ch": 5
+  },
+  {
+   "i": 486,
+   "text": "told",
+   "s": 5514,
+   "e": 5521,
+   "ch": 5
+  },
+  {
+   "i": 487,
+   "text": "us",
+   "s": 5521,
+   "e": 5527,
+   "ch": 5
+  },
+  {
+   "i": 488,
+   "text": "the",
+   "s": 5527,
+   "e": 5539,
+   "ch": 5
+  },
+  {
+   "i": 489,
+   "text": "universe",
+   "s": 5539,
+   "e": 5544,
+   "ch": 5
+  },
+  {
+   "i": 490,
+   "text": "is",
+   "s": 5544,
+   "e": 5562,
+   "ch": 5
+  },
+  {
+   "i": 491,
+   "text": "growing.",
+   "s": 5562,
+   "e": 5571,
+   "ch": 5
+  }
+ ],
+ "sentences": [
+  {
+   "text": "Listen.",
+   "s": 15,
+   "e": 29,
+   "ch": 0
+  },
+  {
+   "text": "A siren races toward you.",
+   "s": 44,
+   "e": 101,
+   "ch": 0
+  },
+  {
+   "text": "The moment it passes, its note drops.",
+   "s": 109,
+   "e": 177,
+   "ch": 0
+  },
+  {
+   "text": "That tiny drop holds the clue that told us the whole universe is growing.",
+   "s": 196,
+   "e": 326,
+   "ch": 0
+  },
+  {
+   "text": "Picture the ambulance driver.",
+   "s": 352,
+   "e": 381,
+   "ch": 1
+  },
+  {
+   "text": "To her, the siren plays one steady note.",
+   "s": 396,
+   "e": 472,
+   "ch": 1
+  },
+  {
+   "text": "But you, on the sidewalk, hear it high as it comes, and low as it goes.",
+   "s": 484,
+   "e": 618,
+   "ch": 1
+  },
+  {
+   "text": "Same siren.",
+   "s": 632,
+   "e": 649,
+   "ch": 1
+  },
+  {
+   "text": "Two sounds.",
+   "s": 660,
+   "e": 678,
+   "ch": 1
+  },
+  {
+   "text": "And you're both right.",
+   "s": 686,
+   "e": 718,
+   "ch": 1
+  },
+  {
+   "text": "So what changed?",
+   "s": 728,
+   "e": 754,
+   "ch": 1
+  },
+  {
+   "text": "Not the siren.",
+   "s": 765,
+   "e": 791,
+   "ch": 1
+  },
+  {
+   "text": "Something in the air between you.",
+   "s": 802,
+   "e": 859,
+   "ch": 1
+  },
+  {
+   "text": "Sound travels in waves, like ripples on a pond.",
+   "s": 880,
+   "e": 957,
+   "ch": 2
+  },
+  {
+   "text": "Picture a bug sitting still, tapping the water.",
+   "s": 976,
+   "e": 1043,
+   "ch": 2
+  },
+  {
+   "text": "Perfect rings spread out evenly.",
+   "s": 1061,
+   "e": 1110,
+   "ch": 2
+  },
+  {
+   "text": "Now the bug swims forward while it taps.",
+   "s": 1126,
+   "e": 1190,
+   "ch": 2
+  },
+  {
+   "text": "The rings in front get squeezed together.",
+   "s": 1201,
+   "e": 1256,
+   "ch": 2
+  },
+  {
+   "text": "The rings behind get stretched apart.",
+   "s": 1266,
+   "e": 1322,
+   "ch": 2
+  },
+  {
+   "text": "Sound does the same.",
+   "s": 1340,
+   "e": 1370,
+   "ch": 2
+  },
+  {
+   "text": "Squeezed waves reach your ear more often, so the pitch sounds higher.",
+   "s": 1395,
+   "e": 1489,
+   "ch": 2
+  },
+  {
+   "text": "Stretched waves arrive less often, so it sounds lower.",
+   "s": 1514,
+   "e": 1588,
+   "ch": 2
+  },
+  {
+   "text": "The waves never speed up.",
+   "s": 1594,
+   "e": 1648,
+   "ch": 2
+  },
+  {
+   "text": "Only their spacing changes.",
+   "s": 1651,
+   "e": 1694,
+   "ch": 2
+  },
+  {
+   "text": "In eighteen forty-two, a frail math professor in Prague worked this out.",
+   "s": 1711,
+   "e": 1828,
+   "ch": 2
+  },
+  {
+   "text": "His name was Christian Doppler, and he had once nearly quit and moved to America.",
+   "s": 1839,
+   "e": 1959,
+   "ch": 2
+  },
+  {
+   "text": "Three years later, a Dutch scientist put horn players on an open train car.",
+   "s": 1973,
+   "e": 2093,
+   "ch": 2
+  },
+  {
+   "text": "People beside the track heard the notes bend.",
+   "s": 2107,
+   "e": 2172,
+   "ch": 2
+  },
+  {
+   "text": "But here's the twist.",
+   "s": 2177,
+   "e": 2216,
+   "ch": 2
+  },
+  {
+   "text": "Doppler didn't name his paper after sound.",
+   "s": 2237,
+   "e": 2294,
+   "ch": 2
+  },
+  {
+   "text": "He named it after the colored light of stars.",
+   "s": 2301,
+   "e": 2380,
+   "ch": 2
+  },
+  {
+   "text": "Light is a wave too, and for light, spacing means color.",
+   "s": 2394,
+   "e": 2536,
+   "ch": 3
+  },
+  {
+   "text": "Squeeze the waves, and light shifts toward blue.",
+   "s": 2581,
+   "e": 2657,
+   "ch": 3
+  },
+  {
+   "text": "Stretch them, and it shifts toward red.",
+   "s": 2680,
+   "e": 2733,
+   "ch": 3
+  },
+  {
+   "text": "That's a redshift.",
+   "s": 2748,
+   "e": 2779,
+   "ch": 3
+  },
+  {
+   "text": "Doppler guessed wrong about star colors.",
+   "s": 2797,
+   "e": 2863,
+   "ch": 3
+  },
+  {
+   "text": "The shift was far too small to notice.",
+   "s": 2876,
+   "e": 2939,
+   "ch": 3
+  },
+  {
+   "text": "But he predicted astronomers would one day use it to measure how stars move.",
+   "s": 2947,
+   "e": 3077,
+   "ch": 3
+  },
+  {
+   "text": "They did.",
+   "s": 3083,
+   "e": 3106,
+   "ch": 3
+  },
+  {
+   "text": "Starlight carries a barcode of dark lines, set by its atoms.",
+   "s": 3126,
+   "e": 3229,
+   "ch": 3
+  },
+  {
+   "text": "If the barcode slides toward red, the source is moving away.",
+   "s": 3229,
+   "e": 3348,
+   "ch": 3
+  },
+  {
+   "text": "In the nineteen tens, Vesto Slipher read those barcodes in faint spirals in the sky.",
+   "s": 3362,
+   "e": 3514,
+   "ch": 3
+  },
+  {
+   "text": "Andromeda was coming toward us, about three hundred kilometers every second.",
+   "s": 3533,
+   "e": 3657,
+   "ch": 3
+  },
+  {
+   "text": "But nearly all the others were rushing away.",
+   "s": 3670,
+   "e": 3743,
+   "ch": 3
+  },
+  {
+   "text": "Why would almost everything flee from us?",
+   "s": 3758,
+   "e": 3823,
+   "ch": 3
+  },
+  {
+   "text": "Enter Edwin Hubble.",
+   "s": 3837,
+   "e": 3873,
+   "ch": 4
+  },
+  {
+   "text": "In nineteen twenty-three, with the most powerful telescope of its day, he proved Andromeda was a whole galaxy, far beyond our own.",
+   "s": 3889,
+   "e": 4116,
+   "ch": 4
+  },
+  {
+   "text": "Next, he measured how far away other galaxies were.",
+   "s": 4116,
+   "e": 4220,
+   "ch": 4
+  },
+  {
+   "text": "In nineteen twenty-nine, he set his distances beside their speeds, most of them Slipher's.",
+   "s": 4234,
+   "e": 4381,
+   "ch": 4
+  },
+  {
+   "text": "A pattern jumped out.",
+   "s": 4395,
+   "e": 4432,
+   "ch": 4
+  },
+  {
+   "text": "The farther a galaxy is, the faster it moves away.",
+   "s": 4444,
+   "e": 4539,
+   "ch": 4
+  },
+  {
+   "text": "Not just from us.",
+   "s": 4552,
+   "e": 4579,
+   "ch": 4
+  },
+  {
+   "text": "From each other.",
+   "s": 4587,
+   "e": 4609,
+   "ch": 4
+  },
+  {
+   "text": "The universe is expanding.",
+   "s": 4621,
+   "e": 4675,
+   "ch": 4
+  },
+  {
+   "text": "A Belgian priest, Georges Lema\u00eetre, had proposed this two years earlier.",
+   "s": 4693,
+   "e": 4811,
+   "ch": 4
+  },
+  {
+   "text": "But Hubble's chart is what convinced astronomers.",
+   "s": 4816,
+   "e": 4893,
+   "ch": 4
+  },
+  {
+   "text": "And one last twist.",
+   "s": 4893,
+   "e": 4948,
+   "ch": 4
+  },
+  {
+   "text": "Far galaxies aren't really speeding through space like sirens down a street.",
+   "s": 4969,
+   "e": 5089,
+   "ch": 4
+  },
+  {
+   "text": "Space itself is stretching, like rising dough pulling raisins apart.",
+   "s": 5112,
+   "e": 5240,
+   "ch": 4
+  },
+  {
+   "text": "Their light stretches with it, toward red.",
+   "s": 5247,
+   "e": 5328,
+   "ch": 4
+  },
+  {
+   "text": "So the next time a siren drops its note as it passes, listen.",
+   "s": 5340,
+   "e": 5448,
+   "ch": 5
+  },
+  {
+   "text": "You're hearing the same clue that told us the universe is growing.",
+   "s": 5461,
+   "e": 5571,
+   "ch": 5
+  }
+ ],
+ "pages": [
+  {
+   "w": [
+    0
+   ],
+   "s": 15,
+   "ch": 0,
+   "e": 44,
+   "text": "Listen."
+  },
+  {
+   "w": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "s": 44,
+   "ch": 0,
+   "e": 109,
+   "text": "A siren races toward you."
+  },
+  {
+   "w": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "s": 109,
+   "ch": 0,
+   "e": 149,
+   "text": "The moment it passes,"
+  },
+  {
+   "w": [
+    10,
+    11,
+    12
+   ],
+   "s": 149,
+   "ch": 0,
+   "e": 196,
+   "text": "its note drops."
+  },
+  {
+   "w": [
+    13,
+    14,
+    15,
+    16
+   ],
+   "s": 196,
+   "ch": 0,
+   "e": 236,
+   "text": "That tiny drop holds"
+  },
+  {
+   "w": [
+    17,
+    18,
+    19,
+    20
+   ],
+   "s": 236,
+   "ch": 0,
+   "e": 268,
+   "text": "the clue that told"
+  },
+  {
+   "w": [
+    21,
+    22,
+    23,
+    24
+   ],
+   "s": 268,
+   "ch": 0,
+   "e": 302,
+   "text": "us the whole universe"
+  },
+  {
+   "w": [
+    25,
+    26
+   ],
+   "s": 302,
+   "ch": 0,
+   "e": 338,
+   "text": "is growing."
+  },
+  {
+   "w": [
+    27,
+    28,
+    29,
+    30
+   ],
+   "s": 352,
+   "ch": 1,
+   "e": 396,
+   "text": "Picture the ambulance driver."
+  },
+  {
+   "w": [
+    31,
+    32
+   ],
+   "s": 396,
+   "ch": 1,
+   "e": 414,
+   "text": "To her,"
+  },
+  {
+   "w": [
+    33,
+    34,
+    35,
+    36
+   ],
+   "s": 414,
+   "ch": 1,
+   "e": 455,
+   "text": "the siren plays one"
+  },
+  {
+   "w": [
+    37,
+    38
+   ],
+   "s": 455,
+   "ch": 1,
+   "e": 484,
+   "text": "steady note."
+  },
+  {
+   "w": [
+    39,
+    40
+   ],
+   "s": 484,
+   "ch": 1,
+   "e": 506,
+   "text": "But you,"
+  },
+  {
+   "w": [
+    41,
+    42,
+    43
+   ],
+   "s": 506,
+   "ch": 1,
+   "e": 535,
+   "text": "on the sidewalk,"
+  },
+  {
+   "w": [
+    44,
+    45,
+    46,
+    47
+   ],
+   "s": 535,
+   "ch": 1,
+   "e": 558,
+   "text": "hear it high as"
+  },
+  {
+   "w": [
+    48,
+    49
+   ],
+   "s": 558,
+   "ch": 1,
+   "e": 573,
+   "text": "it comes,"
+  },
+  {
+   "w": [
+    50,
+    51,
+    52,
+    53,
+    54
+   ],
+   "s": 573,
+   "ch": 1,
+   "e": 632,
+   "text": "and low as it goes."
+  },
+  {
+   "w": [
+    55,
+    56
+   ],
+   "s": 632,
+   "ch": 1,
+   "e": 660,
+   "text": "Same siren."
+  },
+  {
+   "w": [
+    57,
+    58
+   ],
+   "s": 660,
+   "ch": 1,
+   "e": 686,
+   "text": "Two sounds."
+  },
+  {
+   "w": [
+    59,
+    60,
+    61,
+    62
+   ],
+   "s": 686,
+   "ch": 1,
+   "e": 728,
+   "text": "And you're both right."
+  },
+  {
+   "w": [
+    63,
+    64,
+    65
+   ],
+   "s": 728,
+   "ch": 1,
+   "e": 765,
+   "text": "So what changed?"
+  },
+  {
+   "w": [
+    66,
+    67,
+    68
+   ],
+   "s": 765,
+   "ch": 1,
+   "e": 802,
+   "text": "Not the siren."
+  },
+  {
+   "w": [
+    69,
+    70,
+    71,
+    72
+   ],
+   "s": 802,
+   "ch": 1,
+   "e": 830,
+   "text": "Something in the air"
+  },
+  {
+   "w": [
+    73,
+    74
+   ],
+   "s": 830,
+   "ch": 1,
+   "e": 880,
+   "text": "between you."
+  },
+  {
+   "w": [
+    75,
+    76,
+    77,
+    78
+   ],
+   "s": 880,
+   "ch": 2,
+   "e": 921,
+   "text": "Sound travels in waves,"
+  },
+  {
+   "w": [
+    79,
+    80,
+    81,
+    82,
+    83
+   ],
+   "s": 921,
+   "ch": 2,
+   "e": 976,
+   "text": "like ripples on a pond."
+  },
+  {
+   "w": [
+    84,
+    85,
+    86,
+    87
+   ],
+   "s": 976,
+   "ch": 2,
+   "e": 1002,
+   "text": "Picture a bug sitting"
+  },
+  {
+   "w": [
+    88,
+    89,
+    90,
+    91
+   ],
+   "s": 1002,
+   "ch": 2,
+   "e": 1061,
+   "text": "still, tapping the water."
+  },
+  {
+   "w": [
+    92,
+    93,
+    94,
+    95,
+    96
+   ],
+   "s": 1061,
+   "ch": 2,
+   "e": 1126,
+   "text": "Perfect rings spread out evenly."
+  },
+  {
+   "w": [
+    97,
+    98,
+    99,
+    100
+   ],
+   "s": 1126,
+   "ch": 2,
+   "e": 1153,
+   "text": "Now the bug swims"
+  },
+  {
+   "w": [
+    101,
+    102,
+    103,
+    104
+   ],
+   "s": 1153,
+   "ch": 2,
+   "e": 1201,
+   "text": "forward while it taps."
+  },
+  {
+   "w": [
+    105,
+    106,
+    107,
+    108
+   ],
+   "s": 1201,
+   "ch": 2,
+   "e": 1225,
+   "text": "The rings in front"
+  },
+  {
+   "w": [
+    109,
+    110,
+    111
+   ],
+   "s": 1225,
+   "ch": 2,
+   "e": 1266,
+   "text": "get squeezed together."
+  },
+  {
+   "w": [
+    112,
+    113,
+    114,
+    115
+   ],
+   "s": 1266,
+   "ch": 2,
+   "e": 1301,
+   "text": "The rings behind get"
+  },
+  {
+   "w": [
+    116,
+    117
+   ],
+   "s": 1301,
+   "ch": 2,
+   "e": 1340,
+   "text": "stretched apart."
+  },
+  {
+   "w": [
+    118,
+    119,
+    120,
+    121
+   ],
+   "s": 1340,
+   "ch": 2,
+   "e": 1382,
+   "text": "Sound does the same."
+  },
+  {
+   "w": [
+    122,
+    123,
+    124,
+    125
+   ],
+   "s": 1395,
+   "ch": 2,
+   "e": 1424,
+   "text": "Squeezed waves reach your"
+  },
+  {
+   "w": [
+    126,
+    127,
+    128
+   ],
+   "s": 1424,
+   "ch": 2,
+   "e": 1450,
+   "text": "ear more often,"
+  },
+  {
+   "w": [
+    129,
+    130,
+    131,
+    132,
+    133
+   ],
+   "s": 1450,
+   "ch": 2,
+   "e": 1501,
+   "text": "so the pitch sounds higher."
+  },
+  {
+   "w": [
+    134,
+    135,
+    136,
+    137
+   ],
+   "s": 1514,
+   "ch": 2,
+   "e": 1546,
+   "text": "Stretched waves arrive less"
+  },
+  {
+   "w": [
+    138,
+    139,
+    140,
+    141,
+    142
+   ],
+   "s": 1546,
+   "ch": 2,
+   "e": 1594,
+   "text": "often, so it sounds lower."
+  },
+  {
+   "w": [
+    143,
+    144,
+    145,
+    146,
+    147
+   ],
+   "s": 1594,
+   "ch": 2,
+   "e": 1651,
+   "text": "The waves never speed up."
+  },
+  {
+   "w": [
+    148,
+    149,
+    150,
+    151
+   ],
+   "s": 1651,
+   "ch": 2,
+   "e": 1711,
+   "text": "Only their spacing changes."
+  },
+  {
+   "w": [
+    152,
+    153,
+    154
+   ],
+   "s": 1711,
+   "ch": 2,
+   "e": 1750,
+   "text": "In eighteen forty-two,"
+  },
+  {
+   "w": [
+    155,
+    156,
+    157,
+    158
+   ],
+   "s": 1750,
+   "ch": 2,
+   "e": 1786,
+   "text": "a frail math professor"
+  },
+  {
+   "w": [
+    159,
+    160,
+    161,
+    162,
+    163
+   ],
+   "s": 1786,
+   "ch": 2,
+   "e": 1839,
+   "text": "in Prague worked this out."
+  },
+  {
+   "w": [
+    164,
+    165,
+    166,
+    167
+   ],
+   "s": 1839,
+   "ch": 2,
+   "e": 1873,
+   "text": "His name was Christian"
+  },
+  {
+   "w": [
+    168,
+    169,
+    170,
+    171
+   ],
+   "s": 1873,
+   "ch": 2,
+   "e": 1904,
+   "text": "Doppler, and he had"
+  },
+  {
+   "w": [
+    172,
+    173,
+    174,
+    175
+   ],
+   "s": 1904,
+   "ch": 2,
+   "e": 1937,
+   "text": "once nearly quit and"
+  },
+  {
+   "w": [
+    176,
+    177,
+    178
+   ],
+   "s": 1937,
+   "ch": 2,
+   "e": 1973,
+   "text": "moved to America."
+  },
+  {
+   "w": [
+    179,
+    180,
+    181
+   ],
+   "s": 1973,
+   "ch": 2,
+   "e": 2000,
+   "text": "Three years later,"
+  },
+  {
+   "w": [
+    182,
+    183,
+    184,
+    185
+   ],
+   "s": 2000,
+   "ch": 2,
+   "e": 2038,
+   "text": "a Dutch scientist put"
+  },
+  {
+   "w": [
+    186,
+    187,
+    188,
+    189
+   ],
+   "s": 2038,
+   "ch": 2,
+   "e": 2068,
+   "text": "horn players on an"
+  },
+  {
+   "w": [
+    190,
+    191,
+    192
+   ],
+   "s": 2068,
+   "ch": 2,
+   "e": 2107,
+   "text": "open train car."
+  },
+  {
+   "w": [
+    193,
+    194,
+    195,
+    196
+   ],
+   "s": 2107,
+   "ch": 2,
+   "e": 2139,
+   "text": "People beside the track"
+  },
+  {
+   "w": [
+    197,
+    198,
+    199,
+    200
+   ],
+   "s": 2139,
+   "ch": 2,
+   "e": 2177,
+   "text": "heard the notes bend."
+  },
+  {
+   "w": [
+    201,
+    202,
+    203,
+    204
+   ],
+   "s": 2177,
+   "ch": 2,
+   "e": 2237,
+   "text": "But here's the twist."
+  },
+  {
+   "w": [
+    205,
+    206,
+    207,
+    208
+   ],
+   "s": 2237,
+   "ch": 2,
+   "e": 2263,
+   "text": "Doppler didn't name his"
+  },
+  {
+   "w": [
+    209,
+    210,
+    211
+   ],
+   "s": 2263,
+   "ch": 2,
+   "e": 2301,
+   "text": "paper after sound."
+  },
+  {
+   "w": [
+    212,
+    213,
+    214,
+    215
+   ],
+   "s": 2301,
+   "ch": 2,
+   "e": 2329,
+   "text": "He named it after"
+  },
+  {
+   "w": [
+    216,
+    217,
+    218,
+    219,
+    220
+   ],
+   "s": 2329,
+   "ch": 2,
+   "e": 2394,
+   "text": "the colored light of stars."
+  },
+  {
+   "w": [
+    221,
+    222,
+    223,
+    224
+   ],
+   "s": 2394,
+   "ch": 3,
+   "e": 2430,
+   "text": "Light is a wave"
+  },
+  {
+   "w": [
+    225,
+    226,
+    227,
+    228
+   ],
+   "s": 2430,
+   "ch": 3,
+   "e": 2505,
+   "text": "too, and for light,"
+  },
+  {
+   "w": [
+    229,
+    230,
+    231
+   ],
+   "s": 2505,
+   "ch": 3,
+   "e": 2548,
+   "text": "spacing means color."
+  },
+  {
+   "w": [
+    232,
+    233,
+    234
+   ],
+   "s": 2581,
+   "ch": 3,
+   "e": 2610,
+   "text": "Squeeze the waves,"
+  },
+  {
+   "w": [
+    235,
+    236,
+    237,
+    238,
+    239
+   ],
+   "s": 2610,
+   "ch": 3,
+   "e": 2680,
+   "text": "and light shifts toward blue."
+  },
+  {
+   "w": [
+    240,
+    241
+   ],
+   "s": 2680,
+   "ch": 3,
+   "e": 2698,
+   "text": "Stretch them,"
+  },
+  {
+   "w": [
+    242,
+    243,
+    244,
+    245,
+    246
+   ],
+   "s": 2698,
+   "ch": 3,
+   "e": 2748,
+   "text": "and it shifts toward red."
+  },
+  {
+   "w": [
+    247,
+    248,
+    249
+   ],
+   "s": 2748,
+   "ch": 3,
+   "e": 2797,
+   "text": "That's a redshift."
+  },
+  {
+   "w": [
+    250,
+    251,
+    252,
+    253
+   ],
+   "s": 2797,
+   "ch": 3,
+   "e": 2844,
+   "text": "Doppler guessed wrong about"
+  },
+  {
+   "w": [
+    254,
+    255
+   ],
+   "s": 2844,
+   "ch": 3,
+   "e": 2876,
+   "text": "star colors."
+  },
+  {
+   "w": [
+    256,
+    257,
+    258,
+    259
+   ],
+   "s": 2876,
+   "ch": 3,
+   "e": 2904,
+   "text": "The shift was far"
+  },
+  {
+   "w": [
+    260,
+    261,
+    262,
+    263
+   ],
+   "s": 2904,
+   "ch": 3,
+   "e": 2947,
+   "text": "too small to notice."
+  },
+  {
+   "w": [
+    264,
+    265,
+    266,
+    267
+   ],
+   "s": 2947,
+   "ch": 3,
+   "e": 2992,
+   "text": "But he predicted astronomers"
+  },
+  {
+   "w": [
+    268,
+    269,
+    270,
+    271
+   ],
+   "s": 2992,
+   "ch": 3,
+   "e": 3025,
+   "text": "would one day use"
+  },
+  {
+   "w": [
+    272,
+    273,
+    274,
+    275
+   ],
+   "s": 3025,
+   "ch": 3,
+   "e": 3057,
+   "text": "it to measure how"
+  },
+  {
+   "w": [
+    276,
+    277
+   ],
+   "s": 3057,
+   "ch": 3,
+   "e": 3083,
+   "text": "stars move."
+  },
+  {
+   "w": [
+    278,
+    279
+   ],
+   "s": 3083,
+   "ch": 3,
+   "e": 3126,
+   "text": "They did."
+  },
+  {
+   "w": [
+    280,
+    281,
+    282,
+    283
+   ],
+   "s": 3126,
+   "ch": 3,
+   "e": 3165,
+   "text": "Starlight carries a barcode"
+  },
+  {
+   "w": [
+    284,
+    285,
+    286
+   ],
+   "s": 3165,
+   "ch": 3,
+   "e": 3196,
+   "text": "of dark lines,"
+  },
+  {
+   "w": [
+    287,
+    288,
+    289,
+    290
+   ],
+   "s": 3196,
+   "ch": 3,
+   "e": 3229,
+   "text": "set by its atoms."
+  },
+  {
+   "w": [
+    291,
+    292,
+    293,
+    294
+   ],
+   "s": 3229,
+   "ch": 3,
+   "e": 3276,
+   "text": "If the barcode slides"
+  },
+  {
+   "w": [
+    295,
+    296
+   ],
+   "s": 3276,
+   "ch": 3,
+   "e": 3311,
+   "text": "toward red,"
+  },
+  {
+   "w": [
+    297,
+    298,
+    299,
+    300,
+    301
+   ],
+   "s": 3311,
+   "ch": 3,
+   "e": 3362,
+   "text": "the source is moving away."
+  },
+  {
+   "w": [
+    302,
+    303,
+    304,
+    305
+   ],
+   "s": 3362,
+   "ch": 3,
+   "e": 3401,
+   "text": "In the nineteen tens,"
+  },
+  {
+   "w": [
+    306,
+    307,
+    308,
+    309
+   ],
+   "s": 3401,
+   "ch": 3,
+   "e": 3447,
+   "text": "Vesto Slipher read those"
+  },
+  {
+   "w": [
+    310,
+    311,
+    312,
+    313
+   ],
+   "s": 3447,
+   "ch": 3,
+   "e": 3492,
+   "text": "barcodes in faint spirals"
+  },
+  {
+   "w": [
+    314,
+    315,
+    316
+   ],
+   "s": 3492,
+   "ch": 3,
+   "e": 3533,
+   "text": "in the sky."
+  },
+  {
+   "w": [
+    317,
+    318,
+    319,
+    320
+   ],
+   "s": 3533,
+   "ch": 3,
+   "e": 3573,
+   "text": "Andromeda was coming toward"
+  },
+  {
+   "w": [
+    321,
+    322,
+    323,
+    324
+   ],
+   "s": 3573,
+   "ch": 3,
+   "e": 3613,
+   "text": "us, about three hundred"
+  },
+  {
+   "w": [
+    325,
+    326,
+    327
+   ],
+   "s": 3613,
+   "ch": 3,
+   "e": 3670,
+   "text": "kilometers every second."
+  },
+  {
+   "w": [
+    328,
+    329,
+    330,
+    331
+   ],
+   "s": 3670,
+   "ch": 3,
+   "e": 3711,
+   "text": "But nearly all the"
+  },
+  {
+   "w": [
+    332,
+    333,
+    334,
+    335
+   ],
+   "s": 3711,
+   "ch": 3,
+   "e": 3758,
+   "text": "others were rushing away."
+  },
+  {
+   "w": [
+    336,
+    337,
+    338,
+    339
+   ],
+   "s": 3758,
+   "ch": 3,
+   "e": 3798,
+   "text": "Why would almost everything"
+  },
+  {
+   "w": [
+    340,
+    341,
+    342
+   ],
+   "s": 3798,
+   "ch": 3,
+   "e": 3837,
+   "text": "flee from us?"
+  },
+  {
+   "w": [
+    343,
+    344,
+    345
+   ],
+   "s": 3837,
+   "ch": 4,
+   "e": 3889,
+   "text": "Enter Edwin Hubble."
+  },
+  {
+   "w": [
+    346,
+    347,
+    348
+   ],
+   "s": 3889,
+   "ch": 4,
+   "e": 3928,
+   "text": "In nineteen twenty-three,"
+  },
+  {
+   "w": [
+    349,
+    350,
+    351,
+    352
+   ],
+   "s": 3928,
+   "ch": 4,
+   "e": 3957,
+   "text": "with the most powerful"
+  },
+  {
+   "w": [
+    353,
+    354,
+    355,
+    356
+   ],
+   "s": 3957,
+   "ch": 4,
+   "e": 4002,
+   "text": "telescope of its day,"
+  },
+  {
+   "w": [
+    357,
+    358,
+    359,
+    360
+   ],
+   "s": 4002,
+   "ch": 4,
+   "e": 4043,
+   "text": "he proved Andromeda was"
+  },
+  {
+   "w": [
+    361,
+    362,
+    363
+   ],
+   "s": 4043,
+   "ch": 4,
+   "e": 4074,
+   "text": "a whole galaxy,"
+  },
+  {
+   "w": [
+    364,
+    365,
+    366,
+    367
+   ],
+   "s": 4074,
+   "ch": 4,
+   "e": 4116,
+   "text": "far beyond our own."
+  },
+  {
+   "w": [
+    368,
+    369,
+    370,
+    371
+   ],
+   "s": 4116,
+   "ch": 4,
+   "e": 4167,
+   "text": "Next, he measured how"
+  },
+  {
+   "w": [
+    372,
+    373,
+    374,
+    375,
+    376
+   ],
+   "s": 4167,
+   "ch": 4,
+   "e": 4234,
+   "text": "far away other galaxies were."
+  },
+  {
+   "w": [
+    377,
+    378,
+    379
+   ],
+   "s": 4234,
+   "ch": 4,
+   "e": 4272,
+   "text": "In nineteen twenty-nine,"
+  },
+  {
+   "w": [
+    380,
+    381,
+    382,
+    383
+   ],
+   "s": 4272,
+   "ch": 4,
+   "e": 4303,
+   "text": "he set his distances"
+  },
+  {
+   "w": [
+    384,
+    385,
+    386
+   ],
+   "s": 4303,
+   "ch": 4,
+   "e": 4353,
+   "text": "beside their speeds,"
+  },
+  {
+   "w": [
+    387,
+    388,
+    389,
+    390
+   ],
+   "s": 4353,
+   "ch": 4,
+   "e": 4395,
+   "text": "most of them Slipher's."
+  },
+  {
+   "w": [
+    391,
+    392,
+    393,
+    394
+   ],
+   "s": 4395,
+   "ch": 4,
+   "e": 4444,
+   "text": "A pattern jumped out."
+  },
+  {
+   "w": [
+    395,
+    396,
+    397,
+    398
+   ],
+   "s": 4444,
+   "ch": 4,
+   "e": 4475,
+   "text": "The farther a galaxy"
+  },
+  {
+   "w": [
+    399,
+    400,
+    401,
+    402
+   ],
+   "s": 4475,
+   "ch": 4,
+   "e": 4520,
+   "text": "is, the faster it"
+  },
+  {
+   "w": [
+    403,
+    404
+   ],
+   "s": 4520,
+   "ch": 4,
+   "e": 4552,
+   "text": "moves away."
+  },
+  {
+   "w": [
+    405,
+    406,
+    407,
+    408
+   ],
+   "s": 4552,
+   "ch": 4,
+   "e": 4587,
+   "text": "Not just from us."
+  },
+  {
+   "w": [
+    409,
+    410,
+    411
+   ],
+   "s": 4587,
+   "ch": 4,
+   "e": 4621,
+   "text": "From each other."
+  },
+  {
+   "w": [
+    412,
+    413,
+    414,
+    415
+   ],
+   "s": 4621,
+   "ch": 4,
+   "e": 4693,
+   "text": "The universe is expanding."
+  },
+  {
+   "w": [
+    416,
+    417,
+    418
+   ],
+   "s": 4693,
+   "ch": 4,
+   "e": 4732,
+   "text": "A Belgian priest,"
+  },
+  {
+   "w": [
+    419,
+    420
+   ],
+   "s": 4732,
+   "ch": 4,
+   "e": 4760,
+   "text": "Georges Lema\u00eetre,"
+  },
+  {
+   "w": [
+    421,
+    422,
+    423,
+    424
+   ],
+   "s": 4760,
+   "ch": 4,
+   "e": 4792,
+   "text": "had proposed this two"
+  },
+  {
+   "w": [
+    425,
+    426
+   ],
+   "s": 4792,
+   "ch": 4,
+   "e": 4816,
+   "text": "years earlier."
+  },
+  {
+   "w": [
+    427,
+    428,
+    429,
+    430
+   ],
+   "s": 4816,
+   "ch": 4,
+   "e": 4854,
+   "text": "But Hubble's chart is"
+  },
+  {
+   "w": [
+    431,
+    432,
+    433
+   ],
+   "s": 4854,
+   "ch": 4,
+   "e": 4893,
+   "text": "what convinced astronomers."
+  },
+  {
+   "w": [
+    434,
+    435,
+    436,
+    437
+   ],
+   "s": 4893,
+   "ch": 4,
+   "e": 4969,
+   "text": "And one last twist."
+  },
+  {
+   "w": [
+    438,
+    439,
+    440,
+    441
+   ],
+   "s": 4969,
+   "ch": 4,
+   "e": 5019,
+   "text": "Far galaxies aren't really"
+  },
+  {
+   "w": [
+    442,
+    443,
+    444,
+    445
+   ],
+   "s": 5019,
+   "ch": 4,
+   "e": 5052,
+   "text": "speeding through space like"
+  },
+  {
+   "w": [
+    446,
+    447,
+    448,
+    449
+   ],
+   "s": 5052,
+   "ch": 4,
+   "e": 5112,
+   "text": "sirens down a street."
+  },
+  {
+   "w": [
+    450,
+    451,
+    452,
+    453
+   ],
+   "s": 5112,
+   "ch": 4,
+   "e": 5172,
+   "text": "Space itself is stretching,"
+  },
+  {
+   "w": [
+    454,
+    455,
+    456,
+    457
+   ],
+   "s": 5172,
+   "ch": 4,
+   "e": 5214,
+   "text": "like rising dough pulling"
+  },
+  {
+   "w": [
+    458,
+    459
+   ],
+   "s": 5214,
+   "ch": 4,
+   "e": 5247,
+   "text": "raisins apart."
+  },
+  {
+   "w": [
+    460,
+    461,
+    462,
+    463
+   ],
+   "s": 5247,
+   "ch": 4,
+   "e": 5295,
+   "text": "Their light stretches with"
+  },
+  {
+   "w": [
+    464,
+    465,
+    466
+   ],
+   "s": 5295,
+   "ch": 4,
+   "e": 5340,
+   "text": "it, toward red."
+  },
+  {
+   "w": [
+    467,
+    468,
+    469,
+    470
+   ],
+   "s": 5340,
+   "ch": 5,
+   "e": 5363,
+   "text": "So the next time"
+  },
+  {
+   "w": [
+    471,
+    472,
+    473,
+    474
+   ],
+   "s": 5363,
+   "ch": 5,
+   "e": 5399,
+   "text": "a siren drops its"
+  },
+  {
+   "w": [
+    475,
+    476,
+    477,
+    478
+   ],
+   "s": 5399,
+   "ch": 5,
+   "e": 5442,
+   "text": "note as it passes,"
+  },
+  {
+   "w": [
+    479
+   ],
+   "s": 5442,
+   "ch": 5,
+   "e": 5461,
+   "text": "listen."
+  },
+  {
+   "w": [
+    480,
+    481,
+    482,
+    483
+   ],
+   "s": 5461,
+   "ch": 5,
+   "e": 5499,
+   "text": "You're hearing the same"
+  },
+  {
+   "w": [
+    484,
+    485,
+    486,
+    487
+   ],
+   "s": 5499,
+   "ch": 5,
+   "e": 5527,
+   "text": "clue that told us"
+  },
+  {
+   "w": [
+    488,
+    489,
+    490,
+    491
+   ],
+   "s": 5527,
+   "ch": 5,
+   "e": 5583,
+   "text": "the universe is growing."
+  }
+ ],
+ "sfx": [
+  {
+   "f": 15,
+   "key": "bloom",
+   "db": -16
+  },
+  {
+   "f": 37,
+   "key": "bloom",
+   "db": -19
+  },
+  {
+   "f": 38,
+   "key": "siren_pass",
+   "db": -9
+  },
+  {
+   "f": 117,
+   "key": "whoosh_fast",
+   "db": -18
+  },
+  {
+   "f": 192,
+   "key": "whoosh_up",
+   "db": -15
+  },
+  {
+   "f": 272,
+   "key": "shimmer",
+   "db": -17
+  },
+  {
+   "f": 345,
+   "key": "sign_creak",
+   "db": -17
+  },
+  {
+   "f": 396,
+   "key": "siren_steady",
+   "db": -22
+  },
+  {
+   "f": 630,
+   "key": "pop",
+   "db": -13
+  },
+  {
+   "f": 658,
+   "key": "pop2",
+   "db": -13
+  },
+  {
+   "f": 692,
+   "key": "ding",
+   "db": -15
+  },
+  {
+   "f": 732,
+   "key": "question",
+   "db": -17
+  },
+  {
+   "f": 773,
+   "key": "bonk",
+   "db": -13
+  },
+  {
+   "f": 800,
+   "key": "whoosh_low",
+   "db": -20
+  },
+  {
+   "f": 873,
+   "key": "water_bloop",
+   "db": -15
+  },
+  {
+   "f": 982,
+   "key": "skitter",
+   "db": -19
+  },
+  {
+   "f": 1128,
+   "key": "skitter",
+   "db": -19
+  },
+  {
+   "f": 1232,
+   "key": "tick",
+   "db": -16
+  },
+  {
+   "f": 1299,
+   "key": "tick",
+   "db": -16
+  },
+  {
+   "f": 1338,
+   "key": "whoosh_fast",
+   "db": -18
+  },
+  {
+   "f": 1600,
+   "key": "needle",
+   "db": -15
+  },
+  {
+   "f": 1707,
+   "key": "match",
+   "db": -16
+  },
+  {
+   "f": 1758,
+   "key": "cough",
+   "db": -20
+  },
+  {
+   "f": 1912,
+   "key": "latch",
+   "db": -15
+  },
+  {
+   "f": 1947,
+   "key": "thud",
+   "db": -15
+  },
+  {
+   "f": 1969,
+   "key": "whoosh_mid",
+   "db": -16
+  },
+  {
+   "f": 1983,
+   "key": "whistle",
+   "db": -20
+  },
+  {
+   "f": 2097,
+   "key": "horns_pass",
+   "db": -15
+  },
+  {
+   "f": 2174,
+   "key": "twist",
+   "db": -12
+  },
+  {
+   "f": 2301,
+   "key": "shimmer",
+   "db": -18
+  },
+  {
+   "f": 2388,
+   "key": "glass_shimmer",
+   "db": -16
+  },
+  {
+   "f": 2393,
+   "key": "neon",
+   "db": -15
+  },
+  {
+   "f": 2680,
+   "key": "sweep",
+   "db": -16
+  },
+  {
+   "f": 2750,
+   "key": "pop",
+   "db": -16
+  },
+  {
+   "f": 2886,
+   "key": "squeak",
+   "db": -18
+  },
+  {
+   "f": 2961,
+   "key": "whoosh_soft",
+   "db": -19
+  },
+  {
+   "f": 3083,
+   "key": "stamp",
+   "db": -12
+  },
+  {
+   "f": 3231,
+   "key": "slide",
+   "db": -16
+  },
+  {
+   "f": 3469,
+   "key": "clink",
+   "db": -15
+  },
+  {
+   "f": 3533,
+   "key": "whoosh_rise",
+   "db": -15
+  },
+  {
+   "f": 3674,
+   "key": "whoosh_out",
+   "db": -18
+  },
+  {
+   "f": 3831,
+   "key": "rumble",
+   "db": -13
+  },
+  {
+   "f": 3909,
+   "key": "blip",
+   "db": -17
+  },
+  {
+   "f": 3927,
+   "key": "blip",
+   "db": -17
+  },
+  {
+   "f": 3945,
+   "key": "blip",
+   "db": -17
+  },
+  {
+   "f": 4120,
+   "key": "zip",
+   "db": -16
+  },
+  {
+   "f": 4234,
+   "key": "card_slide",
+   "db": -15
+  },
+  {
+   "f": 4395,
+   "key": "chalk_line",
+   "db": -17
+  },
+  {
+   "f": 4552,
+   "key": "stretch",
+   "db": -16
+  },
+  {
+   "f": 4615,
+   "key": "deep_whoosh",
+   "db": -10
+  },
+  {
+   "f": 4691,
+   "key": "whoosh_soft",
+   "db": -18
+  },
+  {
+   "f": 4824,
+   "key": "pop",
+   "db": -18
+  },
+  {
+   "f": 4890,
+   "key": "twist",
+   "db": -12
+  },
+  {
+   "f": 4979,
+   "key": "siren_blip",
+   "db": -18
+  },
+  {
+   "f": 5046,
+   "key": "nope",
+   "db": -15
+  },
+  {
+   "f": 5112,
+   "key": "dough",
+   "db": -17
+  },
+  {
+   "f": 5247,
+   "key": "glide",
+   "db": -16
+  },
+  {
+   "f": 5340,
+   "key": "siren_pass_soft",
+   "db": -14
+  },
+  {
+   "f": 5471,
+   "key": "sparkle",
+   "db": -17
+  },
+  {
+   "f": 5591,
+   "key": "sparkle",
+   "db": -18
+  }
+ ]
+}
