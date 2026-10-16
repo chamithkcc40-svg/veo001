@@ -1,5 +1,5 @@
 BRANCH: main
-Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / fps: 30 / target duration: 180 s (script est. 197 s) / final duration: TBD (VO = 185.68 s)
+Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / fps: 30 / target duration: 180 s (script est. 197 s) / final duration: 193.0 s (5790 frames; VO 185.68 s + 0.5 s head + 6.8 s end-screen tail)
 
 ## Task list
 - [x] T0 Resources to GitHub + inventory
@@ -7,10 +7,15 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T2 Intake and production plan (PRODUCTION_PLAN.md)
 - [x] T3 Style bible (STYLE_BIBLE.md)
 - [x] T4 Voiceover timing
-- [ ] T5 Timed storyboard (STORYBOARD.md, data/video.json)
+- [x] T5 Timed storyboard (STORYBOARD.md, data/video.json: 45 scenes, 6 chapters, 160+ caption pages, 60 sfx cues)
 - [ ] T6 Design system and kit
 - [ ] T7 Audio build
-- [ ] T8.x Chapters (listed after T5)
+- [ ] T8.0 Cold open (Ch0-ColdOpen, f0-339, 4 scenes)
+- [ ] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes)
+- [ ] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes)
+- [ ] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes)
+- [ ] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes)
+- [ ] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes)
 - [ ] T9 Assembly
 - [ ] T10 Final QA
 - [ ] T11 Render kit and docs
@@ -39,6 +44,9 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Our targets: motion share >= 81 % (aim 90 %), static <= 1.33 s, about 41+ shots, captions Nunito 800 46 px at ~84 % height.
 
 ## Decisions
+- 45 scenes (about 14 cuts/min over 193 s) to match the reference's 13.4 cuts/min.
+- Caption pages split by a small phrase-aware DP (2-4 words, never ending on 'the/a/of...'), never across sentences: reads like the reference's 1-4 word captions.
+- Tail of 6.8 s after the last word: end-screen hold that 06-metadata/07 ask for (not padding: the crane-up continues).
 - Dropped the 07 proposal's 4 px ink outline: the reference has no outlines and the reference overrides art direction (07 says so).
 - Only one reference clip was supplied (not the three 09 asked for); the style bible uses it for every scene type and keeps 07's colour roles for waves/space.
 - Six chapter compositions (cold open and close get their own) plus Full: keeps each per-chapter render short and the join points at natural pauses.

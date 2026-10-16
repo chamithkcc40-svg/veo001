@@ -291,27 +291,54 @@ for s in sentences:
     s['e'] = words[s['last']]['e']
 
 pages = []
+NOEND = {'the', 'a', 'an', 'of', 'to', 'in', 'on', 'at', 'by', 'its', 'their', 'his', 'her', 'your', 'and', 'but', 'so', 'that', 'like', 'with', 'from', 'far', 'most', 'one', 'how', 'is', 'was', 'were', 'eighteen', 'nineteen', 'three', 'Vesto', 'Edwin', 'Christian', 'Georges', 'more', 'less', 'whole', 'math', 'too', 'next', 'open', 'nearly'}
+GOODSTART = {'that', 'like', 'so', 'and', 'but', 'while', 'with', 'to', 'in', 'about', 'far', 'most', 'from', 'set', 'toward', 'pulling', 'beside', 'after'}
+
+
+def split_clause(ix):
+    """DP split of a clause into chunks of 1-5 words (prefer 3-4, phrase-aware)."""
+    n = len(ix)
+    best = [0.0] + [1e9] * n
+    back = [0] * (n + 1)
+    for j in range(1, n + 1):
+        for k in range(max(0, j - 5), j):
+            size = j - k
+            c = {1: 6.0, 2: 1.2, 3: 0.0, 4: 0.2, 5: 1.5}[size]
+            last = re.sub(r"[^A-Za-z']", '', words[ix[j - 1]]['text'])
+            if j < n and last.lower() in NOEND or last in NOEND:
+                c += 4.0 if j < n else 0.0
+            if j < n:
+                nxt = re.sub(r"[^A-Za-z']", '', words[ix[j]]['text']).lower()
+                if nxt in GOODSTART:
+                    c -= 0.8
+            if best[k] + c < best[j]:
+                best[j] = best[k] + c; back[j] = k
+    cuts = []
+    j = n
+    while j > 0:
+        cuts.append((back[j], j)); j = back[j]
+    return [ix[a:b] for a, b in reversed(cuts)]
+
+
 for s in sentences:
     idx = list(range(s['first'], s['last'] + 1))
-    chunk = []
-    for k, i in enumerate(idx):
-        chunk.append(i)
-        txt = words[i]['text']
-        remaining = len(idx) - k - 1
-        brk = False
-        if re.search(r"[,;:]$", txt) and len(chunk) >= 2:
-            brk = True
-        if len(chunk) >= 4 and remaining >= 2:
-            brk = True
-        if len(chunk) >= 5:
-            brk = True
-        if remaining == 0:
-            brk = True
-        if brk and remaining == 1 and len(chunk) < 5 and not re.search(r"[,;:]$", txt):
-            brk = False  # avoid a single orphan word
-        if brk:
+    clauses, cl = [], []
+    for i in idx:
+        cl.append(i)
+        if re.search(r"[,;:]$", words[i]['text']):
+            clauses.append(cl); cl = []
+    if cl:
+        clauses.append(cl)
+    # merge a 1-word clause into its neighbour ("Listen." stays alone if it is the whole sentence)
+    merged = []
+    for c in clauses:
+        if merged and (len(c) == 1 or len(merged[-1]) == 1) and len(merged[-1]) + len(c) <= 5:
+            merged[-1] = merged[-1] + c
+        else:
+            merged.append(c)
+    for c in merged:
+        for chunk in split_clause(c):
             pages.append(dict(w=chunk[:], s=words[chunk[0]]['s'], ch=s['ch']))
-            chunk = []
 for k, p in enumerate(pages):
     last = words[p['w'][-1]]['e']
     nxt = pages[k + 1]['s'] if k + 1 < len(pages) else last + 30

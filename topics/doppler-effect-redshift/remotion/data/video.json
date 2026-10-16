@@ -4514,14 +4514,22 @@
    "w": [
     1,
     2,
-    3,
-    4,
-    5
+    3
    ],
    "s": 44,
    "ch": 0,
+   "e": 78,
+   "text": "A siren races"
+  },
+  {
+   "w": [
+    4,
+    5
+   ],
+   "s": 78,
+   "ch": 0,
    "e": 109,
-   "text": "A siren races toward you."
+   "text": "toward you."
   },
   {
    "w": [
@@ -4550,37 +4558,45 @@
    "w": [
     13,
     14,
-    15,
-    16
+    15
    ],
    "s": 196,
    "ch": 0,
-   "e": 236,
-   "text": "That tiny drop holds"
+   "e": 227,
+   "text": "That tiny drop"
   },
   {
    "w": [
+    16,
     17,
-    18,
-    19,
-    20
+    18
    ],
-   "s": 236,
+   "s": 227,
    "ch": 0,
-   "e": 268,
-   "text": "the clue that told"
+   "e": 253,
+   "text": "holds the clue"
   },
   {
    "w": [
-    21,
+    19,
+    20,
+    21
+   ],
+   "s": 253,
+   "ch": 0,
+   "e": 274,
+   "text": "that told us"
+  },
+  {
+   "w": [
     22,
     23,
     24
    ],
-   "s": 268,
+   "s": 274,
    "ch": 0,
    "e": 302,
-   "text": "us the whole universe"
+   "text": "the whole universe"
   },
   {
    "w": [
@@ -4618,23 +4634,23 @@
    "w": [
     33,
     34,
-    35,
-    36
+    35
    ],
    "s": 414,
    "ch": 1,
-   "e": 455,
-   "text": "the siren plays one"
+   "e": 437,
+   "text": "the siren plays"
   },
   {
    "w": [
+    36,
     37,
     38
    ],
-   "s": 455,
+   "s": 437,
    "ch": 1,
    "e": 484,
-   "text": "steady note."
+   "text": "one steady note."
   },
   {
    "w": [
@@ -4661,36 +4677,44 @@
    "w": [
     44,
     45,
-    46,
-    47
+    46
    ],
    "s": 535,
    "ch": 1,
-   "e": 558,
-   "text": "hear it high as"
+   "e": 554,
+   "text": "hear it high"
   },
   {
    "w": [
+    47,
     48,
     49
    ],
-   "s": 558,
+   "s": 554,
    "ch": 1,
    "e": 573,
-   "text": "it comes,"
+   "text": "as it comes,"
   },
   {
    "w": [
     50,
-    51,
+    51
+   ],
+   "s": 573,
+   "ch": 1,
+   "e": 594,
+   "text": "and low"
+  },
+  {
+   "w": [
     52,
     53,
     54
    ],
-   "s": 573,
+   "s": 594,
    "ch": 1,
    "e": 632,
-   "text": "and low as it goes."
+   "text": "as it goes."
   },
   {
    "w": [
@@ -4783,76 +4807,108 @@
   {
    "w": [
     79,
-    80,
+    80
+   ],
+   "s": 921,
+   "ch": 2,
+   "e": 932,
+   "text": "like ripples"
+  },
+  {
+   "w": [
     81,
     82,
     83
    ],
-   "s": 921,
+   "s": 932,
    "ch": 2,
    "e": 976,
-   "text": "like ripples on a pond."
+   "text": "on a pond."
   },
   {
    "w": [
     84,
     85,
-    86,
-    87
+    86
    ],
    "s": 976,
    "ch": 2,
-   "e": 1002,
-   "text": "Picture a bug sitting"
+   "e": 992,
+   "text": "Picture a bug"
   },
   {
    "w": [
-    88,
+    87,
+    88
+   ],
+   "s": 992,
+   "ch": 2,
+   "e": 1027,
+   "text": "sitting still,"
+  },
+  {
+   "w": [
     89,
     90,
     91
    ],
-   "s": 1002,
+   "s": 1027,
    "ch": 2,
    "e": 1061,
-   "text": "still, tapping the water."
+   "text": "tapping the water."
   },
   {
    "w": [
     92,
-    93,
+    93
+   ],
+   "s": 1061,
+   "ch": 2,
+   "e": 1079,
+   "text": "Perfect rings"
+  },
+  {
+   "w": [
     94,
     95,
     96
    ],
-   "s": 1061,
+   "s": 1079,
    "ch": 2,
    "e": 1126,
-   "text": "Perfect rings spread out evenly."
+   "text": "spread out evenly."
   },
   {
    "w": [
     97,
     98,
-    99,
-    100
+    99
    ],
    "s": 1126,
    "ch": 2,
-   "e": 1153,
-   "text": "Now the bug swims"
+   "e": 1143,
+   "text": "Now the bug"
   },
   {
    "w": [
-    101,
+    100,
+    101
+   ],
+   "s": 1143,
+   "ch": 2,
+   "e": 1168,
+   "text": "swims forward"
+  },
+  {
+   "w": [
     102,
     103,
     104
    ],
-   "s": 1153,
+   "s": 1168,
    "ch": 2,
    "e": 1201,
-   "text": "forward while it taps."
+   "text": "while it taps."
   },
   {
    "w": [
@@ -4881,23 +4937,23 @@
    "w": [
     112,
     113,
-    114,
-    115
+    114
    ],
    "s": 1266,
    "ch": 2,
-   "e": 1301,
-   "text": "The rings behind get"
+   "e": 1291,
+   "text": "The rings behind"
   },
   {
    "w": [
+    115,
     116,
     117
    ],
-   "s": 1301,
+   "s": 1291,
    "ch": 2,
    "e": 1340,
-   "text": "stretched apart."
+   "text": "get stretched apart."
   },
   {
    "w": [
@@ -4915,75 +4971,99 @@
    "w": [
     122,
     123,
-    124,
-    125
+    124
    ],
    "s": 1395,
    "ch": 2,
-   "e": 1424,
-   "text": "Squeezed waves reach your"
+   "e": 1416,
+   "text": "Squeezed waves reach"
   },
   {
    "w": [
+    125,
     126,
     127,
     128
    ],
-   "s": 1424,
+   "s": 1416,
    "ch": 2,
    "e": 1450,
-   "text": "ear more often,"
+   "text": "your ear more often,"
   },
   {
    "w": [
     129,
     130,
-    131,
-    132,
-    133
+    131
    ],
    "s": 1450,
    "ch": 2,
+   "e": 1469,
+   "text": "so the pitch"
+  },
+  {
+   "w": [
+    132,
+    133
+   ],
+   "s": 1469,
+   "ch": 2,
    "e": 1501,
-   "text": "so the pitch sounds higher."
+   "text": "sounds higher."
   },
   {
    "w": [
     134,
-    135,
-    136,
-    137
+    135
    ],
    "s": 1514,
    "ch": 2,
-   "e": 1546,
-   "text": "Stretched waves arrive less"
+   "e": 1526,
+   "text": "Stretched waves"
   },
   {
    "w": [
-    138,
+    136,
+    137,
+    138
+   ],
+   "s": 1526,
+   "ch": 2,
+   "e": 1558,
+   "text": "arrive less often,"
+  },
+  {
+   "w": [
     139,
     140,
     141,
     142
    ],
-   "s": 1546,
+   "s": 1558,
    "ch": 2,
    "e": 1594,
-   "text": "often, so it sounds lower."
+   "text": "so it sounds lower."
   },
   {
    "w": [
     143,
-    144,
+    144
+   ],
+   "s": 1594,
+   "ch": 2,
+   "e": 1612,
+   "text": "The waves"
+  },
+  {
+   "w": [
     145,
     146,
     147
    ],
-   "s": 1594,
+   "s": 1612,
    "ch": 2,
    "e": 1651,
-   "text": "The waves never speed up."
+   "text": "never speed up."
   },
   {
    "w": [
@@ -5023,62 +5103,78 @@
   {
    "w": [
     159,
-    160,
+    160
+   ],
+   "s": 1786,
+   "ch": 2,
+   "e": 1805,
+   "text": "in Prague"
+  },
+  {
+   "w": [
     161,
     162,
     163
    ],
-   "s": 1786,
+   "s": 1805,
    "ch": 2,
    "e": 1839,
-   "text": "in Prague worked this out."
+   "text": "worked this out."
   },
   {
    "w": [
     164,
-    165,
-    166,
-    167
+    165
    ],
    "s": 1839,
    "ch": 2,
-   "e": 1873,
-   "text": "His name was Christian"
+   "e": 1851,
+   "text": "His name"
   },
   {
    "w": [
-    168,
+    166,
+    167,
+    168
+   ],
+   "s": 1851,
+   "ch": 2,
+   "e": 1891,
+   "text": "was Christian Doppler,"
+  },
+  {
+   "w": [
     169,
     170,
     171
    ],
-   "s": 1873,
+   "s": 1891,
    "ch": 2,
    "e": 1904,
-   "text": "Doppler, and he had"
+   "text": "and he had"
   },
   {
    "w": [
     172,
     173,
-    174,
-    175
+    174
    ],
    "s": 1904,
    "ch": 2,
-   "e": 1937,
-   "text": "once nearly quit and"
+   "e": 1930,
+   "text": "once nearly quit"
   },
   {
    "w": [
+    175,
     176,
     177,
     178
    ],
-   "s": 1937,
+   "s": 1930,
    "ch": 2,
    "e": 1973,
-   "text": "moved to America."
+   "text": "and moved to America."
   },
   {
    "w": [
@@ -5095,36 +5191,36 @@
    "w": [
     182,
     183,
-    184,
-    185
+    184
    ],
    "s": 2000,
    "ch": 2,
-   "e": 2038,
-   "text": "a Dutch scientist put"
+   "e": 2029,
+   "text": "a Dutch scientist"
   },
   {
    "w": [
+    185,
     186,
-    187,
-    188,
-    189
+    187
    ],
-   "s": 2038,
+   "s": 2029,
    "ch": 2,
-   "e": 2068,
-   "text": "horn players on an"
+   "e": 2057,
+   "text": "put horn players"
   },
   {
    "w": [
+    188,
+    189,
     190,
     191,
     192
    ],
-   "s": 2068,
+   "s": 2057,
    "ch": 2,
    "e": 2107,
-   "text": "open train car."
+   "text": "on an open train car."
   },
   {
    "w": [
@@ -5166,73 +5262,81 @@
    "w": [
     205,
     206,
-    207,
-    208
+    207
    ],
    "s": 2237,
    "ch": 2,
-   "e": 2263,
-   "text": "Doppler didn't name his"
+   "e": 2255,
+   "text": "Doppler didn't name"
   },
   {
    "w": [
+    208,
     209,
     210,
     211
    ],
-   "s": 2263,
+   "s": 2255,
    "ch": 2,
    "e": 2301,
-   "text": "paper after sound."
+   "text": "his paper after sound."
   },
   {
    "w": [
     212,
     213,
-    214,
-    215
+    214
    ],
    "s": 2301,
    "ch": 2,
-   "e": 2329,
-   "text": "He named it after"
+   "e": 2323,
+   "text": "He named it"
   },
   {
    "w": [
+    215,
     216,
-    217,
+    217
+   ],
+   "s": 2323,
+   "ch": 2,
+   "e": 2346,
+   "text": "after the colored"
+  },
+  {
+   "w": [
     218,
     219,
     220
    ],
-   "s": 2329,
+   "s": 2346,
    "ch": 2,
    "e": 2394,
-   "text": "the colored light of stars."
+   "text": "light of stars."
   },
   {
    "w": [
     221,
     222,
     223,
-    224
+    224,
+    225
    ],
    "s": 2394,
    "ch": 3,
-   "e": 2430,
-   "text": "Light is a wave"
+   "e": 2461,
+   "text": "Light is a wave too,"
   },
   {
    "w": [
-    225,
     226,
     227,
     228
    ],
-   "s": 2430,
+   "s": 2461,
    "ch": 3,
    "e": 2505,
-   "text": "too, and for light,"
+   "text": "and for light,"
   },
   {
    "w": [
@@ -5260,14 +5364,22 @@
    "w": [
     235,
     236,
-    237,
-    238,
-    239
+    237
    ],
    "s": 2610,
    "ch": 3,
+   "e": 2631,
+   "text": "and light shifts"
+  },
+  {
+   "w": [
+    238,
+    239
+   ],
+   "s": 2631,
+   "ch": 3,
    "e": 2680,
-   "text": "and light shifts toward blue."
+   "text": "toward blue."
   },
   {
    "w": [
@@ -5283,14 +5395,22 @@
    "w": [
     242,
     243,
-    244,
-    245,
-    246
+    244
    ],
    "s": 2698,
    "ch": 3,
+   "e": 2712,
+   "text": "and it shifts"
+  },
+  {
+   "w": [
+    245,
+    246
+   ],
+   "s": 2712,
+   "ch": 3,
    "e": 2748,
-   "text": "and it shifts toward red."
+   "text": "toward red."
   },
   {
    "w": [
@@ -5307,93 +5427,101 @@
    "w": [
     250,
     251,
-    252,
-    253
+    252
    ],
    "s": 2797,
    "ch": 3,
-   "e": 2844,
-   "text": "Doppler guessed wrong about"
+   "e": 2835,
+   "text": "Doppler guessed wrong"
   },
   {
    "w": [
+    253,
     254,
     255
    ],
-   "s": 2844,
+   "s": 2835,
    "ch": 3,
    "e": 2876,
-   "text": "star colors."
+   "text": "about star colors."
   },
   {
    "w": [
     256,
-    257,
-    258,
-    259
+    257
    ],
    "s": 2876,
    "ch": 3,
-   "e": 2904,
-   "text": "The shift was far"
+   "e": 2885,
+   "text": "The shift"
   },
   {
    "w": [
+    258,
+    259,
     260,
-    261,
+    261
+   ],
+   "s": 2885,
+   "ch": 3,
+   "e": 2918,
+   "text": "was far too small"
+  },
+  {
+   "w": [
     262,
     263
    ],
-   "s": 2904,
+   "s": 2918,
    "ch": 3,
    "e": 2947,
-   "text": "too small to notice."
+   "text": "to notice."
   },
   {
    "w": [
     264,
     265,
-    266,
-    267
+    266
    ],
    "s": 2947,
    "ch": 3,
-   "e": 2992,
-   "text": "But he predicted astronomers"
+   "e": 2971,
+   "text": "But he predicted"
   },
   {
    "w": [
+    267,
     268,
     269,
-    270,
-    271
+    270
    ],
-   "s": 2992,
+   "s": 2971,
    "ch": 3,
-   "e": 3025,
-   "text": "would one day use"
+   "e": 3016,
+   "text": "astronomers would one day"
   },
   {
    "w": [
+    271,
     272,
     273,
-    274,
-    275
+    274
    ],
-   "s": 3025,
+   "s": 3016,
    "ch": 3,
-   "e": 3057,
-   "text": "it to measure how"
+   "e": 3043,
+   "text": "use it to measure"
   },
   {
    "w": [
+    275,
     276,
     277
    ],
-   "s": 3057,
+   "s": 3043,
    "ch": 3,
    "e": 3083,
-   "text": "stars move."
+   "text": "how stars move."
   },
   {
    "w": [
@@ -5444,36 +5572,44 @@
    "w": [
     291,
     292,
-    293,
-    294
+    293
    ],
    "s": 3229,
    "ch": 3,
-   "e": 3276,
-   "text": "If the barcode slides"
+   "e": 3265,
+   "text": "If the barcode"
   },
   {
    "w": [
+    294,
     295,
     296
    ],
-   "s": 3276,
+   "s": 3265,
    "ch": 3,
    "e": 3311,
-   "text": "toward red,"
+   "text": "slides toward red,"
   },
   {
    "w": [
     297,
-    298,
+    298
+   ],
+   "s": 3311,
+   "ch": 3,
+   "e": 3321,
+   "text": "the source"
+  },
+  {
+   "w": [
     299,
     300,
     301
    ],
-   "s": 3311,
+   "s": 3321,
    "ch": 3,
    "e": 3362,
-   "text": "the source is moving away."
+   "text": "is moving away."
   },
   {
    "w": [
@@ -5490,26 +5626,34 @@
   {
    "w": [
     306,
-    307,
-    308,
-    309
+    307
    ],
    "s": 3401,
    "ch": 3,
-   "e": 3447,
-   "text": "Vesto Slipher read those"
+   "e": 3425,
+   "text": "Vesto Slipher"
   },
   {
    "w": [
-    310,
+    308,
+    309,
+    310
+   ],
+   "s": 3425,
+   "ch": 3,
+   "e": 3459,
+   "text": "read those barcodes"
+  },
+  {
+   "w": [
     311,
     312,
     313
    ],
-   "s": 3447,
+   "s": 3459,
    "ch": 3,
    "e": 3492,
-   "text": "barcodes in faint spirals"
+   "text": "in faint spirals"
   },
   {
    "w": [
@@ -5526,25 +5670,33 @@
    "w": [
     317,
     318,
-    319,
-    320
+    319
    ],
    "s": 3533,
    "ch": 3,
-   "e": 3573,
-   "text": "Andromeda was coming toward"
+   "e": 3561,
+   "text": "Andromeda was coming"
   },
   {
    "w": [
-    321,
+    320,
+    321
+   ],
+   "s": 3561,
+   "ch": 3,
+   "e": 3587,
+   "text": "toward us,"
+  },
+  {
+   "w": [
     322,
     323,
     324
    ],
-   "s": 3573,
+   "s": 3587,
    "ch": 3,
    "e": 3613,
-   "text": "us, about three hundred"
+   "text": "about three hundred"
   },
   {
    "w": [
@@ -5561,17 +5713,25 @@
    "w": [
     328,
     329,
-    330,
-    331
+    330
    ],
    "s": 3670,
    "ch": 3,
-   "e": 3711,
-   "text": "But nearly all the"
+   "e": 3696,
+   "text": "But nearly all"
   },
   {
    "w": [
-    332,
+    331,
+    332
+   ],
+   "s": 3696,
+   "ch": 3,
+   "e": 3711,
+   "text": "the others"
+  },
+  {
+   "w": [
     333,
     334,
     335
@@ -5579,30 +5739,30 @@
    "s": 3711,
    "ch": 3,
    "e": 3758,
-   "text": "others were rushing away."
+   "text": "were rushing away."
   },
   {
    "w": [
     336,
     337,
-    338,
-    339
+    338
    ],
    "s": 3758,
    "ch": 3,
-   "e": 3798,
-   "text": "Why would almost everything"
+   "e": 3780,
+   "text": "Why would almost"
   },
   {
    "w": [
+    339,
     340,
     341,
     342
    ],
-   "s": 3798,
+   "s": 3780,
    "ch": 3,
    "e": 3837,
-   "text": "flee from us?"
+   "text": "everything flee from us?"
   },
   {
    "w": [
@@ -5654,24 +5814,24 @@
    "w": [
     357,
     358,
-    359,
-    360
+    359
    ],
    "s": 4002,
    "ch": 4,
-   "e": 4043,
-   "text": "he proved Andromeda was"
+   "e": 4034,
+   "text": "he proved Andromeda"
   },
   {
    "w": [
+    360,
     361,
     362,
     363
    ],
-   "s": 4043,
+   "s": 4034,
    "ch": 4,
    "e": 4074,
-   "text": "a whole galaxy,"
+   "text": "was a whole galaxy,"
   },
   {
    "w": [
@@ -5687,28 +5847,44 @@
   },
   {
    "w": [
-    368,
-    369,
-    370,
-    371
+    368
    ],
    "s": 4116,
    "ch": 4,
-   "e": 4167,
-   "text": "Next, he measured how"
+   "e": 4146,
+   "text": "Next,"
   },
   {
    "w": [
+    369,
+    370
+   ],
+   "s": 4146,
+   "ch": 4,
+   "e": 4158,
+   "text": "he measured"
+  },
+  {
+   "w": [
+    371,
     372,
-    373,
+    373
+   ],
+   "s": 4158,
+   "ch": 4,
+   "e": 4183,
+   "text": "how far away"
+  },
+  {
+   "w": [
     374,
     375,
     376
    ],
-   "s": 4167,
+   "s": 4183,
    "ch": 4,
    "e": 4234,
-   "text": "far away other galaxies were."
+   "text": "other galaxies were."
   },
   {
    "w": [
@@ -5771,36 +5947,44 @@
   {
    "w": [
     395,
-    396,
-    397,
-    398
+    396
    ],
    "s": 4444,
    "ch": 4,
-   "e": 4475,
-   "text": "The farther a galaxy"
+   "e": 4458,
+   "text": "The farther"
   },
   {
    "w": [
-    399,
-    400,
-    401,
-    402
+    397,
+    398,
+    399
    ],
-   "s": 4475,
+   "s": 4458,
    "ch": 4,
-   "e": 4520,
-   "text": "is, the faster it"
+   "e": 4495,
+   "text": "a galaxy is,"
   },
   {
    "w": [
+    400,
+    401
+   ],
+   "s": 4495,
+   "ch": 4,
+   "e": 4513,
+   "text": "the faster"
+  },
+  {
+   "w": [
+    402,
     403,
     404
    ],
-   "s": 4520,
+   "s": 4513,
    "ch": 4,
    "e": 4552,
-   "text": "moves away."
+   "text": "it moves away."
   },
   {
    "w": [
@@ -5862,46 +6046,46 @@
    "w": [
     421,
     422,
-    423,
-    424
+    423
    ],
    "s": 4760,
    "ch": 4,
-   "e": 4792,
-   "text": "had proposed this two"
+   "e": 4784,
+   "text": "had proposed this"
   },
   {
    "w": [
+    424,
     425,
     426
    ],
-   "s": 4792,
+   "s": 4784,
    "ch": 4,
    "e": 4816,
-   "text": "years earlier."
+   "text": "two years earlier."
   },
   {
    "w": [
     427,
     428,
-    429,
-    430
+    429
    ],
    "s": 4816,
    "ch": 4,
-   "e": 4854,
-   "text": "But Hubble's chart is"
+   "e": 4847,
+   "text": "But Hubble's chart"
   },
   {
    "w": [
+    430,
     431,
     432,
     433
    ],
-   "s": 4854,
+   "s": 4847,
    "ch": 4,
    "e": 4893,
-   "text": "what convinced astronomers."
+   "text": "is what convinced astronomers."
   },
   {
    "w": [
@@ -5919,37 +6103,45 @@
    "w": [
     438,
     439,
-    440,
-    441
+    440
    ],
    "s": 4969,
    "ch": 4,
-   "e": 5019,
-   "text": "Far galaxies aren't really"
+   "e": 4996,
+   "text": "Far galaxies aren't"
   },
   {
    "w": [
+    441,
     442,
-    443,
-    444,
-    445
+    443
    ],
-   "s": 5019,
+   "s": 4996,
    "ch": 4,
-   "e": 5052,
-   "text": "speeding through space like"
+   "e": 5031,
+   "text": "really speeding through"
   },
   {
    "w": [
-    446,
+    444,
+    445,
+    446
+   ],
+   "s": 5031,
+   "ch": 4,
+   "e": 5061,
+   "text": "space like sirens"
+  },
+  {
+   "w": [
     447,
     448,
     449
    ],
-   "s": 5052,
+   "s": 5061,
    "ch": 4,
    "e": 5112,
-   "text": "sirens down a street."
+   "text": "down a street."
   },
   {
    "w": [
@@ -5967,46 +6159,54 @@
    "w": [
     454,
     455,
-    456,
-    457
+    456
    ],
    "s": 5172,
    "ch": 4,
-   "e": 5214,
-   "text": "like rising dough pulling"
+   "e": 5204,
+   "text": "like rising dough"
   },
   {
    "w": [
+    457,
     458,
     459
    ],
-   "s": 5214,
+   "s": 5204,
    "ch": 4,
    "e": 5247,
-   "text": "raisins apart."
+   "text": "pulling raisins apart."
   },
   {
    "w": [
     460,
     461,
-    462,
-    463
+    462
    ],
    "s": 5247,
    "ch": 4,
-   "e": 5295,
-   "text": "Their light stretches with"
+   "e": 5284,
+   "text": "Their light stretches"
   },
   {
    "w": [
-    464,
+    463,
+    464
+   ],
+   "s": 5284,
+   "ch": 4,
+   "e": 5310,
+   "text": "with it,"
+  },
+  {
+   "w": [
     465,
     466
    ],
-   "s": 5295,
+   "s": 5310,
    "ch": 4,
    "e": 5340,
-   "text": "it, toward red."
+   "text": "toward red."
   },
   {
    "w": [
@@ -6023,26 +6223,34 @@
   {
    "w": [
     471,
-    472,
-    473,
-    474
+    472
    ],
    "s": 5363,
    "ch": 5,
-   "e": 5399,
-   "text": "a siren drops its"
+   "e": 5379,
+   "text": "a siren"
   },
   {
    "w": [
-    475,
+    473,
+    474,
+    475
+   ],
+   "s": 5379,
+   "ch": 5,
+   "e": 5404,
+   "text": "drops its note"
+  },
+  {
+   "w": [
     476,
     477,
     478
    ],
-   "s": 5399,
+   "s": 5404,
    "ch": 5,
    "e": 5442,
-   "text": "note as it passes,"
+   "text": "as it passes,"
   },
   {
    "w": [
@@ -6056,26 +6264,34 @@
   {
    "w": [
     480,
-    481,
-    482,
-    483
+    481
    ],
    "s": 5461,
    "ch": 5,
-   "e": 5499,
-   "text": "You're hearing the same"
+   "e": 5476,
+   "text": "You're hearing"
   },
   {
    "w": [
-    484,
+    482,
+    483,
+    484
+   ],
+   "s": 5476,
+   "ch": 5,
+   "e": 5505,
+   "text": "the same clue"
+  },
+  {
+   "w": [
     485,
     486,
     487
    ],
-   "s": 5499,
+   "s": 5505,
    "ch": 5,
    "e": 5527,
-   "text": "clue that told us"
+   "text": "that told us"
   },
   {
    "w": [
