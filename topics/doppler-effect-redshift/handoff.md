@@ -11,7 +11,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - [x] T6 06-metadata.md (YouTube)
 - [x] T7 07-visual-treatment.md
 - [x] T8 08-sound-design.md
-- [ ] T9 09-resources-checklist.md
+- [x] T9 09-resources-checklist.md
 - [ ] T10 10-self-check.md
 
 ## Parsed inputs
@@ -57,4 +57,4 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Unverified items in script: none.
 
 ## Next action
-Do T9: write 09-resources-checklist.md (contents of reference.zip).
+Do T10: score the package in 10-self-check.md, fix anything under 8, check consistency across files.
