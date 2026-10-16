@@ -7,7 +7,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - [x] T2 02-script-draft.md
 - [x] T3 03-script.md (two critique passes)
 - [x] T4 04-fact-check.md
-- [ ] T5 05-voiceover-v4.md
+- [x] T5 05-voiceover-v4.md
 - [ ] T6 06-metadata.md (YouTube)
 - [ ] T7 07-visual-treatment.md
 - [ ] T8 08-sound-design.md
@@ -24,7 +24,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Structure: "90 s to 5 min" type: cold open (first 10 s), 4 chapters each ending on an open loop, midpoint twist, payoff, closing line.
 - Target words: about 450 spoken words at 2.5 wps (acceptable band 383-518 words = 153-207 s).
 - Chapters: 4 (1 The Siren, 2 Ripples, 3 Light Does It Too, 4 The Running Universe) plus cold open and closing.
-- Voiceover parts: free plan, PART SIZE 2,300 characters incl. tags; about 450 words is roughly 2,700-3,000 characters, so expect 2 parts, split at a chapter boundary.
+- Voiceover parts: free plan, PART SIZE 2,300 characters incl. tags; final: 2 parts (1,383 + 1,817 chars incl. tags), split at the Ch2/Ch3 boundary.
 - Aspect ratio: 16:9 (1920x1080), wide establishing shots and side-by-side comparisons.
 
 ## Decisions
@@ -34,6 +34,8 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Human stake: Christian Doppler (frail teacher, nearly emigrated, first example wrong) because it is sourced and gives the idea a person.
 - Hook: cold-open/withheld-reveal option chosen (scored 9/10) because it states cosmic stakes inside 10 s.
 - Length 492 words (about 197 s, +9%): kept because the Slipher and Lemaître credit lines are needed for honesty.
+- Voiceover split at Ch2/Ch3: the midpoint twist ends Part 1 on an open loop and keeps both parts under 2,300 characters.
+- IPA inlined only for Slipher and Lemaître (likely mispronounced); Doppler/Andromeda left plain (common words).
 - Voiceover split into parts for the free plan 2,500-char limit (2,300 safe part size).
 
 ## Script revision log
@@ -48,4 +50,4 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Unverified items in script: none.
 
 ## Next action
-Do T5: build 05-voiceover-v4.md (free plan, 2,300-char parts) from the final 03-script.md.
+Do T6: write 06-metadata.md for YouTube (titles, thumbnails, description, tags, pinned comment, end screen).
