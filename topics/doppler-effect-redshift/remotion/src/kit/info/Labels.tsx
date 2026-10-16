@@ -48,7 +48,7 @@ export const Timeline: React.FC<{ f: number; fps: number; at: number; out: numbe
   const e = prog(f, out - 10, out, ease.in);
   const o = Math.min(p, 1 - e);
   if (o <= 0.001) return null;
-  const pos = (k: number) => ((k - 1838) / (1933 - 1838)) * w;
+  const pos = (k: number) => (TIMELINE.findIndex((m) => m.k === k) + 0.5) * (w / TIMELINE.length); // evenly spaced: readable labels
   return (
     <div style={{ position: "absolute", left: x, top: y, width: w, height: 90, opacity: o, transform: `translateY(${(1 - p) * -30 - e * 20}px)` }}>
       <svg width={w} height={90} style={{ overflow: "visible" }}>

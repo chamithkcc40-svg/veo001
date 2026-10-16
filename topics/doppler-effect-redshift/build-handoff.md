@@ -8,7 +8,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T3 Style bible (STYLE_BIBLE.md)
 - [x] T4 Voiceover timing
 - [x] T5 Timed storyboard (STORYBOARD.md, data/video.json: 45 scenes, 6 chapters, 160+ caption pages, 60 sfx cues)
-- [ ] T6 Design system and kit
+- [x] T6 Design system and kit (src/theme.ts, src/kit/*: 1 jointed rig + 12 chars + Skipper, 12 expressions, walk/gesture/sway/scribble cycles, 10 environments, Rings/PitchLine/Galaxy/Barcode/Timeline/NameTag, fx, Captions; sheets in remotion/review/)
 - [ ] T7 Audio build
 - [ ] T8.0 Cold open (Ch0-ColdOpen, f0-339, 4 scenes)
 - [ ] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes)
@@ -33,6 +33,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 ## Environment and tool versions
 - Sandbox: 2 vCPU, ~1 GB RAM (low memory: stills with concurrency 1, no full render).
 - Node v22.23.2, npm 10.9.8, ffmpeg/ffprobe 7.1.5, Python 3 + numpy 2.3.5, scipy 1.17.1, scikit-learn 1.6.1, opencv 4.11, Pillow 12.3.
+- Fonts: Nunito + Fredoka variable latin woff2 downloaded into remotion/public/fonts (both exist in @remotion/google-fonts 4.0.535; loaded via FontFace + staticFile for offline renders).
 - Remotion 4.0.535 pinned exactly for remotion, @remotion/cli, @remotion/bundler, @remotion/renderer, @remotion/google-fonts. React 18.3.1, TypeScript 5.6.3.
 - Browser: `npx remotion browser ensure` downloaded chrome-headless-shell into node_modules/.remotion (works).
 - Skill: remotion-motion-graphics (SKILL.md, motion-patterns.md, design-rules.md, theme.ts) read from /mnt/skills.
@@ -44,6 +45,11 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Our targets: motion share >= 81 % (aim 90 %), static <= 1.33 s, about 41+ shots, captions Nunito 800 46 px at ~84 % height.
 
 ## Decisions
+- One shared Rig component (src/kit/rig/Rig.tsx) drives every human character; costumes/builds are data in characters.ts: guarantees consistency, no per-scene redraws.
+- Cel shading via hard-stop gradients (rim/base/shadow) instead of outlines: matches the reference's no-outline flat look.
+- Rings engine throws if source speed >= ring speed: enforces the 07 no-shock-cone guardrail at render time.
+- Timeline markers evenly spaced rather than to-scale: to-scale 1923/1927/1929 labels overlapped and were unreadable.
+- Stills script (scripts/stills.mjs) bundles once and renders with the local chrome-headless-shell at concurrency 1: low-memory sandbox.
 - 45 scenes (about 14 cuts/min over 193 s) to match the reference's 13.4 cuts/min.
 - Caption pages split by a small phrase-aware DP (2-4 words, never ending on 'the/a/of...'), never across sentences: reads like the reference's 1-4 word captions.
 - Tail of 6.8 s after the last word: end-screen hold that 06-metadata/07 ask for (not padding: the crane-up continues).
@@ -64,4 +70,4 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 ## Unverified
 
 ## Next action
-Run T1: install Remotion project and verify the browser.
+T7: write scripts/synth_audio.py (seeded numpy ambience/foley/score) + scripts/mix_audio.py, build public/audio/mix.wav at -14 LUFS.
