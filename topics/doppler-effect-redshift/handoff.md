@@ -12,7 +12,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - [x] T7 07-visual-treatment.md
 - [x] T8 08-sound-design.md
 - [x] T9 09-resources-checklist.md
-- [ ] T10 10-self-check.md
+- [x] T10 10-self-check.md
 
 ## Parsed inputs
 - DURATION: 3 min | SIZE: 16:9 | PLATFORM: YouTube | LANGUAGE: English | ELEVENLABS PLAN: free
@@ -49,6 +49,8 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Pass 1 (story): hook made honest ("holds the clue"); open loops at each chapter end; midpoint twist at the Ch2/Ch3 hinge (paper named for starlight; Doppler's star-colour example wrong but prediction right); "every galaxy running" replaced by the law; Slipher and Lemaître credited; final twist (space stretching) tied back to the siren image.
 - Pass 2 (language): 510 -> 492 words (about 197 s, +9%); short sentences; repetition cut; every beat given a picture; "too small to see" -> "to notice"; "all the way to red" -> "toward red".
 
+- Self-check: metadata scored 7 (pinned comment wording) -> fixed -> 8; all final scores 8 or higher.
+
 ## Fact corrections and items left unverified
 - IDEA claim "Hubble used the Doppler effect to discover the universe is expanding": sources conflict on credit (NASA/ESA/PNAS credit Hubble 1929; IAU 2018 and Science note Lemaître 1927 first; Hubble's velocities mostly Slipher's). Left unchanged; context added. Links: https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-cosmological-redshift/ , https://www.esa.int/Science_Exploration/Space_Science/What_is_red_shift , https://www.pnas.org/doi/10.1073/pnas.1424299112 , https://iauarchive.eso.org/news/pressreleases/detail/iau1812/ , https://www.science.org/content/article/move-over-hubble-discovery-expanding-cosmos-assigned-little-known-belgian-astronomer
 
@@ -57,4 +59,4 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Unverified items in script: none.
 
 ## Next action
-Do T10: score the package in 10-self-check.md, fix anything under 8, check consistency across files.
+All tasks done: generate the two voiceover parts in ElevenLabs, build reference.zip per 09-resources-checklist.md, switch skills, and run Prompt B.

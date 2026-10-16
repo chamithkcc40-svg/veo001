@@ -51,7 +51,7 @@ doppler effect, doppler effect explained, redshift, redshift explained, expandin
 #dopplereffect #redshift #expandinguniverse
 
 ## Pinned comment
-Fun fact that didn't fit: light is about a million times faster than sound (ESA), which is why you never hear or see a car "redshift." What everyday sound should we explain next? 🚑
+Fun fact that didn't fit: light is about a million times faster than sound (ESA), which is why a passing car never visibly changes colour. What everyday sound should we explain next? 🚑
 
 ## End-screen idea (last 10-15 s, laid over the close)
 The final shot pulls back from the street to the galaxy field. Put two end-screen cards in the dark sky on the left and right, sized like two planets: (1) "Best for viewer" video, (2) a Subscribe button drawn as a small pulsing ring-wave. The close line "...the universe is growing" plays over it. Leave the lower-center area clear for the narration caption.
