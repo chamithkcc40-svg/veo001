@@ -4,7 +4,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 ## Task list
 - [x] T0 Intake (folder, handoff.md, derived plan)
 - [x] T1 01-research-brief.md
-- [ ] T2 02-script-draft.md
+- [x] T2 02-script-draft.md
 - [ ] T3 03-script.md (two critique passes)
 - [ ] T4 04-fact-check.md
 - [ ] T5 05-voiceover-v4.md
@@ -32,10 +32,11 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - 4 chapters: 3 min fits 4 short chapters of about 35-45 s each plus open/close.
 - Twist chosen: expansion redshift is strictly space stretching, not galaxies racing (ESA); it is sourced, surprising, and pays off honestly.
 - Human stake: Christian Doppler (frail teacher, nearly emigrated, first example wrong) because it is sourced and gives the idea a person.
+- Hook: cold-open/withheld-reveal option chosen (scored 9/10) because it states cosmic stakes inside 10 s.
 - Voiceover split into parts for the free plan 2,500-char limit (2,300 safe part size).
 
 ## Fact corrections and items left unverified
 - IDEA claim "Hubble used the Doppler effect to discover the universe is expanding": sources conflict on credit (NASA/ESA/PNAS credit Hubble 1929; IAU 2018 and Science note Lemaître 1927 first; Hubble's velocities mostly Slipher's). Left unchanged; context added. Links: https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-cosmological-redshift/ , https://www.esa.int/Science_Exploration/Space_Science/What_is_red_shift , https://www.pnas.org/doi/10.1073/pnas.1424299112 , https://iauarchive.eso.org/news/pressreleases/detail/iau1812/ , https://www.science.org/content/article/move-over-hubble-discovery-expanding-cosmos-assigned-little-known-belgian-astronomer
 
 ## Next action
-Do T2: write 02-script-draft.md (about 450 words, cold open + 4 chapters) from 01-research-brief.md.
+Do T3: critique 02-script-draft.md in two passes (story, then language/length) and write the clean 03-script.md.
