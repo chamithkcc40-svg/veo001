@@ -4,7 +4,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 ## Task list
 - [x] T0 Resources to GitHub + inventory
 - [x] T1 Environment and skills
-- [ ] T2 Intake and production plan (PRODUCTION_PLAN.md)
+- [x] T2 Intake and production plan (PRODUCTION_PLAN.md)
 - [ ] T3 Style bible (STYLE_BIBLE.md)
 - [ ] T4 Voiceover timing
 - [ ] T5 Timed storyboard (STORYBOARD.md, data/video.json)
@@ -34,6 +34,8 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 ## Style bible summary (measured numbers)
 
 ## Decisions
+- Six chapter compositions (cold open and close get their own) plus Full: keeps each per-chapter render short and the join points at natural pauses.
+- Chapters drawn on the global frame timeline: per-chapter renders concatenate exactly into Full.
 - Topic folder is topics/doppler-effect-redshift (the prompt said topics/doppler-effect; only the -redshift folder exists and holds the Phase 1 files).
 - Resources unzipped to resources/ even though the zip was named resources.zip (prompt mentions reference.zip): same content intent.
 
