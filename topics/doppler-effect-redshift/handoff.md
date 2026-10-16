@@ -9,7 +9,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - [x] T4 04-fact-check.md
 - [x] T5 05-voiceover-v4.md
 - [x] T6 06-metadata.md (YouTube)
-- [ ] T7 07-visual-treatment.md
+- [x] T7 07-visual-treatment.md
 - [ ] T8 08-sound-design.md
 - [ ] T9 09-resources-checklist.md
 - [ ] T10 10-self-check.md
@@ -38,6 +38,9 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - IPA inlined only for Slipher and Lemaître (likely mispronounced); Doppler/Andromeda left plain (common words).
 - Best title is the search-first one ("Doppler Effect Explained: From a Passing Siren to the Expanding Universe"): it is honest and fully paid off; no title claims Hubble alone proved it.
 - No chapter timestamps in the description: video is under 5 minutes (rule applies over 5 minutes).
+- Glowing blue-to-red galaxy is drawn with a "colours exaggerated" tag: real galaxies don't visibly change colour, and an honest diagram matters.
+- Historical figures drawn as respectful period-costume figures who never speak; only the narrator talks (no invented quotes).
+- Hubble diagram marked "schematic": no digitized data points were sourced; only the 24-galaxy count and Virgo ~1,000 km/s come from PNAS.
 - Voiceover split into parts for the free plan 2,500-char limit (2,300 safe part size).
 
 ## Script revision log
@@ -52,4 +55,4 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Unverified items in script: none.
 
 ## Next action
-Do T7: write 07-visual-treatment.md (art direction, original characters, scene list per beat, pond-ripple waves and blue-to-red glowing galaxy).
+Do T8: write 08-sound-design.md (music brief per chapter, ambience, SFX by moment, silences, mix targets, file list).
