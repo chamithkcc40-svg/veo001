@@ -5,7 +5,7 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - [x] T0 Intake (folder, handoff.md, derived plan)
 - [x] T1 01-research-brief.md
 - [x] T2 02-script-draft.md
-- [ ] T3 03-script.md (two critique passes)
+- [x] T3 03-script.md (two critique passes)
 - [ ] T4 04-fact-check.md
 - [ ] T5 05-voiceover-v4.md
 - [ ] T6 06-metadata.md (YouTube)
@@ -33,10 +33,15 @@ Topic: The Doppler Effect, from a passing siren to the expanding universe / slug
 - Twist chosen: expansion redshift is strictly space stretching, not galaxies racing (ESA); it is sourced, surprising, and pays off honestly.
 - Human stake: Christian Doppler (frail teacher, nearly emigrated, first example wrong) because it is sourced and gives the idea a person.
 - Hook: cold-open/withheld-reveal option chosen (scored 9/10) because it states cosmic stakes inside 10 s.
+- Length 492 words (about 197 s, +9%): kept because the Slipher and Lemaître credit lines are needed for honesty.
 - Voiceover split into parts for the free plan 2,500-char limit (2,300 safe part size).
+
+## Script revision log
+- Pass 1 (story): hook made honest ("holds the clue"); open loops at each chapter end; midpoint twist at the Ch2/Ch3 hinge (paper named for starlight; Doppler's star-colour example wrong but prediction right); "every galaxy running" replaced by the law; Slipher and Lemaître credited; final twist (space stretching) tied back to the siren image.
+- Pass 2 (language): 510 -> 492 words (about 197 s, +9%); short sentences; repetition cut; every beat given a picture; "too small to see" -> "to notice"; "all the way to red" -> "toward red".
 
 ## Fact corrections and items left unverified
 - IDEA claim "Hubble used the Doppler effect to discover the universe is expanding": sources conflict on credit (NASA/ESA/PNAS credit Hubble 1929; IAU 2018 and Science note Lemaître 1927 first; Hubble's velocities mostly Slipher's). Left unchanged; context added. Links: https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-cosmological-redshift/ , https://www.esa.int/Science_Exploration/Space_Science/What_is_red_shift , https://www.pnas.org/doi/10.1073/pnas.1424299112 , https://iauarchive.eso.org/news/pressreleases/detail/iau1812/ , https://www.science.org/content/article/move-over-hubble-discovery-expanding-cosmos-assigned-little-known-belgian-astronomer
 
 ## Next action
-Do T3: critique 02-script-draft.md in two passes (story, then language/length) and write the clean 03-script.md.
+Do T4: fact-check every claim in 03-script.md into 04-fact-check.md and apply the fact policy.
