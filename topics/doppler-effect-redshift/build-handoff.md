@@ -5,7 +5,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T0 Resources to GitHub + inventory
 - [x] T1 Environment and skills
 - [x] T2 Intake and production plan (PRODUCTION_PLAN.md)
-- [ ] T3 Style bible (STYLE_BIBLE.md)
+- [x] T3 Style bible (STYLE_BIBLE.md)
 - [ ] T4 Voiceover timing
 - [ ] T5 Timed storyboard (STORYBOARD.md, data/video.json)
 - [ ] T6 Design system and kit
@@ -32,8 +32,13 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Transcription: platform audio_transcribe tool (whisper-1, word timestamps) instead of a local model (memory rule).
 
 ## Style bible summary (measured numbers)
+- Reference (1 clip, 71.9 s, 9:16): 13.4 cuts/min (16 cuts), shot mean 4.2 s / median 3.0 s / max 9.9 s; motion share 90.3 % of 0.27 s windows (threshold 1.5 luma); longest static 1.33 s; captions ~2.6 % of frame height at 77.5 % height, 1-4 words; -12.0 LUFS.
+- Look: flat vector, NO outlines, two-tone cel + rim light + soft glows, saturated violet/magenta/teal/yellow palette, grain + vignette.
+- Our targets: motion share >= 81 % (aim 90 %), static <= 1.33 s, about 41+ shots, captions Nunito 800 46 px at ~84 % height.
 
 ## Decisions
+- Dropped the 07 proposal's 4 px ink outline: the reference has no outlines and the reference overrides art direction (07 says so).
+- Only one reference clip was supplied (not the three 09 asked for); the style bible uses it for every scene type and keeps 07's colour roles for waves/space.
 - Six chapter compositions (cold open and close get their own) plus Full: keeps each per-chapter render short and the join points at natural pauses.
 - Chapters drawn on the global frame timeline: per-chapter renders concatenate exactly into Full.
 - Topic folder is topics/doppler-effect-redshift (the prompt said topics/doppler-effect; only the -redshift folder exists and holds the Phase 1 files).
