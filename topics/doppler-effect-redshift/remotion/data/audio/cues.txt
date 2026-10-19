@@ -1,0 +1,155 @@
+# frame  time_s   gain_dB  key                 source
+# (frame = 30 fps global timeline; sync points: {"sirenPass": 140, "sirenStart": 38, "hornsPass": 2133, "hornsStart": 2097, "closePass": 5412, "splitStart": 514, "splitPass": 579, "steadyStart": 396, "steadyEnd": 726, "rumbleStart": 3831, "closeStart": 5340, "pondTapStart": 1000, "pondTapPeriod": 15, "pondTapEnd": 1336, "earFastStart": 1403, "earFastPeriod": 6, "earFastEnd": 1510, "earSlowStart": 1520, "earSlowPeriod": 15, "earSlowEnd": 1592, "chuffStart": 1979, "chuffPeriod": 10, "chuffEnd": 2171})
+    15    0.500   -16.0   bloom               synth
+    37    1.233   -19.0   bloom               synth
+    38    1.267    -9.0   siren_pass          synth doppler v=34 m/s d=7 m, pass @140
+   117    3.900   -18.0   whoosh_fast         lib:Whooshes_/Cinematic Fast Normal Whoosh.wav
+   192    6.400   -15.0   whoosh_up           lib:Whooshes_/High And Fast Whoosh.wav
+   272    9.067   -17.0   shimmer             synth
+   345   11.500   -17.0   sign_creak          synth
+   396   13.200   -22.0   siren_steady        synth steady muffled
+   514   17.133   -15.0   siren_pass_split    synth doppler (right half) pass @579
+   630   21.000   -13.0   pop                 lib:Pop/Smooth Pop.wav
+   658   21.933   -13.0   pop2                lib:Pop/Meadia Pop.wav
+   692   23.067   -15.0   ding                synth
+   732   24.400   -17.0   question            synth
+   773   25.767   -13.0   bonk                synth
+   800   26.667   -20.0   whoosh_low          lib:Whooshes_/Cinematic Low Whoosh.wav
+   873   29.100   -15.0   water_bloop         synth
+   982   32.733   -19.0   skitter             synth
+  1000   33.333   -21.0   plip                synth
+  1015   33.833   -21.0   plip                synth
+  1030   34.333   -21.0   plip                synth
+  1045   34.833   -21.0   plip                synth
+  1060   35.333   -21.0   plip                synth
+  1075   35.833   -21.0   plip                synth
+  1090   36.333   -21.0   plip                synth
+  1105   36.833   -21.0   plip                synth
+  1120   37.333   -21.0   plip                synth
+  1128   37.600   -19.0   skitter             synth
+  1135   37.833   -24.0   plip                synth
+  1150   38.333   -24.0   plip                synth
+  1165   38.833   -24.0   plip                synth
+  1180   39.333   -24.0   plip                synth
+  1195   39.833   -24.0   plip                synth
+  1210   40.333   -24.0   plip                synth
+  1225   40.833   -24.0   plip                synth
+  1230   41.000   -16.0   tick                lib:Clicks/High Click.wav (nudged -2 f off key word @1234)
+  1240   41.333   -24.0   plip                synth
+  1255   41.833   -24.0   plip                synth
+  1270   42.333   -24.0   plip                synth
+  1285   42.833   -24.0   plip                synth
+  1297   43.233   -16.0   tick                lib:Clicks/High Click.wav (nudged -2 f off key word @1301)
+  1297   43.233   -24.0   plip                synth (nudged -3 f off key word @1301)
+  1315   43.833   -24.0   plip                synth
+  1330   44.333   -24.0   plip                synth
+  1338   44.600   -18.0   whoosh_fast         lib:Whooshes_/Cinematic Fast Normal Whoosh.wav
+  1403   46.767   -23.0   earclick            synth
+  1409   46.967   -23.0   earclick            synth
+  1415   47.167   -23.0   earclick            synth
+  1421   47.367   -23.0   earclick            synth
+  1427   47.567   -23.0   earclick            synth
+  1433   47.767   -23.0   earclick            synth
+  1439   47.967   -23.0   earclick            synth
+  1445   48.167   -23.0   earclick            synth
+  1451   48.367   -23.0   earclick            synth
+  1457   48.567   -23.0   earclick            synth
+  1463   48.767   -23.0   earclick            synth
+  1469   48.967   -23.0   earclick            synth
+  1475   49.167   -23.0   earclick            synth
+  1481   49.367   -23.0   earclick            synth
+  1487   49.567   -23.0   earclick            synth
+  1493   49.767   -23.0   earclick            synth
+  1499   49.967   -23.0   earclick            synth
+  1505   50.167   -23.0   earclick            synth
+  1520   50.667   -22.0   earclick_low        synth
+  1535   51.167   -22.0   earclick_low        synth
+  1550   51.667   -22.0   earclick_low        synth
+  1565   52.167   -22.0   earclick_low        synth
+  1580   52.667   -22.0   earclick_low        synth
+  1600   53.333   -15.0   needle              synth
+  1707   56.900   -16.0   match               synth
+  1758   58.600   -20.0   cough               synth
+  1912   63.733   -15.0   latch               synth
+  1947   64.900   -15.0   thud                synth
+  1969   65.633   -16.0   whoosh_mid          lib:Whooshes_/Cinematic Mediam Whoosh.wav
+  1979   65.967   -25.0   chuff               synth
+  1983   66.100   -20.0   whistle             synth
+  1989   66.300   -25.0   chuff               synth
+  1999   66.633   -25.0   chuff               synth
+  2009   66.967   -25.0   chuff               synth
+  2019   67.300   -25.0   chuff               synth
+  2029   67.633   -25.0   chuff               synth
+  2039   67.967   -25.0   chuff               synth
+  2049   68.300   -25.0   chuff               synth
+  2059   68.633   -25.0   chuff               synth
+  2069   68.967   -25.0   chuff               synth
+  2079   69.300   -25.0   chuff               synth
+  2089   69.633   -25.0   chuff               synth
+  2097   69.900   -15.0   horns_pass          synth 3 horns G4 doppler v=22 pass @2133
+  2099   69.967   -25.0   chuff               synth
+  2109   70.300   -25.0   chuff               synth
+  2119   70.633   -25.0   chuff               synth
+  2129   70.967   -25.0   chuff               synth
+  2139   71.300   -25.0   chuff               synth
+  2149   71.633   -25.0   chuff               synth
+  2159   71.967   -25.0   chuff               synth
+  2169   72.300   -25.0   chuff               synth
+  2174   72.467   -12.0   twist               synth
+  2301   76.700   -18.0   shimmer             synth
+  2388   79.600   -16.0   glass_shimmer       synth
+  2393   79.767   -15.0   neon                synth
+  2680   89.333   -16.0   sweep               synth
+  2750   91.667   -16.0   pop                 lib:Pop/Smooth Pop.wav
+  2886   96.200   -18.0   squeak              synth
+  2961   98.700   -19.0   whoosh_soft         lib:Whooshes_/Simple Whoosh 2.wav
+  3083  102.767   -12.0   stamp               synth
+  3231  107.700   -16.0   slide               synth
+  3469  115.633   -15.0   clink               synth
+  3533  117.767   -15.0   whoosh_rise         lib:Risers/Smooth Riser.wav
+  3674  122.467   -18.0   whoosh_out          synth
+  3831  127.700   -13.0   rumble              synth
+  3909  130.300   -17.0   blip                synth
+  3927  130.900   -17.0   blip                synth
+  3945  131.500   -17.0   blip                synth
+  4120  137.333   -17.0   zip                 synth
+  4135  137.833   -17.0   zip                 synth
+  4150  138.333   -17.0   zip                 synth
+  4234  141.133   -15.0   card_slide          lib:Whooshes_/Smooth And Fast Whoosh.wav
+  4288  142.933   -20.0   chalk_tap_00        synth chalk tap
+  4292  143.067   -20.0   chalk_tap_01        synth chalk tap
+  4296  143.200   -20.0   chalk_tap_02        synth chalk tap
+  4301  143.367   -20.0   chalk_tap_03        synth chalk tap
+  4305  143.500   -20.0   chalk_tap_04        synth chalk tap
+  4309  143.633   -20.0   chalk_tap_05        synth chalk tap
+  4313  143.767   -20.0   chalk_tap_06        synth chalk tap
+  4318  143.933   -20.0   chalk_tap_07        synth chalk tap
+  4322  144.067   -20.0   chalk_tap_08        synth chalk tap
+  4326  144.200   -20.0   chalk_tap_09        synth chalk tap
+  4330  144.333   -20.0   chalk_tap_10        synth chalk tap
+  4334  144.467   -20.0   chalk_tap_11        synth chalk tap
+  4339  144.633   -20.0   chalk_tap_12        synth chalk tap
+  4343  144.767   -20.0   chalk_tap_13        synth chalk tap
+  4347  144.900   -20.0   chalk_tap_14        synth chalk tap
+  4351  145.033   -20.0   chalk_tap_15        synth chalk tap
+  4355  145.167   -20.0   chalk_tap_16        synth chalk tap
+  4360  145.333   -20.0   chalk_tap_17        synth chalk tap
+  4364  145.467   -20.0   chalk_tap_18        synth chalk tap
+  4368  145.600   -20.0   chalk_tap_19        synth chalk tap
+  4372  145.733   -20.0   chalk_tap_20        synth chalk tap
+  4377  145.900   -20.0   chalk_tap_21        synth chalk tap
+  4381  146.033   -20.0   chalk_tap_22        synth chalk tap
+  4385  146.167   -20.0   chalk_tap_23        synth chalk tap
+  4395  146.500   -17.0   chalk_line          synth
+  4552  151.733   -16.0   stretch             lib:Ui Sound Effects_/Ui stretch.wav
+  4615  153.833   -10.0   deep_whoosh         lib:Whooshes_/Whoosh Deep Short.wav
+  4691  156.367   -18.0   whoosh_soft         lib:Whooshes_/Simple Whoosh 2.wav
+  4824  160.800   -18.0   pop                 lib:Pop/Smooth Pop.wav
+  4890  163.000   -12.0   twist               synth
+  4979  165.967   -18.0   siren_blip          synth
+  5046  168.200   -15.0   nope                synth
+  5112  170.400   -17.0   dough               synth
+  5247  174.900   -16.0   glide               synth
+  5340  178.000   -14.0   siren_pass_soft     synth doppler soft pass @5412
+  5471  182.367   -17.0   sparkle             synth
+  5591  186.367   -18.0   sparkle             synth

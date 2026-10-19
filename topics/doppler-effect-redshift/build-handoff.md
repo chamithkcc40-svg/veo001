@@ -9,7 +9,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T4 Voiceover timing
 - [x] T5 Timed storyboard (STORYBOARD.md, data/video.json: 45 scenes, 6 chapters, 160+ caption pages, 60 sfx cues)
 - [x] T6 Design system and kit (src/theme.ts, src/kit/*: 1 jointed rig + 12 chars + Skipper, 12 expressions, walk/gesture/sway/scribble cycles, 10 environments, Rings/PitchLine/Galaxy/Barcode/Timeline/NameTag, fx, Captions; sheets in remotion/review/)
-- [ ] T7 Audio build
+- [x] T7 Audio build (public/audio/mix.wav 48 kHz 16-bit, -14.0 LUFS / -1.3 dBTP; 153 sfx cues in remotion/data/audio/cues.txt; deterministic rebuild via scripts/audio/run_audio.sh)
 - [ ] T8.0 Cold open (Ch0-ColdOpen, f0-339, 4 scenes)
 - [ ] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes)
 - [ ] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes)
@@ -31,6 +31,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - notes.txt: not supplied (so loudness target comes from 08-sound-design.md: -14 LUFS, TP <= -1 dBTP).
 
 ## Environment and tool versions
+- Audio: python soundfile 0.13.1; stems in remotion/audio_build/ (git-ignored), reports copied to remotion/data/audio/.
 - Sandbox: 2 vCPU, ~1 GB RAM (low memory: stills with concurrency 1, no full render).
 - Node v22.23.2, npm 10.9.8, ffmpeg/ffprobe 7.1.5, Python 3 + numpy 2.3.5, scipy 1.17.1, scikit-learn 1.6.1, opencv 4.11, Pillow 12.3.
 - Fonts: Nunito + Fredoka variable latin woff2 downloaded into remotion/public/fonts (both exist in @remotion/google-fonts 4.0.535; loaded via FontFace + staticFile for offline renders).
@@ -45,6 +46,10 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Our targets: motion share >= 81 % (aim 90 %), static <= 1.33 s, about 41+ shots, captions Nunito 800 46 px at ~84 % height.
 
 ## Decisions
+- T7 voice anchor -18 LUFS pre-master, music -14 dB under voice + 8 dB sidechain duck (50/400 ms), ambience 28-36 dB under voice, one -14 LUFS normalisation + 4x true-peak limiter at -1.2 dBFS: 08 targets, one deterministic mix.
+- T7 siren, horn and close pass-bys are rendered by a physical moving-source model (retarded time, 1/r, air absorption, pan) instead of a pitch-bend: the drop lands exactly on the visual pass frame (verified 0.6/0.7/1.1/2.0 frames).
+- T7 only 17 of 82 supplied SFX are used (whooshes, pops, clicks, riser, stretch); siren, water, chalk, steam, horns, foley, ambience and score are synthesized (seeded numpy/scipy): the library has no matching sounds.
+- T7 audio QC by measurement (click detector, voice-to-bed ratio per sentence, per-chapter LUFS, pitch-pass frames) because the media-analysis tool could not listen to audio.
 - One shared Rig component (src/kit/rig/Rig.tsx) drives every human character; costumes/builds are data in characters.ts: guarantees consistency, no per-scene redraws.
 - Cel shading via hard-stop gradients (rim/base/shadow) instead of outlines: matches the reference's no-outline flat look.
 - Rings engine throws if source speed >= ring speed: enforces the 07 no-shock-cone guardrail at render time.
@@ -68,6 +73,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - none
 
 ## Unverified
+- T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T7: write scripts/synth_audio.py (seeded numpy ambience/foley/score) + scripts/mix_audio.py, build public/audio/mix.wav at -14 LUFS.
+T8.0: build src/chapters/Ch0ColdOpen.tsx (scenes s0_*) on the global timeline with <Audio src=staticFile("audio/mix.wav")> wired in a shared ChapterShell, register Ch0-ColdOpen in Root.tsx, then stills review.

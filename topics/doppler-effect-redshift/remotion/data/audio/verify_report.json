@@ -1,0 +1,69 @@
+{
+ "voice_onset_s": 0.62,
+ "first_word_s": 15,
+ "siren": {
+  "visual_pass_frame": 140,
+  "audio_pitch_midpoint_frame": 140.6,
+  "err_frames": 0.6,
+  "approach": 1.1099,
+  "recede": 0.91
+ },
+ "split": {
+  "visual_pass_frame": 579,
+  "audio_pitch_midpoint_frame": 579.7,
+  "err_frames": 0.7,
+  "approach": 1.0952,
+  "recede": 0.92
+ },
+ "horns": {
+  "visual_pass_frame": 2133,
+  "audio_pitch_midpoint_frame": 2135.0,
+  "err_frames": 2.0,
+  "approach": 416.9,
+  "recede": 368.8
+ },
+ "close": {
+  "visual_pass_frame": 5412,
+  "audio_pitch_midpoint_frame": 5413.1,
+  "err_frames": 1.1,
+  "approach": 1.0947,
+  "recede": 0.9203
+ },
+ "chapters": {
+  "Ch0-ColdOpen": -13.6,
+  "Ch1-Siren": -14.0,
+  "Ch2-Ripples": -14.0,
+  "Ch3-Light": -14.1,
+  "Ch4-Universe": -13.9,
+  "Ch5-Close": -14.4
+ },
+ "mix_peak_dbfs": -1.2999999523162842,
+ "mix_seconds": 193.0,
+ "video_seconds": 193.0,
+ "sfx_peak_over_voice_rms_max": 7.100000381469727,
+ "sfx_cues": 153,
+ "click_candidates": [],
+ "voice_to_bed_db_worst5": [
+  [
+   7.599999904632568,
+   109
+  ],
+  [
+   7.900000095367432,
+   3837
+  ],
+  [
+   8.399999618530273,
+   5247
+  ],
+  [
+   10.199999809265137,
+   2680
+  ],
+  [
+   10.800000190734863,
+   2177
+  ]
+ ],
+ "voice_to_bed_db_median": 18.100000381469727
+}
