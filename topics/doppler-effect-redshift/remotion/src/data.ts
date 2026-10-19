@@ -10,6 +10,7 @@ export const V = video as unknown as {
   voice: { file: string };
   chapters: Chapter[]; cues: Record<string, number>; scenes: Scene[]; words: Word[]; pages: Page[];
   sfx: { f: number; key: string; db: number }[];
+  sync: Record<string, number | number[] | null>;
 };
 
 export const cue = (k: string): number => {
@@ -21,4 +22,16 @@ export const scene = (id: string): Scene => {
   const s = V.scenes.find((x) => x.id === id);
   if (!s) throw new Error("missing scene " + id);
   return s;
+};
+
+/** audio-visual sync point shared with the offline mix (scripts/audio): pass frames, rhythm starts */
+export const sync = (k: string): number => {
+  const v = V.sync[k];
+  if (typeof v !== "number") throw new Error("missing sync " + k);
+  return v;
+};
+export const syncList = (k: string): number[] => {
+  const v = V.sync[k];
+  if (!Array.isArray(v)) throw new Error("missing sync list " + k);
+  return v;
 };

@@ -346,6 +346,29 @@ for k, p in enumerate(pages):
     p['e'] = nxt if nxt - last < 24 else last + 12
     p['text'] = ' '.join(words[i]['text'] for i in p['w'])
 
+
+# ---------------------------------------------------------------- audio-visual sync points (T7)
+# Shared by the scenes (src/) and the offline mix (scripts/mix_audio.py): the siren / horn pass
+# frames are where the source is level with the listener, rhythms are where rings are born or hit.
+SYNC = dict(
+    sirenPass=C['passes'] + 21,                  # cold open: ambulance level with Pip on "passes"
+    sirenStart=C['siren'] - 6,
+    hornsPass=C['people'] + 26,             # s2_observers: horn car level with the observers
+    hornsStart=C['people'] - 10,
+    closePass=C['asPasses'] + 8,
+    splitStart=C['sidewalk'] + 8, splitPass=C['low'] + 6,   # s1_split right half: high as it comes, low as it goes
+    steadyStart=C['toHer'], steadyEnd=C['whatChanged'] - 2,  # muffled cab siren (panned left in the split)
+    rumbleStart=C['enter'] - 6,
+    closeStart=C['ch5'] + 6,
+    pondTapStart=C['bug'] + 24, pondTapPeriod=15, pondTapEnd=C['soundSame'] - 4,
+    earFastStart=C['squeezedWaves'] + 8, earFastPeriod=6, earFastEnd=C['stretchedWaves'] - 4,
+    earSlowStart=C['stretchedWaves'] + 6, earSlowPeriod=15, earSlowEnd=C['neverSpeed'] - 2,
+    chuffStart=C['threeYears'] + 6, chuffPeriod=10, chuffEnd=C['twist1'] - 6,
+    chalkTaps=[int(round(C['distances'] + 6 + k * (C['pattern'] - 10 - C['distances'] - 6) / 23)) for k in range(24)],
+    tapeZips=[C['next'] + 4, C['next'] + 19, C['next'] + 34],
+    domeBlips=[C['y1923'] + 20, C['y1923'] + 38, C['y1923'] + 56],
+)
+
 # ---------------------------------------------------------------- sfx cues
 # (cue frame, file key, gain dB, offset frames). Files are resolved by scripts/mix_audio.py.
 X = []
@@ -362,6 +385,7 @@ sfx('tinyDrop', 'whoosh_up', -15, -4)
 sfx('universe0', 'shimmer', -17)
 sfx('ch1', 'sign_creak', -17, 6)
 sfx('toHer', 'siren_steady', -22, 0)
+sfx(C['sidewalk'] + 8, 'siren_pass_split', -15, 0)
 sfx('sameSiren', 'pop', -13); sfx('twoSounds', 'pop2', -13)
 sfx('bothRight', 'ding', -15, 6)
 sfx('whatChanged', 'question', -17, 4); sfx('notSiren', 'bonk', -13, 8)
@@ -408,14 +432,32 @@ sfx('theirLight', 'glide', -16, 0)
 sfx(C['ch5'] + 6, 'siren_pass_soft', -14, 0)
 sfx('hearing', 'sparkle', -17, 10)
 sfx(C['lastWord'] + 20, 'sparkle', -18, 0)
+# dense rhythmic cues (each sound = one visual event)
+for f in range(SYNC['pondTapStart'], SYNC['pondTapEnd'] + 1, SYNC['pondTapPeriod']):
+    X.append(dict(f=f, key='plip', db=-21 if f < C['swims'] else -24))
+for f in range(SYNC['earFastStart'], SYNC['earFastEnd'] + 1, SYNC['earFastPeriod']):
+    X.append(dict(f=f, key='earclick', db=-23))
+for f in range(SYNC['earSlowStart'], SYNC['earSlowEnd'] + 1, SYNC['earSlowPeriod']):
+    X.append(dict(f=f, key='earclick_low', db=-22))
+for f in range(SYNC['chuffStart'], SYNC['chuffEnd'] + 1, SYNC['chuffPeriod']):
+    X.append(dict(f=f, key='chuff', db=-25))
+for k, f in enumerate(SYNC['chalkTaps']):
+    X.append(dict(f=f, key='chalk_tap_%02d' % k, db=-20))
 X = [x for x in X if x['db'] > -60]
+# replace the old single-cue placeholders by the SYNC lists
+X = [x for x in X if not (x['key'] in ('blip', 'zip'))]
+for f in SYNC['domeBlips']:
+    X.append(dict(f=f, key='blip', db=-17))
+for f in SYNC['tapeZips']:
+    X.append(dict(f=f, key='zip', db=-17))
+X.sort(key=lambda x: x['f'])
 
 out = dict(
     fps=FPS, width=1920, height=1080, head=HEAD, durationInFrames=C['end'],
     voice=dict(file='audio/mix.wav', part2StartVoice=al['part2_start'], voiceDuration=79.307771 + 106.370625),
     chapters=CH, cues=C, scenes=scenes, words=words,
     sentences=[dict(text=s['text'], s=s['s'], e=s['e'], ch=s['ch']) for s in sentences],
-    pages=pages, sfx=X,
+    pages=pages, sfx=X, sync=SYNC,
 )
 json.dump(out, open(os.path.join(ROOT, 'data', 'video.json'), 'w'), indent=1)
 print('frames', C['end'], 'scenes', len(scenes), 'pages', len(pages), 'sfx', len(X))

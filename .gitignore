@@ -4,3 +4,4 @@ build/
 *.mp4.tmp
 .remotion/
 __pycache__/
+audio_build/

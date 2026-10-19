@@ -6348,6 +6348,11 @@
    "db": -22
   },
   {
+   "f": 514,
+   "key": "siren_pass_split",
+   "db": -15
+  },
+  {
    "f": 630,
    "key": "pop",
    "db": -13
@@ -6388,9 +6393,89 @@
    "db": -19
   },
   {
+   "f": 1000,
+   "key": "plip",
+   "db": -21
+  },
+  {
+   "f": 1015,
+   "key": "plip",
+   "db": -21
+  },
+  {
+   "f": 1030,
+   "key": "plip",
+   "db": -21
+  },
+  {
+   "f": 1045,
+   "key": "plip",
+   "db": -21
+  },
+  {
+   "f": 1060,
+   "key": "plip",
+   "db": -21
+  },
+  {
+   "f": 1075,
+   "key": "plip",
+   "db": -21
+  },
+  {
+   "f": 1090,
+   "key": "plip",
+   "db": -21
+  },
+  {
+   "f": 1105,
+   "key": "plip",
+   "db": -21
+  },
+  {
+   "f": 1120,
+   "key": "plip",
+   "db": -21
+  },
+  {
    "f": 1128,
    "key": "skitter",
    "db": -19
+  },
+  {
+   "f": 1135,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1150,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1165,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1180,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1195,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1210,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1225,
+   "key": "plip",
+   "db": -24
   },
   {
    "f": 1232,
@@ -6398,14 +6483,164 @@
    "db": -16
   },
   {
+   "f": 1240,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1255,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1270,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1285,
+   "key": "plip",
+   "db": -24
+  },
+  {
    "f": 1299,
    "key": "tick",
    "db": -16
   },
   {
+   "f": 1300,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1315,
+   "key": "plip",
+   "db": -24
+  },
+  {
+   "f": 1330,
+   "key": "plip",
+   "db": -24
+  },
+  {
    "f": 1338,
    "key": "whoosh_fast",
    "db": -18
+  },
+  {
+   "f": 1403,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1409,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1415,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1421,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1427,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1433,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1439,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1445,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1451,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1457,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1463,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1469,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1475,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1481,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1487,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1493,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1499,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1505,
+   "key": "earclick",
+   "db": -23
+  },
+  {
+   "f": 1520,
+   "key": "earclick_low",
+   "db": -22
+  },
+  {
+   "f": 1535,
+   "key": "earclick_low",
+   "db": -22
+  },
+  {
+   "f": 1550,
+   "key": "earclick_low",
+   "db": -22
+  },
+  {
+   "f": 1565,
+   "key": "earclick_low",
+   "db": -22
+  },
+  {
+   "f": 1580,
+   "key": "earclick_low",
+   "db": -22
   },
   {
    "f": 1600,
@@ -6438,14 +6673,114 @@
    "db": -16
   },
   {
+   "f": 1979,
+   "key": "chuff",
+   "db": -25
+  },
+  {
    "f": 1983,
    "key": "whistle",
    "db": -20
   },
   {
+   "f": 1989,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 1999,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2009,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2019,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2029,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2039,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2049,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2059,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2069,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2079,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2089,
+   "key": "chuff",
+   "db": -25
+  },
+  {
    "f": 2097,
    "key": "horns_pass",
    "db": -15
+  },
+  {
+   "f": 2099,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2109,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2119,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2129,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2139,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2149,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2159,
+   "key": "chuff",
+   "db": -25
+  },
+  {
+   "f": 2169,
+   "key": "chuff",
+   "db": -25
   },
   {
    "f": 2174,
@@ -6535,12 +6870,142 @@
   {
    "f": 4120,
    "key": "zip",
-   "db": -16
+   "db": -17
+  },
+  {
+   "f": 4135,
+   "key": "zip",
+   "db": -17
+  },
+  {
+   "f": 4150,
+   "key": "zip",
+   "db": -17
   },
   {
    "f": 4234,
    "key": "card_slide",
    "db": -15
+  },
+  {
+   "f": 4288,
+   "key": "chalk_tap_00",
+   "db": -20
+  },
+  {
+   "f": 4292,
+   "key": "chalk_tap_01",
+   "db": -20
+  },
+  {
+   "f": 4296,
+   "key": "chalk_tap_02",
+   "db": -20
+  },
+  {
+   "f": 4301,
+   "key": "chalk_tap_03",
+   "db": -20
+  },
+  {
+   "f": 4305,
+   "key": "chalk_tap_04",
+   "db": -20
+  },
+  {
+   "f": 4309,
+   "key": "chalk_tap_05",
+   "db": -20
+  },
+  {
+   "f": 4313,
+   "key": "chalk_tap_06",
+   "db": -20
+  },
+  {
+   "f": 4318,
+   "key": "chalk_tap_07",
+   "db": -20
+  },
+  {
+   "f": 4322,
+   "key": "chalk_tap_08",
+   "db": -20
+  },
+  {
+   "f": 4326,
+   "key": "chalk_tap_09",
+   "db": -20
+  },
+  {
+   "f": 4330,
+   "key": "chalk_tap_10",
+   "db": -20
+  },
+  {
+   "f": 4334,
+   "key": "chalk_tap_11",
+   "db": -20
+  },
+  {
+   "f": 4339,
+   "key": "chalk_tap_12",
+   "db": -20
+  },
+  {
+   "f": 4343,
+   "key": "chalk_tap_13",
+   "db": -20
+  },
+  {
+   "f": 4347,
+   "key": "chalk_tap_14",
+   "db": -20
+  },
+  {
+   "f": 4351,
+   "key": "chalk_tap_15",
+   "db": -20
+  },
+  {
+   "f": 4355,
+   "key": "chalk_tap_16",
+   "db": -20
+  },
+  {
+   "f": 4360,
+   "key": "chalk_tap_17",
+   "db": -20
+  },
+  {
+   "f": 4364,
+   "key": "chalk_tap_18",
+   "db": -20
+  },
+  {
+   "f": 4368,
+   "key": "chalk_tap_19",
+   "db": -20
+  },
+  {
+   "f": 4372,
+   "key": "chalk_tap_20",
+   "db": -20
+  },
+  {
+   "f": 4377,
+   "key": "chalk_tap_21",
+   "db": -20
+  },
+  {
+   "f": 4381,
+   "key": "chalk_tap_22",
+   "db": -20
+  },
+  {
+   "f": 4385,
+   "key": "chalk_tap_23",
+   "db": -20
   },
   {
    "f": 4395,
@@ -6607,5 +7072,66 @@
    "key": "sparkle",
    "db": -18
   }
- ]
+ ],
+ "sync": {
+  "sirenPass": 140,
+  "sirenStart": 38,
+  "hornsPass": 2133,
+  "hornsStart": 2097,
+  "closePass": 5412,
+  "splitStart": 514,
+  "splitPass": 579,
+  "steadyStart": 396,
+  "steadyEnd": 726,
+  "rumbleStart": 3831,
+  "closeStart": 5340,
+  "pondTapStart": 1000,
+  "pondTapPeriod": 15,
+  "pondTapEnd": 1336,
+  "earFastStart": 1403,
+  "earFastPeriod": 6,
+  "earFastEnd": 1510,
+  "earSlowStart": 1520,
+  "earSlowPeriod": 15,
+  "earSlowEnd": 1592,
+  "chuffStart": 1979,
+  "chuffPeriod": 10,
+  "chuffEnd": 2171,
+  "chalkTaps": [
+   4288,
+   4292,
+   4296,
+   4301,
+   4305,
+   4309,
+   4313,
+   4318,
+   4322,
+   4326,
+   4330,
+   4334,
+   4339,
+   4343,
+   4347,
+   4351,
+   4355,
+   4360,
+   4364,
+   4368,
+   4372,
+   4377,
+   4381,
+   4385
+  ],
+  "tapeZips": [
+   4120,
+   4135,
+   4150
+  ],
+  "domeBlips": [
+   3909,
+   3927,
+   3945
+  ]
+ }
 }
