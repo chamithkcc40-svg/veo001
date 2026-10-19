@@ -44,7 +44,6 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Reference (1 clip, 71.9 s, 9:16): 13.4 cuts/min (16 cuts), shot mean 4.2 s / median 3.0 s / max 9.9 s; motion share 90.3 % of 0.27 s windows (threshold 1.5 luma); longest static 1.33 s; captions ~2.6 % of frame height at 77.5 % height, 1-4 words; -12.0 LUFS.
 - Look: flat vector, NO outlines, two-tone cel + rim light + soft glows, saturated violet/magenta/teal/yellow palette, grain + vignette.
 - Our targets: motion share >= 81 % (aim 90 %), static <= 1.33 s, about 41+ shots, captions Nunito 800 46 px at ~84 % height.
-- Ch1 One Siren, Two Sounds (1 rework loop: Nell MS scale, sign layout, split-wipe push, roof framing): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (split pass 0.7 f), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 
 ## Decisions
 - s1_roof keeps the ambulance fixed on screen while the street scrolls (vehicle-follow): this IS Nell's frame, so her rings are even and white, which teaches the point visually.
@@ -73,6 +72,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 
 ## Scores per chapter
 - Ch0 Cold open (1 loop of rework: void layout, ambulance scale, tilt distance, ring->star dots, caption clearance): story 9, staging 8, character 8, motion 9, depth/light 9, style 9, captions 9, audio sync 9 (siren pass 0.6 f off visual pass), pacing/variety 9. Motion check 95.8 % moving (24 pairs; target 81.3 %). tsc OK, asset audit OK.
+- Ch1 One Siren, Two Sounds (1 rework loop: Nell MS scale, sign layout, split-wipe push, roof framing): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (split pass 0.7 f), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 
 ## Gaps
 
