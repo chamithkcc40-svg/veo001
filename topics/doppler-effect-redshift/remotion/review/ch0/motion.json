@@ -1,0 +1,130 @@
+{
+ "id": "Ch0-ColdOpen",
+ "samples": 24,
+ "movingShare": 0.958,
+ "refShare": 0.903,
+ "target": 0.813,
+ "pass": true,
+ "res": [
+  {
+   "frame": 7,
+   "diff": 0.25,
+   "moving": false
+  },
+  {
+   "frame": 21,
+   "diff": 31.34,
+   "moving": true
+  },
+  {
+   "frame": 34,
+   "diff": 7.62,
+   "moving": true
+  },
+  {
+   "frame": 48,
+   "diff": 22.97,
+   "moving": true
+  },
+  {
+   "frame": 62,
+   "diff": 7.58,
+   "moving": true
+  },
+  {
+   "frame": 76,
+   "diff": 11.12,
+   "moving": true
+  },
+  {
+   "frame": 89,
+   "diff": 15.08,
+   "moving": true
+  },
+  {
+   "frame": 103,
+   "diff": 17.85,
+   "moving": true
+  },
+  {
+   "frame": 117,
+   "diff": 11.93,
+   "moving": true
+  },
+  {
+   "frame": 131,
+   "diff": 9.03,
+   "moving": true
+  },
+  {
+   "frame": 144,
+   "diff": 8.8,
+   "moving": true
+  },
+  {
+   "frame": 158,
+   "diff": 10.81,
+   "moving": true
+  },
+  {
+   "frame": 172,
+   "diff": 6.65,
+   "moving": true
+  },
+  {
+   "frame": 186,
+   "diff": 3.55,
+   "moving": true
+  },
+  {
+   "frame": 199,
+   "diff": 13.98,
+   "moving": true
+  },
+  {
+   "frame": 213,
+   "diff": 23.98,
+   "moving": true
+  },
+  {
+   "frame": 227,
+   "diff": 7.65,
+   "moving": true
+  },
+  {
+   "frame": 241,
+   "diff": 2.36,
+   "moving": true
+  },
+  {
+   "frame": 254,
+   "diff": 2.61,
+   "moving": true
+  },
+  {
+   "frame": 268,
+   "diff": 7.84,
+   "moving": true
+  },
+  {
+   "frame": 282,
+   "diff": 1.9,
+   "moving": true
+  },
+  {
+   "frame": 296,
+   "diff": 3.01,
+   "moving": true
+  },
+  {
+   "frame": 309,
+   "diff": 3.48,
+   "moving": true
+  },
+  {
+   "frame": 323,
+   "diff": 1.74,
+   "moving": true
+  }
+ ]
+}
