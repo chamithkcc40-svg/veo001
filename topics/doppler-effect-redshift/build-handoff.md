@@ -11,7 +11,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T6 Design system and kit (src/theme.ts, src/kit/*: 1 jointed rig + 12 chars + Skipper, 12 expressions, walk/gesture/sway/scribble cycles, 10 environments, Rings/PitchLine/Galaxy/Barcode/Timeline/NameTag, fx, Captions; sheets in remotion/review/)
 - [x] T7 Audio build (public/audio/mix.wav 48 kHz 16-bit, -14.0 LUFS / -1.3 dBTP; 153 sfx cues in remotion/data/audio/cues.txt; deterministic rebuild via scripts/audio/run_audio.sh)
 - [x] T8.0 Cold open (Ch0-ColdOpen, f0-339, 4 scenes; review/ch0/)
-- [ ] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes)
+- [x] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes; review/ch1/)
 - [ ] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes)
 - [ ] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes)
 - [ ] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes)
@@ -44,8 +44,11 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Reference (1 clip, 71.9 s, 9:16): 13.4 cuts/min (16 cuts), shot mean 4.2 s / median 3.0 s / max 9.9 s; motion share 90.3 % of 0.27 s windows (threshold 1.5 luma); longest static 1.33 s; captions ~2.6 % of frame height at 77.5 % height, 1-4 words; -12.0 LUFS.
 - Look: flat vector, NO outlines, two-tone cel + rim light + soft glows, saturated violet/magenta/teal/yellow palette, grain + vignette.
 - Our targets: motion share >= 81 % (aim 90 %), static <= 1.33 s, about 41+ shots, captions Nunito 800 46 px at ~84 % height.
+- Ch1 One Siren, Two Sounds (1 rework loop: Nell MS scale, sign layout, split-wipe push, roof framing): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (split pass 0.7 f), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 
 ## Decisions
+- s1_roof keeps the ambulance fixed on screen while the street scrolls (vehicle-follow): this IS Nell's frame, so her rings are even and white, which teaches the point visually.
+- Chapter title cards are drawn as in-world objects per 07 (street sign swings in on chains with a damped pendulum) rather than generic overlays.
 - Chapters are windows onto one global Film component (src/chapters/Film.tsx + registry.ts); scenes get the global frame: per-chapter renders concatenate exactly into Full and all cue data stays global.
 - One <Audio> per composition playing public/audio/mix.wav with trimBefore=chapter start: one deterministic mix, per-chapter renders stay in sync.
 - Cold open s0_street and s0_tilt drawn as one continuous component: the whip-tilt is a single camera move, not a cut.
@@ -80,4 +83,4 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T8.1: write src/scenes/ch1.tsx (s1_cab, s1_roof, s1_split, s1_notsiren, s1_air) with the street-sign title card, register CH1 in chapters/registry.ts, then stills + motion check (scripts/bundle.mjs, stills.mjs, motion.mjs, sheet.py).
+T8.2: write src/scenes/ch2.tsx (12 scenes s2_pond ... s2_paper; ripple-ring title, Skipper pond rings A/B, compare split, ear tick bar, speedometers, Doppler study + suitcase memory, railway horns pass at sync.hornsPass, twist page-curl, title-page push through window), register CH2, then stills + motion check.

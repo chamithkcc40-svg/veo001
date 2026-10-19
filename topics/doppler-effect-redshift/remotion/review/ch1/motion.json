@@ -1,0 +1,130 @@
+{
+ "id": "Ch1-Siren",
+ "samples": 24,
+ "movingShare": 1,
+ "refShare": 0.903,
+ "target": 0.813,
+ "pass": true,
+ "res": [
+  {
+   "frame": 11,
+   "diff": 13.16,
+   "moving": true
+  },
+  {
+   "frame": 33,
+   "diff": 9.1,
+   "moving": true
+  },
+  {
+   "frame": 54,
+   "diff": 40.62,
+   "moving": true
+  },
+  {
+   "frame": 76,
+   "diff": 15.2,
+   "moving": true
+  },
+  {
+   "frame": 98,
+   "diff": 17.58,
+   "moving": true
+  },
+  {
+   "frame": 119,
+   "diff": 18.58,
+   "moving": true
+  },
+  {
+   "frame": 141,
+   "diff": 38.31,
+   "moving": true
+  },
+  {
+   "frame": 163,
+   "diff": 5.02,
+   "moving": true
+  },
+  {
+   "frame": 185,
+   "diff": 4.83,
+   "moving": true
+  },
+  {
+   "frame": 206,
+   "diff": 6.52,
+   "moving": true
+  },
+  {
+   "frame": 228,
+   "diff": 8.56,
+   "moving": true
+  },
+  {
+   "frame": 250,
+   "diff": 9.45,
+   "moving": true
+  },
+  {
+   "frame": 271,
+   "diff": 8.07,
+   "moving": true
+  },
+  {
+   "frame": 293,
+   "diff": 7.11,
+   "moving": true
+  },
+  {
+   "frame": 315,
+   "diff": 6.35,
+   "moving": true
+  },
+  {
+   "frame": 336,
+   "diff": 6.69,
+   "moving": true
+  },
+  {
+   "frame": 358,
+   "diff": 5.13,
+   "moving": true
+  },
+  {
+   "frame": 380,
+   "diff": 17.97,
+   "moving": true
+  },
+  {
+   "frame": 402,
+   "diff": 3.35,
+   "moving": true
+  },
+  {
+   "frame": 423,
+   "diff": 5.16,
+   "moving": true
+  },
+  {
+   "frame": 445,
+   "diff": 4.25,
+   "moving": true
+  },
+  {
+   "frame": 467,
+   "diff": 21.18,
+   "moving": true
+  },
+  {
+   "frame": 488,
+   "diff": 9.98,
+   "moving": true
+  },
+  {
+   "frame": 510,
+   "diff": 10.1,
+   "moving": true
+  }
+ ]
+}
