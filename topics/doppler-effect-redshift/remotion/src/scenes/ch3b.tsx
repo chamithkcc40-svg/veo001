@@ -133,3 +133,27 @@ const DotArrow: React.FC<{ t: number; p0: number[]; p1: number[]; p2: number[]; 
     </g>
   );
 };
+
+const QuillStudy: React.FC<{ f: number; start: number }> = ({ f, start }) => {
+  const peel = 2959; // "predicted": the ink line lifts off the page
+  const P = { ...POSE.write, turn: 0.45, ...scribble(f) };
+  const hp = handPos(DOPPLER, P, "R", 1000, 1000, 1.25);
+  const t = prog(f, peel, CUT + 2, ease.in); // accelerates out of frame (anticipation of the cut)
+  const p0 = [hp.x + 10, Math.min(hp.y + 20, 745)], p1 = [1300, 420], p2 = [2050, 60];
+  const cam = { x: tw(f, [start, CUT], [-20, 60], ease.inOutSine), y: tw(f, [start, CUT], [0, -30], ease.inOutSine), zoom: tw(f, [start, CUT], [1.08, 1.0], ease.inOutSine), rot: 0, frame: f };
+  return (
+    <Camera cam={cam}>
+      <Study frame={f} subject={
+        <Svg>
+          <Rig uid="dopQuill" def={DOPPLER} frame={f} x={1000} y={1000} scale={1.25} pose={P} expr={f < peel + 6 ? "focused" : "proud"} propR={<g transform="translate(4,6)"><Quill scale={0.9} /></g>} />
+        </Svg>
+      } deskChildren={
+        <g transform="translate(1040,748) rotate(-3)">
+          <rect x={-150} y={-12} width={300} height={24} rx={6} fill={mix(C.dough, C.white, 0.45)} />
+          {Array.from({ length: 5 }).map((_, i) => <rect key={i} x={-130} y={-8 + i * 3} width={rr("qink" + i, 140, 230)} height={2} rx={1} fill={alpha(C.night, 0.55)} />)}
+        </g>
+      } />
+      <Layer depth={1}><Svg><DotArrow t={t} p0={p0} p1={p1} p2={p2} tail={0.45} /></Svg></Layer>
+    </Camera>
+  );
+};
