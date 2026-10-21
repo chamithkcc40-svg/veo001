@@ -86,12 +86,12 @@ export const WaveLine: React.FC<{ f: number; x0: number; x1: number; y: number; 
 };
 
 // ------------------------------------------------------------------ the test star's motion (one clock)
-// v(t): still -> right toward the viewer (+2.4 px/f) -> reverses on the sweep sfx (2680) -> left (-2.4).
-// Ring speed LAB_C = 5, so v/c <= 0.48 (no shock cone; Rings asserts it).
+// v(t): still -> right toward the viewer (+3 px/f) -> reverses on the sweep sfx (2680) -> left (-3).
+// Ring speed LAB_C = 5, so v/c <= 0.6 (no shock cone; Rings asserts it).
 const LAB_C = 5;
 const STAR0 = { x: 960, y: 470 };
 const smooth = (t: number, a: number, b: number) => { const u = clamp((t - a) / (b - a)); return u * u * (3 - 2 * u); };
-const starV = (t: number) => 2.4 * smooth(t, cue("squeezeWaves") + 6, cue("squeezeWaves") + 26) - 4.8 * smooth(t, cue("stretchThem") - 8, cue("stretchThem") + 12);
+const starV = (t: number) => 3.0 * smooth(t, cue("squeezeWaves") + 6, cue("squeezeWaves") + 24) - 6.0 * smooth(t, cue("stretchThem") - 8, cue("stretchThem") + 12);
 const X_CACHE = new Map<number, number>();
 export const starX = (t: number) => {
   const k = Math.round(t * 4) / 4;
@@ -175,7 +175,7 @@ export const LabSeq: React.FC<SceneProps> = ({ f, start, end }) => {
   const eyeWide = clamp((sx - 960) / 200);
   // ring emission: white while still; tinted by the Rings engine once the star moves
   const ringStop = bloomAt + 4;
-  const ringO = 1 - 0.65 * waveIn;
+  const ringO = (1 - 0.65 * waveIn) * (1 - 0.55 * bloom);
   // galaxy sits where the star was, glides to centre as it blooms
   const gx = mix2(sx, 960, bloom), gy = mix2(STAR0.y, 430, bloom);
   // camera: drift (lab) -> track the star (blue/red) -> push on bloom -> pull on "redshift"
@@ -201,7 +201,7 @@ export const LabSeq: React.FC<SceneProps> = ({ f, start, end }) => {
         </Layer>
         <Layer depth={1}>
           <Svg>
-            <Rings id="labr" frame={f} path={starPath} start={cue("lightWave") - 2} stop={ringStop} period={12} c={LAB_C} maxR={900} tint tintGain={2.2} width={5} wavy={7} opacity={ringO} />
+            <Rings id="labr" frame={f} path={starPath} start={cue("lightWave") - 2} stop={ringStop} period={11} c={LAB_C} maxR={640} tint tintGain={3.4} width={5} wavy={7} opacity={ringO} />
             {waveIn > 0.01 && <WaveLine f={f} x0={300} x1={1620} y={760} lam={lam} reveal={prog(f, sc - 10, sc + 16, ease.out)} o={waveIn} />}
             {waveIn > 0.01 && (
               <text x={960} y={700} textAnchor="middle" fontFamily={F.display} fontWeight={600} fontSize={30} letterSpacing="0.14em" fill={alpha(C.lilac, 0.8 * waveIn)}>
@@ -256,3 +256,7 @@ export const LabSeq: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
+
+export const CH3: SceneReg[] = [
+  { ids: ["s3_lab", "s3_blue", "s3_galaxy"], C: LabSeq },
+];
