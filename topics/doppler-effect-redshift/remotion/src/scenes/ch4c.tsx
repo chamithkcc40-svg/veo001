@@ -291,5 +291,5 @@ export const CH4C: SceneReg[] = [
   { ids: ["s4_twist"], C: Twist4, pre: 6, post: 16 }, // stays under the road curl-out
   { ids: ["s4_road"], C: RoadScene },
   { ids: ["s4_dough"], C: DoughScene },
-  { ids: ["s4_ray"], C: RayScene },
+  { ids: ["s4_ray"], C: RayScene, post: 20 }, // stays under the close iris (ring match-cut)
 ];

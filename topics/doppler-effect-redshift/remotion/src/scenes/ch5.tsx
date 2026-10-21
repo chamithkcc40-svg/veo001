@@ -40,14 +40,15 @@ const TiltLayer: React.FC<{ k: number; ty: number; children: React.ReactNode; bl
 const LIFT = [
   { x: 820, y: 330 }, { x: 1010, y: 230 }, { x: 1180, y: 350 }, { x: 900, y: 470 }, { x: 1110, y: 500 }, { x: 960, y: 370 },
 ];
-const LiftRings: React.FC<{ f: number; at: number; fps: number }> = ({ f, at, fps }) => (
+const LiftRings: React.FC<{ f: number; at: number; fps: number; spread: number }> = ({ f, at, fps, spread }) => (
   <Svg style={{ filter: `drop-shadow(0 0 8px ${alpha(C.red, 0.7)})` }}>
     {LIFT.map((g, k) => {
       const b = at + k * 9;
       const p = prog(f, b, b + 80, ease.inOut);
       if (p <= 0) return null;
       const sx = 560 + k * 70, sy = 900; // where the trailing rings were on the street
-      const x = mix2(sx, g.x, p) + Math.sin(p * Math.PI) * (k % 2 ? 60 : -60), y = mix2(sy, g.y, p); // arcing path
+      const gx = 960 + (g.x - 960) * spread, gy = 370 + (g.y - 370) * spread; // the hold keeps expanding
+      const x = mix2(sx, gx, p) + Math.sin(p * Math.PI) * (k % 2 ? 60 : -60), y = mix2(sy, gy, p); // arcing path
       const R = mix2(300 - k * 20, 6, ease.inOut(clamp(p * 1.1)));
       const gp = sp(f, b + 66, fps, spr.bouncy);
       return (
@@ -92,6 +93,8 @@ export const CloseScene: React.FC<SceneProps> = ({ f, start, end }) => {
     </Svg>
   );
   const tagP = sp(f, last + 14, fps, spr.smooth); // final small text (sparkle 5591 lands on it)
+  const holdT = prog(f, last, end + 20, ease.inOutSine), hold = 1 + 0.05 * holdT; // slow push + drift in the hold
+  const shP = prog(f, end - 110, end - 84, ease.inOut), shootX = mix2(1500, 1180, shP), shootY = mix2(240, 345, shP), shootO = Math.sin(shP * Math.PI); // one shooting star mid-hold (centre band, not the end-screen corners)
   return (
     <AbsoluteFill style={{ clipPath: `circle(${iris}px at ${IRIS.x}px ${IRIS.y}px)` }}>
       <Camera cam={cam}>
@@ -103,8 +106,13 @@ export const CloseScene: React.FC<SceneProps> = ({ f, start, end }) => {
         <TiltLayer k={1.05} ty={ty}><Layer depth={1}>{subject}</Layer></TiltLayer>
         <TiltLayer k={1.3} ty={ty}><Layer depth={1.6} blur={8}><StreetHedges tod="night" frame={f} /></Layer></TiltLayer>
       </Camera>
-      <LiftRings f={f} at={hear + 6} fps={fps} />
-      <Svg><g opacity={prog(f, hear + 60, hear + 150, ease.inOut)}><Stars seed="closesky" frame={f} n={70} oy={0} h={860} maxR={2.6} color={C.lilac} /></g></Svg>
+      <AbsoluteFill style={{ transform: `scale(${hold})`, transformOrigin: "960px 420px" }}>
+        <Svg><g opacity={prog(f, hear + 60, hear + 150, ease.inOut)}><Stars seed="closesky" frame={f} n={70} oy={-10 * holdT} h={860} maxR={2.6} color={C.lilac} /></g></Svg>
+        <LiftRings f={f} at={hear + 6} fps={fps} spread={1 + 0.22 * holdT} />
+        {/* the drop, as a picture: a soft red ring-wave pulses out from behind the tag every 40 frames */}
+        <Svg>{[0, 1, 2, 3, 4].map((k) => { const b = last + 24 + k * 40, a = f - b; if (a < 0 || a > 70) return null; return <ellipse key={k} cx={960} cy={664} rx={120 + a * 9} ry={(120 + a * 9) * 0.32} fill="none" stroke={C.red} strokeWidth={3} opacity={0.4 * (1 - a / 70)} />; })}</Svg>
+        {f > last + 40 && <Svg><path d={`M${shootX},${shootY} l-140,46`} stroke={alpha(C.white, 0.7 * shootO)} strokeWidth={3} strokeLinecap="round" /></Svg>}
+      </AbsoluteFill>
       <Dust seed="close5d" frame={f} n={16} color={C.lilac} opacity={0.3} size={[2, 5]} speed={0.4} />
       {tagP > 0.01 && (
         <div style={{ position: "absolute", left: 0, width: 1920, top: 640 - 16 * tagP, textAlign: "center", opacity: Math.min(1, tagP * 1.3) }}>
