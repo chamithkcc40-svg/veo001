@@ -269,9 +269,9 @@ export const ScaleScene: React.FC<SceneProps> = ({ f, start, end }) => {
 // a yellow tape shoots out (overshoot + wobble) to the next galaxy and a blank tag flips up (no numbers,
 // per 07). The camera tracks right with the third tape, so the row reads as "farther and farther".
 const ROW = [
-  { x: 1100, y: 330, r: 70, rot: 20 }, { x: 1720, y: 640, r: 56, rot: -40 }, { x: 2450, y: 400, r: 46, rot: 70 },
+  { x: 1000, y: 330, r: 70, rot: 20 }, { x: 1560, y: 660, r: 56, rot: -40 }, { x: 2080, y: 380, r: 46, rot: 70 },
 ];
-const TAPE0 = { x: 470, y: 560 };
+const TAPE0 = { x: 500, y: 560 };
 const TapeCase: React.FC<{ x: number; y: number; spin: number }> = ({ x, y, spin }) => (
   <g transform={`translate(${x},${y})`}>
     <rect x={-46} y={-40} width={92} height={80} rx={26} fill={mix(C.sun, C.plum, 0.25)} />
@@ -302,11 +302,11 @@ export const TapesScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const tagP = zips.map((z) => sp(f, z + 8, fps, spr.bouncy));
   const spin = zips.reduce((a, z) => a + 900 * prog(f, z - 2, z + 12, ease.out), 0);
   const track = prog(f, start, end + 20, ease.inOutSine); // lateral track toward the far end of the row
-  const camX = mix2(40, 640, track); // starts where s4_scale ended (continuous drift)
+  const camX = mix2(40, 300, track); // starts where s4_scale ended (continuous drift)
   const cam = { x: camX, y: tw(f, [start, end], [10, -20], ease.inOutSine), zoom: tw(f, [start, end], [0.98, 1.04], ease.inOutSine), rot: 0, frame: f };
   const subject = (
     <Svg>
-      <Galaxy id="mw4t" x={340} y={520} r={120} frame={f} shift={0} tilt={0.72} rot={-8} dots={60} glow={0.9} armColor={C.sunLt} />
+      <Galaxy id="mw4t" x={360} y={520} r={120} frame={f} shift={0} tilt={0.72} rot={-8} dots={60} glow={0.9} armColor={C.sunLt} />
       {ROW.map((g, i) => <Galaxy key={i} id={"row" + i} x={g.x} y={g.y} r={g.r} frame={f} shift={0} tilt={0.45} rot={g.rot} dots={36} glow={1} />)}
       {ROW.map((g, i) => <Tape key={i} i={i} f={f} x0={TAPE0.x + 40} y0={TAPE0.y} x1={g.x - g.r * 1.3} y1={g.y + g.r * 0.8} p={tp[i]} />)}
       {ROW.map((g, i) => tagP[i] > 0.01 && (
