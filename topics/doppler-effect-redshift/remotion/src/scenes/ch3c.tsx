@@ -191,6 +191,32 @@ const DomeTags: React.FC<{ f: number; out: number }> = ({ f, out }) => {
   );
 };
 
+/** fireflies near the dome door: seeded wander + slow blink (ambient life) */
+const Fireflies: React.FC<{ f: number; n?: number; cx: number; cy: number; spread: number }> = ({ f, n = 9, cx, cy, spread }) => (
+  <g>
+    {Array.from({ length: n }).map((_, i) => {
+      const x = cx + rr("ffx" + i, -spread, spread) + noise1("ffnx" + i, f / 40) * 60;
+      const y = cy + rr("ffy" + i, -spread * 0.4, spread * 0.3) + noise1("ffny" + i, f / 50) * 30;
+      const on = clamp(0.5 + 0.8 * Math.sin(f / rr("ffp" + i, 9, 17) + i * 2));
+      return <GlowDot key={i} id={"ff" + i} cx={x} cy={y} r={14} color={C.sunLt} o={0.9 * on} />;
+    })}
+  </g>
+);
+
+/** a single shooting star streak crossing the sky between frames a..b */
+const Meteor: React.FC<{ f: number; a: number; b: number; x0: number; y0: number; dx: number; dy: number }> = ({ f, a, b, x0, y0, dx, dy }) => {
+  if (f < a || f > b) return null;
+  const t = prog(f, a, b, ease.inOut);
+  const hx = x0 + dx * t, hy = y0 + dy * t;
+  const o = Math.sin(t * Math.PI);
+  return (
+    <g opacity={o}>
+      <path d={`M${hx},${hy} L${hx - dx * 0.18},${hy - dy * 0.18}`} stroke={C.white} strokeWidth={3} strokeLinecap="round" style={{ filter: `drop-shadow(0 0 6px ${alpha(C.white, 0.9)})` }} />
+      <circle cx={hx} cy={hy} r={3.5} fill={C.white} />
+    </g>
+  );
+};
+
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
 ];
