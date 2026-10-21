@@ -149,6 +149,32 @@ export const ChartScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s4_grid (WS, slight rotate)
+// Hard cut. A navy "expansion sheet" (rubber-sheet grid) carrying a 5x3 grid of galaxies scales evenly
+// about its centre on the stretch sfx (4552): anticipation squeeze, stretch, small overshoot, settle.
+// "us": a gold ring lands on galaxy A and arrows from A's point of view grow outward from every other
+// galaxy. "each other": the ring hops (arc) to galaxy B and the arrows re-aim: same result anywhere.
+const GRID = { cx: 960, cy: 470, dx: 300, dy: 250, cols: 5, rows: 3 };
+const GAL = Array.from({ length: GRID.cols * GRID.rows }).map((_, i) => {
+  const c = i % GRID.cols, r = Math.floor(i / GRID.cols);
+  return { c, r, ox: (c - (GRID.cols - 1) / 2) * GRID.dx + rr("gg x" + i, -26, 26), oy: (r - (GRID.rows - 1) / 2) * GRID.dy + rr("gg y" + i, -20, 20), rot: rr("gg r" + i, 0, 360), sz: rr("gg s" + i, 30, 44) };
+});
+/** rubber-sheet grid: lines scale with the stretch, faint sheen slides as it stretches */
+const ExpansionSheet: React.FC<{ k: number; f: number }> = ({ k, f }) => {
+  const W2 = 860 * k, H2 = 420 * k;
+  const lines: React.ReactNode[] = [];
+  for (let i = -8; i <= 8; i++) lines.push(<path key={"v" + i} d={`M${GRID.cx + i * 110 * k},${GRID.cy - H2} V${GRID.cy + H2}`} stroke={alpha(C.peri, i % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
+  for (let j = -4; j <= 4; j++) lines.push(<path key={"h" + j} d={`M${GRID.cx - W2},${GRID.cy + j * 100 * k} H${GRID.cx + W2}`} stroke={alpha(C.peri, j % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
+  return (
+    <g>
+      <rect x={GRID.cx - W2} y={GRID.cy - H2} width={W2 * 2} height={H2 * 2} rx={40 * k} fill={alpha(mix(C.violet, C.night, 0.4), 0.85)} />
+      {lines}
+      <rect x={GRID.cx - W2} y={GRID.cy - H2} width={W2 * 2} height={H2 * 2} rx={40 * k} fill="none" stroke={alpha(C.lilac, 0.35)} strokeWidth={4} />
+      <rect x={GRID.cx - W2 + ((f * 9) % (W2 * 2.4)) - W2 * 0.4} y={GRID.cy - H2} width={W2 * 0.3} height={H2 * 2} fill={alpha(C.white, 0.04)} transform={`skewX(-18)`} style={{ transformOrigin: `${GRID.cx}px ${GRID.cy}px` }} />
+    </g>
+  );
+};
+
 export const CH4B: SceneReg[] = [
   { ids: ["s4_chart"], C: ChartScene },
 ];
