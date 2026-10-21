@@ -15,7 +15,7 @@ import { PitchLine } from "../kit/info/PitchLine";
 import { Ambulance, AMB_SIREN, Speedometer } from "../kit/props/Props";
 import { Skipper } from "../kit/rig/Skipper";
 import { PIP } from "../kit/rig/characters";
-import { SceneProps } from "../chapters/types";
+import { SceneProps, SceneReg } from "../chapters/types";
 
 // ------------------------------------------------------------------ s2_compare (pond | street, same pattern)
 // Both sources move left->right at the same v/c, emit at the same period: the two ring patterns match.
@@ -240,7 +240,7 @@ const Train2: React.FC<{ f: number; y: number; gap: number; color: string; lead:
   <g>
     {Array.from({ length: n }).map((_, i) => {
       const x = lead - i * gap;
-      const R = 150;
+      const R = 125;
       const o = clamp((x + 100) / 200);
       return <path key={i} d={`M${x - R * 0.3},${y - R * 0.95} Q${x + R * 0.25},${y} ${x - R * 0.3},${y + R * 0.95}`} stroke={color} strokeWidth={8} fill="none" strokeLinecap="round" opacity={o} style={{ filter: `drop-shadow(0 0 ${8 + glow * 10}px ${alpha(color, 0.8)})` }} />;
     })}
@@ -250,7 +250,7 @@ const Train2: React.FC<{ f: number; y: number; gap: number; color: string; lead:
       const k = clamp(glow * 3 - i * 0.6);
       return (
         <g key={"b" + i} opacity={k}>
-          <path d={`M${a},${y + 170} L${a},${y + 186} L${b},${y + 186} L${b},${y + 170}`} stroke={color} strokeWidth={6} fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 10px ${alpha(color, 0.9)})` }} />
+          <path d={`M${a},${y + 140} L${a},${y + 156} L${b},${y + 156} L${b},${y + 140}`} stroke={color} strokeWidth={6} fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 10px ${alpha(color, 0.9)})` }} />
         </g>
       );
     })}
@@ -259,8 +259,8 @@ const Train2: React.FC<{ f: number; y: number; gap: number; color: string; lead:
 
 export const Speed: React.FC<SceneProps> = ({ f, start, end }) => {
   const { fps } = useVideoConfig();
-  const lead = 380 + (f - start) * SPD_V;
-  const camX = (f - start) * SPD_V * 0.82; // lateral track keeps the riders near centre
+  const lead = 1000 + (f - start) * SPD_V;
+  const camX = (f - start) * SPD_V * 0.9 + noise1("spdx", f / 25) * 6; // lateral track: riders drift slowly right of centre
   const needleAt = sync("earSlowEnd") + 8; // needle tick sfx frame (1600)
   const nd = sp(f, needleAt, fps, { damping: 9, stiffness: 140, mass: 0.7 });
   const value = 0.62 * nd;
@@ -268,8 +268,8 @@ export const Speed: React.FC<SceneProps> = ({ f, start, end }) => {
   const t1 = sp(f, cue("neverSpeed") + 14, fps, spr.bouncy);
   const t2 = sp(f, cue("spacing") + 2, fps, spr.bouncy);
   const gauge = (y: number, color: string, uid: string) => (
-    <g transform={`translate(${lead + 120},${y - 210}) scale(${sp(f, start + 4, fps, spr.bouncy)})`}>
-      <path d="M0,70 L0,160" stroke={alpha(color, 0.6)} strokeWidth={4} strokeDasharray="6 8" />
+    <g transform={`translate(${lead + 150},${y}) scale(${sp(f, start + 4, fps, spr.bouncy)})`}>
+      <path d="M-120,0 L-74,0" stroke={alpha(color, 0.6)} strokeWidth={4} strokeDasharray="6 8" />
       <Speedometer value={value + Math.sin(f / 3 + (uid === "a" ? 0 : 1.3)) * 0.004 * nd} r={70} color={color} label="SPEED" />
     </g>
   );
@@ -295,11 +295,11 @@ export const Speed: React.FC<SceneProps> = ({ f, start, end }) => {
         </Layer>
         <Layer depth={1}>
           <Svg>
-            {[330, 690].map((y) => <rect key={y} x={-200} y={y - 2} width={6000} height={4} rx={2} fill={alpha(C.lilac, 0.18)} />)}
-            <Train2 f={f} y={330} gap={70} color={C.blue} lead={lead} glow={glow} n={14} />
-            <Train2 f={f} y={690} gap={170} color={C.red} lead={lead} glow={glow} n={7} />
-            {gauge(330, C.blue, "a")}
-            {gauge(690, C.red, "b")}
+            {[400, 730].map((y) => <rect key={y} x={-200} y={y - 2} width={6000} height={4} rx={2} fill={alpha(C.lilac, 0.18)} />)}
+            <Train2 f={f} y={400} gap={70} color={C.blue} lead={lead} glow={glow} n={14} />
+            <Train2 f={f} y={730} gap={170} color={C.red} lead={lead} glow={glow} n={7} />
+            {gauge(400, C.blue, "a")}
+            {gauge(730, C.red, "b")}
           </Svg>
         </Layer>
         <Layer depth={1.5} blur={6}>
@@ -315,3 +315,9 @@ export const Speed: React.FC<SceneProps> = ({ f, start, end }) => {
     </AbsoluteFill>
   );
 };
+
+export const CH2B: SceneReg[] = [
+  { ids: ["s2_compare"], C: Compare },
+  { ids: ["s2_ear"], C: Ear },
+  { ids: ["s2_speed"], C: Speed },
+];
