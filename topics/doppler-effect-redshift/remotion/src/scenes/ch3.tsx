@@ -132,3 +132,40 @@ const StripMarker: React.FC<{ u: number; o: number; label?: string; color?: stri
     </g>
   );
 };
+
+/** the viewer at screen right: a friendly eye glyph that blinks and widens as the star approaches */
+const ViewerEye: React.FC<{ f: number; x: number; y: number; o: number; wide: number }> = ({ f, x, y, o, wide }) => {
+  const bl = (f % 70) < 4 ? 0.15 : 1; // deterministic blink every 70 frames
+  const h = 34 * bl * (1 + 0.25 * wide);
+  return (
+    <g transform={`translate(${x},${y})`} opacity={o}>
+      <ellipse rx={92} ry={70} fill={alpha(C.night, 0.5)} />
+      <path d={`M-62,0 Q0,${-h * 1.6} 62,0 Q0,${h * 1.6} -62,0 Z`} fill={C.white} />
+      {bl > 0.5 && <circle cx={-6 - 6 * wide} r={22} fill={C.violet} />}
+      {bl > 0.5 && <circle cx={-12 - 6 * wide} cy={-7} r={7} fill={C.white} />}
+      <text y={112} textAnchor="middle" fontFamily={F.display} fontWeight={600} fontSize={28} fill={alpha(C.lilac, 0.85)} letterSpacing="0.12em">YOU</text>
+    </g>
+  );
+};
+
+// ------------------------------------------------------------------ LabSeq: s3_lab + s3_blue + s3_galaxy
+export const LabSeq: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const sq = cue("squeezeWaves"), blueAt = cue("blue"), st = cue("stretchThem"), redAt = cue("red1"), rs = cue("redshift");
+  // arrival: the s2 double stars converge into one white test star while space dissolves into the lab
+  const arrive = prog(f, start, start + 26, ease.inOut);
+  const sx = starX(f);
+  const v = starV(f);
+  // bloom: star -> Glowing Galaxy (starts just after "red", reaches full on "That's a")
+  const bloomAt = redAt + 6;
+  const bloom = prog(f, bloomAt, bloomAt + 22, ease.inOut);
+  const galShift = tw(f, [bloomAt, bloomAt + 12, rs - 4, rs + 18], [-1, -1, 0, 1], ease.inOutSine);
+  const galScale = tw(f, [bloomAt, rs + 30], [1, 0.9], ease.inOutSine);
+  // spacing -> colour demo wave (s3_lab second half): wavelength sweeps red -> violet -> green
+  const sc = cue("spacingColor");
+  const lam = tw(f, [sc, sc + 26, sc + 52, sq - 4], [150, 150, 50, 98], ease.inOutSine);
+  const waveIn = prog(f, sc - 10, sc + 8, ease.out) * (1 - prog(f, sq + 4, sq + 14, ease.in));
+  // marker on the rainbow strip: follows the demo wave, then the star colour (blue/red)
+  const mU = f < sq + 10 ? lamToU(lam) : f < st ? tw(f, [blueAt - 8, blueAt + 6], [0.45, 0.14], ease.out) : tw(f, [redAt - 8, redAt + 6], [0.14, 0.98], ease.out);
+  const mO = prog(f, sc - 6, sc + 6, ease.out) * (1 - prog(f, bloomAt + 6, bloomAt + 14, ease.in));
+  const mLabel = f >= redAt - 2 ? "RED" : f >= blueAt - 2 && f >= sq ? "BLUE" : undefined;
