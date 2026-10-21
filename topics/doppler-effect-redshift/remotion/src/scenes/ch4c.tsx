@@ -108,3 +108,30 @@ export const LemaitreScene: React.FC<SceneProps> = ({ f, start, end }) => {
     </AbsoluteFill>
   );
 };
+
+// ------------------------------------------------------------------ s4_twist (sting)
+// The SAME page-curl sting as Ch2 (motif recall: "one last twist"); it peels the Lemaitre split away
+// on the twist sfx (4890). The music drops to a soft pad here (mix), so the spiral carries the beat.
+export const Twist4: React.FC<SceneProps> = ({ f, start }) => {
+  const at = start - 4;
+  const p = prog(f, at, at + 16, ease.inOut);
+  return <CurlReveal p={p} uid="tw4" flap={C.lilac}><TwistCard f={f} at={at} uid="tw4c" /></CurlReveal>;
+};
+
+// ------------------------------------------------------------------ s4_road (WS, track ambulance)
+// Curl-out from the twist card (bottom-left corner peels) onto a starry road that floats in space:
+// a tiny ambulance zooms across (siren blip 4979) with speed lines; the camera tracks it, then settles
+// as it brakes centre-frame. On "like sirens down a street" (nope 5046) a big soft X draws over it,
+// the ambulance shrinks back sheepishly (squash), and a lilac "not quite" pill pops.
+const ROAD_Y = 700;
+const StarRoad: React.FC<{ f: number; scroll: number }> = ({ f, scroll }) => (
+  <Svg>
+    <path d={`M-400,${ROAD_Y + 40} C400,${ROAD_Y - 10} 1500,${ROAD_Y - 10} 2400,${ROAD_Y + 40} L2400,${ROAD_Y + 140} C1500,${ROAD_Y + 90} 400,${ROAD_Y + 90} -400,${ROAD_Y + 140} Z`} fill={alpha(mix(C.violet, C.night, 0.3), 0.9)} />
+    <path d={`M-400,${ROAD_Y + 40} C400,${ROAD_Y - 10} 1500,${ROAD_Y - 10} 2400,${ROAD_Y + 40}`} stroke={alpha(C.peri, 0.6)} strokeWidth={4} fill="none" />
+    {Array.from({ length: 22 }).map((_, i) => {
+      const x = ((i * 160 - scroll) % 3520 + 3520) % 3520 - 800;
+      return <rect key={i} x={x} y={ROAD_Y + 62 - 12 * Math.cos(((x - 1000) / 2800) * Math.PI)} width={70} height={8} rx={4} fill={alpha(C.sunLt, 0.7)} />;
+    })}
+    <Stars seed="roadstars" frame={f} n={40} ox={-scroll * 0.2} w={2400} h={120} oy={ROAD_Y + 20} maxR={2.2} color={C.lilac} opacity={0.6} />
+  </Svg>
+);
