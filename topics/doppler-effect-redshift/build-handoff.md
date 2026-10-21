@@ -12,7 +12,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T7 Audio build (public/audio/mix.wav 48 kHz 16-bit, -14.0 LUFS / -1.3 dBTP; 153 sfx cues in remotion/data/audio/cues.txt; deterministic rebuild via scripts/audio/run_audio.sh)
 - [x] T8.0 Cold open (Ch0-ColdOpen, f0-339, 4 scenes; review/ch0/)
 - [x] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes; review/ch1/)
-- [ ] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes)
+- [~] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes) STOPPED AT: chat 3 start, kit helpers + ch2.tsx being written
 - [ ] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes)
 - [ ] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes)
 - [ ] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes)
