@@ -24,3 +24,28 @@ import { PIP, SLIPHER } from "../kit/rig/characters";
 import { POSE, track, sway, merge } from "../kit/rig/poses";
 import { GlassPlate } from "../kit/props/Props";
 import { SceneProps, SceneReg } from "../chapters/types";
+
+// ------------------------------------------------------------------ s3_barcode (INS, slow push)
+// Layout (subject plane): source star far left -> prism -> fan of light -> STAR strip (lower). The
+// ghost LAB copy lifts off the STAR strip on "If" and parks above it, carrying the atoms with it (the
+// atoms set where the lines belong). Then the STAR lines slide toward red; the offset is measured.
+const BC = { x: 600, y: 610, w: 1000, h: 104 }; // STAR (observed) strip
+const LABY = 330; // parked LAB strip y
+const PRISM = { x: 430, y: 560 };
+const SHIFT = 0.075; // strip-fraction slide toward red (exaggerated for legibility)
+const lineX = (l: number, s = 0) => BC.x + (l + s) * BC.w;
+
+/** a tiny atom glyph: nucleus + two tilted orbits with an electron each (orbits spin) */
+const Atom: React.FC<{ x: number; y: number; f: number; s: number; i: number; color?: string }> = ({ x, y, f, s, i, color = C.mint }) => (
+  <g transform={`translate(${x},${y}) scale(${s})`}>
+    <circle r={30} fill={alpha(color, 0.12)} />
+    {[0, 60, 120].map((a, k) => (
+      <g key={k} transform={`rotate(${a + i * 17})`}>
+        <ellipse rx={26} ry={9} fill="none" stroke={alpha(color, 0.75)} strokeWidth={2.5} />
+        <circle cx={26 * Math.cos(f / 5 + k * 2 + i)} cy={9 * Math.sin(f / 5 + k * 2 + i)} r={3.5} fill={C.white} />
+      </g>
+    ))}
+    <circle r={7} fill={color} />
+    <circle r={3} cx={-2} cy={-2} fill={C.white} opacity={0.8} />
+  </g>
+);
