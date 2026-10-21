@@ -97,10 +97,10 @@ const TitleText: React.FC<{ f: number; warm: number; sweep: number }> = ({ f, wa
   const hot = warm > 0.01;
   const grad = `linear-gradient(90deg, ${C.blue} ${sweep * 100 - 40}%, ${C.core} ${sweep * 100}%, ${C.red} ${sweep * 100 + 40}%)`;
   return (
-    <div style={{ position: "absolute", left: PAGE.x - PAGE.w / 2, top: PAGE.y - PAGE.h / 2 + 70, width: PAGE.w, textAlign: "center", color: ink, fontFamily: F.period }}>
+    <div style={{ position: "absolute", left: PAGE.x - PAGE.w / 2, top: PAGE.y - PAGE.h / 2 + 150, width: PAGE.w, textAlign: "center", color: ink, fontFamily: F.period }}>
       <div style={{ fontSize: 30, letterSpacing: "0.28em", opacity: 0.75 }}>PRAGUE &nbsp;·&nbsp; 1842</div>
       <div style={{ width: 360, height: 3, margin: "22px auto 26px", background: alpha(ink, 0.5) }} />
-      <div style={{ fontSize: 88, fontStyle: "italic", lineHeight: 1.1 }}>
+      <div style={{ fontSize: 104, fontStyle: "italic", lineHeight: 1.1 }}>
         On the{" "}
         <span style={{ position: "relative", display: "inline-block" }}>
           <span style={{ opacity: 1 - warm * 0.999 }}>coloured light</span>
@@ -109,7 +109,7 @@ const TitleText: React.FC<{ f: number; warm: number; sweep: number }> = ({ f, wa
           )}
         </span>
       </div>
-      <div style={{ fontSize: 88, fontStyle: "italic", lineHeight: 1.15 }}>of the double stars...</div>
+      <div style={{ fontSize: 104, fontStyle: "italic", lineHeight: 1.15 }}>of the double stars...</div>
       <div style={{ fontSize: 34, marginTop: 30, opacity: 0.8 }}>by Christian Doppler</div>
     </div>
   );
@@ -224,7 +224,7 @@ export const Paper: React.FC<SceneProps> = ({ f, start, end }) => {
   const vblur = Math.sin(Math.PI * tilt) * 22;
   const look = tiltA + 18;
   // push through the window on "light of stars" -> lands on the glass shimmer (2388)
-  const push = prog(f, cue("stars1"), end + 2, ease.in);
+  const push = prog(f, cue("stars1") - 4, end + 2, ease.inOut);
   // shot A camera: slow pull-back + drift (motivated: reveals the full title as it is spoken)
   const zA = tw(f, [start, tiltA], [1.14, 1.0], ease.inOutSine);
   const xA = tw(f, [start, tiltA], [-30, 20], ease.inOutSine);
@@ -238,7 +238,7 @@ export const Paper: React.FC<SceneProps> = ({ f, start, end }) => {
           </AbsoluteFill>
         )}
         {tilt > 0 && (
-          <AbsoluteFill style={{ transform: `translateY(${(tilt - 1) * 1150}px) scale(${1 + push * 2.2})`, transformOrigin: `${WIN_C.x}px ${WIN_C.y}px`, filter: vblur > 0.3 ? `blur(${vblur}px)` : undefined }}>
+          <AbsoluteFill style={{ transform: `translateY(${(tilt - 1) * 1150}px) scale(${1 + push * 4.5})`, transformOrigin: `${WIN_C.x}px ${WIN_C.y}px`, filter: vblur > 0.3 ? `blur(${vblur}px)` : undefined }}>
             <PaperStudy f={f} look={look} push={push} />
           </AbsoluteFill>
         )}
