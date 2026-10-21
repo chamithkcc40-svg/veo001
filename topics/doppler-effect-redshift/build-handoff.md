@@ -13,7 +13,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T8.0 Cold open (Ch0-ColdOpen, f0-339, 4 scenes; review/ch0/)
 - [x] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes; review/ch1/)
 - [x] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes; src/scenes/ch2.tsx, ch2b.tsx, ch2c.tsx; review/ch2/)
-- [ ] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes)
+- [~] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes) STOPPED AT: s3_lab/blue/galaxy (ch3.tsx) + s3_toosmall/s3_quill (ch3b.tsx) done; building ch3c.tsx (s3_barcode, s3_dome, s3_slipher, s3_andromeda, s3_map)
 - [ ] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes)
 - [ ] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes)
 - [ ] T9 Assembly
@@ -38,6 +38,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Remotion 4.0.535 pinned exactly for remotion, @remotion/cli, @remotion/bundler, @remotion/renderer, @remotion/google-fonts. React 18.3.1, TypeScript 5.6.3.
 - Browser: `npx remotion browser ensure` downloaded chrome-headless-shell into node_modules/.remotion (works).
 - Skill: remotion-motion-graphics (SKILL.md, motion-patterns.md, design-rules.md, theme.ts) read from /mnt/skills.
+- Chat 2026-10-21: sandbox reset; reinstalled via npm ci (Remotion 4.0.535 pinned), `npx remotion browser ensure` OK, tsc OK, bundle OK.
 - Transcription: platform audio_transcribe tool (whisper-1, word timestamps) instead of a local model (memory rule).
 
 ## Style bible summary (measured numbers)
