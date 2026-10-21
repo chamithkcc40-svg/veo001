@@ -138,6 +138,73 @@ const NegPlate: React.FC<{ f: number; blink: number }> = ({ f, blink }) => (
   </g>
 );
 
+/** INS hand: Hubble's tweed sleeve + shirt cuff + fist holding a grease pencil; origin = pencil tip.
+ *  Built from the rig's own Hand component and HUBBLE costume colours (same character, closer lens). */
+const PencilHand: React.FC<{ rot: number }> = ({ rot }) => {
+  const K = HUBBLE.costume;
+  return (
+    <g transform={`rotate(${rot})`}>
+      <rect x={-8} y={-150} width={16} height={150} rx={6} fill={C.red} />
+      <path d="M-8,-12 L0,8 L8,-12 Z" fill={C.red} />
+      <rect x={-8} y={-150} width={5} height={140} fill={alpha(C.white, 0.25)} />
+      <g transform="translate(0,-120) rotate(180) scale(1.9)"><Hand kind="fist" r={26} skin={K.skin} shade={K.skinSh} side="R" worldRot={0} /></g>
+      <rect x={-46} y={-260} width={92} height={60} rx={18} fill={C.white} />
+      <rect x={-62} y={-560} width={124} height={320} rx={40} fill={K.top} />
+      <rect x={-62} y={-560} width={36} height={320} rx={18} fill={alpha(C.white, 0.1)} />
+      {[0, 1, 2, 3, 4, 5].map((i) => <path key={i} d={`M-60,${-540 + i * 52} l120,-18`} stroke={alpha(K.top2, 0.6)} strokeWidth={4} />)}
+    </g>
+  );
+};
+
+export const PlateScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const blips = syncList("domeBlips"); // bright, dim, bright
+  const lvl = [1, 0.15, 1];
+  let blink = 0.35;
+  blips.forEach((b, i) => { const k = clamp(1 - Math.abs(f - b - 2) / 7); if (k > 0) blink = mix2(blink, lvl[i], ease.out(k)); });
+  // loupe glides in on an arc (from lower-left), lands over the star after blip 1, lifts away before the pencil
+  const lp = sp(f, blips[0] - 12, fps, spr.smooth), lOut = prog(f, blips[2] + 8, blips[2] + 20, ease.in);
+  const la = mix2(-0.9, 0, lp) + 0.7 * lOut;
+  const lx = VAR.x + Math.sin(la) * 520, ly = VAR.y + (1 - Math.cos(la)) * 380 + 30 * lOut;
+  // pencil: enters from lower-right, circles the star (one lap with overshoot), then a tick mark
+  const penIn = sp(f, blips[2] + 4, fps, spr.snappy);
+  const circ = prog(f, blips[2] + 14, blips[2] + 40, ease.inOut);
+  const ang = -Math.PI / 2 + circ * Math.PI * 2.15;
+  const R = 46;
+  const tipX = mix2(VAR.x + 600, VAR.x + Math.cos(ang) * R, penIn), tipY = mix2(VAR.y + 500, VAR.y + Math.sin(ang) * R * 0.9, penIn);
+  const penOut = prog(f, end - 14, end, ease.in);
+  const ring = Array.from({ length: 41 }).map((_, i) => { const a = -Math.PI / 2 + (i / 40) * circ * Math.PI * 2.15; return `${i ? "L" : "M"}${VAR.x + Math.cos(a) * R},${VAR.y + Math.sin(a) * R * 0.9}`; }).join("");
+  const z = tw(f, [start, end], [1.0, 1.22], ease.inOutSine);
+  const cam = { x: tw(f, [start, end], [0, 170], ease.inOutSine), y: tw(f, [start, end], [0, -60], ease.inOutSine), zoom: z, rot: tw(f, [start, end], [-1.2, 0.4], ease.inOutSine), frame: f, shake: 0.8, seed: "pl4" };
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Layer depth={0.4}><Svg><rect x={-400} y={-300} width={2800} height={1700} fill={mix(C.plum, C.night, 0.55)} />{Array.from({ length: 9 }).map((_, i) => <rect key={i} x={-300 + i * 300} y={-300} width={8} height={1700} fill={alpha(C.night, 0.25)} />)}</Svg></Layer>
+        <Layer depth={0.8}><Svg><rect x={PL.x - PL.w / 2 - 70} y={PL.y - PL.h / 2 - 60} width={PL.w + 140} height={PL.h + 120} rx={36} fill={mix(C.plum, C.sun, 0.18)} /><rect x={PL.x - PL.w / 2 - 40} y={PL.y - PL.h / 2 - 30} width={PL.w + 80} height={PL.h + 60} rx={24} fill={C.sunLt} opacity={0.9} /></Svg></Layer>
+        <Layer depth={1}>
+          <Svg>
+            <NegPlate f={f} blink={blink} />
+            {circ > 0 && <path d={ring} fill="none" stroke={C.red} strokeWidth={7} strokeLinecap="round" opacity={0.9} />}
+            {circ >= 1 && <text x={VAR.x + 62} y={VAR.y - 40} fontFamily={F.period} fontSize={52} fill={C.red} opacity={prog(f, blips[2] + 40, blips[2] + 48, ease.out)}>VAR!</text>}
+            {lp > 0.01 && lOut < 1 && (
+              <g transform={`translate(${lx},${ly})`} opacity={1 - lOut}>
+                <Magnifier id="loupe4" r={120}>
+                  <g transform={`translate(${-VAR.x * 1.8},${-VAR.y * 1.8}) scale(1.8)`}><NegPlate f={f} blink={blink} /></g>
+                </Magnifier>
+              </g>
+            )}
+            {penIn > 0.01 && <g transform={`translate(${tipX + penOut * 400},${tipY + penOut * 300})`}><PencilHand rot={-38 + 6 * Math.sin(ang)} /></g>}
+          </Svg>
+        </Layer>
+        <Layer depth={1.5} blur={6}><Svg><Dust seed="pl4d" frame={f} n={14} color={C.sunLt} opacity={0.3} size={[3, 7]} speed={0.5} /></Svg></Layer>
+      </Camera>
+      <Timeline f={f} fps={fps} at={cue("y1923") + 2} out={end + 30} active={["1923"]} x={520} y={40} />
+      <Finish tint={C.plum} grade={0.08} vig={0.36} />
+    </AbsoluteFill>
+  );
+};
+
 export const CH4: SceneReg[] = [
   { ids: ["s4_dome"], C: DomeScene4 },
+  { ids: ["s4_plate"], C: PlateScene },
 ];
