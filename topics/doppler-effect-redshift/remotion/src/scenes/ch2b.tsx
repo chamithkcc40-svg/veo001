@@ -11,6 +11,7 @@ import { Dust, Finish, GlowDot, LightLeak, Stars } from "../kit/fx";
 import { Pond } from "../kit/env/Pond";
 import { Street } from "../kit/env/Street";
 import { Rings } from "../kit/info/Rings";
+import { PitchLine } from "../kit/info/PitchLine";
 import { Ambulance, AMB_SIREN } from "../kit/props/Props";
 import { Skipper } from "../kit/rig/Skipper";
 import { PIP } from "../kit/rig/characters";
@@ -144,6 +145,89 @@ const TickBar: React.FC<{ f: number; at: number; hits: { t: number; fast: boolea
         <text y={20} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={58} fill={C.white}>{n}</text>
       </g>
       <text x={X0} y={Y - 80} fontFamily={F.display} fontWeight={600} fontSize={28} fill={C.lilac} letterSpacing="3">HITS PER SECOND</text>
+    </g>
+  );
+};
+
+export const Ear: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const hits = earHits();
+  const last = hits.filter((h) => h.t <= f).pop();
+  const pulse = last ? Math.exp(-(f - last.t) / 3.5) : 0;
+  const slow = f >= sync("earSlowStart") - 10;
+  // iris opens from the ear (transition in), closes faster at the end
+  const iris = tw(f, [start, start + 16], [0, 2300], ease.out);
+  const irisOut = prog(f, end - 6, end, ease.in);
+  const cam = { x: tw(f, [start, end], [0, 60], ease.inOutSine), y: noise1("earcy", f / 30) * 5, zoom: tw(f, [start, end], [1.0, 1.08], ease.inOutSine), rot: 0, frame: f };
+  // wavefronts: arcs centred far left; each reaches the ear at its hit frame (constant speed)
+  const fronts = hits.map((h) => ({ ...h, x: EAR.x - (h.t - f) * EAR_C })).filter((w) => w.x > -200 && w.x < EAR.x + 60);
+  const pitch = slow ? tw(f, [sync("earSlowStart") - 10, sync("earSlowStart") + 6], [1, -1], ease.inOut) : tw(f, [start + 8, start + 30], [0, 1], ease.out);
+  const plIn = sp(f, cue("squeezedWaves") + 4, fps, spr.bouncy);
+  const label = (txt: string, color: string, at: number, out: number) => {
+    const p = sp(f, at, fps, spr.bouncy);
+    const e = prog(f, out - 7, out, ease.in);
+    if (p < 0.01 || e >= 1) return null;
+    return (
+      <g transform={`translate(560,${200 + (1 - p) * 30})`} opacity={Math.min(1, p * 1.5) * (1 - e)}>
+        <text textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={64} fill={color} letterSpacing="4" style={{ filter: `drop-shadow(0 0 16px ${alpha(color, 0.7)})` }}>{txt}</text>
+      </g>
+    );
+  };
+  return (
+    <AbsoluteFill style={{ clipPath: `circle(${iris * (1 - irisOut)}px at ${EAR.x}px ${EAR.y}px)` }}>
+      <Camera cam={cam}>
+        <Layer depth={0.2}>
+          <Svg>
+            <defs>
+              <radialGradient id="earBg" cx="0.3" cy="0.45" r="0.9">
+                <stop offset="0" stopColor={mix(C.violet, C.purple, 0.5)} />
+                <stop offset="1" stopColor={C.night} />
+              </radialGradient>
+            </defs>
+            <rect x={-400} y={-300} width={2800} height={1700} fill="url(#earBg)" />
+            <Dust seed="eardust" frame={f} n={50} area={[-200, 0, 1700, 1080]} color={C.lilac} size={[1.2, 3]} opacity={0.35} speed={0.5} />
+          </Svg>
+        </Layer>
+        <Layer depth={0.6} blur={4}>
+          <Svg>{[0, 1, 2].map((i) => <circle key={i} cx={300 + i * 520} cy={300 + i * 160} r={180 + i * 40} fill={alpha([C.blue, C.magenta, C.teal][i], 0.12)} />)}</Svg>
+        </Layer>
+        <Layer depth={1}>
+          <Svg>
+            {fronts.map((w) => {
+              const R = 1400;
+              const cx = w.x - R;
+              const a = 0.32;
+              const col = w.fast ? C.blue : C.red;
+              const o = clamp((w.x + 200) / 300) * (1 - clamp((w.x - EAR.x + 20) / 40));
+              return <path key={w.t} d={`M${cx + R * Math.cos(-a)},${EAR.y + R * Math.sin(-a)} A${R},${R} 0 0 1 ${cx + R * Math.cos(a)},${EAR.y + R * Math.sin(a)}`} stroke={col} strokeWidth={9} fill="none" strokeLinecap="round" opacity={o} style={{ filter: `drop-shadow(0 0 10px ${alpha(col, 0.8)})` }} />;
+            })}
+            {label("SQUEEZED", C.blue, cue("squeezedWaves"), cue("stretchedWaves") - 2)}
+            {label("STRETCHED", C.red, cue("stretchedWaves"), end)}
+            <BigEar f={f} pulse={pulse} wide={slow ? 0 : 1} />
+            <g opacity={plIn} transform={`translate(1240,${250 + (1 - plIn) * 30}) scale(${0.6 + 0.4 * plIn})`}>
+              <PitchLine x={0} y={0} w={250} frame={f} pitch={pitch} tail="right" />
+            </g>
+            <Pill2 f={f} at={cue("higher")} out={cue("stretchedWaves") - 2} text="HIGHER" color={C.blue} />
+            <Pill2 f={f} at={cue("lower")} out={end} text="LOWER" color={C.red} />
+          </Svg>
+        </Layer>
+      </Camera>
+      <Svg><TickBar f={f} at={start + 6} hits={hits} /></Svg>
+      <Finish tint={C.violet} grade={0.1} vig={0.34} />
+    </AbsoluteFill>
+  );
+};
+
+/** svg pill under the pitch line (HIGHER / LOWER) */
+const Pill2: React.FC<{ f: number; at: number; out: number; text: string; color: string }> = ({ f, at, out, text, color }) => {
+  const { fps } = useVideoConfig();
+  const p = sp(f, at, fps, spr.bouncy);
+  const e = prog(f, out - 7, out, ease.in);
+  if (p < 0.01 || e >= 1) return null;
+  return (
+    <g transform={`translate(1240,${360 + (1 - p) * 20}) scale(${0.7 + 0.3 * p})`} opacity={Math.min(1, p * 1.5) * (1 - e)}>
+      <rect x={-110} y={-34} width={220} height={68} rx={34} fill={color} />
+      <text y={14} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={38} fill={C.white} letterSpacing="3">{text}</text>
     </g>
   );
 };
