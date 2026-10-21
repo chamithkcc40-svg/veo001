@@ -253,6 +253,31 @@ export const DomeScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s3_slipher (MS, push to the plate)
+// Hard cut inside the dome (red darkroom lamp). Slipher is bent to the spectrograph eyepiece; on
+// "faint" he straightens (anticipation dip), lifts the developed glass plate on the clink (3469),
+// eyebrows up on "spirals". The plate shows a faint spiral + its tiny barcode. The camera pushes into
+// the plate so s3_andromeda can open by expanding the plate frame into the sky (match cut).
+const SL = { x: 640, y: 1290, s: 2.05 };
+export const PLATE_W = 190, PLATE_H = 134;
+/** contents of Slipher's plate: faint spiral smudge + a short absorption barcode (shared w/ andromeda) */
+export const PlateImage: React.FC<{ f: number; spiral: number; code: number }> = ({ f, spiral, code }) => (
+  <g>
+    <g opacity={spiral}><Galaxy id="plateGal" x={0} y={-14} r={30} frame={f} shift={0} tilt={0.45} rot={-25} dots={26} glow={0.7} /></g>
+    <g opacity={code}><Barcode id="plateCode" x={-70} y={34} w={140} h={18} /></g>
+  </g>
+);
+/** spectrograph box + eyepiece bolted to the telescope tail (drawn in the subject plane) */
+const Spectrograph: React.FC<{ f: number }> = ({ f }) => (
+  <g transform="translate(905,470) rotate(-8)">
+    <rect x={-20} y={-150} width={40} height={150} rx={16} fill={mix(C.lilac, C.violet, 0.6)} />
+    <rect x={-80} y={-10} width={160} height={110} rx={18} fill={mix(C.lilac, C.violet, 0.45)} />
+    <rect x={-80} y={-10} width={160} height={28} rx={14} fill={alpha(C.white, 0.16)} />
+    <rect x={-112} y={40} width={40} height={30} rx={10} fill={mix(C.lilac, C.violet, 0.7)} />
+    <circle cx={50} cy={60} r={9} fill={alpha(C.red, 0.6 + 0.4 * Math.sin(f / 9))} />
+  </g>
+);
+
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
 ];
