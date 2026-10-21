@@ -230,7 +230,7 @@ export const DomeScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const cam = {
     x: tw(f, [start, end], [-60, 20], ease.inOutSine),
     y: tw(f, [start, end], [140, -150], ease.inOut) + dip,
-    zoom: tw(f, [start, end], [1.0, 1.42], ease.inOut), rot: tw(f, [start, end], [-0.6, 0.3], ease.inOutSine), frame: f,
+    zoom: tw(f, [start, end], [1.0, 1.42], ease.inOut), rot: tw(f, [start, end], [-0.6, 0.3], ease.inOutSine), frame: f, shake: 2.5, seed: "domeh",
   };
   return (
     <AbsoluteFill>
@@ -409,7 +409,8 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
   const tagShift = -0.05 * prog(f, toward - 2, toward + 22, ease.inOut);
   const dop = (i: number) => sp(f, nearly + 8 + i * 3, fps, spr.smooth); // each spiral reveals its shift
   const out = (i: number) => prog(f, nearly + 8 + i * 3, end + 30, ease.inOutSine); // outward drift
-  const camBg = { x: (fx - 960) * 0.2, y: (fy - 540) * 0.2, zoom: 1 + 0.12 * (Z - 1), rot: 0, frame: f };
+  const settle = prog(f, rushing, end + 30, ease.inOutSine); // after the reveal: slow orbit drift of the map
+  const camBg = { x: (fx - 960) * 0.2 + 60 * settle, y: (fy - 540) * 0.2, zoom: 1 + 0.12 * (Z - 1), rot: 0, frame: f };
   const spirals = SPIRALS.map((g, i) => {
     if (i === 0) {
       const r = g.r * (1 + 0.6 * approach) * (1 - 0.35 * pull); // grows as it nears; settles to map scale
@@ -422,7 +423,7 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
     }
     const d = dop(i), o2 = out(i);
     const dx = g.x - US.x, dy = g.y - US.y, len = Math.hypot(dx, dy);
-    const ux = dx / len, uy = dy / len, push = (g.blue ? -40 : 90) * o2;
+    const ux = dx / len, uy = dy / len, push = (g.blue ? -40 : 150) * o2; // receding spirals keep drifting outward
     const x = g.x + ux * push, y = g.y + uy * push;
     const c = g.blue ? C.blue : C.red;
     return (
@@ -446,7 +447,7 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
     <AbsoluteFill>
       <Camera cam={camBg}><Space frame={f} dust={false} nebula={[C.magenta, C.purple]} /></Camera>
       <Svg>
-        <g transform={`translate(960,540) scale(${Z}) translate(${-fx},${-fy})`}>
+        <g transform={`translate(960,540) rotate(${-3 * settle}) scale(${Z}) translate(${-fx - 40 * settle},${-fy})`}>
           {/* faint sky-map grid: concentric distance rings around US (appear with the pull back) */}
           {[180, 360, 540, 720].map((r, i) => <ellipse key={r} cx={US.x} cy={US.y} rx={r} ry={r * 0.47} fill="none" stroke={alpha(C.lilac, 0.12 * pull)} strokeWidth={2 / Z} strokeDasharray={`${6 / Z} ${10 / Z}`} />)}
           <UsMarker f={f} o={pull} s={0.8 + 0.2 * pull} />
