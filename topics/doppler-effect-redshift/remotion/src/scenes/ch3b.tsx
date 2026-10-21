@@ -193,3 +193,39 @@ const QuillSky: React.FC<{ f: number; end: number }> = ({ f, end }) => {
       </Svg></Layer>
       <Layer depth={0.45} blur={1.5}><Svg><path d="M-600,900 Q300,700 960,760 Q1500,800 2600,700 V1500 H-600 Z" fill={mix(C.violet, C.night, 0.6)} /></Svg></Layer>
       <Layer depth={0.6}><Pines seed="qp" n={16} y={900} scale={[0.5, 0.9]} color={mix(C.violet, C.night, 0.75)} frame={f} /></Layer>
+      <Layer depth={1}>
+        <Svg>
+          <DotArrow t={t} p0={p0} p1={p1} p2={p2} tail={0.5} size={1.2} />
+          {/* telescope on a little rock: recoils on arrival, rim glow pulses */}
+          <path d={`M${scope.x - 220},${scope.y + 120} Q${scope.x},${scope.y - 10} ${scope.x + 240},${scope.y + 120} Z`} fill={mix(C.violet, C.night, 0.45)} />
+          <GlowDot id="qscope" cx={scope.x + 60} cy={scope.y - 170} r={200} color={C.sun} o={0.5 * hit * (f >= land ? 1 : 0)} />
+          <g transform={`translate(${scope.x},${scope.y + 40})`}>
+            <Telescope angle={-38 + (f >= land ? (1 - hit) * 8 : 0)} scale={1.6} color={C.lilac} />
+          </g>
+          {/* stamp: drops (scale 2.2 -> 1 with overshoot) and rotates; dust ring on impact */}
+          {f >= did - 4 && (
+            <g transform={`translate(${scope.x - 420},${scope.y - 330}) rotate(${-14 + (1 - stamp) * 10}) scale(${f < did ? 2.6 - 1.4 * stampP : 0.9 + 0.3 * stamp})`} opacity={f < did ? stampP : 1}>
+              <StampCheck color={C.mint} size={110} />
+            </g>
+          )}
+          {f >= did && puff < 1 && (
+            <ellipse cx={scope.x - 420} cy={scope.y - 330} rx={130 + puff * 140} ry={(130 + puff * 140) * 0.92} fill="none" stroke={alpha(C.mint, 0.7 * (1 - puff))} strokeWidth={10 * (1 - puff) + 2} />
+          )}
+        </Svg>
+      </Layer>
+      <Layer depth={1.5} blur={8}><Pines seed="qpf" n={5} y={1180} scale={[1.4, 2.0]} color={C.night} frame={f} /></Layer>
+    </Camera>
+  );
+};
+
+export const QuillScene: React.FC<SceneProps> = ({ f, start, end }) => (
+  <AbsoluteFill>
+    {f < CUT ? <QuillStudy f={f} start={start} /> : <QuillSky f={f} end={end} />}
+    <Finish tint={f < CUT ? C.sun : C.violet} grade={0.1} vig={0.32} />
+  </AbsoluteFill>
+);
+
+export const CH3B: SceneReg[] = [
+  { ids: ["s3_toosmall"], C: TooSmall },
+  { ids: ["s3_quill"], C: QuillScene },
+];
