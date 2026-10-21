@@ -157,3 +157,39 @@ const QuillStudy: React.FC<{ f: number; start: number }> = ({ f, start }) => {
     </Camera>
   );
 };
+
+// moving stars that get measured on "how stars move": each grows a small velocity arrow
+const SKY_STARS = Array.from({ length: 7 }).map((_, i) => ({ x: rr("qs x" + i, 260, 1700), y: rr("qs y" + i, 120, 470), a: rr("qs a" + i, -180, 180), c: i % 2 ? C.red : C.blue }));
+const QuillSky: React.FC<{ f: number; end: number }> = ({ f, end }) => {
+  const { fps } = useVideoConfig();
+  const t = prog(f, CUT - 2, 3022, ease.outCubic); // arrow decelerates onto the telescope
+  const scope = { x: 1500, y: 800 };
+  const p0 = [-120, 900], p1 = [700, -120], p2 = [scope.x - 40, scope.y - 190];
+  const land = 3022;
+  const hit = sp(f, land, fps, spr.bouncy); // telescope recoils + rim glow on arrival
+  const meas = 3043; // "how stars move"
+  const did = cue("theyDid");
+  const stamp = sp(f, did, fps, { damping: 9, stiffness: 260, mass: 0.6 });
+  const stampP = prog(f, did - 4, did, ease.in); // drop from above, fast
+  const puff = prog(f, did, did + 16, ease.out);
+  const cam = { x: tw(f, [CUT, end], [-60, 60], ease.inOutSine), y: tw(f, [CUT, end], [40, -10], ease.inOutSine), zoom: tw(f, [CUT, end], [1.0, 1.06], ease.inOutSine), rot: 0, frame: f, shake: 6 * Math.exp(-Math.max(0, f - did) / 4) * (f >= did ? 1 : 0), seed: "stamp" };
+  return (
+    <Camera cam={cam}>
+      <Layer depth={0.1}><NightSky frame={f} seed="qsky" /></Layer>
+      <Layer depth={0.3}><Svg>
+        {SKY_STARS.map((s, i) => {
+          const g = sp(f, meas + i * 3, fps, spr.snappy);
+          const dx = Math.cos((s.a * Math.PI) / 180), dy = Math.sin((s.a * Math.PI) / 180);
+          const drift = Math.max(0, f - meas) * 0.25;
+          return (
+            <g key={i} transform={`translate(${s.x + dx * drift},${s.y + dy * drift})`}>
+              <GlowDot id={"qsg" + i} cx={0} cy={0} r={34} color={mix(C.white, s.c, 0.4 * g)} o={0.7} />
+              <circle r={6} fill={C.white} />
+              {g > 0.01 && <path d={`M${dx * 18},${dy * 18} L${dx * (18 + 60 * g)},${dy * (18 + 60 * g)}`} stroke={mix(C.white, s.c, 0.6)} strokeWidth={5} strokeLinecap="round" opacity={g} />}
+              {g > 0.01 && <path d="M0,-9 L14,0 L0,9 Z" fill={mix(C.white, s.c, 0.6)} transform={`translate(${dx * (18 + 60 * g)},${dy * (18 + 60 * g)}) rotate(${s.a})`} opacity={g} />}
+            </g>
+          );
+        })}
+      </Svg></Layer>
+      <Layer depth={0.45} blur={1.5}><Svg><path d="M-600,900 Q300,700 960,760 Q1500,800 2600,700 V1500 H-600 Z" fill={mix(C.violet, C.night, 0.6)} /></Svg></Layer>
+      <Layer depth={0.6}><Pines seed="qp" n={16} y={900} scale={[0.5, 0.9]} color={mix(C.violet, C.night, 0.75)} frame={f} /></Layer>
