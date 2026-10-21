@@ -128,3 +128,39 @@ export const BarcodeScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const cam = { x: tw(f, [start, end], [-40, 60], ease.inOutSine), y: tw(f, [start, end], [30, -10], ease.inOutSine), zoom: tw(f, [start, end], [1.0, 1.1], ease.inOutSine), rot: 0, frame: f };
   const evenXs = [240, 720, 1200, 1680];
   const wipeXs = LAB_LINES.map((l, i) => mix2(lineX(l, SHIFT), evenXs[i], wipe));
+  const gx = 1720 + 110 * drift, gy = BC.y + 40 - 70 * drift;
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Layer depth={0.3}><LabBg frame={f} strip={0.35} /></Layer>
+        <Layer depth={0.55} blur={2}><Svg><Stars seed="bcfar" frame={f} n={70} maxR={2} opacity={0.5} /></Svg></Layer>
+        <Layer depth={1}>
+          <Svg>
+            <PrismFeed f={f} beam={beam} fan={fan} o={1 - 0.6 * gal} />
+            {/* LAB reference copy: appears as a ghost on top of the STAR strip, then lifts */}
+            {lift > 0.01 && <Barcode id="bcLab" x={BC.x} y={labY} w={BC.w} h={BC.h * 0.8} ghost label="LAB" />}
+            {lift > 0.01 && LAB_LINES.map((l, i) => <path key={i} d={`M${lineX(l)},${labY - 64} L${lineX(l)},${labY - 8}`} stroke={alpha(C.mint, 0.6 * atomP[i])} strokeWidth={2} strokeDasharray="4 6" />)}
+            <Barcode id="bcStar" x={BC.x} y={BC.y} w={BC.w} h={BC.h} shift={slide} reveal={reveal} lineReveal={lineRev} />
+            {LAB_LINES.map((l, i) => atomP[i] > 0.01 && <Atom key={i} f={f} i={i} x={lineX(l)} y={(lift > 0.01 ? labY : BC.y) - 92 - (1 - atomP[i]) * 40} s={0.4 + 0.6 * atomP[i]} />)}
+            {lift < 0.99 && LAB_LINES.map((l, i) => atomP[i] > 0.01 && <path key={"t" + i} d={`M${lineX(l)},${BC.y - 64} L${lineX(l)},${BC.y - 6}`} stroke={alpha(C.mint, 0.7 * atomP[i] * (1 - lift))} strokeWidth={2} strokeDasharray="4 6" />)}
+            {LAB_LINES.map((l, i) => <Measure key={i} x0={lineX(l)} x1={lineX(l, SHIFT)} yTop={LABY + BC.h * 0.8} yBot={BC.y} p={sp(f, cue("slides") + 47 + i * 3, fps, spr.snappy)} o={meas * (i === 1 || i === 3 ? 1 : 0.45)} />)}
+            <StripTag x={BC.x} y={BC.y + BC.h + 46} text="STARLIGHT" p={prog(f, cue("barcode"), cue("barcode") + 14, ease.out)} color={C.lilac} />
+            <StripTag x={BC.x + BC.w - 300} y={BC.y + BC.h + 46} text="→ toward red" p={meas} color={C.red} />
+            {gal > 0.01 && (
+              <g opacity={gal * (1 - wipe)}>
+                <Galaxy id="bcgal" x={gx} y={gy} r={56 * (1 - 0.45 * drift)} frame={f} shift={0.2 + 0.8 * drift} tilt={0.35} rot={30} dots={34} />
+                <path d={`M${gx - 70},${gy + 70} L${gx - 130},${gy + 108}`} stroke={alpha(C.red, 0.7 * drift)} strokeWidth={5} strokeLinecap="round" strokeDasharray="2 14" />
+              </g>
+            )}
+          </Svg>
+        </Layer>
+        <Layer depth={1.6} blur={6}><Svg><Dust seed="bcfg" frame={f} n={12} area={[-300, -200, 2500, 1500]} size={[4, 9]} color={C.lilac} opacity={0.28} speed={0.6} /></Svg></Layer>
+      </Camera>
+      <Pill f={f} fps={fps} at={away + 4} out={end - 4} text="source moving away" x={1500} y={300} color={C.red} size={30} />
+      <ExaggeratedTag opacity={prog(f, slideAt, slideAt + 12, ease.out)} x={1824} y={60} text="shift exaggerated" />
+      <Finish tint={C.violet} grade={0.1} vig={0.34} />
+      <BarWipe t={wipe} xs={wipeXs} />
+    </AbsoluteFill>
+  );
+};
+const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
