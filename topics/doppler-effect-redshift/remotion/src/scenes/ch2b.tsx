@@ -9,6 +9,7 @@ import { cue, sync } from "../data";
 import { Camera, Layer, Svg } from "../kit/camera";
 import { Dust, Finish, GlowDot, LightLeak, Stars } from "../kit/fx";
 import { Pond } from "../kit/env/Pond";
+import { Railway, RAIL } from "../kit/env/Railway";
 import { Study, StudyDesk, StudyFore, StudyLight, StudyRoom, StudyWindowView, WIN } from "../kit/env/Study";
 import { NameTag, Timeline } from "../kit/info/Labels";
 import { Rig } from "../kit/rig/Rig";
@@ -17,7 +18,7 @@ import { merge, POSE, scribble, sway, track } from "../kit/rig/poses";
 import { Street } from "../kit/env/Street";
 import { Rings } from "../kit/info/Rings";
 import { PitchLine } from "../kit/info/PitchLine";
-import { Ambulance, AMB_SIREN, Candle, Flag, Horn, Quill, Ship, SpiralIcon, Speedometer, Suitcase, Train, TRAIN_STACK } from "../kit/props/Props";
+import { Ambulance, AMB_SIREN, Candle, Flag, Horn, Notebook, Quill, Ship, SpiralIcon, Speedometer, Suitcase, Train, TRAIN_STACK } from "../kit/props/Props";
 import { Skipper } from "../kit/rig/Skipper";
 import { BUYSBALLOT, DOPPLER, HORN1, HORN2, HORN3, OBSERVER_A, OBSERVER_B, PIP } from "../kit/rig/characters";
 import { SceneProps, SceneReg } from "../chapters/types";
@@ -462,10 +463,95 @@ export const SuitcaseScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ railway helpers (s2_train, s2_observers)
+/** smoke puffs: one per chuff cue, born at the stack where the loco WAS, drifting up and back */
+const Smoke: React.FC<{ f: number; stack: (t: number) => { x: number; y: number }; s: number }> = ({ f, stack, s }) => {
+  const out: React.ReactNode[] = [];
+  for (let t = sync("chuffStart"); t <= Math.min(f, sync("chuffEnd")); t += sync("chuffPeriod")) {
+    const age = f - t;
+    if (age > 70) continue;
+    const p = stack(t);
+    const k = age / 70;
+    const r = (18 + age * 1.1) * s;
+    out.push(
+      <g key={t} opacity={(1 - k) * clamp(age / 3)}>
+        <circle cx={p.x - age * 1.6 * s} cy={p.y - age * 2.2 * s} r={r} fill={mix(C.white, C.lilac, k)} />
+        <circle cx={p.x - age * 1.6 * s + r * 0.5} cy={p.y - age * 2.2 * s - r * 0.3} r={r * 0.6} fill={C.white} opacity={0.8} />
+      </g>,
+    );
+  }
+  return <g>{out}</g>;
+};
+
+/** the three horn players on the open car (car-local coordinates, origin = car deck centre) */
+const HORN_S = 0.6;
+const HornBand: React.FC<{ f: number; blow: number }> = ({ f, blow }) => (
+  <g>
+    {[HORN1, HORN2, HORN3].map((def, i) => {
+      const x = -140 + i * 140;
+      const P = merge({ ...POSE.hornPlay, turn: 0.55, lookX: 0.6 }, sway(f, i * 1.3, 0.8 + 0.4 * blow));
+      return <Rig key={def.seed} uid={"hb" + i} def={def} frame={f + i * 17} x={x} y={0} scale={HORN_S} pose={P} expr={blow > 0.5 ? "ooo" : "joy"}
+        propR={<g transform="translate(-8,-40) rotate(-12)"><Horn scale={0.95} /></g>} />;
+    })}
+  </g>
+);
+/** bell positions (car-local) for horn rings */
+const BELLS = [-140, 0, 140].map((x) => ({ x: x + 70, y: -150 }));
+
+export const TrainScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const go = start + 10; // whistle (1983) = the train sets off
+  const V = 7;
+  const d = Math.max(0, f - go);
+  const travel = d < 30 ? (V * d * d) / 60 : V * (d - 15);
+  const S = 0.9;
+  const locoX = 760 + travel;
+  const trackY = RAIL.track + 18;
+  const locoAt = (t: number) => { const dd = Math.max(0, t - go); return 760 + (dd < 30 ? (V * dd * dd) / 60 : V * (dd - 15)); };
+  const stack = (t: number) => ({ x: locoAt(t) + TRAIN_STACK.x * S, y: trackY + TRAIN_STACK.y * S });
+  const carX = (t: number) => locoAt(t) - 520 * S;
+  // camera pans with the train; whip-pan in from the left (motion blur decays)
+  const whip = prog(f, start, start + 12, ease.out);
+  const camX = (locoX - 900) * 0.9 - (1 - whip) * 1400;
+  const cam = { x: camX, y: -20 + noise1("trcy", f / 30) * 4, zoom: 1.0, rot: 0, frame: f };
+  const blow = prog(f, cue("horns") - 4, cue("horns") + 8, ease.out);
+  // Buys Ballot: flag raised, drops sharply on the whistle (anticipation: lifts higher first), then jots in notebook
+  const bbPose = track(f, [
+    [start, { ...POSE.flagUp, turn: 0.4, lookX: 0.8 }],
+    [go - 4, { armR: { a: 172, b: 10 }, handR: "fist", turn: 0.4, lookX: 0.8, lean: -4 }],
+    [go + 4, { armR: { a: 70, b: 10 }, handR: "fist", turn: 0.4, lookX: 1, lean: 8 }],
+    [go + 40, { ...POSE.notebook, turn: 0.3, lookX: 0.6 }],
+  ], 6);
+  const tags = cue("dutch");
+  return (
+    <AbsoluteFill style={{ filter: whip < 1 ? `blur(${(1 - whip) * 16}px)` : undefined }}>
+      <Camera cam={cam}>
+        <Railway frame={f} subject={
+          <Svg>
+            <Smoke f={f} stack={stack} s={S} />
+            {BELLS.map((b, i) => (
+              <Rings key={i} id={"trh" + i} frame={f} path={(t) => ({ x: carX(t) + b.x * S, y: trackY - 104 * S + b.y * S })} start={cue("horns") + i * 3} period={10} c={16} maxR={420} tint width={4} opacity={0.75} />
+            ))}
+            <g transform={`translate(${locoX},${trackY + Math.sin(f / 2.2) * 1.2})`}>
+              <Train wheel={(travel / (42 * S)) * 57.3} scale={S} car={<HornBand f={f} blow={blow} />} />
+            </g>
+            <Rig uid="bbtr" def={BUYSBALLOT} frame={f} x={1250} y={RAIL.track + 190} scale={1.0} pose={bbPose} expr={f < go + 6 ? "focused" : "happy"}
+              propR={f < go + 30 ? <g transform="translate(0,6)"><Flag frame={f} /></g> : <g transform="translate(0,4)"><Notebook /></g>} />
+          </Svg>
+        } />
+      </Camera>
+      <Timeline f={f} fps={fps} at={start + 6} out={end + 10} active={["1845"]} x={520} y={52} />
+      <NameTag f={f} fps={fps} at={tags} out={end + 10} name="Buys Ballot" sub="near Utrecht · 1845" x={110} y={700} />
+      <Finish tint={C.oliveLt} grade={0.1} vig={0.28} />
+    </AbsoluteFill>
+  );
+};
+
 export const CH2B: SceneReg[] = [
   { ids: ["s2_compare"], C: Compare },
   { ids: ["s2_ear"], C: Ear },
   { ids: ["s2_speed"], C: Speed, post: 16 },
   { ids: ["s2_study"], C: StudyScene, post: 12 },
   { ids: ["s2_suitcase"], C: SuitcaseScene },
+  { ids: ["s2_train"], C: TrainScene },
 ];
