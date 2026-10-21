@@ -264,7 +264,7 @@ const Train2: React.FC<{ f: number; y: number; gap: number; color: string; lead:
 
 export const Speed: React.FC<SceneProps> = ({ f, start, end }) => {
   const { fps } = useVideoConfig();
-  const lead = 1000 + (f - start) * SPD_V;
+  const lead = 1180 + (f - start) * SPD_V;
   const camX = (f - start) * SPD_V * 0.9 + noise1("spdx", f / 25) * 6; // lateral track: riders drift slowly right of centre
   const needleAt = sync("earSlowEnd") + 8; // needle tick sfx frame (1600)
   const nd = sp(f, needleAt, fps, { damping: 9, stiffness: 140, mass: 0.7 });
@@ -383,8 +383,8 @@ export const StudyScene: React.FC<SceneProps> = ({ f, start, end }) => {
 // ------------------------------------------------------------------ s2_suitcase (sepia memory)
 // Doppler latches the suitcase (latch sfx), lifts it (prop follows his hand via FK), looks at the ship
 // in the window ("moved to America"), then sets it down (thud sfx) with a small hopeful smile.
-const DOP_X = 760, FLOOR = 1010, DS = 1.25, CASE_S = 0.8;
-const CASE_FLOOR = { x: 1010, y: FLOOR + 4 };
+const DOP_X = 930, FLOOR = 890, DS = 1.6, CASE_S = 1.05;
+const CASE_FLOOR = { x: 1250, y: FLOOR + 4 };
 export const SuitcaseScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const latch = cue("nearlyQuit"); // 1912 latch sfx
   const thud = latch + 35; // 1947 thud sfx
@@ -412,7 +412,20 @@ export const SuitcaseScene: React.FC<SceneProps> = ({ f, start, end }) => {
   return (
     <AbsoluteFill style={{ opacity: fadeIn, filter: `sepia(${0.85 * sep}) saturate(${1 - 0.25 * sep}) brightness(${1 + 0.04 * sep})` }}>
       <Camera cam={cam}>
-        <Layer depth={0.15} blur={1}><StudyWindowView frame={f} ship={ship} /></Layer>
+        <Layer depth={0.15} blur={1}><StudyWindowView frame={f} /></Layer>
+        <Layer depth={0.15} blur={0.6}>
+          <Svg>
+            {/* "America": a moonlit sea band and a sailing ship drifting across the window */}
+            <g opacity={ship}>
+              <rect x={WIN.x - 100} y={WIN.y + WIN.h - 120} width={WIN.w + 200} height={140} fill={mix(C.peri, C.night, 0.45)} />
+              {Array.from({ length: 9 }).map((_, i) => <rect key={i} x={WIN.x + 40 + i * 52 + Math.sin(f / 9 + i) * 8} y={WIN.y + WIN.h - 100 + (i % 3) * 22} width={30} height={4} rx={2} fill={alpha(C.sunLt, 0.55)} />)}
+              <circle cx={WIN.x + WIN.w - 110} cy={WIN.y + 110} r={42} fill={mix(C.sunLt, C.white, 0.5)} />
+              <g transform={`translate(${WIN.x + 170 + ship * 60 + (f - start) * 0.25},${WIN.y + WIN.h - 112 + Math.sin(f / 12) * 3}) rotate(${Math.sin(f / 14) * 2})`}>
+                <Ship scale={1.25} color={mix(C.night, C.violet, 0.3)} />
+              </g>
+            </g>
+          </Svg>
+        </Layer>
         <Layer depth={0.5} blur={1.2}><StudyRoom frame={f} /></Layer>
         <Layer depth={1}>
           <Svg>
@@ -420,7 +433,7 @@ export const SuitcaseScene: React.FC<SceneProps> = ({ f, start, end }) => {
             {Array.from({ length: 16 }).map((_, i) => <rect key={i} x={-400 + i * 180} y={FLOOR - 60} width={4} height={600} fill={alpha(C.night, 0.25)} transform={`skewX(${(i - 8) * 3})`} />)}
             <rect x={-400} y={FLOOR - 64} width={2800} height={8} fill={alpha(C.sunLt, 0.25)} />
             {/* side table + candle */}
-            <g transform={`translate(1600,${FLOOR})`}>
+            <g transform={`translate(1700,${FLOOR})`}>
               <rect x={-130} y={-250} width={260} height={30} rx={10} fill={mix(C.plum, C.sun, 0.3)} />
               <rect x={-110} y={-222} width={20} height={222} rx={8} fill={mix(C.plum, C.night, 0.2)} />
               <rect x={90} y={-222} width={20} height={222} rx={8} fill={mix(C.plum, C.night, 0.2)} />
@@ -439,7 +452,7 @@ export const SuitcaseScene: React.FC<SceneProps> = ({ f, start, end }) => {
             ))}
           </Svg>
         </Layer>
-        <Layer depth={1}><StudyLight frame={f} cx={1620} cy={FLOOR - 340} /></Layer>
+        <Layer depth={1}><StudyLight frame={f} cx={1720} cy={FLOOR - 340} /></Layer>
         <Layer depth={1.5} blur={9}><StudyFore /></Layer>
       </Camera>
       {/* memory edge: soft light vignette */}
@@ -452,7 +465,7 @@ export const SuitcaseScene: React.FC<SceneProps> = ({ f, start, end }) => {
 export const CH2B: SceneReg[] = [
   { ids: ["s2_compare"], C: Compare },
   { ids: ["s2_ear"], C: Ear },
-  { ids: ["s2_speed"], C: Speed },
+  { ids: ["s2_speed"], C: Speed, post: 16 },
   { ids: ["s2_study"], C: StudyScene, post: 12 },
   { ids: ["s2_suitcase"], C: SuitcaseScene },
 ];
