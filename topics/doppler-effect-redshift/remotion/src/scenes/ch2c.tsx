@@ -47,3 +47,38 @@ export const TwistCard: React.FC<{ f: number; at: number; uid: string }> = ({ f,
         ))}
         <rect x={210} y={0} width={3} height={1080} fill={alpha(C.pink, 0.12)} />
       </Svg>
+      <Svg>
+        {/* ripple rings breathe out of the spiral every 9 frames (chapter motif) */}
+        {Array.from({ length: 6 }).map((_, k) => {
+          const born = at + 8 + k * 9;
+          const age = f - born;
+          if (age < 0) return null;
+          const r = 90 + age * 9;
+          const o = clamp(1 - age / 42) * 0.55;
+          return <circle key={k} cx={cx} cy={cy} r={r} fill="none" stroke={k % 2 ? C.pink : C.sunLt} strokeWidth={5} opacity={o} />;
+        })}
+        <GlowDot id={`${uid}-g`} cx={cx} cy={cy} r={260 * scale} color={C.sun} o={0.45 * wind} />
+        <g transform={`translate(${cx},${cy}) scale(${scale})`}>
+          <g transform="translate(8,12)" opacity={0.35}><SpiralIcon r={120} color={C.night} rot={rot} /></g>
+          <SpiralIcon r={120} color={C.sun} rot={rot} />
+          <g opacity={0.55}><SpiralIcon r={120} color={C.sunLt} rot={rot - 6} /></g>
+        </g>
+        {/* orbiting sparks: overlapping action, each on its own phase and radius */}
+        {Array.from({ length: 7 }).map((_, i) => {
+          const a = rr(`${uid}sa${i}`, 0, 6.28) + t * (0.05 + 0.02 * (i % 3));
+          const R = (170 + i * 22) * wind;
+          const s = sp(f, at + 8 + i * 2, fps, spr.snappy);
+          return <circle key={i} cx={cx + Math.cos(a) * R} cy={cy + Math.sin(a) * R * 0.8} r={(4 + (i % 3) * 2) * s} fill={i % 2 ? C.lilac : C.sunLt} opacity={0.85} />;
+        })}
+      </Svg>
+      <Dust seed={`${uid}d`} frame={f} n={30} color={C.lilac} opacity={0.35} />
+      <Finish tint={C.magenta} grade={0.1} vig={0.34} />
+    </AbsoluteFill>
+  );
+};
+
+export const Twist: React.FC<SceneProps> = ({ f, start }) => {
+  const curlAt = start - 4; // curl lands on the fwip (sfx 2174)
+  const p = prog(f, curlAt, curlAt + TW_CURL, ease.inOut);
+  return <CurlReveal p={p} uid="tw1" flap={C.lilac}><TwistCard f={f} at={curlAt} uid="tw1c" /></CurlReveal>;
+};
