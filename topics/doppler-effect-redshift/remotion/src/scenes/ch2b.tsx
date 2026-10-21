@@ -620,11 +620,11 @@ const RailHillsInline: React.FC = () => <RailHills />;
 const RailMidInline: React.FC<{ frame: number }> = ({ frame }) => <RailMid frame={frame} />;
 
 export const CH2B: SceneReg[] = [
-  { ids: ["s2_compare"], C: Compare },
+  { ids: ["s2_compare"], C: Compare, post: 18 }, // stays under the ear iris
   { ids: ["s2_ear"], C: Ear },
   { ids: ["s2_speed"], C: Speed, post: 16 },
   { ids: ["s2_study"], C: StudyScene, post: 12 },
   { ids: ["s2_suitcase"], C: SuitcaseScene },
   { ids: ["s2_train"], C: TrainScene },
-  { ids: ["s2_observers"], C: Observers },
+  { ids: ["s2_observers"], C: Observers, post: 16 }, // stays under the twist curl
 ];
