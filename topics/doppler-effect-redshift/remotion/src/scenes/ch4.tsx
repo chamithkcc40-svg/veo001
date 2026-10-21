@@ -47,3 +47,25 @@ const Shaft: React.FC<{ f: number; o: number }> = ({ f, o }) => (
     <Dust seed="shaftmotes" frame={f} n={26} area={[700, 0, 420, 1000]} size={[1.5, 3.5]} color={C.sunLt} opacity={0.7} speed={0.5} />
   </g>
 );
+/** giant reflector on a horseshoe mount (Mount Wilson-style, generic), low angle; slews by `angle` */
+const BigScope: React.FC<{ angle: number }> = ({ angle }) => {
+  const body = mix(C.lilac, C.violet, 0.5), dark = mix(C.violet, C.night, 0.45), lit = mix(C.lilac, C.white, 0.2);
+  return (
+    <g>
+      {/* pier + horseshoe yoke */}
+      <path d="M1180,1100 L1260,760 L1500,760 L1580,1100 Z" fill={dark} />
+      <path d="M1180,1100 L1260,760 L1300,760 L1230,1100 Z" fill={alpha(C.white, 0.06)} />
+      <circle cx={1380} cy={760} r={170} fill="none" stroke={mix(dark, C.violet, 0.3)} strokeWidth={56} strokeDasharray="540 600" transform="rotate(200,1380,760)" />
+      <g transform={`translate(1380,700) rotate(${angle})`}>
+        {/* open lattice tube: two rings and struts */}
+        {[-170, 170].map((x) => <rect key={x} x={x - 14} y={-900} width={28} height={980} rx={10} fill={body} />)}
+        {[-90, 90].map((x) => <rect key={x} x={x - 8} y={-900} width={16} height={980} rx={6} fill={alpha(body, 0.7)} />)}
+        <rect x={-200} y={-940} width={400} height={70} rx={24} fill={lit} />
+        <rect x={-200} y={-500} width={400} height={44} rx={16} fill={body} />
+        <rect x={-210} y={0} width={420} height={140} rx={40} fill={body} />
+        <rect x={-210} y={0} width={110} height={140} rx={40} fill={alpha(C.white, 0.14)} />
+        <circle cx={0} cy={140} r={36} fill={dark} />
+      </g>
+    </g>
+  );
+};
