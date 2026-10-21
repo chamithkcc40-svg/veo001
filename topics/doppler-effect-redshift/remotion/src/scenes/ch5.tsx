@@ -25,9 +25,9 @@ import { POSE, track } from "../kit/rig/poses";
 import { SceneProps, SceneReg } from "../chapters/types";
 
 const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
-const AMB_S = 0.72, AMB_Y = 836, AMB_V = 15; // softer, slower pass than the cold open (< ring speed)
+const AMB_S = 0.72, AMB_Y = 836, AMB_V = 18; // softer, a touch slower than the cold open; enters from off-left (< ring speed)
 const PIP_X = 1240; // Pip on the right this time (mirror of the cold open staging)
-const RING_C = 24, RING_P = 7;
+const RING_C = 26, RING_P = 7;
 const ambX = (t: number) => PIP_X + (t - sync("closePass")) * AMB_V; // drives left -> right
 const sirenAt = (t: number) => ({ x: ambX(t) - AMB_SIREN.x * AMB_S, y: AMB_Y + AMB_SIREN.y * AMB_S }); // facing +1 mirrors x
 
@@ -59,3 +59,25 @@ const LiftRings: React.FC<{ f: number; at: number; fps: number }> = ({ f, at, fp
     })}
   </Svg>
 );
+
+export const CloseScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const pass = sync("closePass"), listen = cue("listen2"), hear = cue("hearing"), last = cue("lastWord");
+  const iris = f < start + 20 ? Math.max(0, (f - start + 2) * 26 * tw(f, [start, start + 20], [1, 3], ease.in)) : 4000;
+  // crane-up: slow, starts on "hearing", eases into the final hold (one continuous move, no cut)
+  const ty = tw(f, [hear + 2, hear + 120], [0, 1250], ease.inOut) + tw(f, [hear + 120, end], [0, 60], ease.out);
+  const camX = tw(f, [start, pass + 30], [-140, 110], ease.inOut) + tw(f, [pass + 30, end], [0, 30], ease.out);
+  const cam = { x: camX, y: 0, zoom: tw(f, [start, pass], [1.02, 1.06], ease.inOutSine) * tw(f, [hear, hear + 120], [1, 0.94], ease.inOut), rot: 0, frame: f, shake: 1.8 * (1 - prog(f, hear, hear + 40)), seed: "close5" };
+  const pose = track(f, [
+    [start, { turn: -0.4, lookX: -1, headTilt: 3 }],
+    [pass - 30, { turn: -0.5, lookX: -1, headTilt: 4, armL: { a: -14, b: 20 } }],
+    [pass + 16, { turn: 0.5, lookX: 1, headTilt: -3 }],
+    [listen, { turn: 0.2, lookX: 0.2, headTilt: 6, ...POSE.thumbsUpR }],
+    [hear + 6, { ...POSE.lookUp, turn: 0, headTilt: -14, armL: { a: -18, b: 26 }, armR: { a: 18, b: -26 } }],
+    [end, { ...POSE.lookUp, turn: 0, headTilt: -16, armL: { a: -20, b: 30 }, armR: { a: 20, b: -30 } }],
+  ], 12);
+  const expr = f < pass - 6 ? "curious" : f < listen ? "ooo" : f < hear ? "proud" : "happy";
+  const plIn = sp(f, start + 14, fps, spr.bouncy), plOut = prog(f, hear - 4, hear + 8, ease.in);
+  const pitch = tw(f, [start + 14, pass - 24], [0.4, 1], ease.out), step = prog(f, pass - 2, pass + 10, ease.out);
+  const x = ambX(f);
+  const ringsO = 1 - prog(f, hear + 30, hear + 70, ease.out);
