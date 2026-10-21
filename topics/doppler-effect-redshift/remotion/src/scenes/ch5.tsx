@@ -81,3 +81,40 @@ export const CloseScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const pitch = tw(f, [start + 14, pass - 24], [0.4, 1], ease.out), step = prog(f, pass - 2, pass + 10, ease.out);
   const x = ambX(f);
   const ringsO = 1 - prog(f, hear + 30, hear + 70, ease.out);
+  const subject = (
+    <Svg>
+      <g opacity={ringsO}><Rings id="close" frame={f} path={sirenAt} start={sync("closeStart")} stop={hear + 10} period={RING_P} c={RING_C} maxR={1200} tint width={6} /></g>
+      {x > -900 && x < 3000 && <Ambulance x={x} y={AMB_Y} scale={AMB_S} flash={f / 7} wheel={(f * AMB_V) / (44 * AMB_S) * 57.3} facing={1} bounce={Math.sin(f / 2.3) * 1.4 + noise1("cab", f / 3)} tilt={noise1("cat", f / 6) * 0.4} />}
+      <Rig uid="pip5" def={PIP} frame={f} x={PIP_X} y={960} scale={1.12} pose={pose} expr={expr} follow={Math.sin(f / 6) * 3} />
+      <g opacity={Math.min(plIn, 1 - plOut)} transform={`translate(${PIP_X},${560 + (1 - plIn) * 30}) scale(${0.6 + 0.4 * plIn}) translate(${-PIP_X},-560)`}>
+        {step < 0.02 ? <PitchLine x={PIP_X} y={560} w={260} frame={f} pitch={pitch} /> : <PitchLine x={PIP_X} y={560} w={260} frame={f} pitch={0} step={step} />}
+      </g>
+    </Svg>
+  );
+  const tagP = sp(f, last + 14, fps, spr.smooth); // final small text (sparkle 5591 lands on it)
+  return (
+    <AbsoluteFill style={{ clipPath: `circle(${iris}px at ${IRIS.x}px ${IRIS.y}px)` }}>
+      <Camera cam={cam}>
+        <TiltLayer k={0.82} ty={ty}><Layer depth={0.08}><StreetSky tod="night" frame={f} starsO={0.7 + 0.3 * prog(f, hear, hear + 90)} /></Layer></TiltLayer>
+        <TiltLayer k={0.88} ty={ty}><Layer depth={0.15} blur={1.5}><StreetClouds tod="night" frame={f} /></Layer></TiltLayer>
+        <TiltLayer k={0.95} ty={ty}><Layer depth={0.3} blur={3}><StreetFar tod="night" /></Layer></TiltLayer>
+        <TiltLayer k={1} ty={ty}><Layer depth={0.55} blur={1.2}><StreetHouses tod="night" frame={f} birds={false} /></Layer></TiltLayer>
+        <TiltLayer k={1.05} ty={ty}><Layer depth={1}><StreetGround tod="night" frame={f} /></Layer></TiltLayer>
+        <TiltLayer k={1.05} ty={ty}><Layer depth={1}>{subject}</Layer></TiltLayer>
+        <TiltLayer k={1.3} ty={ty}><Layer depth={1.6} blur={8}><StreetHedges tod="night" frame={f} /></Layer></TiltLayer>
+      </Camera>
+      <LiftRings f={f} at={hear + 6} fps={fps} />
+      <Svg><g opacity={prog(f, hear + 60, hear + 150, ease.inOut)}><Stars seed="closesky" frame={f} n={70} oy={0} h={860} maxR={2.6} color={C.lilac} /></g></Svg>
+      <Dust seed="close5d" frame={f} n={16} color={C.lilac} opacity={0.3} size={[2, 5]} speed={0.4} />
+      {tagP > 0.01 && (
+        <div style={{ position: "absolute", left: 0, width: 1920, top: 640 - 16 * tagP, textAlign: "center", opacity: Math.min(1, tagP * 1.3) }}>
+          <span style={{ fontFamily: F.display, fontWeight: 600, fontSize: 40, letterSpacing: `${0.22 + 0.06 * tagP}em`, color: C.sunLt, textShadow: `0 0 24px ${alpha(C.sun, 0.6)}` }}>LISTEN FOR THE DROP</span>
+        </div>
+      )}
+      <Finish tint={C.violet} grade={0.14} vig={0.34} />
+      {f < start + 20 && <Svg><circle cx={IRIS.x} cy={IRIS.y} r={iris} fill="none" stroke={C.red} strokeWidth={10} opacity={1 - prog(f, start + 8, start + 20)} style={{ filter: `drop-shadow(0 0 16px ${C.red})` }} /></Svg>}
+    </AbsoluteFill>
+  );
+};
+
+export const CH5: SceneReg[] = [{ ids: ["s5_street", "s5_sky"], C: CloseScene }];
