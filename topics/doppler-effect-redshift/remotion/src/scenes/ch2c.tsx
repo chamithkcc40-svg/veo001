@@ -184,3 +184,35 @@ const PaperPage: React.FC<{ f: number; start: number }> = ({ f, start }) => {
     </AbsoluteFill>
   );
 };
+
+/** Shot C: Doppler at the desk looks up at the window; the camera dollies into the window. */
+const WIN_C = { x: 1440, y: 385 }; // window centre (Study WIN)
+const PaperStudy: React.FC<{ f: number; look: number; push: number }> = ({ f, look, push }) => {
+  const stars = cue("stars1") - 8; // "colored" (2338) -> the two stars flare
+  const sp2 = prog(f, stars, stars + 12, ease.outCubic);
+  // anticipation: head dips a touch, then rises to the window with overshoot via track()'s easing
+  const P = track(f, [
+    [look - 30, { ...POSE.write, turn: 0.45 }],
+    [look - 2, { ...POSE.write, turn: 0.45, headTilt: 16, lookY: 1 }],
+    [look + 10, { armR: { a: 30, b: 70 }, armL: { a: 20, b: 60 }, handR: "fist", lean: -4, headTilt: -14, lookY: -1, lookX: 1, turn: 0.55 }],
+  ], 9);
+  const pose = f < look - 2 ? { ...P, ...scribble(f) } : P;
+  const expr = f < look + 4 ? "focused" : f < stars + 4 ? "curious" : "joy";
+  const cam = { x: tw(f, [look - 20, look + 60], [20, 70], ease.inOutSine), y: tw(f, [look - 20, look + 60], [20, -30], ease.inOutSine), zoom: 1 + push * 0.5, rot: 0, frame: f };
+  return (
+    <Camera cam={cam}>
+      <Study frame={f} starPair={sp2} starScale={1 + 0.35 * sp2 + push * 0.6} fore={push < 0.5} subject={
+        <Svg>
+          <Rig uid="dopPaper" def={DOPPLER} frame={f} x={1000} y={1000} scale={1.25} pose={pose} expr={expr} propR={<g transform="translate(4,6)"><Quill scale={0.9} /></g>} />
+        </Svg>
+      } />
+      {/* the stars' light spills into the room (blue on the left pane, red on the right) */}
+      <Layer depth={0.5}>
+        <Svg style={{ mixBlendMode: "screen" }}>
+          <GlowDot id="ppb" cx={WIN_C.x - 60} cy={WIN_C.y - 30} r={520} color={C.blue} o={0.28 * sp2} />
+          <GlowDot id="ppr" cx={WIN_C.x + 60} cy={WIN_C.y} r={520} color={C.red} o={0.24 * sp2} />
+        </Svg>
+      </Layer>
+    </Camera>
+  );
+};
