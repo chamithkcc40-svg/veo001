@@ -241,8 +241,47 @@ const FIELD = Array.from({ length: 54 }).map((_, i) => {
   return { a, d, shell, rot: rr("pk r" + i, 0, 360), r: [18, 30, 48][shell] * rr("pk s" + i, 0.8, 1.2) };
 });
 const SHELL_DEPTH = [0.45, 0.8, 1.25];
+export const PeakScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const uni = word("universe", start), expd = word("expanding", start);
+  // fast pull: zoom 5 -> 1 in ~20 frames (ease-out: the violent part is at the cut), then a slow drift back
+  const pull = prog(f, start, start + 22, ease.out);
+  const Z = mix2(5, 1, pull) * mix2(1, 0.9, prog(f, start + 22, end + 10, ease.inOutSine));
+  const drift = prog(f, start, end + 10, ease.inOutSine); // galaxies keep receding during the hold
+  const red = prog(f, start + 8, expd + 10, ease.inOut); // redden with distance as the field opens
+  const gal = FIELD.map((g, i) => {
+    const sc = Math.pow(Z, SHELL_DEPTH[g.shell]);
+    const R = (180 + g.d * 900) * (1 + 0.12 * drift * (0.5 + g.d));
+    return { ...g, i, x: 960 + Math.cos(g.a) * R * sc, y: 470 + Math.sin(g.a) * R * 0.62 * sc, s: sc };
+  }).sort((a, b) => a.shell - b.shell);
+  const blurFor = (sh: number) => Math.max(0, (Z - 1) * [0.6, 1.4, 3][sh]); // motion/dof blur during the pull
+  const heroS = Math.pow(Z, 1.1);
+  const tp = sp(f, uni - 4, fps, spr.smooth);
+  const cam = { x: tw(f, [start, end], [0, 20], ease.inOutSine), y: tw(f, [start, end], [0, -10], ease.inOutSine), zoom: 1, rot: tw(f, [start, end], [1.4, -0.6], ease.inOutSine), frame: f };
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Space frame={f} nebula={[C.plum, C.violet]} />
+        {[0, 1, 2].map((sh) => (
+          <Layer key={sh} depth={SHELL_DEPTH[sh]} blur={blurFor(sh)}>
+            <Svg>
+              {gal.filter((g) => g.shell === sh).map((g) => (
+                <Galaxy key={g.i} id={"pk" + g.i} x={g.x} y={g.y} r={g.r * Math.min(g.s, 3)} frame={f} shift={red * (0.1 + 0.9 * g.d)} tilt={0.4} rot={g.rot} dots={sh === 2 ? 26 : 16} glow={1.1} opacity={clamp(1.6 - (g.s - 1) * 0.3)} />
+              ))}
+            </Svg>
+          </Layer>
+        ))}
+        <Layer depth={1}><Svg><Galaxy id="pkHero" x={960} y={470} r={44 * heroS} frame={f} shift={0} tilt={0.35} rot={40} dots={40} glow={1} opacity={clamp(1.4 - (heroS - 1) * 0.12)} /></Svg></Layer>
+      </Camera>
+      <LetterTitle f={f} fps={fps} at={uni - 2} out={end + 30} text="THE UNIVERSE IS EXPANDING" size={92} color={C.sun} glow={C.sun} y={780 - 20 * tp} spread={0.02 + 0.06 * prog(f, expd, end + 20, ease.out)} stagger={1} />
+      <ExaggeratedTag opacity={prog(f, start + 20, start + 32, ease.out)} x={1824} y={60} />
+      <Finish tint={C.plum} grade={0.1} vig={0.4} />
+    </AbsoluteFill>
+  );
+};
 
 export const CH4B: SceneReg[] = [
   { ids: ["s4_chart"], C: ChartScene },
   { ids: ["s4_grid"], C: GridScene },
+  { ids: ["s4_peak"], C: PeakScene },
 ];
