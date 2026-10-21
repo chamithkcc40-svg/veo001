@@ -4,7 +4,7 @@
 import React from "react";
 import { AbsoluteFill, useVideoConfig } from "remotion";
 import { C, ease, F, spr } from "../theme";
-import { alpha, clamp, mix, noise1, prog, rr, sp, tw } from "../util";
+import { alpha, blinkAt, clamp, mix, noise1, prog, rr, sp, tw } from "../util";
 import { cue, sync } from "../data";
 import { Camera, Layer, Svg } from "../kit/camera";
 import { Dust, Finish, GlowDot, LightLeak, Stars } from "../kit/fx";
@@ -13,6 +13,7 @@ import { Street } from "../kit/env/Street";
 import { Rings } from "../kit/info/Rings";
 import { Ambulance, AMB_SIREN } from "../kit/props/Props";
 import { Skipper } from "../kit/rig/Skipper";
+import { PIP } from "../kit/rig/characters";
 import { SceneProps } from "../chapters/types";
 
 // ------------------------------------------------------------------ s2_compare (pond | street, same pattern)
@@ -75,5 +76,74 @@ export const Compare: React.FC<SceneProps> = ({ f, start, end }) => {
         </g>
       </Svg>
     </AbsoluteFill>
+  );
+};
+
+// ------------------------------------------------------------------ s2_ear (INS: Pip's ear, hits per second)
+// Wavefronts travel at ONE speed (EAR_C) and reach the ear exactly on the audio click frames
+// (sync earFast*/earSlow*): fast part = squeezed spacing (BLUE), slow part = stretched (RED).
+const EAR_C = 14;
+const EAR = { x: 1418, y: 470 };
+const earHits = () => {
+  const out: { t: number; fast: boolean }[] = [];
+  for (let t = sync("earFastStart"); t <= sync("earFastEnd"); t += sync("earFastPeriod")) out.push({ t, fast: true });
+  for (let t = sync("earSlowStart"); t <= sync("earSlowEnd"); t += sync("earSlowPeriod")) out.push({ t, fast: false });
+  return out;
+};
+
+/** Pip's ear in close-up (drawn from PIP's costume colours). pulse 0..1 on each hit */
+const BigEar: React.FC<{ f: number; pulse: number; wide: number }> = ({ f, pulse, wide }) => {
+  const sk = PIP.costume.skin, sh = PIP.costume.skinSh, hair = PIP.costume.hair;
+  const bl = blinkAt(f, "pipear");
+  return (
+    <g>
+      <circle cx={1790} cy={540} r={400} fill={sk} />
+      <path d="M1390,540 A400,400 0 0 1 1790,140 L2200,140 L2200,330 Q1900,250 1620,330 Q1480,370 1420,470 Z" fill={hair} />
+      <path d="M1470,300 Q1560,220 1700,200" stroke={alpha(C.white, 0.18)} strokeWidth={14} fill="none" strokeLinecap="round" />
+      {/* eye at the frame edge (Pip faces right) */}
+      <g transform="translate(1880,470)">
+        <ellipse rx={30} ry={44 * (1 - bl) * (1 + 0.15 * wide)} fill={C.ink} />
+        <circle cx={10} cy={-14} r={10 * (1 - bl)} fill={C.white} />
+        <path d={`M-40,${-70 - wide * 14} Q0,${-92 - wide * 18} 40,${-74 - wide * 14}`} stroke={hair} strokeWidth={12} fill="none" strokeLinecap="round" />
+      </g>
+      <ellipse cx={1830} cy={600} rx={60} ry={34} fill={alpha(C.pink, 0.45)} />
+      {/* the ear */}
+      <g transform={`translate(${EAR.x + 20},${EAR.y + 30}) scale(${1 + 0.06 * pulse})`}>
+        <ellipse rx={82} ry={118} fill={sk} />
+        <ellipse cx={8} cy={4} rx={56} ry={88} fill={sh} />
+        <path d="M18,-60 Q-30,-50 -28,0 Q-26,40 6,52" stroke={sk} strokeWidth={18} fill="none" strokeLinecap="round" />
+        <ellipse cx={14} cy={6} rx={16} ry={22} fill={mix(sh, C.plum, 0.4)} />
+        <circle cx={14} cy={6} r={30 + 50 * pulse} fill="none" stroke={C.sunLt} strokeWidth={5} opacity={0.8 * pulse} />
+      </g>
+      {/* headphone band resting on the neck (Pip's prop) */}
+      <path d="M1520,1000 Q1600,860 1760,900" stroke={PIP.costume.neckColor} strokeWidth={34} fill="none" strokeLinecap="round" />
+    </g>
+  );
+};
+
+/** tick strip: one tick per ear hit, scrolling left; counter = hits in the last second */
+const TickBar: React.FC<{ f: number; at: number; hits: { t: number; fast: boolean }[] }> = ({ f, at, hits }) => {
+  const { fps } = useVideoConfig();
+  const p = sp(f, at, fps, spr.smooth);
+  const X0 = 170, X1 = 1060, Y = 760;
+  const n = hits.filter((h) => h.t <= f && h.t > f - 30).length;
+  const last = hits.filter((h) => h.t <= f).pop();
+  const pop = last ? Math.exp(-(f - last.t) / 3) : 0;
+  const col = last ? (last.fast ? C.blue : C.red) : C.white;
+  return (
+    <g opacity={p} transform={`translate(0,${(1 - p) * 40})`}>
+      <rect x={X0 - 30} y={Y - 64} width={X1 - X0 + 260} height={128} rx={64} fill={alpha(C.night, 0.6)} />
+      <rect x={X0} y={Y - 2} width={X1 - X0} height={4} rx={2} fill={alpha(C.lilac, 0.4)} />
+      {hits.filter((h) => h.t <= f && X1 - (f - h.t) * 4 > X0).map((h) => {
+        const x = X1 - (f - h.t) * 4;
+        const k = sp(f, h.t, fps, spr.bouncy);
+        return <rect key={h.t} x={x - 5} y={Y - 34 * k} width={10} height={68 * k} rx={5} fill={h.fast ? C.blue : C.red} opacity={clamp((x - X0) / 80)} />;
+      })}
+      <g transform={`translate(${X1 + 110},${Y})`}>
+        <circle r={50 + pop * 8} fill={col} />
+        <text y={20} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={58} fill={C.white}>{n}</text>
+      </g>
+      <text x={X0} y={Y - 80} fontFamily={F.display} fontWeight={600} fontSize={28} fill={C.lilac} letterSpacing="3">HITS PER SECOND</text>
+    </g>
   );
 };
