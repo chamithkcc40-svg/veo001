@@ -115,14 +115,14 @@ export const DomeScene4: React.FC<SceneProps> = ({ f, start, end }) => {
 // One star blinks bright-dim-bright on the three blips (sync.domeBlips): each blink is a dark dot that
 // swells and shrinks (on a negative, bright = bigger + darker). A loupe glides over it (arc path), then
 // Hubble's hand (tweed cuff) circles the star with a grease pencil. Timeline wakes on 1923.
-const PL = { x: 960, y: 500, w: 1180, h: 760 }; // plate rectangle centre + size
-const VAR = { x: 1180, y: 430 }; // the blinking star (plate space = screen space before the push)
+const PL = { x: 960, y: 440, w: 1040, h: 640 }; // bottom edge stays above the caption band through the push // plate rectangle centre + size
+const VAR = { x: 1150, y: 380 }; // the blinking star (plate space = screen space before the push)
 /** negative plate content: pale glass, dark star specks, the dark smudge of Andromeda's disc */
 const NegPlate: React.FC<{ f: number; blink: number }> = ({ f, blink }) => (
   <g>
     <rect x={PL.x - PL.w / 2} y={PL.y - PL.h / 2} width={PL.w} height={PL.h} rx={14} fill={mix(C.lilac, C.white, 0.35)} />
-    <ellipse cx={760} cy={560} rx={520} ry={190} transform="rotate(-24,760,560)" fill={alpha(C.night, 0.18)} style={{ filter: "blur(40px)" }} />
-    <ellipse cx={700} cy={590} rx={200} ry={70} transform="rotate(-24,700,590)" fill={alpha(C.night, 0.4)} style={{ filter: "blur(22px)" }} />
+    <ellipse cx={780} cy={490} rx={470} ry={170} transform="rotate(-24,780,490)" fill={alpha(C.night, 0.18)} style={{ filter: "blur(40px)" }} />
+    <ellipse cx={730} cy={515} rx={190} ry={66} transform="rotate(-24,730,515)" fill={alpha(C.night, 0.4)} style={{ filter: "blur(22px)" }} />
     {Array.from({ length: 90 }).map((_, i) => (
       <circle key={i} cx={rr("np x" + i, PL.x - PL.w / 2 + 20, PL.x + PL.w / 2 - 20)} cy={rr("np y" + i, PL.y - PL.h / 2 + 20, PL.y + PL.h / 2 - 20)} r={rr("np r" + i, 1.2, 4.2)} fill={alpha(C.night, rr("np o" + i, 0.45, 0.9))} />
     ))}
@@ -147,7 +147,7 @@ const PencilHand: React.FC<{ rot: number }> = ({ rot }) => {
       <rect x={-8} y={-150} width={16} height={150} rx={6} fill={C.red} />
       <path d="M-8,-12 L0,8 L8,-12 Z" fill={C.red} />
       <rect x={-8} y={-150} width={5} height={140} fill={alpha(C.white, 0.25)} />
-      <g transform="translate(0,-120) rotate(180) scale(1.9)"><Hand kind="fist" r={26} skin={K.skin} shade={K.skinSh} side="R" worldRot={0} /></g>
+      <g transform="translate(0,-120) rotate(180) scale(2.6)"><Hand kind="fist" r={26} skin={K.skin} shade={K.skinSh} side="R" worldRot={0} /></g>
       <rect x={-46} y={-260} width={92} height={60} rx={18} fill={C.white} />
       <rect x={-62} y={-560} width={124} height={320} rx={40} fill={K.top} />
       <rect x={-62} y={-560} width={36} height={320} rx={18} fill={alpha(C.white, 0.1)} />
@@ -175,7 +175,7 @@ export const PlateScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const penOut = prog(f, end - 14, end, ease.in);
   const ring = Array.from({ length: 41 }).map((_, i) => { const a = -Math.PI / 2 + (i / 40) * circ * Math.PI * 2.15; return `${i ? "L" : "M"}${VAR.x + Math.cos(a) * R},${VAR.y + Math.sin(a) * R * 0.9}`; }).join("");
   const z = tw(f, [start, end], [1.0, 1.22], ease.inOutSine);
-  const cam = { x: tw(f, [start, end], [0, 170], ease.inOutSine), y: tw(f, [start, end], [0, -60], ease.inOutSine), zoom: z, rot: tw(f, [start, end], [-1.2, 0.4], ease.inOutSine), frame: f, shake: 0.8, seed: "pl4" };
+  const cam = { x: tw(f, [start, end], [0, 170], ease.inOutSine), y: tw(f, [start, end], [0, 40], ease.inOutSine), zoom: z, rot: tw(f, [start, end], [-1.2, 0.4], ease.inOutSine), frame: f, shake: 0.8, seed: "pl4" };
   return (
     <AbsoluteFill>
       <Camera cam={cam}>
