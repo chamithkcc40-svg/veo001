@@ -204,7 +204,60 @@ export const PlateScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s4_scale (WS, pull to wide)
+// Match-cut: the negative "develops" (pale plate rect flashes and fades from the frame the plate shot
+// ended on) and the dark smudge becomes the real glowing spiral at the SAME screen spot; the red pencil
+// ring lingers on the variable star. On "whole galaxy" the arms resolve; on "far" the camera pulls
+// wide, the Milky Way slides in at left and the gap keeps widening on "beyond" (scale bar stretches).
+const PLATE_END = { x: 325, y: 14, w: 1269, h: 781 }; // plate rect on screen at the end of s4_plate
+const SMUDGE = { x: 570, y: 440 }, VAR_SCR = { x: 1022, y: 345 };
+const ScaleBar: React.FC<{ x0: number; x1: number; y: number; o: number; f: number }> = ({ x0, x1, y, o, f }) => {
+  if (o <= 0.01 || x1 <= x0) return null;
+  const n = Math.max(2, Math.floor((x1 - x0) / 60));
+  return (
+    <g opacity={o}>
+      <path d={`M${x0},${y} L${x1},${y}`} stroke={alpha(C.lilac, 0.85)} strokeWidth={4} strokeDasharray="14 10" strokeDashoffset={-f * 1.5} />
+      {Array.from({ length: n + 1 }).map((_, i) => <path key={i} d={`M${x0 + ((x1 - x0) * i) / n},${y - 8} v16`} stroke={alpha(C.lilac, 0.5)} strokeWidth={2} />)}
+      <path d={`M${x0 + 18},${y - 14} L${x0},${y} L${x0 + 18},${y + 14} M${x1 - 18},${y - 14} L${x1},${y} L${x1 - 18},${y + 14}`} stroke={C.sunLt} strokeWidth={5} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+  );
+};
+export const ScaleScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const whole = word("whole", start), far = cue("farBeyond"), beyond = word("beyond", far);
+  const dev = prog(f, start, start + 14, ease.out); // negative develops into the positive sky
+  const resolve = sp(f, whole - 4, fps, spr.smooth); // arms resolve, glow blooms
+  const pull = prog(f, far - 8, far + 22, ease.inOut);
+  const widen = prog(f, beyond - 4, end + 20, ease.inOutSine);
+  const gx = mix2(SMUDGE.x, 1400, pull) + 160 * widen, gy = mix2(SMUDGE.y, 450, pull);
+  const gr = mix2(250, 120, pull) * (1 - 0.15 * widen);
+  const mx = mix2(-360, 380, pull) - 40 * widen, my = 520;
+  const cam = { x: tw(f, [start, end], [0, 40], ease.inOutSine), y: tw(f, [start, end], [-10, 20], ease.inOutSine), zoom: mix2(1.1, 0.98, pull), rot: 0, frame: f };
+  const subject = (
+    <Svg>
+      <Galaxy id="mw4" x={mx} y={my} r={140} frame={f} shift={0} tilt={0.72} rot={-8} dots={60} glow={0.9} armColor={C.sunLt} opacity={pull} />
+      <Galaxy id="and4" x={gx} y={gy} r={gr} frame={f} shift={0} tilt={0.62} rot={-24} dots={Math.round(40 + 40 * resolve)} glow={0.6 + 0.6 * resolve} opacity={0.55 + 0.45 * dev} />
+      <ScaleBar x0={mx + 190} x1={gx - gr * 1.6} y={760} o={pull} f={f} />
+      <g opacity={(1 - pull) * prog(f, start, start + 6, ease.out)}>
+        <circle cx={VAR_SCR.x} cy={VAR_SCR.y} r={56} fill="none" stroke={C.red} strokeWidth={6} opacity={0.8} />
+        <circle cx={VAR_SCR.x} cy={VAR_SCR.y} r={5} fill={C.sunLt} />
+      </g>
+    </Svg>
+  );
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}><Space frame={f} subject={subject} nebula={[C.purple, C.violet]} /></Camera>
+      {dev < 1 && <Svg><rect x={PLATE_END.x - 200 * dev} y={PLATE_END.y - 120 * dev} width={PLATE_END.w + 400 * dev} height={PLATE_END.h + 240 * dev} rx={14} fill={mix(C.lilac, C.white, 0.35)} opacity={1 - dev} /></Svg>}
+      <Pill f={f} fps={fps} at={whole + 6} out={far + 4} text="a galaxy of its own" x={SMUDGE.x + 40} y={760} color={C.sunLt} size={34} />
+      <Pill f={f} fps={fps} at={far + 10} out={end + 30} text="MILKY WAY · us" x={mx} y={640} color={C.sun} size={28} />
+      <Pill f={f} fps={fps} at={far + 16} out={end + 30} text="ANDROMEDA" x={gx} y={620} color={C.lilac} size={28} />
+      <Finish tint={C.violet} grade={0.1} vig={0.34} />
+    </AbsoluteFill>
+  );
+};
+
 export const CH4: SceneReg[] = [
   { ids: ["s4_dome"], C: DomeScene4 },
   { ids: ["s4_plate"], C: PlateScene },
+  { ids: ["s4_scale"], C: ScaleScene },
 ];
