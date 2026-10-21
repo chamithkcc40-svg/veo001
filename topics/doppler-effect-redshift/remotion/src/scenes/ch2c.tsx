@@ -216,3 +216,49 @@ const PaperStudy: React.FC<{ f: number; look: number; push: number }> = ({ f, lo
     </Camera>
   );
 };
+
+export const Paper: React.FC<SceneProps> = ({ f, start, end }) => {
+  const curl = prog(f, start - 2, start + 14, ease.inOut); // page curls in over the twist card
+  const tiltA = cue("heNamed") + 17; // 2318: whip-tilt up after "He named it"
+  const tilt = prog(f, tiltA, tiltA + 16, ease.inOut);
+  const vblur = Math.sin(Math.PI * tilt) * 22;
+  const look = tiltA + 18;
+  // push through the window on "light of stars" -> lands on the glass shimmer (2388)
+  const push = prog(f, cue("stars1"), end + 2, ease.in);
+  // shot A camera: slow pull-back + drift (motivated: reveals the full title as it is spoken)
+  const zA = tw(f, [start, tiltA], [1.14, 1.0], ease.inOutSine);
+  const xA = tw(f, [start, tiltA], [-30, 20], ease.inOutSine);
+  const glass = prog(f, end - 10, end, ease.in) * (1 - prog(f, end, end + 6, ease.out));
+  return (
+    <CurlReveal p={curl} uid="ppc" flap={C.dough}>
+      <AbsoluteFill style={{ backgroundColor: C.night, filter: vblur > 0.3 ? `blur(${vblur * 0.25}px)` : undefined }}>
+        {tilt < 1 && (
+          <AbsoluteFill style={{ transform: `translateY(${tilt * 1150}px) scale(${zA}) translateX(${xA}px)`, filter: vblur > 0.3 ? `blur(${vblur}px)` : undefined }}>
+            <PaperPage f={f} start={start} />
+          </AbsoluteFill>
+        )}
+        {tilt > 0 && (
+          <AbsoluteFill style={{ transform: `translateY(${(tilt - 1) * 1150}px) scale(${1 + push * 2.2})`, transformOrigin: `${WIN_C.x}px ${WIN_C.y}px`, filter: vblur > 0.3 ? `blur(${vblur}px)` : undefined }}>
+            <PaperStudy f={f} look={look} push={push} />
+          </AbsoluteFill>
+        )}
+        {/* deep space waits beyond the glass: fades up in the last frames of the push (Ch3 opens here) */}
+        <AbsoluteFill style={{ opacity: prog(f, end - 14, end, ease.inOut) }}>
+          <Svg>
+            <rect width={1920} height={1080} fill={C.night} />
+            <Stars seed="pp-deep" frame={f} n={220} maxR={2.4} />
+            <GlowDot id="ppdb" cx={900} cy={500} r={140} color={C.blue} o={0.7} />
+            <GlowDot id="ppdr" cx={1040} cy={560} r={140} color={C.red} o={0.6} />
+          </Svg>
+        </AbsoluteFill>
+        <AbsoluteFill style={{ background: `radial-gradient(circle at ${WIN_C.x}px ${WIN_C.y}px, ${alpha(C.core, 0.9)}, ${alpha(C.peri, 0)} 60%)`, opacity: glass * 0.8, mixBlendMode: "screen" }} />
+        <Finish tint={tilt < 0.5 ? C.sun : C.violet} grade={0.1} vig={0.32} />
+      </AbsoluteFill>
+    </CurlReveal>
+  );
+};
+
+export const CH2C: SceneReg[] = [
+  { ids: ["s2_twist"], C: Twist, pre: 6, post: 16 },
+  { ids: ["s2_paper"], C: Paper, pre: 2 },
+];
