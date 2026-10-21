@@ -8,7 +8,8 @@ import { CH2B } from "../scenes/ch2b";
 import { CH2C } from "../scenes/ch2c";
 import { CH3 } from "../scenes/ch3";
 import { CH3B } from "../scenes/ch3b";
+import { CH3C } from "../scenes/ch3c";
 
-export const REGISTRY: SceneReg[] = [...CH0, ...CH1, ...CH2, ...CH2B, ...CH2C, ...CH3, ...CH3B];
+export const REGISTRY: SceneReg[] = [...CH0, ...CH1, ...CH2, ...CH2B, ...CH2C, ...CH3, ...CH3B, ...CH3C];
 
 export const sceneWindow = (r: SceneReg) => ({ start: scene(r.ids[0]).start, end: scene(r.ids[r.ids.length - 1]).end });

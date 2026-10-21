@@ -11,7 +11,14 @@ import React from "react";
 import { AbsoluteFill, useVideoConfig } from "remotion";
 import { C, ease, F, spr } from "../theme";
 import { alpha, clamp, mix, noise1, prog, rr, sp, tw } from "../util";
-import { cue } from "../data";
+import { cue, V } from "../data";
+
+/** start frame of the first spoken word matching `text` at or after global frame `after` (video.json) */
+const word = (text: string, after: number): number => {
+  const w = V.words.find((x) => x.s >= after && x.text.toLowerCase().replace(/[^a-z0-9]/g, "") === text);
+  if (!w) throw new Error("missing word " + text);
+  return w.s;
+};
 import { Camera, Layer, Svg } from "../kit/camera";
 import { Dust, Finish, GlowDot, Stars } from "../kit/fx";
 import { LabBg, DomeInterior, NightSky, PineHill, Pines } from "../kit/env/Interiors";
@@ -110,25 +117,27 @@ export const BarWipe: React.FC<{ t: number; xs: number[] }> = ({ t, xs }) => {
 export const BarcodeScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const { fps } = useVideoConfig();
   const beam = prog(f, start + 2, start + 14, ease.out);
-  const fan = prog(f, start + 12, cue("barcode") - 2, ease.out);
-  const reveal = prog(f, cue("barcode") - 6, cue("barcode") + 14, ease.out); // strip paints left -> right
-  const dark = cue("barcode") + 18; // "dark lines"
+  const bw = word("barcode", start); // the spoken word "barcode" (sentence cue is "Starlight")
+  const fan = prog(f, start + 12, bw - 2, ease.out);
+  const reveal = prog(f, bw - 6, bw + 14, ease.out); // strip paints left -> right
+  const dark = word("dark", start); // "dark lines"
   const lineRev = LAB_LINES.map((_, i) => sp(f, dark + i * 4, fps, spr.bouncy)); // each line drops in, overshoot
-  const atomsAt = cue("atoms");
+  const atomsAt = cue("atoms") + 4; // "set by its atoms": atoms pop above each line
   const atomP = LAB_LINES.map((_, i) => sp(f, atomsAt + i * 4, fps, spr.bouncy));
-  const lift = sp(f, atomsAt + 18, fps, spr.smooth); // LAB copy lifts off with the atoms
+  const lift = sp(f, cue("slides") + 1, fps, spr.smooth); // on "If" the LAB copy lifts off with the atoms (slide sfx 3231)
   const labY = BC.y + (LABY - BC.y) * lift;
-  const slideAt = cue("slides") + 2; // matches the slide sfx
+  const slideAt = word("slides", cue("slides")) - 2; // the spoken "slides" -> lands on "red"
   const slide = tw(f, [slideAt, slideAt + 30], [0, SHIFT], ease.inOut) + 0.004 * Math.sin(Math.max(0, f - slideAt - 30) / 3) * Math.exp(-Math.max(0, f - slideAt - 30) / 10) * (f > slideAt + 30 ? 1 : 0);
-  const meas = prog(f, cue("slides") + 47, cue("slides") + 62, ease.out); // lands on "red"
+  const redW = word("red", slideAt);
+  const meas = prog(f, redW, redW + 12, ease.out); // measured on "red"
   const away = cue("movingAway");
   const gal = prog(f, away - 6, away + 10, ease.inOut); // source star -> tiny galaxy
   const drift = prog(f, away, end, ease.inOutSine);
   const wipe = prog(f, end - WIPE, end, ease.in);
-  const cam = { x: tw(f, [start, end], [-40, 60], ease.inOutSine), y: tw(f, [start, end], [30, -10], ease.inOutSine), zoom: tw(f, [start, end], [1.0, 1.1], ease.inOutSine), rot: 0, frame: f };
+  const cam = { x: tw(f, [start, end], [-40, 60], ease.inOutSine), y: tw(f, [start, end], [30, -10], ease.inOutSine), zoom: tw(f, [start, end], [1.06, 1.16], ease.inOutSine), rot: 0, frame: f };
   const evenXs = [240, 720, 1200, 1680];
   const wipeXs = LAB_LINES.map((l, i) => mix2(lineX(l, SHIFT), evenXs[i], wipe));
-  const gx = 1720 + 110 * drift, gy = BC.y + 40 - 70 * drift;
+  const gx = 1690 + 70 * drift, gy = BC.y - 10 - 50 * drift; // stays inside title-safe while drifting off
   return (
     <AbsoluteFill>
       <Camera cam={cam}>
@@ -143,8 +152,8 @@ export const BarcodeScene: React.FC<SceneProps> = ({ f, start, end }) => {
             <Barcode id="bcStar" x={BC.x} y={BC.y} w={BC.w} h={BC.h} shift={slide} reveal={reveal} lineReveal={lineRev} />
             {LAB_LINES.map((l, i) => atomP[i] > 0.01 && <Atom key={i} f={f} i={i} x={lineX(l)} y={(lift > 0.01 ? labY : BC.y) - 92 - (1 - atomP[i]) * 40} s={0.4 + 0.6 * atomP[i]} />)}
             {lift < 0.99 && LAB_LINES.map((l, i) => atomP[i] > 0.01 && <path key={"t" + i} d={`M${lineX(l)},${BC.y - 64} L${lineX(l)},${BC.y - 6}`} stroke={alpha(C.mint, 0.7 * atomP[i] * (1 - lift))} strokeWidth={2} strokeDasharray="4 6" />)}
-            {LAB_LINES.map((l, i) => <Measure key={i} x0={lineX(l)} x1={lineX(l, SHIFT)} yTop={LABY + BC.h * 0.8} yBot={BC.y} p={sp(f, cue("slides") + 47 + i * 3, fps, spr.snappy)} o={meas * (i === 1 || i === 3 ? 1 : 0.45)} />)}
-            <StripTag x={BC.x} y={BC.y + BC.h + 46} text="STARLIGHT" p={prog(f, cue("barcode"), cue("barcode") + 14, ease.out)} color={C.lilac} />
+            {LAB_LINES.map((l, i) => <Measure key={i} x0={lineX(l)} x1={lineX(l, SHIFT)} yTop={LABY + BC.h * 0.8} yBot={BC.y} p={sp(f, redW + i * 3, fps, spr.snappy)} o={meas * (i === 1 || i === 3 ? 1 : 0.45)} />)}
+            <StripTag x={BC.x} y={BC.y + BC.h + 46} text="STARLIGHT" p={prog(f, bw, bw + 14, ease.out)} color={C.lilac} />
             <StripTag x={BC.x + BC.w - 300} y={BC.y + BC.h + 46} text="→ toward red" p={meas} color={C.red} />
             {gal > 0.01 && (
               <g opacity={gal * (1 - wipe)}>
@@ -156,7 +165,7 @@ export const BarcodeScene: React.FC<SceneProps> = ({ f, start, end }) => {
         </Layer>
         <Layer depth={1.6} blur={6}><Svg><Dust seed="bcfg" frame={f} n={12} area={[-300, -200, 2500, 1500]} size={[4, 9]} color={C.lilac} opacity={0.28} speed={0.6} /></Svg></Layer>
       </Camera>
-      <Pill f={f} fps={fps} at={away + 4} out={end - 4} text="source moving away" x={1500} y={300} color={C.red} size={30} />
+      <Pill f={f} fps={fps} at={away + 4} out={end - 4} text="source moving away" x={1850} y={470} anchor="right" color={C.red} size={30} />
       <ExaggeratedTag opacity={prog(f, slideAt, slideAt + 12, ease.out)} x={1824} y={60} text="shift exaggerated" />
       <Finish tint={C.violet} grade={0.1} vig={0.34} />
       <BarWipe t={wipe} xs={wipeXs} />
@@ -164,3 +173,7 @@ export const BarcodeScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
+
+export const CH3C: SceneReg[] = [
+  { ids: ["s3_barcode"], C: BarcodeScene },
+];
