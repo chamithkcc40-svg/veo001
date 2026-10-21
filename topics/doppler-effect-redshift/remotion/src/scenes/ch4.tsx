@@ -110,6 +110,34 @@ export const DomeScene4: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s4_plate (INS, slow push)
+// Hard cut to a light table. A NEGATIVE glass plate (dark stars on pale glass) of Andromeda's edge.
+// One star blinks bright-dim-bright on the three blips (sync.domeBlips): each blink is a dark dot that
+// swells and shrinks (on a negative, bright = bigger + darker). A loupe glides over it (arc path), then
+// Hubble's hand (tweed cuff) circles the star with a grease pencil. Timeline wakes on 1923.
+const PL = { x: 960, y: 500, w: 1180, h: 760 }; // plate rectangle centre + size
+const VAR = { x: 1180, y: 430 }; // the blinking star (plate space = screen space before the push)
+/** negative plate content: pale glass, dark star specks, the dark smudge of Andromeda's disc */
+const NegPlate: React.FC<{ f: number; blink: number }> = ({ f, blink }) => (
+  <g>
+    <rect x={PL.x - PL.w / 2} y={PL.y - PL.h / 2} width={PL.w} height={PL.h} rx={14} fill={mix(C.lilac, C.white, 0.35)} />
+    <ellipse cx={760} cy={560} rx={520} ry={190} transform="rotate(-24,760,560)" fill={alpha(C.night, 0.18)} style={{ filter: "blur(40px)" }} />
+    <ellipse cx={700} cy={590} rx={200} ry={70} transform="rotate(-24,700,590)" fill={alpha(C.night, 0.4)} style={{ filter: "blur(22px)" }} />
+    {Array.from({ length: 90 }).map((_, i) => (
+      <circle key={i} cx={rr("np x" + i, PL.x - PL.w / 2 + 20, PL.x + PL.w / 2 - 20)} cy={rr("np y" + i, PL.y - PL.h / 2 + 20, PL.y + PL.h / 2 - 20)} r={rr("np r" + i, 1.2, 4.2)} fill={alpha(C.night, rr("np o" + i, 0.45, 0.9))} />
+    ))}
+    {/* the variable star: swells darker when bright (it is a negative) */}
+    <circle cx={VAR.x} cy={VAR.y} r={4 + 7 * blink} fill={alpha(C.night, 0.75 + 0.2 * blink)} />
+    <circle cx={VAR.x} cy={VAR.y} r={14 + 16 * blink} fill={alpha(C.night, 0.12 * blink)} />
+    {/* emulsion scratches + edge label strip */}
+    <path d={`M${PL.x - 420},${PL.y - 300} l300,40 M${PL.x + 120},${PL.y + 280} l260,-30`} stroke={alpha(C.white, 0.5)} strokeWidth={1.5} />
+    <rect x={PL.x - PL.w / 2 + 30} y={PL.y + PL.h / 2 - 70} width={260} height={40} rx={6} fill={alpha(C.sepia, 0.55)} />
+    <text x={PL.x - PL.w / 2 + 46} y={PL.y + PL.h / 2 - 42} fontFamily={F.period} fontSize={26} fill={alpha(C.night, 0.75)}>M31 · Oct. 1923</text>
+    <rect x={PL.x - PL.w / 2} y={PL.y - PL.h / 2} width={PL.w} height={PL.h} rx={14} fill="none" stroke={alpha(C.white, 0.7)} strokeWidth={6} />
+    <rect x={PL.x - PL.w / 2 + 10} y={PL.y - PL.h / 2 + 10} width={PL.w * 0.3} height={PL.h - 20} rx={10} fill={alpha(C.white, 0.08 + 0.02 * Math.sin(f / 20))} />
+  </g>
+);
+
 export const CH4: SceneReg[] = [
   { ids: ["s4_dome"], C: DomeScene4 },
 ];
