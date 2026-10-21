@@ -10,7 +10,7 @@ import React from "react";
 import { AbsoluteFill, useVideoConfig } from "remotion";
 import { C, ease, F, spr } from "../theme";
 import { alpha, clamp, mix, noise1, prog, rr, sp, tw } from "../util";
-import { cue, syncList, V } from "../data";
+import { cue, sync, syncList, V } from "../data";
 import { Camera, Layer, Svg } from "../kit/camera";
 import { Dust, Finish, GlowDot, Stars } from "../kit/fx";
 import { DomeInterior } from "../kit/env/Interiors";
@@ -37,7 +37,7 @@ const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
 // Hubble + floor pool (1) · near railing (1.45, blur). The shutter grinds open on the rumble (3831,
 // heavy spring with a small overshoot + shake), the telescope slews, Hubble walks into the pool of
 // light on "Enter" and looks up on "Hubble". Card letters spread apart as they arrive (07).
-const HB = { x0: 430, x1: 800, y: 925, s: 1.08 }; // feet above the caption band
+const HB = { x0: 360, x1: 760, y: 935, s: 1.4 }; // feet above the caption band
 /** the starlight shaft from the slit to the floor, with drifting motes caught in it */
 const Shaft: React.FC<{ f: number; o: number }> = ({ f, o }) => (
   <g opacity={o}>
@@ -72,8 +72,8 @@ const BigScope: React.FC<{ angle: number }> = ({ angle }) => {
 
 export const DomeScene4: React.FC<SceneProps> = ({ f, start, end }) => {
   const { fps } = useVideoConfig();
-  const enter = cue("enter"), hub = cue("hubble");
-  const slit = sp(f, cue("rumbleStart"), fps, spr.heavy); // shutter grinds open (overshoot settles)
+  const hub = cue("hubble");
+  const slit = sp(f, sync("rumbleStart"), fps, spr.heavy); // shutter grinds open (overshoot settles)
   const grind = slit < 0.98 ? 3 * (1 - slit) : 0; // shutter judder shakes the camera while it moves
   const stopAt = hub + 6;
   const walkT = prog(f, start, stopAt, ease.inOutSine);
@@ -88,7 +88,7 @@ export const DomeScene4: React.FC<SceneProps> = ({ f, start, end }) => {
   const expr = f < stopAt ? "focused" : "curious";
   const scopeA = tw(f, [start, end], [-34, -24], ease.inOutSine); // the telescope slews as he arrives
   const cam = { x: tw(f, [start, end], [-30, 30], ease.inOutSine), y: tw(f, [start, end], [90, -70], ease.inOut), zoom: tw(f, [start, end], [1.02, 1.1], ease.inOutSine), rot: 0, frame: f, shake: 1 + grind, seed: "d4" };
-  const spread = 0.5 * prog(f, start + 2, end, ease.out); // letters spread apart as they arrive
+  const spread = 0.04 + 0.12 * prog(f, start + 2, end, ease.out); // letters spread apart as they arrive
   return (
     <AbsoluteFill>
       <Camera cam={cam}>
@@ -103,9 +103,13 @@ export const DomeScene4: React.FC<SceneProps> = ({ f, start, end }) => {
         </Layer>
         <Layer depth={1.45} blur={6}><Svg><rect x={-200} y={985} width={2400} height={22} rx={10} fill={mix(C.violet, C.night, 0.7)} />{[0, 1, 2, 3, 4, 5, 6].map((i) => <rect key={i} x={-100 + i * 360} y={990} width={18} height={200} fill={mix(C.violet, C.night, 0.7)} />)}</Svg></Layer>
       </Camera>
-      <LetterTitle f={f} fps={fps} at={start + 2} out={end + 2} text="4 · THE RUNNING UNIVERSE" size={78} color={C.white} glow={C.sun} y={190} spread={spread} stagger={1} />
-      <NameTag f={f} fps={fps} at={hub + 2} out={end + 30} name="Edwin Hubble" sub="Mount Wilson · 1923 / 1929" x={110} y={700} />
+      <LetterTitle f={f} fps={fps} at={start + 2} out={end + 2} text="4 · THE RUNNING UNIVERSE" size={64} color={C.white} glow={C.sun} y={190} spread={spread} stagger={1} />
+      <NameTag f={f} fps={fps} at={hub + 2} out={end + 1} name="Edwin Hubble" sub="Mount Wilson · 1923 / 1929" x={110} y={700} />
       <Finish tint={C.violet} grade={0.12} vig={0.38} />
     </AbsoluteFill>
   );
 };
+
+export const CH4: SceneReg[] = [
+  { ids: ["s4_dome"], C: DomeScene4 },
+];
