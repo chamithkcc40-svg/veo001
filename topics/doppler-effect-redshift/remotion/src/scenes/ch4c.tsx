@@ -15,6 +15,7 @@ import { cue, V } from "../data";
 import { Camera, Layer, Svg } from "../kit/camera";
 import { Dust, Finish, GlowDot, Stars } from "../kit/fx";
 import { Kitchen } from "../kit/env/Interiors";
+import { Study } from "../kit/env/Study";
 import { Space } from "../kit/env/Space";
 import { Galaxy, ExaggeratedTag } from "../kit/info/Galaxy";
 import { NameTag, Pill, Timeline } from "../kit/info/Labels";
@@ -45,8 +46,8 @@ const Panel: React.FC<{ x: number; w: number; slide: number; from: -1 | 1; child
   const off = (1 - slide) * (from < 0 ? -(x + w + 60) : 1920 - x + 60);
   return (
     <AbsoluteFill style={{ transform: `translateX(${off}px)` }}>
-      <AbsoluteFill style={{ clipPath: `inset(40px ${1920 - x - w}px 200px ${x}px round 28px)` }}>{children}</AbsoluteFill>
-      <Svg><rect x={x} y={40} width={w} height={840} rx={28} fill="none" stroke={alpha(C.lilac, 0.55)} strokeWidth={6} /></Svg>
+      <AbsoluteFill style={{ clipPath: `inset(130px ${1920 - x - w}px 200px ${x}px round 28px)` }}>{children}</AbsoluteFill>
+      <Svg><rect x={x} y={130} width={w} height={750} rx={28} fill="none" stroke={alpha(C.lilac, 0.55)} strokeWidth={6} /></Svg>
     </AbsoluteFill>
   );
 };
@@ -65,5 +66,45 @@ const MiniChart: React.FC<{ f: number; flare: number }> = ({ f, flare }) => {
       <text x={ox + 16} y={oy - h + 6} fontFamily={F.display} fontSize={24} fill={alpha(C.chalk, 0.8)}>↑ speed away</text>
       <circle cx={1700} cy={60} r={300} fill={alpha(C.sun, 0.06 + 0.1 * flare)} />
     </Svg>
+  );
+};
+
+const PAGE = <g transform="translate(-6,-70) rotate(-8)"><rect x={-40} y={-56} width={80} height={104} rx={6} fill={C.dough} />{[0, 1, 2, 3, 4].map((i) => <rect key={i} x={-28} y={-40 + i * 18} width={56 - (i % 2) * 14} height={5} rx={2} fill={alpha(C.night, 0.4)} />)}</g>;
+export const LemaitreScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const lem = cue("lemaitre"), two = cue("twoYears"), chart = cue("hubblesChart"), conv = cue("convinced");
+  const slideL = sp(f, start - 2, fps, { damping: 15, stiffness: 120, mass: 0.9 });
+  const slideR = sp(f, start + 6, fps, { damping: 15, stiffness: 120, mass: 0.9 });
+  const flare = sp(f, chart + 6, fps, spr.bouncy) * (1 - 0.5 * prog(f, chart + 30, end, ease.inOutSine));
+  const P = f < two + 4
+    ? merge(POSE.write, scribble(f), { turn: 0.4 })
+    : track(f, [[two + 4, merge(POSE.write, { turn: 0.4 })], [two + 16, { ...POSE.offer, turn: 0.6, lookX: 1, lean: 4 }], [end + 10, { ...POSE.offer, armR: { a: 86, b: 16 }, turn: 0.6, lookX: 1, lean: 5 }]], 10);
+  const expr = f < two ? "focused" : "happy";
+  const nod = (k: number) => { const t0 = conv - 6 + k * 5; return f < t0 ? 0 : 10 * Math.sin(clamp((f - t0) / 20) * Math.PI * 2) * Math.exp(-(f - t0) / 30); };
+  const crowd = [{ d: OBSERVER_A, x: 1040 }, { d: SLIPHER, x: 1330 }, { d: OBSERVER_B, x: 1620 }];
+  const crowdIn = sp(f, chart + 2, fps, spr.smooth);
+  const drift = prog(f, start, end, ease.inOutSine);
+  return (
+    <AbsoluteFill style={{ transform: `scale(${1 + 0.03 * drift}) translateX(${-12 * drift}px)` }}>
+      <Space frame={f} nebula={[C.plum, C.violet]} />
+      <Panel x={60} w={SPLIT - 60} slide={slideL} from={-1}>
+        <AbsoluteFill style={{ transform: "translateX(-590px)" }}>
+          <Study frame={f} fore={false} subject={<Svg><Rig uid="lemSt" def={LEMAITRE} frame={f} x={1000} y={1000} scale={1.25} pose={P} expr={expr} propR={f >= two + 6 ? PAGE : undefined} /></Svg>} />
+        </AbsoluteFill>
+      </Panel>
+      <Panel x={SPLIT + 40} w={1860 - SPLIT - 40} slide={slideR} from={1}>
+        <MiniChart f={f} flare={flare} />
+        <Svg>
+          {crowd.map((c, k) => (
+            <g key={k} transform={`translate(0,${(1 - crowdIn) * 200})`}>
+              <Rig uid={"crowd" + k} def={c.d} frame={f + k * 11} x={c.x} y={1130} scale={1.3} pose={{ headTilt: nod(k), turn: 0 }} expr="neutral" silhouette={mix(C.night, C.violet, 0.2)} />
+            </g>
+          ))}
+        </Svg>
+      </Panel>
+      <NameTag f={f} fps={fps} at={lem + 2} out={chart} name="Georges Lemaître" sub="Belgian priest · 1927" x={110} y={170} />
+      <Timeline f={f} fps={fps} at={start + 8} out={end + 20} active={f < chart + 4 ? ["1927"] : ["1927", "1929"]} x={520} y={20} />
+      <Finish tint={C.violet} grade={0.1} vig={0.34} />
+    </AbsoluteFill>
   );
 };
