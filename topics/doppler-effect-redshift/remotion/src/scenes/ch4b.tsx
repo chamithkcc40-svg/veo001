@@ -90,7 +90,7 @@ export const ChartScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const dotP = DOTS.map((_, i) => sp(f, taps[i] ?? taps[taps.length - 1], fps, spr.bouncy));
   const line = prog(f, pattern, pattern + 26, ease.inOut);
   const gal = DOTS.map((d, i) => sp(f, faster + Math.round(d.u * 16), fps, spr.smooth)); // near first, far last
-  const punch = prog(f, farther - 6, farther + 14, ease.inOut) * (1 - prog(f, faster + 10, end, ease.inOutSine) * 0.6);
+  const punch = prog(f, farther - 6, farther + 14, ease.inOut) * (1 - prog(f, faster + 4, faster + 40, ease.inOutSine)); // full release: arrows read wide, card clears the captions
   const push = prog(f, start, end, ease.inOutSine);
   const cam = { x: mix2(-30, 30, push) + 360 * punch, y: mix2(20, -10, push) - 230 * punch, zoom: 1.0 + 0.06 * push + 0.32 * punch, rot: 0, frame: f, shake: 0.8, seed: "ch4c" };
   const back = prog(f, pattern + 2, pattern + 26, ease.inOut);
