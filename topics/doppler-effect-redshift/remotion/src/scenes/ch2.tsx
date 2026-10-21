@@ -115,7 +115,7 @@ const ringEdges = (f: number, dir: 1 | -1, n: number) => {
   return out.slice(0, n);
 };
 
-const Brackets: React.FC<{ f: number; at: number; dir: 1 | -1; color: string; y: number; n?: number; label?: string; out?: number }> = ({ f, at, dir, color, y, n = 4, label, out = 1e9 }) => {
+const Brackets: React.FC<{ f: number; at: number; dir: 1 | -1; color: string; y: number; lineY: number; n?: number; label?: string; out?: number }> = ({ f, at, dir, color, y, lineY, n = 4, label, out = 1e9 }) => {
   const { fps } = useVideoConfig();
   const p = sp(f, at, fps, spr.snappy);
   const e = prog(f, out - 8, out, ease.in);
@@ -128,17 +128,18 @@ const Brackets: React.FC<{ f: number; at: number; dir: 1 | -1; color: string; y:
         const a = edges[i - 1], b = x;
         const k = sp(f, at + i * 3, fps, spr.bouncy);
         const lo = Math.min(a, b), w = Math.abs(b - a);
-        const h = 20 * k;
+        const h = -20 * k;
         return (
           <g key={i}>
+            <path d={`M${a},${lineY + 10} L${a},${y}`} stroke={alpha(color, 0.5)} strokeWidth={2} strokeDasharray="4 6" />
             <path d={`M${lo + 3},${y} L${lo + 3},${y - h} L${lo + w - 3},${y - h} L${lo + w - 3},${y}`} stroke={color} strokeWidth={5} fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 6px ${alpha(color, 0.7)})` }} />
-            {label === "=" && <text x={lo + w / 2} y={y - h - 10} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={30} fill={color} opacity={k}>=</text>}
+            {label === "=" && <text x={lo + w / 2} y={y + 44} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={30} fill={color} opacity={k}>=</text>}
           </g>
         );
       })}
-      {edges.map((x, i) => <circle key={"d" + i} cx={x} cy={y} r={6 * sp(f, at + i * 3, fps, spr.bouncy)} fill={color} />)}
+      {edges.map((x, i) => <circle key={"d" + i} cx={x} cy={lineY} r={6 * sp(f, at + i * 3, fps, spr.bouncy)} fill={color} />)}
       {label && label !== "=" && edges.length > 1 && (
-        <text x={(edges[0] + edges[Math.min(edges.length - 1, 3)]) / 2} y={y - 44} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={34} fill={color} letterSpacing="2" style={{ filter: `drop-shadow(0 3px 6px ${alpha(C.night, 0.6)})` }}>{label}</text>
+        <text x={(edges[0] + edges[Math.min(edges.length - 1, 3)]) / 2} y={y + 62} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={34} fill={color} letterSpacing="2" style={{ filter: `drop-shadow(0 3px 6px ${alpha(C.night, 0.6)})` }}>{label}</text>
       )}
     </g>
   );
