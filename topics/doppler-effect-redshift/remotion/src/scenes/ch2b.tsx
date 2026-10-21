@@ -12,7 +12,7 @@ import { Pond } from "../kit/env/Pond";
 import { Street } from "../kit/env/Street";
 import { Rings } from "../kit/info/Rings";
 import { PitchLine } from "../kit/info/PitchLine";
-import { Ambulance, AMB_SIREN } from "../kit/props/Props";
+import { Ambulance, AMB_SIREN, Speedometer } from "../kit/props/Props";
 import { Skipper } from "../kit/rig/Skipper";
 import { PIP } from "../kit/rig/characters";
 import { SceneProps } from "../chapters/types";
@@ -229,5 +229,89 @@ const Pill2: React.FC<{ f: number; at: number; out: number; text: string; color:
       <rect x={-110} y={-34} width={220} height={68} rx={34} fill={color} />
       <text y={14} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={38} fill={C.white} letterSpacing="3">{text}</text>
     </g>
+  );
+};
+
+// ------------------------------------------------------------------ s2_speed (diagram: same speed, different spacing)
+// Two wave trains travel right at the SAME speed (SPD_V px/frame). Top: squeezed BLUE (gap 70),
+// bottom: stretched RED (gap 170). Riders (speedometers) travel with the lead front; same needle.
+const SPD_V = 7;
+const Train2: React.FC<{ f: number; y: number; gap: number; color: string; lead: number; glow: number; n: number }> = ({ f, y, gap, color, lead, glow, n }) => (
+  <g>
+    {Array.from({ length: n }).map((_, i) => {
+      const x = lead - i * gap;
+      const R = 150;
+      const o = clamp((x + 100) / 200);
+      return <path key={i} d={`M${x - R * 0.3},${y - R * 0.95} Q${x + R * 0.25},${y} ${x - R * 0.3},${y + R * 0.95}`} stroke={color} strokeWidth={8} fill="none" strokeLinecap="round" opacity={o} style={{ filter: `drop-shadow(0 0 ${8 + glow * 10}px ${alpha(color, 0.8)})` }} />;
+    })}
+    {/* spacing brackets between the first fronts */}
+    {glow > 0.01 && [0, 1, 2].map((i) => {
+      const a = lead - (i + 1) * gap + 6, b = lead - i * gap - 6;
+      const k = clamp(glow * 3 - i * 0.6);
+      return (
+        <g key={"b" + i} opacity={k}>
+          <path d={`M${a},${y + 170} L${a},${y + 186} L${b},${y + 186} L${b},${y + 170}`} stroke={color} strokeWidth={6} fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 10px ${alpha(color, 0.9)})` }} />
+        </g>
+      );
+    })}
+  </g>
+);
+
+export const Speed: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const lead = 380 + (f - start) * SPD_V;
+  const camX = (f - start) * SPD_V * 0.82; // lateral track keeps the riders near centre
+  const needleAt = sync("earSlowEnd") + 8; // needle tick sfx frame (1600)
+  const nd = sp(f, needleAt, fps, { damping: 9, stiffness: 140, mass: 0.7 });
+  const value = 0.62 * nd;
+  const glow = prog(f, cue("spacing"), cue("spacing") + 24, ease.out);
+  const t1 = sp(f, cue("neverSpeed") + 14, fps, spr.bouncy);
+  const t2 = sp(f, cue("spacing") + 2, fps, spr.bouncy);
+  const gauge = (y: number, color: string, uid: string) => (
+    <g transform={`translate(${lead + 120},${y - 210}) scale(${sp(f, start + 4, fps, spr.bouncy)})`}>
+      <path d="M0,70 L0,160" stroke={alpha(color, 0.6)} strokeWidth={4} strokeDasharray="6 8" />
+      <Speedometer value={value + Math.sin(f / 3 + (uid === "a" ? 0 : 1.3)) * 0.004 * nd} r={70} color={color} label="SPEED" />
+    </g>
+  );
+  return (
+    <AbsoluteFill>
+      <Camera cam={{ x: camX, y: 0, zoom: tw(f, [start, end], [1.04, 1.0], ease.inOutSine), rot: 0, frame: f }}>
+        <Layer depth={0}>
+          <Svg>
+            <defs>
+              <linearGradient id="spdBg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor={C.violet} />
+                <stop offset="1" stopColor={C.night} />
+              </linearGradient>
+            </defs>
+            <rect x={-100} y={-100} width={2200} height={1300} fill="url(#spdBg)" />
+          </Svg>
+        </Layer>
+        <Layer depth={0.3} blur={2}>
+          <Svg>
+            {Array.from({ length: 40 }).map((_, i) => <rect key={i} x={-400 + i * 140} y={0} width={2} height={1080} fill={alpha(C.lilac, 0.07)} />)}
+            <Stars seed="spdstars" frame={f} n={60} ox={-400} w={4000} maxR={1.8} opacity={0.5} />
+          </Svg>
+        </Layer>
+        <Layer depth={1}>
+          <Svg>
+            {[330, 690].map((y) => <rect key={y} x={-200} y={y - 2} width={6000} height={4} rx={2} fill={alpha(C.lilac, 0.18)} />)}
+            <Train2 f={f} y={330} gap={70} color={C.blue} lead={lead} glow={glow} n={14} />
+            <Train2 f={f} y={690} gap={170} color={C.red} lead={lead} glow={glow} n={7} />
+            {gauge(330, C.blue, "a")}
+            {gauge(690, C.red, "b")}
+          </Svg>
+        </Layer>
+        <Layer depth={1.5} blur={6}>
+          <Svg>{Array.from({ length: 14 }).map((_, i) => <circle key={i} cx={rr("sfx" + i, 0, 4200)} cy={rr("sfy" + i, 0, 1080)} r={rr("sfr" + i, 6, 16)} fill={alpha(C.lilac, 0.18)} />)}</Svg>
+        </Layer>
+      </Camera>
+      {/* concept label: SAME SPEED · DIFFERENT SPACING (two halves land on their words) */}
+      <div style={{ position: "absolute", left: 0, width: 1920, top: 70, display: "flex", justifyContent: "center", gap: 28, fontFamily: F.display, fontWeight: 700, fontSize: 60, letterSpacing: "0.05em" }}>
+        <span style={{ color: C.white, opacity: Math.min(1, t1 * 1.5), transform: `translateY(${(1 - t1) * 30}px) scale(${0.7 + 0.3 * t1})`, display: "inline-block", textShadow: `0 6px 0 ${alpha(C.night, 0.4)}` }}>SAME SPEED</span>
+        <span style={{ color: C.sun, opacity: Math.min(1, t2 * 1.5), transform: `translateY(${(1 - t2) * 30}px) scale(${0.7 + 0.3 * t2})`, display: "inline-block", textShadow: `0 0 26px ${alpha(C.sun, 0.6)}, 0 6px 0 ${alpha(C.night, 0.4)}` }}>· DIFFERENT SPACING</span>
+      </div>
+      <Finish tint={C.violet} grade={0.1} vig={0.3} />
+    </AbsoluteFill>
   );
 };
