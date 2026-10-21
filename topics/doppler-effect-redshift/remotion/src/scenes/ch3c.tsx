@@ -381,12 +381,33 @@ const AndroCard: React.FC<{ f: number; inP: number; outP: number; shift: number;
         <svg width={572} height={150} style={{ marginTop: 10, overflow: "visible" }}>
           <Barcode id="acLab" x={80} y={14} w={480} h={40} ghost label="LAB" />
           <Barcode id="acAnd" x={80} y={86} w={480} h={48} shift={shift} />
-          <text x={56} y={118} textAnchor="end" fontFamily={F.display} fontWeight={600} fontSize={22} fill={C.blue} letterSpacing="0.06em">M31</text>
         </svg>
       </div>
     </div>
   );
 };
+
+// Beat timing: Andromeda 3533 · coming 3552 · toward 3561 · about 3587 · three hundred 3595-3613 ·
+// second 3646 · But nearly all 3670 (whoosh_out 3674) · rushing away 3720-3745 · Why 3758 · flee 3798.
+const PLATE_SCREEN = PLATE_W * 0.78 * SL.s * 1.64; // plate width on screen at the end of s3_slipher
+const Z0 = (30 * 0.78 * SL.s * 1.64) / 46; // map zoom at which Andromeda matches the plate spiral size
+export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const coming = word("coming", start), toward = word("toward", start), three = word("three", start), second = word("second", start);
+  const nearly = cue("nearlyAll"), rushing = cue("rushing"), why = cue("why"), flee = cue("flee");
+  const open = prog(f, start, start + 16, ease.inOut); // plate frame expands past the screen edges
+  const pull = prog(f, nearly - 2, rushing + 6, ease.inOut); // pull back to the full map
+  const Z = mix2(mix2(Z0, 2.6, prog(f, start + 6, nearly, ease.inOutSine)), 1.0, pull) - 0.06 * prog(f, rushing, end, ease.inOutSine);
+  const fx = mix2(ANDRO.x + 40 * prog(f, start, nearly, ease.inOutSine), US.x, pull), fy = mix2(ANDRO.y, US.y + 40, pull);
+  const approach = prog(f, coming, nearly, ease.inOutSine); // Andromeda glides toward us (grows, tilts open)
+  const blueShift = -tw(f, [toward - 2, toward + 22], [0, 1], ease.inOut);
+  const kms = 300 * prog(f, three, second, ease.out);
+  const cardIn = sp(f, start + 10, fps, spr.smooth), cardOut = prog(f, nearly - 4, nearly + 6, ease.in);
+  const statusP = sp(f, coming, fps, spr.snappy);
+  const tagShift = -0.05 * prog(f, toward - 2, toward + 22, ease.inOut);
+  const dop = (i: number) => sp(f, nearly + 8 + i * 3, fps, spr.smooth); // each spiral reveals its shift
+  const out = (i: number) => prog(f, nearly + 8 + i * 3, end + 30, ease.inOutSine); // outward drift
+  const camBg = { x: (fx - 960) * 0.2, y: (fy - 540) * 0.2, zoom: 1 + 0.12 * (Z - 1), rot: 0, frame: f };
 
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
