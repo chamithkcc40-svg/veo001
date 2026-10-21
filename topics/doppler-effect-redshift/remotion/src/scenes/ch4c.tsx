@@ -23,6 +23,7 @@ import { HUBBLE, LEMAITRE, OBSERVER_A, OBSERVER_B, SLIPHER } from "../kit/rig/ch
 import { POSE, merge, scribble, sway, track } from "../kit/rig/poses";
 import { Ambulance, BigX } from "../kit/props/Props";
 import { CurlReveal } from "./ch2";
+import { DOTS, chalkLine } from "./ch4b";
 import { TwistCard } from "./ch2c";
 import { SceneProps, SceneReg } from "../chapters/types";
 
@@ -47,5 +48,22 @@ const Panel: React.FC<{ x: number; w: number; slide: number; from: -1 | 1; child
       <AbsoluteFill style={{ clipPath: `inset(40px ${1920 - x - w}px 200px ${x}px round 28px)` }}>{children}</AbsoluteFill>
       <Svg><rect x={x} y={40} width={w} height={840} rx={28} fill="none" stroke={alpha(C.lilac, 0.55)} strokeWidth={6} /></Svg>
     </AbsoluteFill>
+  );
+};
+/** right panel: Hubble's chart again (same 24 schematic dots + line), mini, on its board */
+const MiniChart: React.FC<{ f: number; flare: number }> = ({ f, flare }) => {
+  const ox = 900, oy = 620, w = 820, h = 430;
+  return (
+    <Svg>
+      <rect x={800} y={40} width={1060} height={840} fill={mix(C.plum, C.night, 0.35)} />
+      <rect x={850} y={90} width={960} height={600} rx={20} fill={C.board} />
+      <path d={chalkLine(ox, oy, ox + w, oy, "mcx")} stroke={C.chalk} strokeWidth={5} fill="none" />
+      <path d={chalkLine(ox, oy, ox, oy - h, "mcy")} stroke={C.chalk} strokeWidth={5} fill="none" />
+      <path d={chalkLine(ox, oy, ox + w * 0.98, oy - h * 0.9, "mcl", 18)} stroke={C.sunLt} strokeWidth={7 + 6 * flare} fill="none" strokeLinecap="round" style={{ filter: flare > 0.05 ? `drop-shadow(0 0 ${18 * flare}px ${C.sun})` : undefined }} />
+      {DOTS.map((d, i) => <circle key={i} cx={ox + d.u * w} cy={oy - d.v * h} r={8 + 3 * flare * Math.max(0, Math.sin(f / 4 - i * 0.5))} fill={C.chalk} />)}
+      <text x={ox + w} y={oy + 36} textAnchor="end" fontFamily={F.display} fontSize={24} fill={alpha(C.chalk, 0.8)}>distance →</text>
+      <text x={ox + 16} y={oy - h + 6} fontFamily={F.display} fontSize={24} fill={alpha(C.chalk, 0.8)}>↑ speed away</text>
+      <circle cx={1700} cy={60} r={300} fill={alpha(C.sun, 0.06 + 0.1 * flare)} />
+    </Svg>
   );
 };
