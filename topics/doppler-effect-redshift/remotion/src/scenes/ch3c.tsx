@@ -270,13 +270,33 @@ export const PlateImage: React.FC<{ f: number; spiral: number; code: number }> =
 /** spectrograph box + eyepiece bolted to the telescope tail (drawn in the subject plane) */
 const Spectrograph: React.FC<{ f: number }> = ({ f }) => (
   <g transform="translate(905,470) rotate(-8)">
-    <rect x={-20} y={-150} width={40} height={150} rx={16} fill={mix(C.lilac, C.violet, 0.6)} />
+    {/* telescope tail coming down from the upper right into the spectrograph */}
+    <g transform="rotate(38)">
+      <rect x={-75} y={-1000} width={150} height={1000} rx={40} fill={mix(C.lilac, C.violet, 0.55)} />
+      <rect x={-75} y={-1000} width={40} height={1000} rx={20} fill={alpha(C.white, 0.1)} />
+      <rect x={-86} y={-120} width={172} height={34} rx={12} fill={mix(C.lilac, C.violet, 0.7)} />
+    </g>
     <rect x={-80} y={-10} width={160} height={110} rx={18} fill={mix(C.lilac, C.violet, 0.45)} />
     <rect x={-80} y={-10} width={160} height={28} rx={14} fill={alpha(C.white, 0.16)} />
     <rect x={-112} y={40} width={40} height={30} rx={10} fill={mix(C.lilac, C.violet, 0.7)} />
     <circle cx={50} cy={60} r={9} fill={alpha(C.red, 0.6 + 0.4 * Math.sin(f / 9))} />
   </g>
 );
+
+export const SlipherScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const faint = cue("faint"), clink = faint + 10, spirals = word("spirals", faint);
+  const P = track(f, [
+    [start, { lean: 12, headTilt: 10, turn: 0.7, lookX: 1, armR: { a: 70, b: 40 }, armL: { a: 15, b: 30 }, handR: "open" }],
+    [faint - 8, { lean: 12, headTilt: 10, turn: 0.7, lookX: 1, armR: { a: 70, b: 40 }, armL: { a: 15, b: 30 }, handR: "open" }],
+    [faint, { lean: 4, headTilt: 2, turn: 0.6, lookX: 1, armR: { a: 92, b: 12 }, armL: { a: 10, b: 20 }, handR: "fist", bodyY: 4 }], // reach to the slot
+    [clink + 2, { lean: 2, headTilt: 0, turn: 0.5, lookX: 0.8, armR: { a: 95, b: 14 }, armL: { a: 10, b: 20 }, handR: "fist" }],
+    [clink + 14, { ...POSE.holdUp, lean: -3, turn: 0.35, lookX: 0.7, lookY: -0.5, armL: { a: 8, b: 16 }, bodyY: -4 }], // lift (overshoot via track)
+    [end, { ...POSE.holdUp, lean: -2, turn: 0.35, lookX: 0.7, lookY: -0.5, armL: { a: 8, b: 16 }, headTilt: -4 }],
+  ], 8);
+  const hasPlate = f >= clink;
+  const expr = f < faint ? "focused" : f < spirals ? "curious" : "surprised";
+  const plateGlow = sp(f, spirals, fps, spr.smooth);
 
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
