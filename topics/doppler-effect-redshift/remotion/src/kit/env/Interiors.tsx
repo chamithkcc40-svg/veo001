@@ -159,7 +159,7 @@ export const NightSky: React.FC<{ frame: number; seed?: string }> = ({ frame, se
 );
 
 /** Dome interior: red lamp, curved dome wall, giant telescope silhouette */
-export const DomeInterior: React.FC<{ frame: number; slit?: number; red?: boolean; scopeAngle?: number }> = ({ frame, slit = 1, red = true, scopeAngle = -32 }) => {
+export const DomeInterior: React.FC<{ frame: number; slit?: number; red?: boolean; scopeAngle?: number; scope?: boolean }> = ({ frame, slit = 1, red = true, scopeAngle = -32, scope = true }) => {
   const wall = red ? mix(C.plum, C.night, 0.35) : mix(C.violet, C.night, 0.4);
   return (
     <Svg>
@@ -174,13 +174,13 @@ export const DomeInterior: React.FC<{ frame: number; slit?: number; red?: boolea
         <rect x={960 - 140 * slit} y={-200} width={280 * slit} height={760} rx={20} fill={C.night} />
         <g clipPath="url(#slitClip)"><Stars seed="slit" frame={frame} n={50} w={400} h={760} ox={760} oy={-200} maxR={2.4} /></g>
       </g>
-      {/* telescope (big) */}
-      <g transform={`translate(960,900) rotate(${scopeAngle})`}>
+      {/* telescope (big); scope=false when a scene draws its own instrument */}
+      {scope && <g transform={`translate(960,900) rotate(${scopeAngle})`}>
         <rect x={-120} y={-760} width={240} height={900} rx={60} fill={mix(C.lilac, C.violet, 0.55)} />
         <rect x={-120} y={-760} width={60} height={900} rx={30} fill={alpha(C.white, 0.12)} />
         {[-600, -300, 0].map((y) => <rect key={y} x={-132} y={y} width={264} height={40} rx={12} fill={mix(C.lilac, C.violet, 0.7)} />)}
-      </g>
-      <path d="M700,1100 L960,820 L1220,1100 Z" fill={mix(C.violet, C.night, 0.6)} />
+      </g>}
+      {scope && <path d="M700,1100 L960,820 L1220,1100 Z" fill={mix(C.violet, C.night, 0.6)} />}
       {/* floor */}
       <rect x={-800} y={960} width={3600} height={600} fill={mix(wall, C.night, 0.5)} />
       {red && (

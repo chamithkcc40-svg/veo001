@@ -29,6 +29,7 @@ import { NameTag, Pill, Timeline } from "../kit/info/Labels";
 import { Rig } from "../kit/rig/Rig";
 import { PIP, SLIPHER } from "../kit/rig/characters";
 import { POSE, track, sway, merge } from "../kit/rig/poses";
+import { handPos } from "../kit/rig/fk";
 import { GlassPlate } from "../kit/props/Props";
 import { SceneProps, SceneReg } from "../chapters/types";
 
@@ -297,6 +298,18 @@ export const SlipherScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const hasPlate = f >= clink;
   const expr = f < faint ? "focused" : f < spirals ? "curious" : "surprised";
   const plateGlow = sp(f, spirals, fps, spr.smooth);
+  const plate = (
+    <g transform="translate(0,-62) scale(0.78)">
+      <GlassPlate w={PLATE_W} h={PLATE_H} glow={plateGlow}>
+        <PlateImage f={f} spiral={0.55 + 0.45 * plateGlow} code={1} />
+      </GlassPlate>
+    </g>
+  );
+  const endPose = { ...POSE.holdUp, lean: -2, turn: 0.35, armL: { a: 8, b: 16 } };
+  const hp = handPos(SLIPHER, endPose, "R", SL.x, SL.y, SL.s);
+  const pushT = prog(f, spirals - 6, end, ease.inOut);
+  const z = 1.04 + 0.5 * pushT;
+  const cam = { x: mix2(-20, (hp.x - 960) * 0.9, pushT), y: mix2(10, (hp.y - 62 * SL.s * 0.78 - 540) * 0.9, pushT), zoom: z, rot: 0, frame: f, shake: 1.2, seed: "slh" };
 
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
