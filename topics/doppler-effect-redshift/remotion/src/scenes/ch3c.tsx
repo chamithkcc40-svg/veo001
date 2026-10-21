@@ -349,7 +349,7 @@ const SPIRALS: Sp[] = (() => {
   for (let i = 1; i < 15; i++) {
     const a = (i / 14) * Math.PI * 2 + rr("spa" + i, -0.25, 0.25);
     const d = rr("spd" + i, 0.55, 1);
-    out.push({ x: US.x + Math.cos(a) * 640 * d, y: US.y + Math.sin(a) * 300 * d, r: rr("spr" + i, 18, 30), rot: rr("spo" + i, -60, 60), blue: i === 9 });
+    out.push({ x: US.x + Math.cos(a) * 700 * d, y: US.y + Math.sin(a) * 320 * d, r: rr("spr" + i, 26, 38), rot: rr("spo" + i, -60, 60), blue: i === 9 });
   }
   return out;
 })();
@@ -397,7 +397,7 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
   const nearly = cue("nearlyAll"), rushing = cue("rushing"), why = cue("why"), flee = cue("flee");
   const open = prog(f, start, start + 16, ease.inOut); // plate frame expands past the screen edges
   const pull = prog(f, nearly - 2, rushing + 6, ease.inOut); // pull back to the full map
-  const Z = mix2(mix2(Z0, 2.6, prog(f, start + 6, nearly, ease.inOutSine)), 1.0, pull) - 0.06 * prog(f, rushing, end, ease.inOutSine);
+  const Z = mix2(mix2(Z0, 3.3, prog(f, start + 6, nearly, ease.inOutSine)), 1.0, pull) - 0.06 * prog(f, rushing, end, ease.inOutSine);
   // plate spiral sat 14 plate-units above the plate centre -> start the focus offset so it lines up
   const fx = mix2(ANDRO.x + 40 * prog(f, start, nearly, ease.inOutSine), US.x, pull), fy = mix2(ANDRO.y + (14 * 0.78 * SL.s * 1.64 / Z0) * (1 - open), US.y + 40, pull);
   const approach = prog(f, coming, nearly, ease.inOutSine); // Andromeda glides toward us (grows, tilts open)
@@ -411,7 +411,7 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
   const camBg = { x: (fx - 960) * 0.2, y: (fy - 540) * 0.2, zoom: 1 + 0.12 * (Z - 1), rot: 0, frame: f };
   const spirals = SPIRALS.map((g, i) => {
     if (i === 0) {
-      const r = g.r * (1 + 0.55 * approach);
+      const r = g.r * (1 + 0.6 * approach) * (1 - 0.35 * pull); // grows as it nears; settles to map scale
       return (
         <g key={i}>
           <Galaxy id="andro" x={g.x} y={g.y} r={r} frame={f} shift={blueShift} tilt={0.55 - 0.15 * approach} rot={g.rot} dots={70} glow={1.1 + 0.3 * approach} />
@@ -426,7 +426,7 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
     const c = g.blue ? C.blue : C.red;
     return (
       <g key={i} opacity={clamp(0.25 + d)}>
-        <Galaxy id={"msp" + i} x={x} y={y} r={g.r} frame={f} shift={d * (g.blue ? -1 : 1)} tilt={0.4} rot={g.rot} dots={26} />
+        <Galaxy id={"msp" + i} x={x} y={y} r={g.r} frame={f} shift={d * (g.blue ? -1 : 1)} tilt={0.4} rot={g.rot} dots={30} glow={1.2} />
         {d > 0.05 && <path d={`M${x + ux * (g.r * 1.6)},${y + uy * (g.r * 1.6)} L${x + ux * (g.r * 1.6 + 46 * d)},${y + uy * (g.r * 1.6 + 46 * d)}`} stroke={c} strokeWidth={4} strokeLinecap="round" opacity={0.85} transform={g.blue ? `rotate(180,${x + ux * g.r * 2.3},${y + uy * g.r * 2.3})` : undefined} />}
         <MiniCode id={"mc" + i} x={x - 32} y={y + g.r * 1.1 + 10} shift={g.blue ? -0.06 : 0.07} o={d} />
       </g>
