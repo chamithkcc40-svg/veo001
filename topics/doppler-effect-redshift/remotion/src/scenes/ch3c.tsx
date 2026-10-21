@@ -31,7 +31,7 @@ import { SceneProps, SceneReg } from "../chapters/types";
 // atoms set where the lines belong). Then the STAR lines slide toward red; the offset is measured.
 const BC = { x: 600, y: 610, w: 1000, h: 104 }; // STAR (observed) strip
 const LABY = 330; // parked LAB strip y
-const PRISM = { x: 430, y: 560 };
+const PRISM = { x: 420, y: BC.y + BC.h / 2 }; // light enters the strip from its violet end
 const SHIFT = 0.075; // strip-fraction slide toward red (exaggerated for legibility)
 const lineX = (l: number, s = 0) => BC.x + (l + s) * BC.w;
 
@@ -49,3 +49,30 @@ const Atom: React.FC<{ x: number; y: number; f: number; s: number; i: number; co
     <circle r={3} cx={-2} cy={-2} fill={C.white} opacity={0.8} />
   </g>
 );
+
+/** source star + white beam + glass prism + narrow rainbow fan entering the strip's violet end */
+const PrismFeed: React.FC<{ f: number; beam: number; fan: number; o: number }> = ({ f, beam, fan, o }) => {
+  const sx = 120, sy = PRISM.y - 40;
+  const bx = sx + (PRISM.x - 30 - sx) * beam;
+  const by = sy + (PRISM.y - sy) * beam;
+  const tw2 = 0.85 + 0.15 * Math.sin(f / 4);
+  return (
+    <g opacity={o}>
+      <defs>
+        <linearGradient id="bcFan" x1="0" x2="0" y1="0" y2="1">
+          {["#6A2BD8", "#3D5BFF", "#29D39A", "#FFD23D", "#FF3D5A"].map((c, i) => <stop key={i} offset={i / 4} stopColor={c} />)}
+        </linearGradient>
+      </defs>
+      <GlowDot id="bcsrc" cx={sx} cy={sy} r={90 * tw2} color={C.core} o={0.8} />
+      <circle cx={sx} cy={sy} r={12} fill={C.white} />
+      {beam > 0 && <path d={`M${sx},${sy} L${bx},${by}`} stroke={C.white} strokeWidth={6} strokeLinecap="round" style={{ filter: `drop-shadow(0 0 8px ${alpha(C.white, 0.9)})` }} />}
+      {fan > 0 && <path d={`M${PRISM.x + 20},${PRISM.y} L${PRISM.x + 20 + (BC.x - PRISM.x - 20) * fan},${PRISM.y - (BC.h / 2) * fan} L${PRISM.x + 20 + (BC.x - PRISM.x - 20) * fan},${PRISM.y + (BC.h / 2) * fan} Z`} fill="url(#bcFan)" opacity={0.85} />}
+      {/* prism: cel-shaded glass triangle with rim light */}
+      <g transform={`translate(${PRISM.x},${PRISM.y}) rotate(${Math.sin(f / 30) * 2})`}>
+        <path d="M0,-70 L62,46 L-62,46 Z" fill={alpha(C.peri, 0.45)} />
+        <path d="M0,-70 L0,46 L-62,46 Z" fill={alpha(C.white, 0.14)} />
+        <path d="M0,-70 L62,46" stroke={alpha(C.white, 0.85)} strokeWidth={4} strokeLinecap="round" />
+      </g>
+    </g>
+  );
+};
