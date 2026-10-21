@@ -29,6 +29,8 @@ export type RingsProps = {
   wavy?: number; // amplitude of wiggle (light rings drawn as wavy lines)
   dash?: string;
   onlyColor?: string; // force a single colour (e.g. all-red)
+  aheadK?: number; // 0..1 reveal of the BLUE (ahead) tint (default 1)
+  behindK?: number; // 0..1 reveal of the RED (behind) tint (default 1)
 };
 
 const velocity = (path: SourcePath, t: number) => {
@@ -67,8 +69,8 @@ export const Rings: React.FC<RingsProps> = (p) => {
     if (!p.onlyColor && p.tint && v > 0.05) {
       const ux = vx / v, uy = vy / v;
       const s = clamp((v / c) * (p.tintGain ?? 3.2));
-      const ahead = mix(neutral, C.blue, s);
-      const behind = mix(neutral, C.red, s);
+      const ahead = mix(neutral, C.blue, s * (p.aheadK ?? 1));
+      const behind = mix(neutral, C.red, s * (p.behindK ?? 1));
       defs.push(
         <linearGradient key={gid} id={gid} gradientUnits="userSpaceOnUse"
           x1={src.x - ux * r} y1={src.y - uy * r * sy} x2={src.x + ux * r} y2={src.y + uy * r * sy}>
