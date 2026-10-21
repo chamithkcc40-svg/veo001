@@ -154,17 +154,17 @@ export const ChartScene: React.FC<SceneProps> = ({ f, start, end }) => {
 // about its centre on the stretch sfx (4552): anticipation squeeze, stretch, small overshoot, settle.
 // "us": a gold ring lands on galaxy A and arrows from A's point of view grow outward from every other
 // galaxy. "each other": the ring hops (arc) to galaxy B and the arrows re-aim: same result anywhere.
-const GRID = { cx: 960, cy: 450, dx: 300, dy: 200, cols: 5, rows: 3 };
+const GRID = { cx: 960, cy: 440, dx: 250, dy: 170, cols: 5, rows: 3 };
 const GAL = Array.from({ length: GRID.cols * GRID.rows }).map((_, i) => {
   const c = i % GRID.cols, r = Math.floor(i / GRID.cols);
   return { c, r, ox: (c - (GRID.cols - 1) / 2) * GRID.dx + rr("gg x" + i, -26, 26), oy: (r - (GRID.rows - 1) / 2) * GRID.dy + rr("gg y" + i, -20, 20), rot: rr("gg r" + i, 0, 360), sz: rr("gg s" + i, 30, 44) };
 });
 /** rubber-sheet grid: lines scale with the stretch, faint sheen slides as it stretches */
 const ExpansionSheet: React.FC<{ k: number; f: number }> = ({ k, f }) => {
-  const W2 = 860 * k, H2 = 320 * k; // bottom edge stays above the caption band at k = 1.3
+  const W2 = 650 * k, H2 = 270 * k; // bottom edge stays above the caption band at k = 1.3
   const lines: React.ReactNode[] = [];
-  for (let i = -8; i <= 8; i++) lines.push(<path key={"v" + i} d={`M${GRID.cx + i * 110 * k},${GRID.cy - H2} V${GRID.cy + H2}`} stroke={alpha(C.peri, i % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
-  for (let j = -4; j <= 4; j++) lines.push(<path key={"h" + j} d={`M${GRID.cx - W2},${GRID.cy + j * 100 * k} H${GRID.cx + W2}`} stroke={alpha(C.peri, j % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
+  for (let i = -5; i <= 5; i++) lines.push(<path key={"v" + i} d={`M${GRID.cx + i * 110 * k},${GRID.cy - H2} V${GRID.cy + H2}`} stroke={alpha(C.peri, i % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
+  for (let j = -2; j <= 2; j++) lines.push(<path key={"h" + j} d={`M${GRID.cx - W2},${GRID.cy + j * 100 * k} H${GRID.cx + W2}`} stroke={alpha(C.peri, j % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
   return (
     <g>
       <rect x={GRID.cx - W2} y={GRID.cy - H2} width={W2 * 2} height={H2 * 2} rx={40 * k} fill={alpha(mix(C.violet, C.night, 0.4), 0.85)} />
@@ -266,7 +266,7 @@ export const PeakScene: React.FC<SceneProps> = ({ f, start, end }) => {
           <Layer key={sh} depth={SHELL_DEPTH[sh]} blur={blurFor(sh)}>
             <Svg>
               {gal.filter((g) => g.shell === sh).map((g) => (
-                <Galaxy key={g.i} id={"pk" + g.i} x={g.x} y={g.y} r={g.r * Math.min(g.s, 3)} frame={f} shift={red * (0.1 + 0.9 * g.d)} tilt={0.4} rot={g.rot} dots={sh === 2 ? 26 : 16} glow={1.1} opacity={clamp(1.6 - (g.s - 1) * 0.3)} />
+                <Galaxy key={g.i} id={"pk" + g.i} x={g.x} y={g.y} r={g.r * Math.min(g.s, 3)} frame={f} shift={red * clamp(0.1 + 0.55 * g.d + [0.55, 0.25, 0][g.shell])} tilt={0.4} rot={g.rot} dots={sh === 2 ? 26 : 16} glow={1.1} opacity={clamp(1.6 - (g.s - 1) * 0.3)} />
               ))}
             </Svg>
           </Layer>
@@ -283,5 +283,5 @@ export const PeakScene: React.FC<SceneProps> = ({ f, start, end }) => {
 export const CH4B: SceneReg[] = [
   { ids: ["s4_chart"], C: ChartScene },
   { ids: ["s4_grid"], C: GridScene },
-  { ids: ["s4_peak"], C: PeakScene },
+  { ids: ["s4_peak"], C: PeakScene, hideCaptions: (f) => f >= 4623 }, // the gold title IS the line
 ];
