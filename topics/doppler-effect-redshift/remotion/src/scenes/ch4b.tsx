@@ -154,14 +154,14 @@ export const ChartScene: React.FC<SceneProps> = ({ f, start, end }) => {
 // about its centre on the stretch sfx (4552): anticipation squeeze, stretch, small overshoot, settle.
 // "us": a gold ring lands on galaxy A and arrows from A's point of view grow outward from every other
 // galaxy. "each other": the ring hops (arc) to galaxy B and the arrows re-aim: same result anywhere.
-const GRID = { cx: 960, cy: 470, dx: 300, dy: 250, cols: 5, rows: 3 };
+const GRID = { cx: 960, cy: 450, dx: 300, dy: 200, cols: 5, rows: 3 };
 const GAL = Array.from({ length: GRID.cols * GRID.rows }).map((_, i) => {
   const c = i % GRID.cols, r = Math.floor(i / GRID.cols);
   return { c, r, ox: (c - (GRID.cols - 1) / 2) * GRID.dx + rr("gg x" + i, -26, 26), oy: (r - (GRID.rows - 1) / 2) * GRID.dy + rr("gg y" + i, -20, 20), rot: rr("gg r" + i, 0, 360), sz: rr("gg s" + i, 30, 44) };
 });
 /** rubber-sheet grid: lines scale with the stretch, faint sheen slides as it stretches */
 const ExpansionSheet: React.FC<{ k: number; f: number }> = ({ k, f }) => {
-  const W2 = 860 * k, H2 = 330 * k; // bottom edge stays above the caption band at k = 1.3
+  const W2 = 860 * k, H2 = 320 * k; // bottom edge stays above the caption band at k = 1.3
   const lines: React.ReactNode[] = [];
   for (let i = -8; i <= 8; i++) lines.push(<path key={"v" + i} d={`M${GRID.cx + i * 110 * k},${GRID.cy - H2} V${GRID.cy + H2}`} stroke={alpha(C.peri, i % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
   for (let j = -4; j <= 4; j++) lines.push(<path key={"h" + j} d={`M${GRID.cx - W2},${GRID.cy + j * 100 * k} H${GRID.cx + W2}`} stroke={alpha(C.peri, j % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
@@ -205,7 +205,32 @@ export const GridScene: React.FC<SceneProps> = ({ f, start, end }) => {
       </g>
     );
   });
+  const subject = (
+    <Svg>
+      <ExpansionSheet k={k} f={f} />
+      {GAL.map((g, i) => { const p = pos(i); return <Galaxy key={i} id={"gr" + i} x={p.x} y={p.y} r={g.sz} frame={f} shift={0} tilt={0.35} rot={g.rot} dots={22} glow={0.9} />; })}
+      {arrows(A, arrowsA, C.red)}
+      {arrows(B, arrowsB, C.red)}
+      {ringIn > 0.01 && (
+        <g transform={`translate(${rx},${ry}) scale(${ringIn * (1 + 0.15 * Math.sin(hop * Math.PI))})`}>
+          <circle r={62} fill="none" stroke={C.sun} strokeWidth={8} />
+          <circle r={78} fill="none" stroke={alpha(C.sun, 0.35)} strokeWidth={4} strokeDasharray="8 10" transform={`rotate(${f * 2})`} />
+        </g>
+      )}
+    </Svg>
+  );
+  const tagX = mix2(pa.x, pb.x, hop);
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}><Space frame={f} subject={subject} nebula={[C.purple, C.violet]} /></Camera>
+      <Pill f={f} fps={fps} at={us - 2} out={each - 6} text="from here" x={pa.x} y={pa.y - 150} color={C.sun} size={28} />
+      <Pill f={f} fps={fps} at={each + 8} out={end + 2} text="or from here" x={tagX} y={pb.y - 150} color={C.sun} size={28} />
+      <Finish tint={C.violet} grade={0.1} vig={0.34} />
+    </AbsoluteFill>
+  );
+};
 
 export const CH4B: SceneReg[] = [
   { ids: ["s4_chart"], C: ChartScene },
+  { ids: ["s4_grid"], C: GridScene },
 ];
