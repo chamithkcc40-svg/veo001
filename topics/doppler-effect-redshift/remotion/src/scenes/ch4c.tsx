@@ -152,16 +152,14 @@ export const RoadScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const cam = { x: mix2(-260, 0, arrive) + 20 * prog(f, nope, end, ease.inOutSine), y: tw(f, [start, end], [10, -20], ease.inOutSine), zoom: tw(f, [start, end], [1.0, 1.08], ease.inOutSine), rot: 0, frame: f, shake: 0.6, seed: "rd4" };
   const subject = (
     <>
-      <Layer depth={0.85}><StarRoad f={f} scroll={scroll * 0.5} /></Layer>
-      <Layer depth={1}>
-        <Svg>
+      <StarRoad f={f} scroll={scroll * 0.5} />
+      <Svg>
           {vel > 0.05 && [0, 1, 2, 3].map((i) => <rect key={i} x={ax - 300 - i * 70} y={ROAD_Y - 120 + i * 26} width={200 * vel} height={6} rx={3} fill={alpha(C.lilac, 0.5 * vel)} />)}
           <g transform={`translate(${ax},${ROAD_Y + 52}) rotate(${rock}) scale(${2 - sq},${sq})`}>
             <Ambulance x={0} y={0} scale={0.55} flash={f / 6} wheel={-(f - start) * 10 * (0.3 + vel)} facing={1} />
           </g>
           {xP > 0.01 && <g transform={`translate(${ax + 10},${ROAD_Y - 70}) rotate(${-6 + 6 * xP})`} opacity={0.92}><BigX size={150} color={C.pink} p={xP} /></g>}
-        </Svg>
-      </Layer>
+      </Svg>
     </>
   );
   return (
