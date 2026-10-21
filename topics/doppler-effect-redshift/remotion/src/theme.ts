@@ -47,6 +47,7 @@ export const TOD = {
 export const F = {
   display: "Fredoka",
   body: "Nunito",
+  period: "IM Fell DW Pica", // in-world 19th/early-20th c. documents only (title pages, plates)
 } as const;
 
 export const ease = {
