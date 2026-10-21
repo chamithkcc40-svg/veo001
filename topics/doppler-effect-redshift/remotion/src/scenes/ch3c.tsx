@@ -217,6 +217,42 @@ const Meteor: React.FC<{ f: number; a: number; b: number; x0: number; y0: number
   );
 };
 
+export const DomeScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const unwipe = 1 - prog(f, start, start + WIPE, ease.out); // bars shrink away (entrance)
+  const slitAt = cue("slipher") - 4;
+  const slit = sp(f, slitAt, 30, spr.heavy); // the dome shutter slides open, heavy + slight overshoot
+  const beam = prog(f, slitAt + 6, slitAt + 26, ease.out);
+  // crane-in: rise from below the ridge, then push toward the slit (anticipation: tiny dip first)
+  const dip = Math.sin(prog(f, start, start + 16, ease.inOutSine) * Math.PI) * 10;
+  const cam = {
+    x: tw(f, [start, end], [-60, 20], ease.inOutSine),
+    y: tw(f, [start, end], [140, -150], ease.inOut) + dip,
+    zoom: tw(f, [start, end], [1.0, 1.42], ease.inOut), rot: tw(f, [start, end], [-0.6, 0.3], ease.inOutSine), frame: f,
+  };
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Layer depth={0.05}><NightSky frame={f} seed="domesky" /></Layer>
+        <Layer depth={0.1}><Svg><Meteor f={f} a={start + 30} b={start + 52} x0={260} y0={90} dx={520} dy={170} /></Svg></Layer>
+        <Layer depth={0.25} blur={2}><Svg><path d="M-700,700 Q200,540 760,600 Q1300,650 1700,560 Q2200,500 2700,620 V1500 H-700 Z" fill={mix(C.violet, C.peri, 0.25)} opacity={0.75} /></Svg></Layer>
+        <Layer depth={0.4} blur={1}><Pines seed="dfar" n={20} y={690} scale={[0.32, 0.5]} color={mix(C.violet, C.night, 0.35)} frame={f} /></Layer>
+        <Layer depth={0.6}>
+          <PineHill frame={f} slit={slit} />
+          <Svg>
+            {beam > 0.01 && <path d={`M${980 - 30},${320} L${980 + 30},${320} L${980 + 200},${-200} L${980 - 160},${-200} Z`} fill={alpha(C.sunLt, 0.16 * beam)} style={{ filter: "blur(10px)" }} />}
+            <Fireflies f={f} cx={980} cy={600} spread={260} />
+          </Svg>
+        </Layer>
+        <Layer depth={0.85}><Pines seed="dnear" n={9} y={860} scale={[0.75, 1.05]} color={mix(C.violet, C.night, 0.7)} x0={-500} x1={2500} frame={f} /></Layer>
+        <Layer depth={1.4} blur={7}><Pines seed="dfore" n={4} y={1220} scale={[1.6, 2.2]} color={C.night} x0={-300} x1={2400} frame={f} /></Layer>
+      </Camera>
+      <DomeTags f={f} out={scene_end_slipher()} />
+      <Finish tint={C.violet} grade={0.12} vig={0.36} />
+      <BarWipe t={unwipe} xs={EVEN_XS} />
+    </AbsoluteFill>
+  );
+};
+
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
 ];
