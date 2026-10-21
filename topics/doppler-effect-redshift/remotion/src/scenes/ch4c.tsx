@@ -172,3 +172,24 @@ export const RoadScene: React.FC<SceneProps> = ({ f, start, end }) => {
     </CurlReveal>
   );
 };
+
+// ------------------------------------------------------------------ s4_dough (MS, push, dissolve)
+// Hard cut to the Kitchen kit (tile wall, starry window, shelves, counter). A bowl of dough rises in a
+// smooth timelapse (the window sky turns over fast = time passing; dough bubble sfx 5112). Raisins are
+// tiny galaxies fixed in DOUGH coordinates: they spread because the dough grows, never swimming through
+// it (a gold ruler between two raisins lengthens). On "raisins apart" the dough dissolves into a navy
+// space sheet carrying the same raisins, now real galaxies (match by position for s4_ray).
+const BOWL = { x: 960, y: 800 };
+const RAISINS = Array.from({ length: 9 }).map((_, i) => ({ u: rr("rz u" + i, -0.8, 0.8), v: rr("rz v" + i, 0.2, 0.85), rot: rr("rz r" + i, 0, 360) }));
+/** dough dome: half-width W, height H above the bowl rim, soft bubbly top */
+const doughPath = (W: number, H: number, f: number) => {
+  const n = 24;
+  let d = `M${BOWL.x - W},${BOWL.y - 40}`;
+  for (let i = 0; i <= n; i++) {
+    const t = i / n, a = Math.PI * (1 - t);
+    const bump = 1 + 0.035 * Math.sin(t * 19 + f / 9) + 0.02 * Math.sin(t * 7 - f / 13);
+    d += ` L${BOWL.x + Math.cos(a) * W * bump},${BOWL.y - 40 - Math.sin(a) * H * bump}`;
+  }
+  return d + " Z";
+};
+const raisinXY = (r: { u: number; v: number }, W: number, H: number) => ({ x: BOWL.x + r.u * W * Math.sqrt(1 - r.v * r.v * 0.6), y: BOWL.y - 40 - r.v * H * 0.85 });
