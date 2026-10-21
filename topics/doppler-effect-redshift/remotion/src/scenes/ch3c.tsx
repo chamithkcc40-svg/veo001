@@ -188,7 +188,8 @@ export const DomeTags: React.FC<SceneProps> = ({ f, end }) => {
   return (
     <AbsoluteFill>
       <Timeline f={f} fps={fps} at={cue("tens") + 8} out={end - 6} active={["1912-1914"]} x={520} y={52} />
-      <NameTag f={f} fps={fps} at={TAG_AT()} out={end - 6} name="Vesto Slipher" sub="Lowell Observatory · 1912-1914" x={110} y={700} />
+      {/* the tag leaves as the push to the plate begins, so it never sits over Slipher's face */}
+      <NameTag f={f} fps={fps} at={TAG_AT()} out={Math.min(end - 6, word("spirals", cue("faint")) + 2)} name="Vesto Slipher" sub="Lowell Observatory · 1912-1914" x={110} y={700} />
     </AbsoluteFill>
   );
 };
