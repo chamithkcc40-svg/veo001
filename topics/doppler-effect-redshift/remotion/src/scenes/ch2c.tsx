@@ -114,3 +114,49 @@ const TitleText: React.FC<{ f: number; warm: number; sweep: number }> = ({ f, wa
     </div>
   );
 };
+
+/** Shot A: the manuscript title page on the desk, candle-lit from screen right. */
+const PaperPage: React.FC<{ f: number; start: number }> = ({ f, start }) => {
+  const { fps } = useVideoConfig();
+  const sound = cue("didnt"); // 2237
+  const named = cue("heNamed"); // 2301
+  // grey sound rings (the expected answer) spread over the page on "after sound." then dissolve
+  const soundOn = prog(f, sound + 30, sound + 40, ease.out) * (1 - prog(f, named - 6, named + 6, ease.in));
+  const warm = prog(f, named, named + 14, ease.out);
+  const sweep = tw(f, [named, named + 40], [-0.3, 1.3], ease.inOutSine);
+  const fl = 0.9 + 0.1 * noise1("pcandle", f / 4);
+  // quill hand: Doppler's hand rests at the page edge, lifts on "sound." (beat), lowers on "He named"
+  const lift = prog(f, sound + 36, sound + 48, ease.out) * (1 - prog(f, named + 4, named + 18, ease.inOut));
+  const handX = 1500 + Math.sin(f / 23) * 6, handY = 900 - lift * 70 + Math.sin(f / 17) * 3;
+  const blot = sp(f, start + 6, fps, spr.snappy);
+  return (
+    <AbsoluteFill>
+      <Svg>
+        <defs>
+          <linearGradient id="ppDesk" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor={mix(C.plum, C.night, 0.2)} />
+            <stop offset="1" stopColor={mix(C.plum, C.sun, 0.25)} />
+          </linearGradient>
+          <linearGradient id="ppPaper" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor={mix(C.dough, C.white, 0.15)} />
+            <stop offset="0.7" stopColor={C.dough} />
+            <stop offset="1" stopColor={mix(C.dough, C.sepia, 0.45)} />
+          </linearGradient>
+          <radialGradient id="ppPool" cx={1700} cy={300} r={1500} gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor={C.sun} stopOpacity={0.35 * fl} />
+            <stop offset="1" stopColor={C.sun} stopOpacity={0} />
+          </radialGradient>
+        </defs>
+        <rect x={-200} y={-200} width={2320} height={1480} fill="url(#ppDesk)" />
+        {/* wood grain */}
+        {Array.from({ length: 14 }).map((_, i) => (
+          <path key={i} d={`M-200,${i * 95 + 20} C400,${i * 95 + rr("pg" + i, -30, 30)} 1200,${i * 95 + rr("pg2" + i, 10, 60)} 2120,${i * 95 + 10}`} stroke={alpha(C.night, 0.12)} strokeWidth={4} fill="none" />
+        ))}
+        {/* under-sheet + page with soft contact shadow */}
+        <rect x={PAGE.x - PAGE.w / 2 + 30} y={PAGE.y - PAGE.h / 2 + 26} width={PAGE.w} height={PAGE.h} rx={14} fill={alpha(C.night, 0.35)} style={{ filter: "blur(18px)" }} />
+        <rect x={PAGE.x - PAGE.w / 2 - 40} y={PAGE.y - PAGE.h / 2 + 30} width={PAGE.w} height={PAGE.h} rx={10} fill={mix(C.dough, C.sepia, 0.35)} transform={`rotate(-2.5,${PAGE.x},${PAGE.y})`} />
+        <rect x={PAGE.x - PAGE.w / 2} y={PAGE.y - PAGE.h / 2} width={PAGE.w} height={PAGE.h} rx={10} fill="url(#ppPaper)" />
+        <rect x={PAGE.x - PAGE.w / 2 + 40} y={PAGE.y - PAGE.h / 2 + 40} width={PAGE.w - 80} height={PAGE.h - 80} rx={6} fill="none" stroke={alpha(C.plumDk, 0.35)} strokeWidth={3} />
+        {/* ink blot appears as the quill touches (secondary detail) */}
+        <ellipse cx={PAGE.x + 470} cy={PAGE.y + 300} rx={14 * blot} ry={9 * blot} fill={alpha(C.night, 0.55)} />
+      </Svg>
