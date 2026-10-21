@@ -358,6 +358,36 @@ const MiniCode: React.FC<{ x: number; y: number; shift: number; o: number; id: s
   <g opacity={o}><Barcode id={id} x={x} y={y} w={64} h={12} shift={shift} /></g>
 );
 
+/** the observer marker at the map centre: a small Milky Way disc + "US" label (fixed point) */
+const UsMarker: React.FC<{ f: number; o: number; s: number }> = ({ f, o, s }) => (
+  <g transform={`translate(${US.x},${US.y}) scale(${s})`} opacity={o}>
+    <Galaxy id="usmw" x={0} y={0} r={26} frame={f} shift={0} tilt={0.55} rot={10} dots={22} glow={0.8} armColor={C.sunLt} />
+    <circle r={44} fill="none" stroke={alpha(C.sun, 0.7)} strokeWidth={3} strokeDasharray="6 8" transform={`rotate(${f * 0.6})`} />
+    <text y={74} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={26} letterSpacing="0.14em" fill={C.sun}>US</text>
+  </g>
+);
+
+/** screen-space data card for Andromeda: title, status, km/s counter, LAB vs ANDROMEDA strips */
+const AndroCard: React.FC<{ f: number; inP: number; outP: number; shift: number; kms: number; statusP: number }> = ({ f, inP, outP, shift, kms, statusP }) => {
+  const o = Math.min(clamp(inP * 1.4), 1 - outP);
+  if (o <= 0.01) return null;
+  const x = 1150 + (1 - inP) * 80 + outP * 60, y = 250;
+  return (
+    <div style={{ position: "absolute", left: x, top: y, width: 640, opacity: o, transform: `scale(${0.94 + 0.06 * inP})`, transformOrigin: "left top" }}>
+      <div style={{ background: alpha(C.night, 0.72), borderRadius: 28, padding: "26px 34px 30px", boxShadow: `0 20px 50px ${alpha(C.night, 0.5)}, inset 0 0 0 2px ${alpha(C.blue, 0.35)}` }}>
+        <div style={{ fontFamily: F.display, fontWeight: 700, fontSize: 52, color: C.white, letterSpacing: "0.1em" }}>ANDROMEDA</div>
+        <div style={{ fontFamily: F.display, fontWeight: 600, fontSize: 34, color: C.blue, letterSpacing: "0.06em", opacity: statusP, transform: `translateX(${(1 - statusP) * -20}px)` }}>approaching</div>
+        <div style={{ fontFamily: F.display, fontWeight: 700, fontSize: 64, color: mix(C.blue, C.white, 0.35), marginTop: 4, textShadow: `0 0 26px ${alpha(C.blue, 0.7)}` }}>~{Math.round(kms)} <span style={{ fontSize: 34 }}>km/s</span></div>
+        <svg width={572} height={150} style={{ marginTop: 10, overflow: "visible" }}>
+          <Barcode id="acLab" x={80} y={14} w={480} h={40} ghost label="LAB" />
+          <Barcode id="acAnd" x={80} y={86} w={480} h={48} shift={shift} />
+          <text x={56} y={118} textAnchor="end" fontFamily={F.display} fontWeight={600} fontSize={22} fill={C.blue} letterSpacing="0.06em">M31</text>
+        </svg>
+      </div>
+    </div>
+  );
+};
+
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
   { ids: ["s3_dome"], C: DomeScene },
