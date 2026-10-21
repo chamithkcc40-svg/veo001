@@ -398,7 +398,8 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
   const open = prog(f, start, start + 16, ease.inOut); // plate frame expands past the screen edges
   const pull = prog(f, nearly - 2, rushing + 6, ease.inOut); // pull back to the full map
   const Z = mix2(mix2(Z0, 2.6, prog(f, start + 6, nearly, ease.inOutSine)), 1.0, pull) - 0.06 * prog(f, rushing, end, ease.inOutSine);
-  const fx = mix2(ANDRO.x + 40 * prog(f, start, nearly, ease.inOutSine), US.x, pull), fy = mix2(ANDRO.y, US.y + 40, pull);
+  // plate spiral sat 14 plate-units above the plate centre -> start the focus offset so it lines up
+  const fx = mix2(ANDRO.x + 40 * prog(f, start, nearly, ease.inOutSine), US.x, pull), fy = mix2(ANDRO.y + (14 * 0.78 * SL.s * 1.64 / Z0) * (1 - open), US.y + 40, pull);
   const approach = prog(f, coming, nearly, ease.inOutSine); // Andromeda glides toward us (grows, tilts open)
   const blueShift = -tw(f, [toward - 2, toward + 22], [0, 1], ease.inOut);
   const kms = 300 * prog(f, three, second, ease.out);
@@ -408,6 +409,29 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
   const dop = (i: number) => sp(f, nearly + 8 + i * 3, fps, spr.smooth); // each spiral reveals its shift
   const out = (i: number) => prog(f, nearly + 8 + i * 3, end + 30, ease.inOutSine); // outward drift
   const camBg = { x: (fx - 960) * 0.2, y: (fy - 540) * 0.2, zoom: 1 + 0.12 * (Z - 1), rot: 0, frame: f };
+  const spirals = SPIRALS.map((g, i) => {
+    if (i === 0) {
+      const r = g.r * (1 + 0.55 * approach);
+      return (
+        <g key={i}>
+          <Galaxy id="andro" x={g.x} y={g.y} r={r} frame={f} shift={blueShift} tilt={0.55 - 0.15 * approach} rot={g.rot} dots={70} glow={1.1 + 0.3 * approach} />
+          <MiniCode id="mcA" x={g.x - 32} y={g.y + r * 0.9 + 16} shift={-0.06} o={dop(0) * pull} />
+        </g>
+      );
+    }
+    const d = dop(i), o2 = out(i);
+    const dx = g.x - US.x, dy = g.y - US.y, len = Math.hypot(dx, dy);
+    const ux = dx / len, uy = dy / len, push = (g.blue ? -40 : 90) * o2;
+    const x = g.x + ux * push, y = g.y + uy * push;
+    const c = g.blue ? C.blue : C.red;
+    return (
+      <g key={i} opacity={clamp(0.25 + d)}>
+        <Galaxy id={"msp" + i} x={x} y={y} r={g.r} frame={f} shift={d * (g.blue ? -1 : 1)} tilt={0.4} rot={g.rot} dots={26} />
+        {d > 0.05 && <path d={`M${x + ux * (g.r * 1.6)},${y + uy * (g.r * 1.6)} L${x + ux * (g.r * 1.6 + 46 * d)},${y + uy * (g.r * 1.6 + 46 * d)}`} stroke={c} strokeWidth={4} strokeLinecap="round" opacity={0.85} transform={g.blue ? `rotate(180,${x + ux * g.r * 2.3},${y + uy * g.r * 2.3})` : undefined} />}
+        <MiniCode id={"mc" + i} x={x - 32} y={y + g.r * 1.1 + 10} shift={g.blue ? -0.06 : 0.07} o={d} />
+      </g>
+    );
+  });
 
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
