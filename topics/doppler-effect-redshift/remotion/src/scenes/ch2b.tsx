@@ -17,7 +17,7 @@ import { merge, POSE, scribble, sway, track } from "../kit/rig/poses";
 import { Street } from "../kit/env/Street";
 import { Rings } from "../kit/info/Rings";
 import { PitchLine } from "../kit/info/PitchLine";
-import { Ambulance, AMB_SIREN, Flag, Horn, Quill, Ship, SpiralIcon, Speedometer, Suitcase, Train, TRAIN_STACK } from "../kit/props/Props";
+import { Ambulance, AMB_SIREN, Candle, Flag, Horn, Quill, Ship, SpiralIcon, Speedometer, Suitcase, Train, TRAIN_STACK } from "../kit/props/Props";
 import { Skipper } from "../kit/rig/Skipper";
 import { BUYSBALLOT, DOPPLER, HORN1, HORN2, HORN3, OBSERVER_A, OBSERVER_B, PIP } from "../kit/rig/characters";
 import { SceneProps, SceneReg } from "../chapters/types";
@@ -341,7 +341,7 @@ const RippleReveal: React.FC<{ f: number; at: number; dur: number; cx: number; c
 
 export const StudyScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const { fps } = useVideoConfig();
-  const cough = sync("earSlowEnd") > 0 ? cue("frail") + 8 : 0; // cough sfx lands at 1758
+  const cough = cue("frail") + 8; // cough sfx lands at 1758
   const ck = prog(f, cough - 6, cough, ease.out) * (1 - prog(f, cough + 14, cough + 24, ease.inOut));
   const writing = 1 - ck;
   const base = { ...POSE.write, turn: 0.45 };
@@ -380,9 +380,79 @@ export const StudyScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s2_suitcase (sepia memory)
+// Doppler latches the suitcase (latch sfx), lifts it (prop follows his hand via FK), looks at the ship
+// in the window ("moved to America"), then sets it down (thud sfx) with a small hopeful smile.
+const DOP_X = 760, FLOOR = 1010, DS = 1.25, CASE_S = 0.8;
+const CASE_FLOOR = { x: 1010, y: FLOOR + 4 };
+export const SuitcaseScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const latch = cue("nearlyQuit"); // 1912 latch sfx
+  const thud = latch + 35; // 1947 thud sfx
+  const pose = track(f, [
+    [start, { turn: 0.55, lean: 18, armR: { a: 42, b: 18 }, armL: { a: 20, b: 30 }, handR: "open", handL: "open", headTilt: 12, lookY: 1, lookX: 0.6 }],
+    [latch - 2, { turn: 0.55, lean: 22, armR: { a: 46, b: 8 }, armL: { a: 30, b: 20 }, handR: "fist", handL: "open", headTilt: 14, lookY: 1, lookX: 0.6 }],
+    [latch + 14, { turn: 0.5, lean: 2, armR: { a: 14, b: 4 }, armL: { a: -8, b: 8 }, handR: "fist", headTilt: -6, lookY: -0.6, lookX: 1 }],
+    [thud - 2, { turn: 0.55, lean: 16, armR: { a: 30, b: 4 }, armL: { a: -4, b: 10 }, handR: "fist", headTilt: 6, lookY: 0.4, lookX: 0.8 }],
+    [thud + 12, { turn: 0.35, lean: 0, armR: { a: 10, b: -6 }, armL: { a: -14, b: 40 }, handR: "open", handL: "open", headTilt: -8, lookY: -0.5, lookX: 0.9 }],
+  ], 12);
+  // packing jiggle before the latch
+  if (f < latch - 12) pose.armR = { a: pose.armR.a + Math.sin(f / 4) * 5, b: pose.armR.b + Math.cos(f / 5) * 8 };
+  const lift = prog(f, latch + 2, latch + 14, ease.inOut) * (1 - prog(f, thud - 8, thud, ease.in));
+  const hand = handPos(DOPPLER, pose, "R", DOP_X, FLOOR, DS);
+  const cx = CASE_FLOOR.x + (hand.x + 6 - CASE_FLOOR.x) * lift;
+  const cy = CASE_FLOOR.y + (hand.y + 196 * CASE_S - 10 - CASE_FLOOR.y) * lift;
+  const swing = lift > 0.5 ? Math.sin((f - latch) / 5) * 6 * Math.exp(-(f - latch - 14) / 20) : 0;
+  const open = 1 - prog(f, latch - 10, latch, ease.in);
+  const squash = f >= thud ? 1 - 0.08 * Math.exp(-(f - thud) / 3) : 1;
+  const expr = f < latch ? "focused" : f < thud - 6 ? "sad" : f < thud + 16 ? "sheepish" : "happy";
+  const ship = prog(f, latch + 8, latch + 30, ease.out);
+  const sep = prog(f, start, start + 12, ease.inOut) * (1 - prog(f, end - 14, end, ease.inOut));
+  const fadeIn = prog(f, start, start + 12, ease.inOut);
+  const cam = { x: tw(f, [start, end], [-30, 50], ease.inOutSine), y: noise1("suy", f / 40) * 6, zoom: tw(f, [start, end], [1.06, 1.0], ease.inOutSine), rot: tw(f, [start, end], [-0.6, 0.4], ease.inOutSine), frame: f };
+  return (
+    <AbsoluteFill style={{ opacity: fadeIn, filter: `sepia(${0.85 * sep}) saturate(${1 - 0.25 * sep}) brightness(${1 + 0.04 * sep})` }}>
+      <Camera cam={cam}>
+        <Layer depth={0.15} blur={1}><StudyWindowView frame={f} ship={ship} /></Layer>
+        <Layer depth={0.5} blur={1.2}><StudyRoom frame={f} /></Layer>
+        <Layer depth={1}>
+          <Svg>
+            <rect x={-400} y={FLOOR - 60} width={2800} height={600} fill={mix(C.plum, C.night, 0.35)} />
+            {Array.from({ length: 16 }).map((_, i) => <rect key={i} x={-400 + i * 180} y={FLOOR - 60} width={4} height={600} fill={alpha(C.night, 0.25)} transform={`skewX(${(i - 8) * 3})`} />)}
+            <rect x={-400} y={FLOOR - 64} width={2800} height={8} fill={alpha(C.sunLt, 0.25)} />
+            {/* side table + candle */}
+            <g transform={`translate(1600,${FLOOR})`}>
+              <rect x={-130} y={-250} width={260} height={30} rx={10} fill={mix(C.plum, C.sun, 0.3)} />
+              <rect x={-110} y={-222} width={20} height={222} rx={8} fill={mix(C.plum, C.night, 0.2)} />
+              <rect x={90} y={-222} width={20} height={222} rx={8} fill={mix(C.plum, C.night, 0.2)} />
+              <g transform="translate(20,-250)"><Candle frame={f} scale={0.8} /></g>
+            </g>
+            <Rig uid="dopsu" def={DOPPLER} frame={f} x={DOP_X} y={FLOOR} scale={DS} pose={pose} expr={expr} />
+            <g transform={`translate(${cx},${cy}) rotate(${swing}) scale(1,${squash})`}>
+              <ellipse cx={0} cy={2} rx={110 * CASE_S} ry={12} fill={alpha(C.night, 0.3 * (1 - lift))} />
+              <Suitcase open={open} scale={CASE_S} />
+            </g>
+            {/* dust puff on the thud */}
+            {f >= thud && f < thud + 24 && [-1, 1].map((d) => (
+              <g key={d} opacity={1 - (f - thud) / 24}>
+                {[0, 1, 2].map((k) => <circle key={k} cx={CASE_FLOOR.x + d * (90 + (f - thud) * (2 + k))} cy={FLOOR - 6 - k * 8 - (f - thud) * 0.6} r={8 + k * 3 + (f - thud) * 0.4} fill={alpha(C.lilac, 0.5)} />)}
+              </g>
+            ))}
+          </Svg>
+        </Layer>
+        <Layer depth={1}><StudyLight frame={f} cx={1620} cy={FLOOR - 340} /></Layer>
+        <Layer depth={1.5} blur={9}><StudyFore /></Layer>
+      </Camera>
+      {/* memory edge: soft light vignette */}
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse at center, transparent 55%, ${alpha(C.sunLt, 0.35 * sep)} 100%)`, pointerEvents: "none" }} />
+      <Finish tint={C.sun} grade={0.12} vig={0.3} />
+    </AbsoluteFill>
+  );
+};
+
 export const CH2B: SceneReg[] = [
   { ids: ["s2_compare"], C: Compare },
   { ids: ["s2_ear"], C: Ear },
   { ids: ["s2_speed"], C: Speed },
-  { ids: ["s2_study"], C: StudyScene },
+  { ids: ["s2_study"], C: StudyScene, post: 12 },
+  { ids: ["s2_suitcase"], C: SuitcaseScene },
 ];
