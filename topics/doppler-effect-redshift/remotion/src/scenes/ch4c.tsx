@@ -193,3 +193,47 @@ const doughPath = (W: number, H: number, f: number) => {
   return d + " Z";
 };
 const raisinXY = (r: { u: number; v: number }, W: number, H: number) => ({ x: BOWL.x + r.u * W * Math.sqrt(1 - r.v * r.v * 0.6), y: BOWL.y - 40 - r.v * H * 0.85 });
+export const DoughScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const like = cue("dough") , rais = cue("raisins");
+  const rise = prog(f, start + 4, rais + 6, ease.inOutSine); // the timelapse rise
+  const W = mix2(250, 470, rise), H = mix2(110, 330, rise);
+  const pop = (k: number) => { const t0 = start + 2 + k * 22; return Math.max(0, Math.sin(clamp((f - t0) / 10) * Math.PI)); }; // bubbles
+  const diss = prog(f, rais + 4, end - 2, ease.inOut); // dough -> space sheet
+  const push = prog(f, start, end, ease.inOutSine);
+  const cam = { x: 0, y: mix2(60, 120, push), zoom: mix2(1.0, 1.14, push), rot: 0, frame: f };
+  const A = raisinXY(RAISINS[1], W, H), B = raisinXY(RAISINS[4], W, H);
+  const ruler = sp(f, like - 4, fps, spr.smooth) * (1 - diss);
+  const raisins = RAISINS.map((r, i) => { const p = raisinXY(r, W, H); return <Galaxy key={i} id={"rz" + i} x={p.x} y={p.y} r={14 + 10 * diss + 4 * rise} frame={f} shift={0.15 * diss} tilt={0.35} rot={r.rot} dots={12} glow={0.4 + 0.8 * diss} armColor={diss < 0.5 ? mix(C.plumDk, C.lilac, diss * 2) : undefined} />; });
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Layer depth={0.4} blur={2}><AbsoluteFill style={{ opacity: 1 - diss }}><Kitchen frame={f * 6} /></AbsoluteFill></Layer>
+        <Layer depth={0.4}><AbsoluteFill style={{ opacity: diss }}><Space frame={f} nebula={[C.purple, C.violet]} dust={false} /></AbsoluteFill></Layer>
+        <Layer depth={1}>
+          <Svg>
+            <g opacity={1 - diss}>
+              <ellipse cx={BOWL.x} cy={BOWL.y + 96} rx={360} ry={24} fill={alpha(C.night, 0.35)} />
+              <path d={`M${BOWL.x - 330},${BOWL.y - 40} Q${BOWL.x - 300},${BOWL.y + 90} ${BOWL.x},${BOWL.y + 96} Q${BOWL.x + 300},${BOWL.y + 90} ${BOWL.x + 330},${BOWL.y - 40} Z`} fill={C.lilac} />
+              <path d={`M${BOWL.x - 330},${BOWL.y - 40} Q${BOWL.x - 310},${BOWL.y + 60} ${BOWL.x - 180},${BOWL.y + 86} L${BOWL.x - 230},${BOWL.y - 40} Z`} fill={alpha(C.white, 0.4)} />
+              <rect x={BOWL.x - 345} y={BOWL.y - 54} width={690} height={26} rx={13} fill={mix(C.lilac, C.peri, 0.3)} />
+            </g>
+            <path d={doughPath(W, H, f)} fill={diss < 1 ? alpha(C.dough, 1 - diss) : "none"} />
+            <path d={doughPath(W * 0.92, H * 0.9, f)} fill={alpha(C.white, 0.18 * (1 - diss))} transform={`translate(${-W * 0.08},${-H * 0.04})`} />
+            <path d={doughPath(W * (1 + 0.6 * diss), H * (1 + 0.6 * diss), f)} fill="none" stroke={alpha(C.peri, 0.5 * Math.sin(diss * Math.PI))} strokeWidth={4} />
+            {[0, 1, 2, 3].map((k) => { const r = RAISINS[k * 2]; const p = raisinXY({ u: r.u * 0.7, v: r.v * 0.5 + 0.4 }, W, H); return <circle key={k} cx={p.x + 40} cy={p.y} r={10 * pop(k)} fill="none" stroke={alpha(C.white, 0.7)} strokeWidth={3} />; })}
+            {raisins}
+            {ruler > 0.01 && (
+              <g opacity={ruler}>
+                <path d={`M${A.x},${A.y} L${B.x},${B.y}`} stroke={C.sun} strokeWidth={6} strokeDasharray="12 8" strokeLinecap="round" />
+                {[A, B].map((q, i) => <circle key={i} cx={q.x} cy={q.y} r={24} fill="none" stroke={C.sun} strokeWidth={4} />)}
+              </g>
+            )}
+          </Svg>
+        </Layer>
+      </Camera>
+      <Pill f={f} fps={fps} at={like + 8} out={rais + 8} text="raisins don't swim" x={960} y={140} color={C.sunLt} size={32} />
+      <Finish tint={diss > 0.5 ? C.violet : C.teal} grade={0.08} vig={0.34} />
+    </AbsoluteFill>
+  );
+};
