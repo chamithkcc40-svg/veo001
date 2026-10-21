@@ -139,7 +139,8 @@ const Brackets: React.FC<{ f: number; at: number; dir: 1 | -1; color: string; y:
       })}
       {edges.map((x, i) => <circle key={"d" + i} cx={x} cy={lineY} r={6 * sp(f, at + i * 3, fps, spr.bouncy)} fill={color} />)}
       {label && label !== "=" && edges.length > 1 && (
-        <text x={(edges[0] + edges[Math.min(edges.length - 1, 3)]) / 2} y={y + 62} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={40} fill={color} letterSpacing="3" style={{ filter: `drop-shadow(0 3px 6px ${alpha(C.night, 0.6)})` }}>{label}</text>
+        <text x={clamp(edges[Math.min(edges.length - 1, n - 1)] + dir * 34, 140, 1780)} y={y + 14} textAnchor={dir > 0 ? "start" : "end"} fontFamily={F.display} fontWeight={700} fontSize={40} fill={color} letterSpacing="3"
+          opacity={sp(f, at + 6, fps, spr.snappy)} style={{ filter: `drop-shadow(0 3px 6px ${alpha(C.night, 0.6)})` }}>{label}</text>
       )}
     </g>
   );
