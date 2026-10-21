@@ -161,7 +161,7 @@ const GAL = Array.from({ length: GRID.cols * GRID.rows }).map((_, i) => {
 });
 /** rubber-sheet grid: lines scale with the stretch, faint sheen slides as it stretches */
 const ExpansionSheet: React.FC<{ k: number; f: number }> = ({ k, f }) => {
-  const W2 = 860 * k, H2 = 420 * k;
+  const W2 = 860 * k, H2 = 330 * k; // bottom edge stays above the caption band at k = 1.3
   const lines: React.ReactNode[] = [];
   for (let i = -8; i <= 8; i++) lines.push(<path key={"v" + i} d={`M${GRID.cx + i * 110 * k},${GRID.cy - H2} V${GRID.cy + H2}`} stroke={alpha(C.peri, i % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
   for (let j = -4; j <= 4; j++) lines.push(<path key={"h" + j} d={`M${GRID.cx - W2},${GRID.cy + j * 100 * k} H${GRID.cx + W2}`} stroke={alpha(C.peri, j % 2 ? 0.1 : 0.2)} strokeWidth={2} />);
@@ -174,6 +174,37 @@ const ExpansionSheet: React.FC<{ k: number; f: number }> = ({ k, f }) => {
     </g>
   );
 };
+
+const KMAX = 1.3;
+export const GridScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const us = word("us", start), each = cue("eachOther");
+  // stretch: 4-frame anticipation squeeze on the sfx, then a smooth spring with a small overshoot
+  const squeeze = Math.sin(clamp((f - start) / 5) * Math.PI) * 0.03;
+  const k = 1 - squeeze + (KMAX - 1) * sp(f, start + 3, fps, { damping: 16, stiffness: 50, mass: 1.2 });
+  const kv = Math.max(0, sp(f, start + 4, fps, { damping: 16, stiffness: 50, mass: 1.2 }) - sp(f, start + 3, fps, { damping: 16, stiffness: 50, mass: 1.2 })) * 30; // stretch speed (drives arrows)
+  const pos = (i: number) => ({ x: GRID.cx + GAL[i].ox * k, y: GRID.cy + GAL[i].oy * k });
+  const A = 7, B = 13; // centre galaxy, then bottom-right
+  const ringIn = sp(f, us - 6, fps, spr.bouncy);
+  const hop = prog(f, each - 8, each + 8, ease.inOut);
+  const pa = pos(A), pb = pos(B);
+  const rx = mix2(pa.x, pb.x, hop), ry = mix2(pa.y, pb.y, hop) - Math.sin(hop * Math.PI) * 140; // hop on an arc
+  const arrowsA = sp(f, us - 2, fps, spr.smooth) * (1 - prog(f, each - 8, each, ease.in));
+  const arrowsB = sp(f, each + 6, fps, spr.smooth);
+  const cam = { x: tw(f, [start, end], [-20, 20], ease.inOutSine), y: tw(f, [start, end], [10, -10], ease.inOutSine), zoom: tw(f, [start, end], [1.04, 0.98], ease.inOutSine), rot: tw(f, [start, end], [-1.6, 1.4], ease.inOutSine), frame: f };
+  const arrows = (ref: number, amt: number, col: string) => amt > 0.01 && GAL.map((_, i) => {
+    if (i === ref) return null;
+    const p = pos(i), r = pos(ref);
+    const dx = p.x - r.x, dy = p.y - r.y, d = Math.hypot(dx, dy), ux = dx / d, uy = dy / d;
+    const len = (0.1 + 0.08 * Math.min(1, kv * 4)) * d * amt; // longer for farther galaxies (Hubble's law)
+    const x0 = p.x + ux * 46, y0 = p.y + uy * 46, x1 = x0 + ux * len, y1 = y0 + uy * len;
+    return (
+      <g key={ref + "-" + i} opacity={clamp(amt * 1.5)}>
+        <path d={`M${x0},${y0} L${x1},${y1}`} stroke={col} strokeWidth={6} strokeLinecap="round" />
+        <path d={`M${x1 - ux * 14 - uy * 10},${y1 - uy * 14 + ux * 10} L${x1},${y1} L${x1 - ux * 14 + uy * 10},${y1 - uy * 14 - ux * 10}`} stroke={col} strokeWidth={6} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    );
+  });
 
 export const CH4B: SceneReg[] = [
   { ids: ["s4_chart"], C: ChartScene },
