@@ -82,3 +82,35 @@ export const Twist: React.FC<SceneProps> = ({ f, start }) => {
   const p = prog(f, curlAt, curlAt + TW_CURL, ease.inOut);
   return <CurlReveal p={p} uid="tw1" flap={C.lilac}><TwistCard f={f} at={curlAt} uid="tw1c" /></CurlReveal>;
 };
+
+// ------------------------------------------------------------------ s2_paper
+// A  2237-2318  title-page CU (curl-out from the bottom-left), slow pull-back; on "sound." grey sound
+//               rings drift over the page and dissolve; on "He named it" the words "coloured light"
+//               warm up with a blue->red shimmer sweep (shimmer sfx 2301).
+// B  2318-2340  whip-tilt up (page slides down, study slides in from the top, vertical blur).
+// C  2338-2387  Doppler looks up; the double stars brighten on "colored"; push through the window
+//               on "light of stars", landing on the glass shimmer (2388) -> Ch3 opens in the stars.
+const PAGE = { x: 960, y: 455, w: 1240, h: 780 };
+const TitleText: React.FC<{ f: number; warm: number; sweep: number }> = ({ f, warm, sweep }) => {
+  // "coloured light" gets a moving gradient (blue -> white -> red) whose stop position = sweep
+  const ink = mix(C.night, C.plumDk, 0.4);
+  const hot = warm > 0.01;
+  const grad = `linear-gradient(90deg, ${C.blue} ${sweep * 100 - 40}%, ${C.core} ${sweep * 100}%, ${C.red} ${sweep * 100 + 40}%)`;
+  return (
+    <div style={{ position: "absolute", left: PAGE.x - PAGE.w / 2, top: PAGE.y - PAGE.h / 2 + 70, width: PAGE.w, textAlign: "center", color: ink, fontFamily: F.period }}>
+      <div style={{ fontSize: 30, letterSpacing: "0.28em", opacity: 0.75 }}>PRAGUE &nbsp;·&nbsp; 1842</div>
+      <div style={{ width: 360, height: 3, margin: "22px auto 26px", background: alpha(ink, 0.5) }} />
+      <div style={{ fontSize: 88, fontStyle: "italic", lineHeight: 1.1 }}>
+        On the{" "}
+        <span style={{ position: "relative", display: "inline-block" }}>
+          <span style={{ opacity: 1 - warm * 0.999 }}>coloured light</span>
+          {hot && (
+            <span style={{ position: "absolute", left: 0, top: 0, whiteSpace: "nowrap", opacity: warm, backgroundImage: grad, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", filter: `drop-shadow(0 0 ${10 * warm}px ${alpha(C.sun, 0.6)})` }}>coloured light</span>
+          )}
+        </span>
+      </div>
+      <div style={{ fontSize: 88, fontStyle: "italic", lineHeight: 1.15 }}>of the double stars...</div>
+      <div style={{ fontSize: 34, marginTop: 30, opacity: 0.8 }}>by Christian Doppler</div>
+    </div>
+  );
+};
