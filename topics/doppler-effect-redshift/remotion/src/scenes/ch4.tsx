@@ -295,8 +295,42 @@ const Tape: React.FC<{ x0: number; y0: number; x1: number; y1: number; p: number
   );
 };
 
+export const TapesScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const zips = syncList("tapeZips");
+  const tp = zips.map((z) => sp(f, z - 2, fps, spr.snappy, 14)); // each tape shoots out with overshoot
+  const tagP = zips.map((z) => sp(f, z + 8, fps, spr.bouncy));
+  const spin = zips.reduce((a, z) => a + 900 * prog(f, z - 2, z + 12, ease.out), 0);
+  const track = prog(f, start, end + 20, ease.inOutSine); // lateral track toward the far end of the row
+  const camX = mix2(-40, 640, track);
+  const cam = { x: camX, y: tw(f, [start, end], [10, -20], ease.inOutSine), zoom: tw(f, [start, end], [0.98, 1.04], ease.inOutSine), rot: 0, frame: f };
+  const subject = (
+    <Svg>
+      <Galaxy id="mw4t" x={340} y={520} r={120} frame={f} shift={0} tilt={0.72} rot={-8} dots={60} glow={0.9} armColor={C.sunLt} />
+      {ROW.map((g, i) => <Galaxy key={i} id={"row" + i} x={g.x} y={g.y} r={g.r} frame={f} shift={0} tilt={0.45} rot={g.rot} dots={36} glow={1} />)}
+      {ROW.map((g, i) => <Tape key={i} i={i} f={f} x0={TAPE0.x + 40} y0={TAPE0.y} x1={g.x - g.r * 1.3} y1={g.y + g.r * 0.8} p={tp[i]} />)}
+      {ROW.map((g, i) => tagP[i] > 0.01 && (
+        <g key={"t" + i} transform={`translate(${g.x - g.r * 1.3},${g.y + g.r * 0.8 + 40}) scale(1,${tagP[i]})`}>
+          <rect x={-46} y={0} width={92} height={50} rx={12} fill={C.sunLt} />
+          <circle cx={-30} cy={25} r={6} fill={alpha(C.night, 0.4)} />
+          {[0, 1].map((k) => <rect key={k} x={-14} y={14 + k * 14} width={48 - k * 16} height={7} rx={3} fill={alpha(C.night, 0.35)} />)}
+        </g>
+      ))}
+      <TapeCase x={TAPE0.x} y={TAPE0.y} spin={spin} />
+    </Svg>
+  );
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}><Space frame={f} subject={subject} nebula={[C.purple, C.violet]} /></Camera>
+      <Pill f={f} fps={fps} at={cue("howFar") + 2} out={end + 2} text="how far?" x={960} y={110} color={C.sunLt} size={36} />
+      <Finish tint={C.violet} grade={0.1} vig={0.34} />
+    </AbsoluteFill>
+  );
+};
+
 export const CH4: SceneReg[] = [
   { ids: ["s4_dome"], C: DomeScene4 },
   { ids: ["s4_plate"], C: PlateScene },
   { ids: ["s4_scale"], C: ScaleScene },
+  { ids: ["s4_tapes"], C: TapesScene },
 ];
