@@ -223,3 +223,36 @@ export const LabSeq: React.FC<SceneProps> = ({ f, start, end }) => {
             <ViewerEye f={f} x={1730} y={STAR0.y} o={eyeO} wide={eyeWide} />
           </Svg>
         </Layer>
+        {/* foreground: out-of-focus lab dust motes (depth of field) */}
+        <Layer depth={1.6} blur={6}>
+          <Svg><Dust seed="labfg" frame={f} n={14} area={[-300, -200, 2500, 1500]} size={[4, 9]} color={C.lilac} opacity={0.3} speed={0.7} /></Svg>
+        </Layer>
+      </Camera>
+      {/* REDSHIFT forms from red rings converging onto each letter slot */}
+      <Svg>
+        {word.split("").map((ch, i) => {
+          const lx = 960 + (i - (word.length - 1) / 2) * 92;
+          const la = landAt(i);
+          const age = la - f; // frames until landing
+          if (age > 0 && age < 18) {
+            const r = 14 + age * 16;
+            return <circle key={i} cx={lx} cy={wordY - 30} r={r} fill="none" stroke={C.red} strokeWidth={4} opacity={0.85 * (1 - age / 18)} />;
+          }
+          return null;
+        })}
+      </Svg>
+      <div style={{ position: "absolute", left: 0, width: 1920, top: wordY - 92, textAlign: "center", opacity: 1 - wordOut, transform: `translateY(${-wordOut * 20}px)` }}>
+        {word.split("").map((ch, i) => {
+          const p = sp(f, landAt(i), fps, spr.bouncy);
+          return (
+            <span key={i} style={{ display: "inline-block", width: 92, fontFamily: F.display, fontWeight: 700, fontSize: 104, color: mix(C.red, C.white, 0.2), opacity: Math.min(1, p * 1.5), transform: `scale(${0.4 + 0.6 * p}) translateY(${(1 - p) * 20}px)`, textShadow: `0 0 24px ${alpha(C.red, 0.85)}, 0 0 70px ${alpha(C.red, 0.4)}, 0 6px 0 ${alpha(C.night, 0.4)}` }}>{ch}</span>
+          );
+        })}
+      </div>
+      <NeonCard f={f} at={cue("ch3") + 4} out={cardOut} num="3" text="LIGHT HAS A SIREN TOO" y={250} />
+      <ExaggeratedTag opacity={prog(f, sq + 10, sq + 20, ease.out) * (1 - wordOut)} x={1824} y={60} />
+      <Finish tint={C.violet} grade={0.1} vig={0.34} />
+    </AbsoluteFill>
+  );
+};
+const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
