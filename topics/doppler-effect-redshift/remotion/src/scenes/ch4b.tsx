@@ -35,14 +35,14 @@ const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
 // y = slope * x + scatter, so the cloud rises with the line drawn through it. The Virgo group sits
 // top-right and gets the only number tag, "Virgo galaxies ~1,000 km/s" (PNAS 2015).
 const AX = { x: 340, y: 700, w: 1240, h: 500 }; // leaves room under the x axis for its label + credit
-const DOTS = Array.from({ length: 24 }).map((_, i) => {
+export const DOTS = Array.from({ length: 24 }).map((_, i) => {
   const u = i < 20 ? 0.04 + 0.62 * Math.pow(rr("hd u" + i, 0, 1), 0.9) : 0.78 + 0.16 * rr("hd v" + i, 0, 1); // last 4 = Virgo group
   const v = clamp(u * 0.92 + rr("hd s" + i, -0.13, 0.13) * (0.4 + u), 0.02, 0.98);
   return { u, v };
 }).sort((a, b) => a.u - b.u);
 const dotXY = (d: { u: number; v: number }) => ({ x: AX.x + d.u * AX.w, y: AX.y - d.v * AX.h });
 /** chalk stroke: slightly wobbly path with a dusty double line (seeded) */
-const chalkLine = (x0: number, y0: number, x1: number, y1: number, seed: string, n = 14) =>
+export const chalkLine = (x0: number, y0: number, x1: number, y1: number, seed: string, n = 14) =>
   Array.from({ length: n + 1 }).map((_, i) => { const t = i / n; return `${i ? "L" : "M"}${x0 + (x1 - x0) * t + rr(seed + "x" + i, -2, 2)},${y0 + (y1 - y0) * t + rr(seed + "y" + i, -2, 2)}`; }).join("");
 
 /** chalk-wipe transition: a dusty diagonal band sweeps left -> right; everything left of it is revealed */

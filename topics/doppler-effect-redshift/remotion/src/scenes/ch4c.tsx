@@ -32,3 +32,20 @@ const word = (text: string, after: number): number => {
   return w.s;
 };
 const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
+
+// ------------------------------------------------------------------ s4_lemaitre (split, drift)
+// Panel slide: the left study panel (40 % wide) slides in over the expanding field on the whoosh (4691)
+// with a small overshoot; the right panel (Hubble's chart, mini) follows 6 frames later from the right.
+// Left: Lemaitre writes (scribble cycle), on "two years earlier" lifts and offers the page toward the
+// chart. Right: on "But Hubble's chart" the line flares (pop 4824) and three silhouetted astronomers
+// nod one after another (overlapping action). Timeline under both: 1927 then 1929, both glowing.
+const SPLIT = 760; // panel divider x
+const Panel: React.FC<{ x: number; w: number; slide: number; from: -1 | 1; children: React.ReactNode }> = ({ x, w, slide, from, children }) => {
+  const off = (1 - slide) * (from < 0 ? -(x + w + 60) : 1920 - x + 60);
+  return (
+    <AbsoluteFill style={{ transform: `translateX(${off}px)` }}>
+      <AbsoluteFill style={{ clipPath: `inset(40px ${1920 - x - w}px 200px ${x}px round 28px)` }}>{children}</AbsoluteFill>
+      <Svg><rect x={x} y={40} width={w} height={840} rx={28} fill="none" stroke={alpha(C.lilac, 0.55)} strokeWidth={6} /></Svg>
+    </AbsoluteFill>
+  );
+};
