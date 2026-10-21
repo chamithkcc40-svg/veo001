@@ -237,3 +237,61 @@ export const DoughScene: React.FC<SceneProps> = ({ f, start, end }) => {
     </AbsoluteFill>
   );
 };
+
+// ------------------------------------------------------------------ s4_ray (WS, lateral track)
+// Continues the dough's space sheet. A far galaxy (right) sends one long wavy light ray to a tiny Milky
+// Way (left). The ray's head travels right->left (glide sfx 5247 falls in pitch). As the sheet keeps
+// stretching (galaxy drifts right, grid lines widen), the wiggles behind the head widen and the colour
+// along the path goes BLUE -> cream -> RED; the far galaxy's own glow follows into red ("toward red").
+const RAY = { x0: 1640, x1: 300, y: 450 };
+export const RayScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const red = cue("towardRed2");
+  const stretch = prog(f, start, end + 10, ease.inOutSine);
+  const gx = RAY.x0 + 140 * stretch; // the sheet carries the far galaxy away
+  const head = prog(f, start + 2, red + 6, ease.inOut); // ray head 0..1 along the path
+  const pts: string[] = [];
+  const segs: React.ReactNode[] = [];
+  const N = 160, len = gx - RAY.x1;
+  let prev: [number, number] | null = null;
+  for (let i = 0; i <= N; i++) {
+    const t = i / N; // 0 at the far galaxy .. 1 at the Milky Way
+    if (t > head) break;
+    const x = gx - len * t;
+    const age = head - t; // light emitted earlier has been stretched longer
+    const lam = 40 * (1 + 1.6 * stretch * (1 - t) + 0.5 * age); // wavelength widens
+    const phase = ((gx - x) / lam) * Math.PI * 2 - f * 0.25;
+    const y = RAY.y + Math.sin(phase) * 34 * (0.7 + 0.3 * t);
+    if (prev) segs.push(<path key={i} d={`M${prev[0]},${prev[1]} L${x},${y}`} stroke={shiftColor(-1 + 2.2 * clamp(stretch * 0.8 + age * 0.9), C.blue, C.core, C.red)} strokeWidth={8} strokeLinecap="round" />);
+    prev = [x, y];
+    pts.push(`${x},${y}`);
+  }
+  const shift = clamp(-0.4 + 1.5 * prog(f, start + 10, red + 10, ease.inOut), -1, 1);
+  const cam = { x: tw(f, [start, end], [120, -120], ease.inOutSine), y: tw(f, [start, end], [0, -10], ease.inOutSine), zoom: tw(f, [start, end], [1.06, 1.0], ease.inOutSine), rot: 0, frame: f };
+  const subject = (
+    <Svg>
+      {Array.from({ length: 13 }).map((_, i) => <path key={i} d={`M${300 + i * 120 * (1 + 0.25 * stretch) - 200 * stretch},120 V820`} stroke={alpha(C.peri, 0.12)} strokeWidth={2} />)}
+      <Galaxy id="rayFar" x={gx} y={RAY.y} r={90} frame={f} shift={shift} tilt={0.4} rot={30} dots={46} glow={1.3} />
+      <Galaxy id="rayMW" x={RAY.x1 - 40} y={RAY.y} r={60} frame={f} shift={0} tilt={0.7} rot={-8} dots={36} glow={0.8} armColor={C.sunLt} />
+      <g style={{ filter: `drop-shadow(0 0 10px ${alpha(C.white, 0.5)})` }}>{segs}</g>
+      {prev && <GlowDot id="rayHead" cx={prev[0]} cy={prev[1]} r={30} color={C.white} o={0.9 * (1 - prog(f, red + 6, red + 14, ease.out))} />}
+    </Svg>
+  );
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}><Space frame={f} subject={subject} nebula={[C.plum, C.violet]} /></Camera>
+      <Pill f={f} fps={fps} at={start + 12} out={end + 2} text="MILKY WAY · us" x={RAY.x1 - 40 + 120} y={590} color={C.sun} size={26} />
+      <Pill f={f} fps={fps} at={red - 4} out={end + 30} text="toward red" x={1500} y={620} color={C.red} size={32} />
+      <ExaggeratedTag opacity={prog(f, start + 6, start + 18, ease.out)} x={1824} y={60} />
+      <Finish tint={C.plum} grade={0.1} vig={0.36} />
+    </AbsoluteFill>
+  );
+};
+
+export const CH4C: SceneReg[] = [
+  { ids: ["s4_lemaitre"], C: LemaitreScene, post: 16 }, // stays under the twist curl
+  { ids: ["s4_twist"], C: Twist4, pre: 6, post: 16 }, // stays under the road curl-out
+  { ids: ["s4_road"], C: RoadScene },
+  { ids: ["s4_dough"], C: DoughScene },
+  { ids: ["s4_ray"], C: RayScene },
+];
