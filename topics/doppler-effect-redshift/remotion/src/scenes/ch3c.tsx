@@ -174,6 +174,23 @@ export const BarcodeScene: React.FC<SceneProps> = ({ f, start, end }) => {
 };
 const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
 
+// ------------------------------------------------------------------ s3_dome (WS, crane-in to the slit)
+// Entrance: the barcode-wipe bars shrink away (same 4 x-positions the s3_barcode exit ended on).
+// 7 planes: sky 0.05 · shooting star 0.1 · far ridge 0.25 (haze) · far pines 0.4 · hill + dome 0.6 ·
+// near pines 0.85 · foreground pines 1.4 (blur). Fireflies drift by the door. On "Slipher" the slit
+// opens and a pale beam of starlight pours in. Name tag + timeline carry over into s3_slipher.
+const EVEN_XS = [240, 720, 1200, 1680];
+const TAG_AT = () => cue("slipher") + 2;
+const DomeTags: React.FC<{ f: number; out: number }> = ({ f, out }) => {
+  const { fps } = useVideoConfig();
+  return (
+    <>
+      <Timeline f={f} fps={fps} at={cue("tens") + 8} out={out} active={["1912-1914"]} x={520} y={52} />
+      <NameTag f={f} fps={fps} at={TAG_AT()} out={out} name="Vesto Slipher" sub="Lowell Observatory · 1912-1914" x={110} y={700} />
+    </>
+  );
+};
+
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
 ];
