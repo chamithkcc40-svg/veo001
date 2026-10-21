@@ -37,13 +37,13 @@ const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
 // Hubble + floor pool (1) · near railing (1.45, blur). The shutter grinds open on the rumble (3831,
 // heavy spring with a small overshoot + shake), the telescope slews, Hubble walks into the pool of
 // light on "Enter" and looks up on "Hubble". Card letters spread apart as they arrive (07).
-const HB = { x0: 430, x1: 800, y: 1010, s: 1.12 };
+const HB = { x0: 430, x1: 800, y: 925, s: 1.08 }; // feet above the caption band
 /** the starlight shaft from the slit to the floor, with drifting motes caught in it */
 const Shaft: React.FC<{ f: number; o: number }> = ({ f, o }) => (
   <g opacity={o}>
-    <path d="M880,-60 L1040,-60 L1150,1010 L640,1010 Z" fill={alpha(C.sunLt, 0.13)} style={{ filter: "blur(14px)" }} />
-    <path d="M920,-60 L1000,-60 L1030,1010 L760,1010 Z" fill={alpha(C.white, 0.08)} style={{ filter: "blur(8px)" }} />
-    <ellipse cx={895} cy={1012} rx={300} ry={46} fill={alpha(C.sunLt, 0.3)} style={{ filter: "blur(10px)" }} />
+    <path d="M880,-60 L1040,-60 L1150,930 L640,930 Z" fill={alpha(C.sunLt, 0.13)} style={{ filter: "blur(14px)" }} />
+    <path d="M920,-60 L1000,-60 L1030,930 L760,930 Z" fill={alpha(C.white, 0.08)} style={{ filter: "blur(8px)" }} />
+    <ellipse cx={830} cy={930} rx={300} ry={46} fill={alpha(C.sunLt, 0.3)} style={{ filter: "blur(10px)" }} />
     <Dust seed="shaftmotes" frame={f} n={26} area={[700, 0, 420, 1000]} size={[1.5, 3.5]} color={C.sunLt} opacity={0.7} speed={0.5} />
   </g>
 );
@@ -67,5 +67,45 @@ const BigScope: React.FC<{ angle: number }> = ({ angle }) => {
         <circle cx={0} cy={140} r={36} fill={dark} />
       </g>
     </g>
+  );
+};
+
+export const DomeScene4: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const enter = cue("enter"), hub = cue("hubble");
+  const slit = sp(f, cue("rumbleStart"), fps, spr.heavy); // shutter grinds open (overshoot settles)
+  const grind = slit < 0.98 ? 3 * (1 - slit) : 0; // shutter judder shakes the camera while it moves
+  const stopAt = hub + 6;
+  const walkT = prog(f, start, stopAt, ease.inOutSine);
+  const hx = mix2(HB.x0, HB.x1, walkT);
+  const P = f < stopAt - 4
+    ? merge(walk(f - start, 22, 1 - 0.6 * prog(f, stopAt - 14, stopAt - 4, ease.inOut)), { turn: 0.5, lookX: 0.6 })
+    : track(f, [
+        [stopAt - 4, { turn: 0.5, lookX: 0.6 }],
+        [stopAt + 8, { ...POSE.lookUp, turn: 0.3, lookX: 0.4, headTilt: -14, lean: -3, armR: { a: 20, b: 30 } }],
+        [end + 10, { ...POSE.lookUp, turn: 0.3, lookX: 0.5, headTilt: -16, lean: -4, armR: { a: 24, b: 36 } }],
+      ], 9);
+  const expr = f < stopAt ? "focused" : "curious";
+  const scopeA = tw(f, [start, end], [-34, -24], ease.inOutSine); // the telescope slews as he arrives
+  const cam = { x: tw(f, [start, end], [-30, 30], ease.inOutSine), y: tw(f, [start, end], [90, -70], ease.inOut), zoom: tw(f, [start, end], [1.02, 1.1], ease.inOutSine), rot: 0, frame: f, shake: 1 + grind, seed: "d4" };
+  const spread = 0.5 * prog(f, start + 2, end, ease.out); // letters spread apart as they arrive
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Layer depth={0.3}><DomeInterior frame={f} slit={0.25 + 0.75 * slit} red={false} scope={false} /></Layer>
+        <Layer depth={0.5}><Svg><BigScope angle={scopeA} /></Svg></Layer>
+        <Layer depth={0.7}><Svg><Shaft f={f} o={clamp(slit * 1.2)} /></Svg></Layer>
+        <Layer depth={1}>
+          <Svg>
+            <ellipse cx={hx} cy={HB.y + 4} rx={70} ry={12} fill={alpha(C.night, 0.4)} />
+            <Rig uid="hubDome" def={HUBBLE} frame={f} x={hx} y={HB.y} scale={HB.s} pose={P} expr={expr} light={1} />
+          </Svg>
+        </Layer>
+        <Layer depth={1.45} blur={6}><Svg><rect x={-200} y={985} width={2400} height={22} rx={10} fill={mix(C.violet, C.night, 0.7)} />{[0, 1, 2, 3, 4, 5, 6].map((i) => <rect key={i} x={-100 + i * 360} y={990} width={18} height={200} fill={mix(C.violet, C.night, 0.7)} />)}</Svg></Layer>
+      </Camera>
+      <LetterTitle f={f} fps={fps} at={start + 2} out={end + 2} text="4 · THE RUNNING UNIVERSE" size={78} color={C.white} glow={C.sun} y={190} spread={spread} stagger={1} />
+      <NameTag f={f} fps={fps} at={hub + 2} out={end + 30} name="Edwin Hubble" sub="Mount Wilson · 1923 / 1929" x={110} y={700} />
+      <Finish tint={C.violet} grade={0.12} vig={0.38} />
+    </AbsoluteFill>
   );
 };
