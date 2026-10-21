@@ -26,3 +26,31 @@ export const NeonCard: React.FC<{ f: number; at: number; out: number; num: strin
   const e = prog(f, out - 8, out, ease.in);
   if (f < at - 6 || e >= 1) return null;
   const hang = sp(f, at - 6, fps, spr.smooth); // sign drops on its wires first
+  const swing = Math.sin((f - at) / 7) * 2.5 * Math.exp(-Math.max(0, f - at) / 30);
+  return (
+    <div style={{ position: "absolute", left: 0, width: 1920, top: y - 70 - (1 - hang) * 160 - e * 40, textAlign: "center", transform: `rotate(${swing}deg)`, transformOrigin: "960px -200px", opacity: 1 - e * 0.3 }}>
+      {/* hanging wires */}
+      <div style={{ position: "absolute", left: 960 - 520, top: -400, width: 3, height: 400, background: alpha(C.lilac, 0.25) }} />
+      <div style={{ position: "absolute", left: 960 + 520, top: -400, width: 3, height: 400, background: alpha(C.lilac, 0.25) }} />
+      <div style={{ display: "inline-block", padding: "18px 46px", borderRadius: 26, background: alpha(C.night, 0.55), boxShadow: `inset 0 0 0 3px ${alpha(C.lilac, 0.12)}` }}>
+        {full.split("").map((ch, i) => {
+          // each tube strikes at its own seeded moment, with 1-2 flicker dropouts, then steady hum
+          const strike = at + 2 + i * 1.2 + rr("neon" + i, 0, 5);
+          const on = f >= strike ? 1 : 0;
+          const drop = (f > strike + 2 && f < strike + 4 && rnd("nd" + i) > 0.5) || (e > 0 && rnd("ne" + i + Math.floor(f / 2)) > 1 - e) ? 0.15 : 1;
+          const hum = 0.92 + 0.08 * noise1("nh" + i, f / 3);
+          const lit = on * drop * hum;
+          const isNum = i < num.length;
+          const c = isNum ? C.sun : color;
+          return (
+            <span key={i} style={{
+              display: "inline-block", fontFamily: F.display, fontWeight: 500, fontSize: 70, letterSpacing: "0.08em", whiteSpace: "pre",
+              color: lit > 0.5 ? mix(c, C.white, 0.55) : alpha(C.lilac, 0.18),
+              textShadow: lit > 0.5 ? `0 0 8px ${alpha(c, 0.95 * lit)}, 0 0 26px ${alpha(c, 0.8 * lit)}, 0 0 60px ${alpha(c, 0.5 * lit)}` : "none",
+            }}>{ch === " " ? "\u00A0" : ch}</span>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
