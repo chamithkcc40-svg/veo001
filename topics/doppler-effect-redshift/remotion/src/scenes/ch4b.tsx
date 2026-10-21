@@ -148,3 +148,7 @@ export const ChartScene: React.FC<SceneProps> = ({ f, start, end }) => {
     </ChalkWipe>
   );
 };
+
+export const CH4B: SceneReg[] = [
+  { ids: ["s4_chart"], C: ChartScene },
+];
