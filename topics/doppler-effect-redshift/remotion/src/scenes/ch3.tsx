@@ -103,3 +103,32 @@ export const starX = (t: number) => {
   return x;
 };
 const starPath = (t: number) => ({ x: starX(t), y: STAR0.y });
+
+/** the test star: a white point with 4-point glint, hot core; squash-stretches along its motion */
+const TestStar: React.FC<{ x: number; y: number; f: number; v: number; s?: number; tint?: string }> = ({ x, y, f, v, s = 1, tint = C.white }) => {
+  const tw2 = 0.9 + 0.1 * Math.sin(f / 4);
+  const st = 1 + Math.min(0.25, Math.abs(v) * 0.08); // stretch with speed (follow-through feel)
+  return (
+    <g transform={`translate(${x},${y}) scale(${s})`}>
+      <GlowDot id="tsg" cx={0} cy={0} r={110 * tw2} color={tint} o={0.55} />
+      <g transform={`scale(${st},${1 / st})`}>
+        <path d="M-62,0 Q0,-7 62,0 Q0,7 -62,0 Z M0,-62 Q7,0 0,62 Q-7,0 0,-62 Z" fill={mix(tint, C.white, 0.6)} opacity={0.9 * tw2} />
+        <circle r={20} fill={mix(tint, C.white, 0.7)} />
+        <circle r={10} fill={C.white} />
+      </g>
+    </g>
+  );
+};
+
+/** legend marker riding the rainbow strip (top of the lab) */
+const StripMarker: React.FC<{ u: number; o: number; label?: string; color?: string; y?: number }> = ({ u, o, label, color, y = 160 }) => {
+  const x = 360 + 1200 * clamp(u);
+  const c = color ?? rainbowAt(u);
+  return (
+    <g opacity={o} transform={`translate(${x},${y})`}>
+      <path d="M0,-50 L16,-72 L-16,-72 Z" fill={C.white} />
+      <circle cy={-13} r={22} fill={c} stroke={C.white} strokeWidth={5} />
+      {label && <text y={58} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={34} fill={c} letterSpacing="0.1em" style={{ filter: `drop-shadow(0 0 10px ${alpha(c, 0.8)})` }}>{label}</text>}
+    </g>
+  );
+};
