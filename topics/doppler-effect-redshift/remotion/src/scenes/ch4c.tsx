@@ -209,7 +209,7 @@ export const DoughScene: React.FC<SceneProps> = ({ f, start, end }) => {
     <AbsoluteFill>
       <Camera cam={cam}>
         <Layer depth={0.4} blur={2}><AbsoluteFill style={{ opacity: 1 - diss }}><Kitchen frame={f * 6} /></AbsoluteFill></Layer>
-        <Layer depth={0.4}><AbsoluteFill style={{ opacity: diss }}><Space frame={f} nebula={[C.purple, C.violet]} dust={false} /></AbsoluteFill></Layer>
+        {diss > 0.001 && <AbsoluteFill style={{ opacity: diss }}><Space frame={f} nebula={[C.purple, C.violet]} dust={false} /></AbsoluteFill>}
         <Layer depth={1}>
           <Svg>
             <g opacity={1 - diss}>
