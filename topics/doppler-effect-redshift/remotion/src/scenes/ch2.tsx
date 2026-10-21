@@ -144,3 +144,103 @@ const Brackets: React.FC<{ f: number; at: number; dir: 1 | -1; color: string; y:
     </g>
   );
 };
+
+/** chapter card "2 · RIPPLES": letters ride a ripple ring (drop -> ring -> letters settle on its upper arc) */
+const RippleTitle: React.FC<{ f: number; at: number; out: number; cx: number; cy: number }> = ({ f, at, out, cx, cy }) => {
+  const { fps } = useVideoConfig();
+  const text = "RIPPLES";
+  const grow = sp(f, at, fps, { damping: 16, stiffness: 70, mass: 1 });
+  const ex = prog(f, out - 10, out, ease.in);
+  if (f < at || ex >= 1) return null;
+  const R = 70 + 190 * grow + ex * 160;
+  const spread = 13; // deg per letter
+  const a0 = -90 - (spread * (text.length - 1)) / 2;
+  const badge = sp(f, at + 4, fps, spr.bouncy);
+  return (
+    <g opacity={1 - ex}>
+      <circle cx={cx} cy={cy} r={R} fill="none" stroke={C.white} strokeWidth={6} opacity={0.9} style={{ filter: `drop-shadow(0 0 10px ${alpha(C.white, 0.7)})` }} />
+      <circle cx={cx} cy={cy} r={R * 0.82} fill="none" stroke={C.mint} strokeWidth={2} opacity={0.5} />
+      {text.split("").map((ch, i) => {
+        const p = sp(f, at + 6 + i * 3, fps, spr.bouncy);
+        const a = ((a0 + i * spread + (1 - p) * -30 + Math.sin(f / 20 + i) * 0.6) * Math.PI) / 180;
+        const rr0 = R + 46;
+        const x = cx + Math.cos(a) * rr0, y = cy + Math.sin(a) * rr0 + (1 - p) * 20;
+        return (
+          <text key={i} x={x} y={y} textAnchor="middle" dominantBaseline="middle" fontFamily={F.display} fontWeight={700} fontSize={84 * (0.6 + 0.4 * p)} fill={C.white} opacity={Math.min(1, p * 1.5)}
+            transform={`rotate(${(a * 180) / Math.PI + 90},${x},${y})`} style={{ filter: `drop-shadow(0 5px 0 ${alpha(C.night, 0.35)})` }}>{ch}</text>
+        );
+      })}
+      <g transform={`translate(${cx},${cy}) scale(${badge * (1 + Math.sin(f / 9) * 0.02)}) rotate(${(1 - badge) * -40})`}>
+        <circle r={64} fill={C.sun} />
+        <circle r={64} fill="none" stroke={alpha(C.white, 0.5)} strokeWidth={4} />
+        <text y={26} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={80} fill={C.night}>2</text>
+      </g>
+    </g>
+  );
+};
+
+const PondSeq: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const land = cue("bug") + 6; // skitter sfx
+  const perfect = cue("perfect");
+  const front = cue("inFront");
+  const behind = cue("behind");
+  const sw = swim0();
+  // camera: push-in during the title, settle as Skipper lands, then pan with the swim
+  const zoom = tw(f, [start, land - 4], [1.0, 1.09], ease.inOutSine) - tw(f, [land - 4, land + 30], [0, 0.05], ease.inOut) - tw(f, [sw, sw + 60], [0, 0.04], ease.inOut);
+  const camX = (skX(f) - SK_X0) * 0.55 + tw(f, [start, sw], [-30, 0], ease.inOutSine);
+  const camY = tw(f, [start, land], [-40, 0], ease.inOutSine) + noise1("pcy", f / 40) * 6;
+  const cam = { x: camX, y: camY, zoom, rot: tw(f, [start, end], [-1.2, 0.8], ease.inOutSine), frame: f };
+  // drop: a droplet falls toward the water (shrinks in top-down), splash at the bloop
+  const bloop = start + 4;
+  const dropP = prog(f, start - 8, bloop, ease.in);
+  // Skipper landing: arcs in from the upper left, big (near the lens) -> water level, squash on contact
+  const flyP = prog(f, land - 20, land, ease.inOut);
+  const lx = mix2(260, SK_X0, flyP), ly = mix2(-80, SK_Y, flyP) - Math.sin(flyP * Math.PI) * 120;
+  const airScale = 1.15 + (1 - flyP) * 0.9;
+  const sq = f < land ? 1 : 1 - 0.22 * Math.exp(-(f - land) / 4) * Math.cos((f - land) / 2.2);
+  const onWater = f >= land;
+  const sx = onWater ? skX(f) : lx;
+  const sy = onWater ? SK_Y : ly;
+  const d = f - sw;
+  const swimAmt = clamp(d / 10);
+  const look = tw(f, [behind - 2, behind + 10], [0, 1], ease.out) * (1 - tw(f, [end - 30, end - 14], [0, 1], ease.inOut));
+  const bow = prog(f, end - 26, end - 16, ease.out) * (1 - prog(f, end - 12, end - 2, ease.inOut));
+  const expr = f < tapStart() ? "happy" : f < perfect ? "focused" : f < sw ? "proud" : f < behind ? "happy" : f < end - 30 ? "surprised" : "proud";
+  const antenna = Math.sin(f / 5) * 6 * (onWater ? 1 : 2) + (onWater ? 14 * Math.exp(-(f - land) / 6) * Math.cos((f - land) / 2) : 0) + swimAmt * -8;
+  const aheadK = prog(f, front, front + 22, ease.inOut);
+  const behindK = prog(f, behind, behind + 22, ease.inOut);
+  const subject = (
+    <Svg>
+      {/* title drop + rings */}
+      {dropP > 0 && dropP < 1 && <g transform={`translate(${DROP.x},${DROP.y}) scale(${1.8 - dropP * 1.5})`}><ellipse rx={20} ry={24} fill={alpha(C.white, 0.85)} /><ellipse cx={-6} cy={-8} rx={6} ry={8} fill={C.white} /></g>}
+      <Rings id="pdrop" frame={f} path={() => DROP} start={bloop} stop={bloop + 24} period={12} c={7} maxR={1200} width={6} opacity={0.85} />
+      <RippleTitle f={f} at={bloop} out={cue("bug") - 4} cx={DROP.x} cy={DROP.y} />
+      {/* landing splash */}
+      <Rings id="pland" frame={f} path={() => ({ x: SK_X0, y: SK_Y })} start={land} stop={land} period={40} c={7} maxR={420} width={4} opacity={0.7} />
+      {/* Skipper's taps: RIPPLE A (still) then RIPPLE B (moving) */}
+      <Rings id="ptap" frame={f} path={skPath} start={tapStart()} stop={tapEnd()} period={TAP_P} c={POND_C} maxR={900} tint aheadK={aheadK} behindK={behindK} width={6.5} />
+      <Brackets f={f} at={perfect + 4} out={sw} dir={1} color={C.white} y={SK_Y + 70} lineY={SK_Y} label="=" />
+      <Brackets f={f} at={perfect + 10} out={sw} dir={-1} color={C.white} y={SK_Y + 70} lineY={SK_Y} label="=" />
+      <Brackets f={f} at={cue("squeezed") - 2} dir={1} color={C.blue} y={SK_Y + 70} lineY={SK_Y} label="SQUEEZED" n={5} />
+      <Brackets f={f} at={cue("stretched") - 2} dir={-1} color={C.red} y={SK_Y + 70} lineY={SK_Y} label="STRETCHED" n={4} />
+      {/* air shadow while flying */}
+      {!onWater && f >= land - 20 && <ellipse cx={lx + 30 * (1 - flyP)} cy={mix2(-80, SK_Y, flyP) + 30 * (1 - flyP)} rx={70 * flyP} ry={26 * flyP} fill={alpha(C.night, 0.2 * flyP)} />}
+      {f >= land - 20 && (
+        <Skipper uid="skp" frame={f} x={sx} y={sy} scale={(onWater ? 1.15 : airScale)} rot={onWater ? Math.sin(f / 30) * 2 : 25 * (1 - flyP)}
+          shadow={onWater}
+          pose={{ tapLeg: tapLegAt(f), stroke: d / 4.5 * Math.PI * 2 / (Math.PI * 2) * 1.4, swimAmt, lookBack: look, squash: sq, scarf: f / 3, scarfAmt: 0.3 + swimAmt * 0.9, antenna, expr, bow }} />
+      )}
+    </Svg>
+  );
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Pond frame={f} subject={subject} dof={1} />
+      </Camera>
+      <LightLeak t={prog(f, start, end, ease.inOutSine)} color={C.mint} opacity={0.14} />
+      <Finish tint={C.teal} grade={0.12} vig={0.32} />
+    </AbsoluteFill>
+  );
+};
+const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
