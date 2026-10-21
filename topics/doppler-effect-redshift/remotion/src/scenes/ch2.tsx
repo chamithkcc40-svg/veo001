@@ -132,14 +132,14 @@ const Brackets: React.FC<{ f: number; at: number; dir: 1 | -1; color: string; y:
         return (
           <g key={i}>
             <path d={`M${a},${lineY + 10} L${a},${y}`} stroke={alpha(color, 0.5)} strokeWidth={2} strokeDasharray="4 6" />
-            <path d={`M${lo + 3},${y} L${lo + 3},${y - h} L${lo + w - 3},${y - h} L${lo + w - 3},${y}`} stroke={color} strokeWidth={5} fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 6px ${alpha(color, 0.7)})` }} />
+            <path d={`M${lo + 3},${y} L${lo + 3},${y - h} L${lo + w - 3},${y - h} L${lo + w - 3},${y}`} stroke={color} strokeWidth={7} fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 6px ${alpha(color, 0.7)})` }} />
             {label === "=" && <text x={lo + w / 2} y={y + 44} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={30} fill={color} opacity={k}>=</text>}
           </g>
         );
       })}
       {edges.map((x, i) => <circle key={"d" + i} cx={x} cy={lineY} r={6 * sp(f, at + i * 3, fps, spr.bouncy)} fill={color} />)}
       {label && label !== "=" && edges.length > 1 && (
-        <text x={(edges[0] + edges[Math.min(edges.length - 1, 3)]) / 2} y={y + 62} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={34} fill={color} letterSpacing="2" style={{ filter: `drop-shadow(0 3px 6px ${alpha(C.night, 0.6)})` }}>{label}</text>
+        <text x={(edges[0] + edges[Math.min(edges.length - 1, 3)]) / 2} y={y + 62} textAnchor="middle" fontFamily={F.display} fontWeight={700} fontSize={40} fill={color} letterSpacing="3" style={{ filter: `drop-shadow(0 3px 6px ${alpha(C.night, 0.6)})` }}>{label}</text>
       )}
     </g>
   );
@@ -220,10 +220,10 @@ const PondSeq: React.FC<SceneProps> = ({ f, start, end }) => {
       <Rings id="pland" frame={f} path={() => ({ x: SK_X0, y: SK_Y })} start={land} stop={land} period={40} c={7} maxR={420} width={4} opacity={0.7} />
       {/* Skipper's taps: RIPPLE A (still) then RIPPLE B (moving) */}
       <Rings id="ptap" frame={f} path={skPath} start={tapStart()} stop={tapEnd()} period={TAP_P} c={POND_C} maxR={900} tint aheadK={aheadK} behindK={behindK} width={6.5} />
-      <Brackets f={f} at={perfect + 4} out={sw} dir={1} color={C.white} y={SK_Y + 70} lineY={SK_Y} label="=" />
-      <Brackets f={f} at={perfect + 10} out={sw} dir={-1} color={C.white} y={SK_Y + 70} lineY={SK_Y} label="=" />
-      <Brackets f={f} at={cue("squeezed") - 2} dir={1} color={C.blue} y={SK_Y + 70} lineY={SK_Y} label="SQUEEZED" n={5} />
-      <Brackets f={f} at={cue("stretched") - 2} dir={-1} color={C.red} y={SK_Y + 70} lineY={SK_Y} label="STRETCHED" n={4} />
+      <Brackets f={f} at={perfect + 4} out={sw} dir={1} color={C.white} y={SK_Y + 150} lineY={SK_Y} label="=" />
+      <Brackets f={f} at={perfect + 10} out={sw} dir={-1} color={C.white} y={SK_Y + 150} lineY={SK_Y} label="=" />
+      <Brackets f={f} at={cue("squeezed") - 2} dir={1} color={C.blue} y={SK_Y + 150} lineY={SK_Y} label="SQUEEZED" n={5} />
+      <Brackets f={f} at={cue("stretched") - 2} dir={-1} color={C.red} y={SK_Y + 150} lineY={SK_Y} label="STRETCHED" n={4} />
       {/* air shadow while flying */}
       {!onWater && f >= land - 20 && <ellipse cx={lx + 30 * (1 - flyP)} cy={mix2(-80, SK_Y, flyP) + 30 * (1 - flyP)} rx={70 * flyP} ry={26 * flyP} fill={alpha(C.night, 0.2 * flyP)} />}
       {f >= land - 20 && (
@@ -244,3 +244,7 @@ const PondSeq: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
+
+export const CH2: SceneReg[] = [
+  { ids: ["s2_pond", "s2_still", "s2_swim"], C: PondSeq },
+];
