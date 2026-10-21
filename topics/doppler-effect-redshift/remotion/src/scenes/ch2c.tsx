@@ -160,3 +160,27 @@ const PaperPage: React.FC<{ f: number; start: number }> = ({ f, start }) => {
         {/* ink blot appears as the quill touches (secondary detail) */}
         <ellipse cx={PAGE.x + 470} cy={PAGE.y + 300} rx={14 * blot} ry={9 * blot} fill={alpha(C.night, 0.55)} />
       </Svg>
+      <TitleText f={f} warm={warm} sweep={sweep} />
+      <Svg>
+        {/* the "sound" guess: grey rings ripple across the page, then fade as the true title warms */}
+        {soundOn > 0.01 && Array.from({ length: 5 }).map((_, k) => {
+          const age = (f - sound - 30 - k * 7);
+          if (age < 0) return null;
+          return <circle key={k} cx={PAGE.x - 380} cy={PAGE.y + 40} r={40 + age * 7} fill="none" stroke={alpha(C.plumDk, 0.4)} strokeWidth={4} opacity={soundOn * clamp(1 - age / 70)} />;
+        })}
+        {/* Doppler's hand + quill (same costume colours as the rig: sleeve, cuff, skin) */}
+        <g transform={`translate(${handX},${handY}) rotate(${-18 + lift * 8})`}>
+          <rect x={-60} y={10} width={260} height={130} rx={60} fill={DOPPLER.costume.sleeve} />
+          <rect x={-70} y={4} width={46} height={140} rx={22} fill={mix(C.white, C.dough, 0.4)} />
+          <ellipse cx={-92} cy={70} rx={58} ry={50} fill={DOPPLER.costume.skin} />
+          <ellipse cx={-126} cy={46} rx={22} ry={30} fill={DOPPLER.costume.skinSh} />
+          <g transform="translate(-130,40)"><Quill scale={1.5} /></g>
+        </g>
+        {/* candle pool + candle edge in the top-right, out of focus */}
+        <rect x={-200} y={-200} width={2320} height={1480} fill="url(#ppPool)" style={{ mixBlendMode: "screen" }} />
+        <g transform="translate(1800,260) scale(2.4)" style={{ filter: "blur(10px)" }} opacity={0.9}><Candle frame={f} /></g>
+      </Svg>
+      <Dust seed="ppdust" frame={f} n={26} area={[900, 0, 1020, 800]} color={C.sunLt} size={[1.5, 3.5]} speed={0.5} opacity={0.55} />
+    </AbsoluteFill>
+  );
+};
