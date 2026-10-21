@@ -263,6 +263,38 @@ export const ScaleScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s4_tapes (WS, lateral track)
+// Continuous drift from s4_scale: the Milky Way stays left, a row of galaxies stretches away to the
+// right at three depths. A brass tape-measure case sits by the Milky Way; on each zip (sync.tapeZips)
+// a yellow tape shoots out (overshoot + wobble) to the next galaxy and a blank tag flips up (no numbers,
+// per 07). The camera tracks right with the third tape, so the row reads as "farther and farther".
+const ROW = [
+  { x: 1100, y: 330, r: 70, rot: 20 }, { x: 1720, y: 640, r: 56, rot: -40 }, { x: 2450, y: 400, r: 46, rot: 70 },
+];
+const TAPE0 = { x: 470, y: 560 };
+const TapeCase: React.FC<{ x: number; y: number; spin: number }> = ({ x, y, spin }) => (
+  <g transform={`translate(${x},${y})`}>
+    <rect x={-46} y={-40} width={92} height={80} rx={26} fill={mix(C.sun, C.plum, 0.25)} />
+    <rect x={-46} y={-40} width={30} height={80} rx={15} fill={alpha(C.white, 0.2)} />
+    <circle r={20} fill={mix(C.sun, C.plum, 0.5)} />
+    <path d="M-14,0 L14,0 M0,-14 L0,14" stroke={C.sunLt} strokeWidth={4} transform={`rotate(${spin})`} strokeLinecap="round" />
+  </g>
+);
+const Tape: React.FC<{ x0: number; y0: number; x1: number; y1: number; p: number; f: number; i: number }> = ({ x0, y0, x1, y1, p, f, i }) => {
+  if (p <= 0.001) return null;
+  const ex = x0 + (x1 - x0) * p, ey = y0 + (y1 - y0) * p;
+  const wob = Math.sin(f / 3 + i) * 10 * clamp(1 - Math.abs(1 - p) * 4) * Math.exp(-Math.max(0, p - 0.95) * 4); // sag wobble as it lands
+  const mx = (x0 + ex) / 2, my = (y0 + ey) / 2 + 18 + wob;
+  const len = Math.hypot(ex - x0, ey - y0);
+  return (
+    <g>
+      <path d={`M${x0},${y0} Q${mx},${my} ${ex},${ey}`} stroke={C.sun} strokeWidth={16} fill="none" strokeLinecap="round" />
+      <path d={`M${x0},${y0} Q${mx},${my} ${ex},${ey}`} stroke={C.night} strokeWidth={10} fill="none" strokeDasharray={`2 ${len / 40}`} opacity={0.45} />
+      <rect x={ex - 6} y={ey - 16} width={12} height={32} rx={3} fill={mix(C.sun, C.plum, 0.35)} />
+    </g>
+  );
+};
+
 export const CH4: SceneReg[] = [
   { ids: ["s4_dome"], C: DomeScene4 },
   { ids: ["s4_plate"], C: PlateScene },
