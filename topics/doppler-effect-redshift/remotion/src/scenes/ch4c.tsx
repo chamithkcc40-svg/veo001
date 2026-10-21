@@ -135,3 +135,42 @@ const StarRoad: React.FC<{ f: number; scroll: number }> = ({ f, scroll }) => (
     <Stars seed="roadstars" frame={f} n={40} ox={-scroll * 0.2} w={2400} h={120} oy={ROAD_Y + 20} maxR={2.2} color={C.lilac} opacity={0.6} />
   </Svg>
 );
+
+export const RoadScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const nope = cue("sirensStreet") + 6; // nope sfx 5046
+  const curl = prog(f, start - 2, start + 14, ease.inOut);
+  // ambulance: zooms in from off-left at speed, brakes to centre (ease-out + overshoot rock), then
+  // rolls slowly right; after the X it backs up a little, squashed and sheepish.
+  const arrive = prog(f, start + 4, start + 50, ease.out);
+  const ax = mix2(-500, 900, arrive) + 60 * prog(f, start + 50, nope, ease.inOutSine) - 40 * prog(f, nope + 4, nope + 20, ease.out);
+  const vel = Math.max(0, 1 - arrive) * 1.6;
+  const rock = -6 * Math.sin(clamp((f - start - 40) / 18) * Math.PI) * Math.exp(-Math.max(0, f - start - 40) / 14);
+  const xP = sp(f, nope - 2, fps, { damping: 16, stiffness: 110, mass: 0.8 });
+  const sq = 1 - 0.1 * sp(f, nope, fps, spr.bouncy) + 0.1 * sp(f, nope + 8, fps, spr.smooth);
+  const scroll = (f - start) * 10 * (0.3 + vel);
+  const cam = { x: mix2(-260, 0, arrive) + 20 * prog(f, nope, end, ease.inOutSine), y: tw(f, [start, end], [10, -20], ease.inOutSine), zoom: tw(f, [start, end], [1.0, 1.08], ease.inOutSine), rot: 0, frame: f, shake: 0.6, seed: "rd4" };
+  const subject = (
+    <>
+      <Layer depth={0.85}><StarRoad f={f} scroll={scroll * 0.5} /></Layer>
+      <Layer depth={1}>
+        <Svg>
+          {vel > 0.05 && [0, 1, 2, 3].map((i) => <rect key={i} x={ax - 300 - i * 70} y={ROAD_Y - 120 + i * 26} width={200 * vel} height={6} rx={3} fill={alpha(C.lilac, 0.5 * vel)} />)}
+          <g transform={`translate(${ax},${ROAD_Y + 52}) rotate(${rock}) scale(${2 - sq},${sq})`}>
+            <Ambulance x={0} y={0} scale={0.55} flash={f / 6} wheel={-(f - start) * 10 * (0.3 + vel)} facing={1} />
+          </g>
+          {xP > 0.01 && <g transform={`translate(${ax + 10},${ROAD_Y - 70}) rotate(${-6 + 6 * xP})`} opacity={0.92}><BigX size={150} color={C.pink} p={xP} /></g>}
+        </Svg>
+      </Layer>
+    </>
+  );
+  return (
+    <CurlReveal p={curl} uid="rd4c" flap={C.lilac}>
+      <AbsoluteFill>
+        <Camera cam={cam}><Space frame={f} subject={subject} nebula={[C.purple, C.violet]} /></Camera>
+        <Pill f={f} fps={fps} at={nope + 10} out={end + 2} text="not quite" x={960} y={170} color={C.lilac} size={34} />
+        <Finish tint={C.violet} grade={0.1} vig={0.36} />
+      </AbsoluteFill>
+    </CurlReveal>
+  );
+};
