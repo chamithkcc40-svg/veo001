@@ -9,12 +9,17 @@ import { cue, sync } from "../data";
 import { Camera, Layer, Svg } from "../kit/camera";
 import { Dust, Finish, GlowDot, LightLeak, Stars } from "../kit/fx";
 import { Pond } from "../kit/env/Pond";
+import { Study, StudyDesk, StudyFore, StudyLight, StudyRoom, StudyWindowView, WIN } from "../kit/env/Study";
+import { NameTag, Timeline } from "../kit/info/Labels";
+import { Rig } from "../kit/rig/Rig";
+import { handPos } from "../kit/rig/fk";
+import { merge, POSE, scribble, sway, track } from "../kit/rig/poses";
 import { Street } from "../kit/env/Street";
 import { Rings } from "../kit/info/Rings";
 import { PitchLine } from "../kit/info/PitchLine";
-import { Ambulance, AMB_SIREN, Speedometer } from "../kit/props/Props";
+import { Ambulance, AMB_SIREN, Flag, Horn, Quill, Ship, SpiralIcon, Speedometer, Suitcase, Train, TRAIN_STACK } from "../kit/props/Props";
 import { Skipper } from "../kit/rig/Skipper";
-import { PIP } from "../kit/rig/characters";
+import { BUYSBALLOT, DOPPLER, HORN1, HORN2, HORN3, OBSERVER_A, OBSERVER_B, PIP } from "../kit/rig/characters";
 import { SceneProps, SceneReg } from "../chapters/types";
 
 // ------------------------------------------------------------------ s2_compare (pond | street, same pattern)
@@ -316,8 +321,68 @@ export const Speed: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s2_study (Prague 1842, candle)
+// Transition in: a ripple ring grows out of the candle flame and reveals the study (ripple -> candle glow).
+const CANDLE = { x: 1460, y: 634 };
+const RippleReveal: React.FC<{ f: number; at: number; dur: number; cx: number; cy: number; children: React.ReactNode; color?: string }> = ({ f, at, dur, cx, cy, children, color = C.sunLt }) => {
+  const p = prog(f, at, at + dur, ease.inOut);
+  const R = 40 + p * 2300;
+  if (p >= 1) return <AbsoluteFill>{children}</AbsoluteFill>;
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{ clipPath: `circle(${R}px at ${cx}px ${cy}px)` }}>{children}</AbsoluteFill>
+      <Svg>
+        <circle cx={cx} cy={cy} r={R} fill="none" stroke={color} strokeWidth={10 * (1 - p) + 2} opacity={1 - p * 0.6} style={{ filter: `drop-shadow(0 0 14px ${alpha(color, 0.9)})` }} />
+        <circle cx={cx} cy={cy} r={R * 0.86} fill="none" stroke={alpha(color, 0.5)} strokeWidth={3} opacity={1 - p} />
+      </Svg>
+    </AbsoluteFill>
+  );
+};
+
+export const StudyScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const cough = sync("earSlowEnd") > 0 ? cue("frail") + 8 : 0; // cough sfx lands at 1758
+  const ck = prog(f, cough - 6, cough, ease.out) * (1 - prog(f, cough + 14, cough + 24, ease.inOut));
+  const writing = 1 - ck;
+  const base = { ...POSE.write, turn: 0.45 };
+  const coughPose = { armL: { a: 40, b: 150 }, handL: "fist" as const, lean: 12, headTilt: 16, lookY: 1 };
+  const pose = merge(base, writing > 0.5 ? scribble(f) : {}, {});
+  const P = { ...pose, armL: { a: pose.armL!.a + (coughPose.armL.a - pose.armL!.a) * ck, b: pose.armL!.b + (coughPose.armL.b - pose.armL!.b) * ck }, lean: (pose.lean ?? 0) + 6 * ck, headTilt: (pose.headTilt ?? 0) + 6 * ck, handL: ck > 0.5 ? "fist" as const : pose.handL };
+  P.bodyY = (P.bodyY ?? 0) + Math.sin((f - cough) * 1.4) * 3 * ck; // cough jolts
+  const expr = ck > 0.3 ? "wince" : f > cue("prague") + 14 ? "proud" : "focused";
+  const cam = { x: tw(f, [start, end], [-40, 40], ease.inOutSine), y: tw(f, [start, end], [10, -20], ease.inOutSine), zoom: tw(f, [start, end], [1.02, 1.12], ease.inOutSine), rot: 0, frame: f };
+  // quill + ink trail on the page
+  const hp = handPos(DOPPLER, P, "R", 1000, 1000, 1.25);
+  return (
+    <RippleReveal f={f} at={start - 2} dur={16} cx={CANDLE.x} cy={CANDLE.y}>
+      <Camera cam={cam}>
+        <Study frame={f} subject={
+          <Svg>
+            <Rig uid="dopst" def={DOPPLER} frame={f} x={1000} y={1000} scale={1.25} pose={P} expr={expr} propR={<g transform="translate(4,6)"><Quill scale={0.9} /></g>} />
+          </Svg>
+        } deskChildren={
+          <g>
+            <g transform="translate(1040,748) rotate(-3)">
+              <rect x={-150} y={-12} width={300} height={24} rx={6} fill={mix(C.dough, C.white, 0.45)} />
+              {Array.from({ length: 6 }).map((_, i) => {
+                const w = clamp((f - start - 10 - i * 14) / 14) * rr("ink" + i, 140, 230);
+                return <rect key={i} x={-130} y={-8 + i * 3} width={w} height={2} rx={1} fill={alpha(C.night, 0.55)} />;
+              })}
+            </g>
+            <circle cx={hp.x} cy={Math.min(hp.y + 18, 745)} r={2.5 * writing} fill={C.night} opacity={0.5} />
+          </g>
+        } />
+      </Camera>
+      <Timeline f={f} fps={fps} at={cue("y1842")} out={end + 20} active={["1842"]} x={520} y={52} />
+      <NameTag f={f} fps={fps} at={cue("frail") + 4} out={end + 20} name="Christian Doppler" sub="Prague · 1842" x={110} y={700} />
+      <Finish tint={C.sun} grade={0.12} vig={0.34} />
+    </RippleReveal>
+  );
+};
+
 export const CH2B: SceneReg[] = [
   { ids: ["s2_compare"], C: Compare },
   { ids: ["s2_ear"], C: Ear },
   { ids: ["s2_speed"], C: Speed },
+  { ids: ["s2_study"], C: StudyScene },
 ];
