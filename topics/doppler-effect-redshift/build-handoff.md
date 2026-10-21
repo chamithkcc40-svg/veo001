@@ -14,7 +14,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes; review/ch1/)
 - [x] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes; src/scenes/ch2.tsx, ch2b.tsx, ch2c.tsx; review/ch2/)
 - [x] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes; src/scenes/ch3.tsx, ch3b.tsx, ch3c.tsx; review/ch3/)
-- [ ] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes)
+- [x] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes; src/scenes/ch4.tsx, ch4b.tsx, ch4c.tsx; review/ch4/)
 - [ ] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes)
 - [ ] T9 Assembly
 - [ ] T10 Final QA
@@ -38,6 +38,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Remotion 4.0.535 pinned exactly for remotion, @remotion/cli, @remotion/bundler, @remotion/renderer, @remotion/google-fonts. React 18.3.1, TypeScript 5.6.3.
 - Browser: `npx remotion browser ensure` downloaded chrome-headless-shell into node_modules/.remotion (works).
 - Skill: remotion-motion-graphics (SKILL.md, motion-patterns.md, design-rules.md, theme.ts) read from /mnt/skills.
+- Chat 2026-10-21 (2): sandbox reset again; npm ci + browser ensure OK, tsc OK.
 - Chat 2026-10-21: sandbox reset; reinstalled via npm ci (Remotion 4.0.535 pinned), `npx remotion browser ensure` OK, tsc OK, bundle OK.
 - Transcription: platform audio_transcribe tool (whisper-1, word timestamps) instead of a local model (memory rule).
 
@@ -71,6 +72,9 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - s2_paper title page uses IM Fell DW Pica (Google Font, local woff2) for in-world period documents only: a 1842 manuscript in a rounded UI font would break the period read; captions/labels stay Nunito/Fredoka.
 - Scenes whose successor opens with an iris/curl get `post` frames: the transition must reveal over the live previous shot, not black.
 - Topic folder is topics/doppler-effect-redshift (the prompt said topics/doppler-effect; only the -redshift folder exists and holds the Phase 1 files).
+- s4_twist reuses the Ch2 TwistCard + CurlReveal exactly: 07 asks for 'the same page curl' (motif recall), and the road curls out of it (so the curl is not used 3x in a row: twist in, road out, then hard cut to kitchen).
+- s4_peak hides captions after 'The': the gold title on screen IS the spoken line; doubling it would clutter the peak.
+- s4_lemaitre astronomers drawn with the shared Rig in silhouette mode (Observer A, Slipher, Observer B builds): no new character drawn, consistent rigs.
 - Resources unzipped to resources/ even though the zip was named resources.zip (prompt mentions reference.zip): same content intent.
 
 ## Scores per chapter
@@ -79,6 +83,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 
 - Ch2 Ripples (1 rework loop: black frames under the ear iris and twist curl fixed with post frames; paper title re-centred; window push strengthened): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (horns pass on sync.hornsPass, twist curl on fwip 2174, coloured-light shimmer on 2301, window push lands on glass shimmer 2388), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 - Ch3 Light Has a Siren Too (1 rework loop: Slipher name tag now exits before the push so it never covers his face; map gets a settle orbit + stronger outward drift; dome handheld): story 9, staging 8, character 8, motion 8, depth/light 9, style 9, captions 9, audio sync 9 (slide sfx 3231 on the line slide, clink on the plate lift, whoosh_out on 'nearly all'), pacing/variety 9. Motion 87.5 % (24 pairs; target 81.3 %; first pass 83.3 %). tsc OK, audit OK.
+- Ch4 The Running Universe (1 rework loop: chart punch-in now fully releases so the docked card clears captions; grid sheet resized to stay in frame; peak far shells redden harder; ray uses integrated phase so wiggles widen smoothly and colour runs blue->cream->red along the path; crowd silhouettes raised): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (stretch 4552 on the sheet squeeze, deep whoosh into the pull, pop 4824 on the chart flare, twist curl 4890, nope 5046 on the X, glide 5247 on the ray head), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 
 ## Gaps
 
@@ -89,4 +94,4 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T8.4: write src/scenes/ch4.tsx (s4_dome, s4_plate, s4_scale, s4_tapes) then ch4b.tsx (s4_chart, s4_grid, s4_peak) and ch4c.tsx (s4_lemaitre, s4_twist, s4_road, s4_dough, s4_ray), register CH4*, then stills + motion check.
+T8.5: write src/scenes/ch5.tsx (s5_street: dusk Street kit, Pip + ambulance soft pass on sync.closePass 5412 with Rings blue->red and PitchLine drop; s5_sky: crane-up to night sky, red rings drift up into galaxies, 'LISTEN FOR THE DROP' small, sparkles 5471/5591, clear upper corners for the end screen), register CH5, then stills + motion check.

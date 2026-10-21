@@ -1,0 +1,130 @@
+{
+ "id": "Ch4-Universe",
+ "samples": 24,
+ "movingShare": 1,
+ "refShare": 0.903,
+ "target": 0.813,
+ "pass": true,
+ "res": [
+  {
+   "frame": 31,
+   "diff": 7.45,
+   "moving": true
+  },
+  {
+   "frame": 93,
+   "diff": 4.66,
+   "moving": true
+  },
+  {
+   "frame": 156,
+   "diff": 1.9,
+   "moving": true
+  },
+  {
+   "frame": 218,
+   "diff": 2.31,
+   "moving": true
+  },
+  {
+   "frame": 280,
+   "diff": 3.94,
+   "moving": true
+  },
+  {
+   "frame": 343,
+   "diff": 4.67,
+   "moving": true
+  },
+  {
+   "frame": 405,
+   "diff": 19.77,
+   "moving": true
+  },
+  {
+   "frame": 467,
+   "diff": 5.52,
+   "moving": true
+  },
+  {
+   "frame": 529,
+   "diff": 3.39,
+   "moving": true
+  },
+  {
+   "frame": 592,
+   "diff": 3.09,
+   "moving": true
+  },
+  {
+   "frame": 654,
+   "diff": 2.06,
+   "moving": true
+  },
+  {
+   "frame": 716,
+   "diff": 34,
+   "moving": true
+  },
+  {
+   "frame": 779,
+   "diff": 1.67,
+   "moving": true
+  },
+  {
+   "frame": 841,
+   "diff": 2.59,
+   "moving": true
+  },
+  {
+   "frame": 903,
+   "diff": 3.15,
+   "moving": true
+  },
+  {
+   "frame": 966,
+   "diff": 2.53,
+   "moving": true
+  },
+  {
+   "frame": 1028,
+   "diff": 1.88,
+   "moving": true
+  },
+  {
+   "frame": 1090,
+   "diff": 1.54,
+   "moving": true
+  },
+  {
+   "frame": 1152,
+   "diff": 5.16,
+   "moving": true
+  },
+  {
+   "frame": 1215,
+   "diff": 3.47,
+   "moving": true
+  },
+  {
+   "frame": 1277,
+   "diff": 58.82,
+   "moving": true
+  },
+  {
+   "frame": 1339,
+   "diff": 3.96,
+   "moving": true
+  },
+  {
+   "frame": 1402,
+   "diff": 4.24,
+   "moving": true
+  },
+  {
+   "frame": 1464,
+   "diff": 3.24,
+   "moving": true
+  }
+ ]
+}
