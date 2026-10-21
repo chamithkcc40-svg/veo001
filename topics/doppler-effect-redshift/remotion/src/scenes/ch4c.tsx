@@ -97,7 +97,7 @@ export const LemaitreScene: React.FC<SceneProps> = ({ f, start, end }) => {
         <Svg>
           {crowd.map((c, k) => (
             <g key={k} transform={`translate(0,${(1 - crowdIn) * 200})`}>
-              <Rig uid={"crowd" + k} def={c.d} frame={f + k * 11} x={c.x} y={1130} scale={1.3} pose={{ headTilt: nod(k), turn: 0 }} expr="neutral" silhouette={mix(C.night, C.violet, 0.2)} />
+              <Rig uid={"crowd" + k} def={c.d} frame={f + k * 11} x={c.x} y={1070} scale={1.3} pose={{ headTilt: nod(k), turn: 0 }} expr="neutral" silhouette={mix(C.night, C.violet, 0.2)} />
             </g>
           ))}
         </Svg>
@@ -243,28 +243,26 @@ export const DoughScene: React.FC<SceneProps> = ({ f, start, end }) => {
 // Way (left). The ray's head travels right->left (glide sfx 5247 falls in pitch). As the sheet keeps
 // stretching (galaxy drifts right, grid lines widen), the wiggles behind the head widen and the colour
 // along the path goes BLUE -> cream -> RED; the far galaxy's own glow follows into red ("toward red").
-const RAY = { x0: 1640, x1: 300, y: 450 };
+const RAY = { x0: 1540, x1: 320, y: 450 };
 export const RayScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const { fps } = useVideoConfig();
   const red = cue("towardRed2");
   const stretch = prog(f, start, end + 10, ease.inOutSine);
   const gx = RAY.x0 + 140 * stretch; // the sheet carries the far galaxy away
   const head = prog(f, start + 2, red + 6, ease.inOut); // ray head 0..1 along the path
-  const pts: string[] = [];
   const segs: React.ReactNode[] = [];
   const N = 160, len = gx - RAY.x1;
   let prev: [number, number] | null = null;
+  let ph = -f * 0.25; // integrated phase (no chirp artefacts): d(phase) = dx / lambda
   for (let i = 0; i <= N; i++) {
-    const t = i / N; // 0 at the far galaxy .. 1 at the Milky Way
+    const t = i / N; // distance travelled from the far galaxy (0) to the Milky Way (1)
     if (t > head) break;
     const x = gx - len * t;
-    const age = head - t; // light emitted earlier has been stretched longer
-    const lam = 40 * (1 + 1.6 * stretch * (1 - t) + 0.5 * age); // wavelength widens
-    const phase = ((gx - x) / lam) * Math.PI * 2 - f * 0.25;
-    const y = RAY.y + Math.sin(phase) * 34 * (0.7 + 0.3 * t);
-    if (prev) segs.push(<path key={i} d={`M${prev[0]},${prev[1]} L${x},${y}`} stroke={shiftColor(-1 + 2.2 * clamp(stretch * 0.8 + age * 0.9), C.blue, C.core, C.red)} strokeWidth={8} strokeLinecap="round" />);
+    const lam = 38 * (1 + 2.0 * t * (0.45 + 0.55 * stretch)); // the farther the light has come, the wider
+    if (i > 0) ph += ((len / N) / lam) * Math.PI * 2;
+    const y = RAY.y + Math.sin(ph) * 34 * (0.75 + 0.25 * t);
+    if (prev) segs.push(<path key={i} d={`M${prev[0]},${prev[1]} L${x},${y}`} stroke={shiftColor(-1 + 2.1 * t * (0.5 + 0.5 * stretch), C.blue, C.core, C.red)} strokeWidth={8} strokeLinecap="round" />);
     prev = [x, y];
-    pts.push(`${x},${y}`);
   }
   const shift = clamp(-0.4 + 1.5 * prog(f, start + 10, red + 10, ease.inOut), -1, 1);
   const cam = { x: tw(f, [start, end], [120, -120], ease.inOutSine), y: tw(f, [start, end], [0, -10], ease.inOutSine), zoom: tw(f, [start, end], [1.06, 1.0], ease.inOutSine), rot: 0, frame: f };
