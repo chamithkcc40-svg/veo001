@@ -24,3 +24,26 @@ const TW_CURL = 16;
 export const TwistCard: React.FC<{ f: number; at: number; uid: string }> = ({ f, at, uid }) => {
   const { fps } = useVideoConfig();
   const t = f - at;
+  const wind = sp(f, at + 4, fps, spr.bouncy); // spiral pop (overshoot + settle)
+  const pre = prog(f, at, at + 5, ease.out) * (1 - prog(f, at + 5, at + 10, ease.inOut)); // anticipation
+  const rot = -40 * pre + wind * 360 + t * 3; // counter-turn, wind-in, then slow drift
+  const scale = 0.2 + 0.8 * wind;
+  const cx = 960, cy = 470;
+  const bg = { top: C.violet, mid: C.purple, low: C.magenta };
+  return (
+    <AbsoluteFill>
+      <Svg>
+        <defs>
+          <radialGradient id={`${uid}-bg`} cx="0.5" cy="0.44" r="0.8">
+            <stop offset="0" stopColor={bg.mid} />
+            <stop offset="0.55" stopColor={bg.top} />
+            <stop offset="1" stopColor={C.night} />
+          </radialGradient>
+        </defs>
+        <rect width={1920} height={1080} fill={`url(#${uid}-bg)`} />
+        {/* paper fibres: the sting is a page, so it gets a faint ruled texture */}
+        {Array.from({ length: 16 }).map((_, i) => (
+          <rect key={i} x={0} y={70 + i * 64} width={1920} height={2} fill={alpha(C.lilac, 0.05)} />
+        ))}
+        <rect x={210} y={0} width={3} height={1080} fill={alpha(C.pink, 0.12)} />
+      </Svg>
