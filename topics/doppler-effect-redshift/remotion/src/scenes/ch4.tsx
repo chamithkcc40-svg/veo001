@@ -116,7 +116,7 @@ export const DomeScene4: React.FC<SceneProps> = ({ f, start, end }) => {
 // swells and shrinks (on a negative, bright = bigger + darker). A loupe glides over it (arc path), then
 // Hubble's hand (tweed cuff) circles the star with a grease pencil. Timeline wakes on 1923.
 const PL = { x: 960, y: 440, w: 1040, h: 640 }; // bottom edge stays above the caption band through the push // plate rectangle centre + size
-const VAR = { x: 1150, y: 380 }; // the blinking star (plate space = screen space before the push)
+const VAR = { x: 1010, y: 405 }; // inside Andromeda's outer disc (Hubble's Cepheid sat in the disc) // the blinking star (plate space = screen space before the push)
 /** negative plate content: pale glass, dark star specks, the dark smudge of Andromeda's disc */
 const NegPlate: React.FC<{ f: number; blink: number }> = ({ f, blink }) => (
   <g>
@@ -209,8 +209,10 @@ export const PlateScene: React.FC<SceneProps> = ({ f, start, end }) => {
 // ended on) and the dark smudge becomes the real glowing spiral at the SAME screen spot; the red pencil
 // ring lingers on the variable star. On "whole galaxy" the arms resolve; on "far" the camera pulls
 // wide, the Milky Way slides in at left and the gap keeps widening on "beyond" (scale bar stretches).
-const PLATE_END = { x: 325, y: 14, w: 1269, h: 781 }; // plate rect on screen at the end of s4_plate
-const SMUDGE = { x: 570, y: 440 }, VAR_SCR = { x: 1022, y: 345 };
+// s4_plate ends with cam (170, 40) zoom 1.22 on its depth-1 layer: screen = 960 + (p - 960) * 1.22 - 170
+const PZ = 1.22, toScr = (x: number, y: number) => ({ x: 960 + (x - 960) * PZ - 170, y: 540 + (y - 540) * PZ - 40 });
+const PLATE_END = { ...toScr(PL.x - PL.w / 2, PL.y - PL.h / 2), w: PL.w * PZ, h: PL.h * PZ };
+const SMUDGE = toScr(730, 515), VAR_SCR = toScr(VAR.x, VAR.y);
 const ScaleBar: React.FC<{ x0: number; x1: number; y: number; o: number; f: number }> = ({ x0, x1, y, o, f }) => {
   if (o <= 0.01 || x1 <= x0) return null;
   const n = Math.max(2, Math.floor((x1 - x0) / 60));
@@ -247,7 +249,12 @@ export const ScaleScene: React.FC<SceneProps> = ({ f, start, end }) => {
   return (
     <AbsoluteFill>
       <Camera cam={cam}><Space frame={f} subject={subject} nebula={[C.purple, C.violet]} /></Camera>
-      {dev < 1 && <Svg><rect x={PLATE_END.x - 200 * dev} y={PLATE_END.y - 120 * dev} width={PLATE_END.w + 400 * dev} height={PLATE_END.h + 240 * dev} rx={14} fill={mix(C.lilac, C.white, 0.35)} opacity={1 - dev} /></Svg>}
+      {dev < 1 && (
+        // the same negative plate, in the exact screen position s4_plate ended on, fades out while it
+        // swells (develop) - the stars "invert" into the real sky beneath it
+        <Svg><g opacity={1 - dev} transform={`translate(${PLATE_END.x + PLATE_END.w / 2},${PLATE_END.y + PLATE_END.h / 2}) scale(${PZ * (1 + 0.12 * dev)}) translate(${-PL.x},${-PL.y})`}><NegPlate f={f} blink={1} /></g>
+          <rect width={1920} height={1080} fill={C.white} opacity={0.35 * Math.sin(dev * Math.PI)} /></Svg>
+      )}
       <Pill f={f} fps={fps} at={whole + 6} out={far + 4} text="a galaxy of its own" x={SMUDGE.x + 40} y={760} color={C.sunLt} size={34} />
       <Pill f={f} fps={fps} at={far + 10} out={end + 30} text="MILKY WAY · us" x={mx} y={640} color={C.sun} size={28} />
       <Pill f={f} fps={fps} at={far + 16} out={end + 30} text="ANDROMEDA" x={gx} y={620} color={C.lilac} size={28} />
