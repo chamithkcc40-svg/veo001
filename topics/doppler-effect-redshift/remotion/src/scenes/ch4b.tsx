@@ -230,6 +230,18 @@ export const GridScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s4_peak (WS, fast pull back)
+// Scale-through from the grid: we open tight on one galaxy (same cream spiral the ring sat on) and the
+// camera pulls back FAST (deep whoosh 4615 lands just before the cut) through three shells of galaxies
+// at different parallax depths. Every galaxy drifts outward from centre and its glow reddens with its
+// distance (near cream, far deep red; colours exaggerated). Gold title rises on "universe".
+const FIELD = Array.from({ length: 54 }).map((_, i) => {
+  const a = rr("pk a" + i, 0, Math.PI * 2), d = Math.pow(rr("pk d" + i, 0, 1), 0.7);
+  const shell = i % 3; // 0 far, 1 mid, 2 near
+  return { a, d, shell, rot: rr("pk r" + i, 0, 360), r: [18, 30, 48][shell] * rr("pk s" + i, 0.8, 1.2) };
+});
+const SHELL_DEPTH = [0.45, 0.8, 1.25];
+
 export const CH4B: SceneReg[] = [
   { ids: ["s4_chart"], C: ChartScene },
   { ids: ["s4_grid"], C: GridScene },
