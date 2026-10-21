@@ -104,3 +104,27 @@ export const BarWipe: React.FC<{ t: number; xs: number[] }> = ({ t, xs }) => {
   const w = 14 + t * 560; // each bar covers about a quarter of the screen at t = 1
   return <Svg>{xs.map((x, i) => <rect key={i} x={x - w / 2} y={-40} width={w} height={1160} rx={Math.max(0, 7 - t * 7)} fill={C.night} />)}</Svg>;
 };
+
+// Beat timing (words): Starlight 3126 · barcode 3156 · dark lines 3174 · atoms 3196-3223 · If 3229
+// (slide sfx 3231) · toward red 3276-3288 · moving away 3311-3345. Exit: barcode-wipe 3348-3362.
+export const BarcodeScene: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const beam = prog(f, start + 2, start + 14, ease.out);
+  const fan = prog(f, start + 12, cue("barcode") - 2, ease.out);
+  const reveal = prog(f, cue("barcode") - 6, cue("barcode") + 14, ease.out); // strip paints left -> right
+  const dark = cue("barcode") + 18; // "dark lines"
+  const lineRev = LAB_LINES.map((_, i) => sp(f, dark + i * 4, fps, spr.bouncy)); // each line drops in, overshoot
+  const atomsAt = cue("atoms");
+  const atomP = LAB_LINES.map((_, i) => sp(f, atomsAt + i * 4, fps, spr.bouncy));
+  const lift = sp(f, atomsAt + 18, fps, spr.smooth); // LAB copy lifts off with the atoms
+  const labY = BC.y + (LABY - BC.y) * lift;
+  const slideAt = cue("slides") + 2; // matches the slide sfx
+  const slide = tw(f, [slideAt, slideAt + 30], [0, SHIFT], ease.inOut) + 0.004 * Math.sin(Math.max(0, f - slideAt - 30) / 3) * Math.exp(-Math.max(0, f - slideAt - 30) / 10) * (f > slideAt + 30 ? 1 : 0);
+  const meas = prog(f, cue("slides") + 47, cue("slides") + 62, ease.out); // lands on "red"
+  const away = cue("movingAway");
+  const gal = prog(f, away - 6, away + 10, ease.inOut); // source star -> tiny galaxy
+  const drift = prog(f, away, end, ease.inOutSine);
+  const wipe = prog(f, end - WIPE, end, ease.in);
+  const cam = { x: tw(f, [start, end], [-40, 60], ease.inOutSine), y: tw(f, [start, end], [30, -10], ease.inOutSine), zoom: tw(f, [start, end], [1.0, 1.1], ease.inOutSine), rot: 0, frame: f };
+  const evenXs = [240, 720, 1200, 1680];
+  const wipeXs = LAB_LINES.map((l, i) => mix2(lineX(l, SHIFT), evenXs[i], wipe));
