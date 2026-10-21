@@ -76,3 +76,31 @@ const PrismFeed: React.FC<{ f: number; beam: number; fan: number; o: number }> =
     </g>
   );
 };
+
+/** measuring bracket: dashed guides down from a LAB line and a STAR line, arrow between (toward red) */
+const Measure: React.FC<{ x0: number; x1: number; yTop: number; yBot: number; p: number; o: number }> = ({ x0, x1, yTop, yBot, p, o }) => {
+  if (o <= 0.01) return null;
+  const ym = yBot - 26;
+  const xe = x0 + (x1 - x0) * p;
+  return (
+    <g opacity={o}>
+      <path d={`M${x0},${yTop} L${x0},${ym + 14}`} stroke={alpha(C.white, 0.7)} strokeWidth={3} strokeDasharray="8 10" />
+      <path d={`M${x1},${yBot - 40} L${x1},${ym + 14}`} stroke={alpha(C.red, 0.9)} strokeWidth={3} strokeDasharray="8 10" opacity={p} />
+      <path d={`M${x0},${ym} L${xe},${ym}`} stroke={C.red} strokeWidth={6} strokeLinecap="round" />
+      {p > 0.15 && <path d="M0,-11 L18,0 L0,11 Z" fill={C.red} transform={`translate(${xe},${ym})`} />}
+    </g>
+  );
+};
+
+/** small label to the right of a strip (Fredoka caps), slides in from the strip */
+const StripTag: React.FC<{ x: number; y: number; text: string; p: number; color: string }> = ({ x, y, text, p, color }) => (
+  <text x={x - (1 - p) * 30} y={y} opacity={clamp(p * 1.4)} fontFamily={F.display} fontWeight={600} fontSize={34} letterSpacing="0.1em" fill={color} dominantBaseline="middle">{text}</text>
+);
+
+const WIPE = 14; // barcode-wipe length (frames) shared by s3_barcode exit and s3_dome entrance
+/** the 4 barcode lines grow sideways until they cover the frame (or shrink away when t runs 1 -> 0) */
+export const BarWipe: React.FC<{ t: number; xs: number[] }> = ({ t, xs }) => {
+  if (t <= 0.001) return null;
+  const w = 14 + t * 560; // each bar covers about a quarter of the screen at t = 1
+  return <Svg>{xs.map((x, i) => <rect key={i} x={x - w / 2} y={-40} width={w} height={1160} rx={Math.max(0, 7 - t * 7)} fill={C.night} />)}</Svg>;
+};
