@@ -269,8 +269,11 @@ export const PlateImage: React.FC<{ f: number; spiral: number; code: number }> =
   </g>
 );
 /** spectrograph box + eyepiece bolted to the telescope tail (drawn in the subject plane) */
+export const SPEC = { x: 1090, y: 560 }; // right of Slipher so it stays visible behind the lifted plate
 const Spectrograph: React.FC<{ f: number }> = ({ f }) => (
-  <g transform="translate(905,470) rotate(-8)">
+  <g transform={`translate(${SPEC.x},${SPEC.y}) rotate(-8)`}>
+    {/* eyepiece tube angled up toward Slipher's eye */}
+    <g transform="translate(-80,30) rotate(-28)"><rect x={-150} y={-14} width={150} height={28} rx={12} fill={mix(C.lilac, C.violet, 0.65)} /><rect x={-172} y={-20} width={30} height={40} rx={10} fill={mix(C.lilac, C.violet, 0.8)} /></g>
     {/* telescope tail coming down from the upper right into the spectrograph */}
     <g transform="rotate(38)">
       <rect x={-75} y={-1000} width={150} height={1000} rx={40} fill={mix(C.lilac, C.violet, 0.55)} />
@@ -308,8 +311,10 @@ export const SlipherScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const endPose = { ...POSE.holdUp, lean: -2, turn: 0.35, armL: { a: 8, b: 16 } };
   const hp = handPos(SLIPHER, endPose, "R", SL.x, SL.y, SL.s);
   const pushT = prog(f, spirals - 6, end, ease.inOut);
-  const z = 1.04 + 0.5 * pushT;
-  const cam = { x: mix2(-20, (hp.x - 960) * 0.9, pushT), y: mix2(10, (hp.y - 62 * SL.s * 0.78 - 540) * 0.9, pushT), zoom: z, rot: 0, frame: f, shake: 1.2, seed: "slh" };
+  const z = 1.04 + 0.6 * pushT;
+  // Layer maps p -> 960 + (p - 960) * z - cam.x, so centring the plate needs cam = (p - 960) * z
+  const px = hp.x, py = hp.y - 62 * 0.78 * SL.s;
+  const cam = { x: mix2(-20, (px - 960) * z, pushT), y: mix2(10, (py - 540) * z, pushT), zoom: z, rot: 0, frame: f, shake: 1.2, seed: "slh" };
   return (
     <AbsoluteFill>
       <Camera cam={cam}>
@@ -319,7 +324,7 @@ export const SlipherScene: React.FC<SceneProps> = ({ f, start, end }) => {
           <Svg>
             <Spectrograph f={f} />
             {/* plate holder slot on the spectrograph: empty once the plate is pulled */}
-            {!hasPlate && <g transform="translate(905,470) rotate(-8)"><rect x={-60} y={96} width={120} height={14} rx={5} fill={alpha(C.lilac, 0.9)} /></g>}
+            {!hasPlate && <g transform={`translate(${SPEC.x},${SPEC.y}) rotate(-8)`}><rect x={-60} y={96} width={120} height={14} rx={5} fill={alpha(C.lilac, 0.9)} /></g>}
             <Rig uid="slipherMS" def={SLIPHER} frame={f} x={SL.x} y={SL.y} scale={SL.s} pose={P} expr={expr} light={-1} propR={hasPlate ? plate : undefined} />
             {/* red lamp rim light on his left side (key from the lamp at screen left) */}
             <GlowDot id="slrim" cx={360} cy={560} r={520} color={C.red} o={0.12 + 0.03 * noise1("sllamp", f / 6)} />
@@ -331,6 +336,27 @@ export const SlipherScene: React.FC<SceneProps> = ({ f, start, end }) => {
     </AbsoluteFill>
   );
 };
+
+// ------------------------------------------------------------------ s3_andromeda + s3_map (one shot)
+// Everything lives in "map space" (1920x1080, US marker at the centre). A zoom group
+// translate(960,540) scale(Z) translate(-focus) gives: plate match-cut -> approach (Z 1.7 -> 3.1 on
+// Andromeda) -> pull back (Z -> 1, focus -> US) revealing ~15 spirals, all but 2 RED drifting outward.
+const US = { x: 960, y: 470 };
+const ANDRO = { x: 690, y: 400 };
+type Sp = { x: number; y: number; r: number; rot: number; blue: boolean };
+const SPIRALS: Sp[] = (() => {
+  const out: Sp[] = [{ ...ANDRO, r: 46, rot: -25, blue: true }];
+  for (let i = 1; i < 15; i++) {
+    const a = (i / 14) * Math.PI * 2 + rr("spa" + i, -0.25, 0.25);
+    const d = rr("spd" + i, 0.55, 1);
+    out.push({ x: US.x + Math.cos(a) * 640 * d, y: US.y + Math.sin(a) * 300 * d, r: rr("spr" + i, 18, 30), rot: rr("spo" + i, -60, 60), blue: i === 9 });
+  }
+  return out;
+})();
+/** tiny barcode tag that rides next to a map spiral (lines offset toward red or blue) */
+const MiniCode: React.FC<{ x: number; y: number; shift: number; o: number; id: string }> = ({ x, y, shift, o, id }) => (
+  <g opacity={o}><Barcode id={id} x={x} y={y} w={64} h={12} shift={shift} /></g>
+);
 
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
