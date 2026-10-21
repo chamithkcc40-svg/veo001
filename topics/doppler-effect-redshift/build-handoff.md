@@ -12,7 +12,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T7 Audio build (public/audio/mix.wav 48 kHz 16-bit, -14.0 LUFS / -1.3 dBTP; 153 sfx cues in remotion/data/audio/cues.txt; deterministic rebuild via scripts/audio/run_audio.sh)
 - [x] T8.0 Cold open (Ch0-ColdOpen, f0-339, 4 scenes; review/ch0/)
 - [x] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes; review/ch1/)
-- [~] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes) STOPPED AT: chat 3 start, kit helpers + ch2.tsx being written
+- [x] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes; src/scenes/ch2.tsx, ch2b.tsx, ch2c.tsx; review/ch2/)
 - [ ] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes)
 - [ ] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes)
 - [ ] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes)
@@ -34,7 +34,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Audio: python soundfile 0.13.1; stems in remotion/audio_build/ (git-ignored), reports copied to remotion/data/audio/.
 - Sandbox: 2 vCPU, ~1 GB RAM (low memory: stills with concurrency 1, no full render).
 - Node v22.23.2, npm 10.9.8, ffmpeg/ffprobe 7.1.5, Python 3 + numpy 2.3.5, scipy 1.17.1, scikit-learn 1.6.1, opencv 4.11, Pillow 12.3.
-- Fonts: Nunito + Fredoka variable latin woff2 downloaded into remotion/public/fonts (both exist in @remotion/google-fonts 4.0.535; loaded via FontFace + staticFile for offline renders).
+- Fonts: + IM Fell DW Pica regular/italic woff2 (period documents). Nunito + Fredoka variable latin woff2 downloaded into remotion/public/fonts (both exist in @remotion/google-fonts 4.0.535; loaded via FontFace + staticFile for offline renders).
 - Remotion 4.0.535 pinned exactly for remotion, @remotion/cli, @remotion/bundler, @remotion/renderer, @remotion/google-fonts. React 18.3.1, TypeScript 5.6.3.
 - Browser: `npx remotion browser ensure` downloaded chrome-headless-shell into node_modules/.remotion (works).
 - Skill: remotion-motion-graphics (SKILL.md, motion-patterns.md, design-rules.md, theme.ts) read from /mnt/skills.
@@ -67,12 +67,16 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Only one reference clip was supplied (not the three 09 asked for); the style bible uses it for every scene type and keeps 07's colour roles for waves/space.
 - Six chapter compositions (cold open and close get their own) plus Full: keeps each per-chapter render short and the join points at natural pauses.
 - Chapters drawn on the global frame timeline: per-chapter renders concatenate exactly into Full.
+- s2_paper title page uses IM Fell DW Pica (Google Font, local woff2) for in-world period documents only: a 1842 manuscript in a rounded UI font would break the period read; captions/labels stay Nunito/Fredoka.
+- Scenes whose successor opens with an iris/curl get `post` frames: the transition must reveal over the live previous shot, not black.
 - Topic folder is topics/doppler-effect-redshift (the prompt said topics/doppler-effect; only the -redshift folder exists and holds the Phase 1 files).
 - Resources unzipped to resources/ even though the zip was named resources.zip (prompt mentions reference.zip): same content intent.
 
 ## Scores per chapter
 - Ch0 Cold open (1 loop of rework: void layout, ambulance scale, tilt distance, ring->star dots, caption clearance): story 9, staging 8, character 8, motion 9, depth/light 9, style 9, captions 9, audio sync 9 (siren pass 0.6 f off visual pass), pacing/variety 9. Motion check 95.8 % moving (24 pairs; target 81.3 %). tsc OK, asset audit OK.
 - Ch1 One Siren, Two Sounds (1 rework loop: Nell MS scale, sign layout, split-wipe push, roof framing): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (split pass 0.7 f), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
+
+- Ch2 Ripples (1 rework loop: black frames under the ear iris and twist curl fixed with post frames; paper title re-centred; window push strengthened): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (horns pass on sync.hornsPass, twist curl on fwip 2174, coloured-light shimmer on 2301, window push lands on glass shimmer 2388), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 
 ## Gaps
 
@@ -83,4 +87,4 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T8.2: write src/scenes/ch2.tsx (12 scenes s2_pond ... s2_paper; ripple-ring title, Skipper pond rings A/B, compare split, ear tick bar, speedometers, Doppler study + suitcase memory, railway horns pass at sync.hornsPass, twist page-curl, title-page push through window), register CH2, then stills + motion check.
+T8.3: write src/scenes/ch3.tsx (10 scenes s3_lab ... s3_map; opens in the star field the s2_paper push lands on, neon chapter card, wave-spacing-to-colour strip, galaxy blue/red shift, too-small star colours, Slipher plate/barcode, Andromeda blueshift, map), register CH3, then stills + motion check.

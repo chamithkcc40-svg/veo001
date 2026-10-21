@@ -1,0 +1,130 @@
+{
+ "id": "Ch2-Ripples",
+ "samples": 24,
+ "movingShare": 1,
+ "refShare": 0.903,
+ "target": 0.813,
+ "pass": true,
+ "res": [
+  {
+   "frame": 31,
+   "diff": 4.43,
+   "moving": true
+  },
+  {
+   "frame": 94,
+   "diff": 7.97,
+   "moving": true
+  },
+  {
+   "frame": 157,
+   "diff": 3.24,
+   "moving": true
+  },
+  {
+   "frame": 220,
+   "diff": 8.34,
+   "moving": true
+  },
+  {
+   "frame": 283,
+   "diff": 12.89,
+   "moving": true
+  },
+  {
+   "frame": 346,
+   "diff": 10.03,
+   "moving": true
+  },
+  {
+   "frame": 409,
+   "diff": 4.55,
+   "moving": true
+  },
+  {
+   "frame": 472,
+   "diff": 32.6,
+   "moving": true
+  },
+  {
+   "frame": 534,
+   "diff": 12.75,
+   "moving": true
+  },
+  {
+   "frame": 597,
+   "diff": 8.73,
+   "moving": true
+  },
+  {
+   "frame": 660,
+   "diff": 4.58,
+   "moving": true
+  },
+  {
+   "frame": 723,
+   "diff": 38.03,
+   "moving": true
+  },
+  {
+   "frame": 786,
+   "diff": 4.64,
+   "moving": true
+  },
+  {
+   "frame": 849,
+   "diff": 2.82,
+   "moving": true
+  },
+  {
+   "frame": 912,
+   "diff": 4.77,
+   "moving": true
+  },
+  {
+   "frame": 975,
+   "diff": 30.59,
+   "moving": true
+  },
+  {
+   "frame": 1037,
+   "diff": 4.11,
+   "moving": true
+  },
+  {
+   "frame": 1100,
+   "diff": 81.44,
+   "moving": true
+  },
+  {
+   "frame": 1163,
+   "diff": 7.46,
+   "moving": true
+  },
+  {
+   "frame": 1226,
+   "diff": 7.29,
+   "moving": true
+  },
+  {
+   "frame": 1289,
+   "diff": 15.21,
+   "moving": true
+  },
+  {
+   "frame": 1352,
+   "diff": 1.6,
+   "moving": true
+  },
+  {
+   "frame": 1415,
+   "diff": 8.19,
+   "moving": true
+  },
+  {
+   "frame": 1478,
+   "diff": 22.76,
+   "moving": true
+  }
+ ]
+}
