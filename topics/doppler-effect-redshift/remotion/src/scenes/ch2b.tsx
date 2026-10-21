@@ -9,7 +9,7 @@ import { cue, sync } from "../data";
 import { Camera, Layer, Svg } from "../kit/camera";
 import { Dust, Finish, GlowDot, LightLeak, Stars } from "../kit/fx";
 import { Pond } from "../kit/env/Pond";
-import { Railway, RAIL } from "../kit/env/Railway";
+import { Railway, RAIL, RailFore, RailHills, RailMid, RailSky } from "../kit/env/Railway";
 import { Study, StudyDesk, StudyFore, StudyLight, StudyRoom, StudyWindowView, WIN } from "../kit/env/Study";
 import { NameTag, Timeline } from "../kit/info/Labels";
 import { Rig } from "../kit/rig/Rig";
@@ -547,6 +547,78 @@ export const TrainScene: React.FC<SceneProps> = ({ f, start, end }) => {
   );
 };
 
+// ------------------------------------------------------------------ s2_observers (low angle, the car passes at sync.hornsPass)
+const OBS_X = 1000; // the observers stand here; the car's centre crosses OBS_X exactly at hornsPass
+const OBS_V = 13, OBS_C = 26, OBS_S = 1.25;
+export const Observers: React.FC<SceneProps> = ({ f, start, end }) => {
+  const { fps } = useVideoConfig();
+  const pass = sync("hornsPass");
+  const carC = (t: number) => OBS_X + (t - pass) * OBS_V; // flatcar centre x
+  const locoX = (t: number) => carC(t) + 520 * OBS_S;
+  const trackY = 760;
+  const bell = (t: number) => ({ x: carC(t) + 70 * OBS_S, y: trackY - 104 * OBS_S - 150 * OBS_S });
+  // observers: cup ears, heads follow the car, surprised on the pass
+  const look = tw(f, [pass - 26, pass + 16], [-1, 1], ease.inOut);
+  const obs = (seed: number) => {
+    const P = track(f, [
+      [start, { turn: -0.5, lookX: -1 }],
+      [start + 10, { ...POSE.cupEars, turn: -0.5, lookX: -1 }],
+      [pass - 2, { ...POSE.cupEars, turn: 0, lookX: 0, headTilt: -4 }],
+      [pass + 18, { ...POSE.cupEars, turn: 0.5, lookX: 1, headTilt: 5 }],
+    ], 9);
+    P.lookX = look;
+    P.lean += Math.sin(f / 16 + seed) * 1.2;
+    return P;
+  };
+  const exprO = f < pass - 8 ? "focused" : f < pass + 22 ? "surprised" : "ooo";
+  const pitch = f < pass ? tw(f, [start + 6, pass - 12], [0.4, 1], ease.out) : tw(f, [pass, pass + 8], [1, -1], ease.inOut);
+  const pl = sp(f, start + 8, fps, spr.bouncy);
+  const cam = { x: tw(f, [start, end], [-40, 60], ease.inOutSine), y: 30, zoom: tw(f, [start, end], [1.0, 1.05], ease.inOutSine), rot: -1.5, frame: f, shake: 2.5 * Math.exp(-((f - pass) ** 2) / 300), seed: "obs" };
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Layer depth={0.08}><RailSky frame={f} /></Layer>
+        <Layer depth={0.2} blur={3}><Svg><g transform="translate(0,120)"><RailHillsInline /></g></Svg></Layer>
+        <Layer depth={0.45} blur={1.5}><Svg><g transform="translate(0,140)"><RailMidInline frame={f} /></g></Svg></Layer>
+        <Layer depth={1}>
+          <Svg>
+            {/* low-angle ground: track bed close to camera */}
+            <rect x={-600} y={trackY - 30} width={3200} height={500} fill={mix(C.oliveLt, C.olive, 0.4)} />
+            <rect x={-600} y={trackY - 18} width={3200} height={46} fill={mix(C.plum, C.olive, 0.3)} />
+            {Array.from({ length: 70 }).map((_, i) => <rect key={i} x={-600 + i * 50} y={trackY - 12} width={26} height={34} rx={4} fill={C.plum} />)}
+            <rect x={-600} y={trackY - 16} width={3200} height={8} rx={4} fill={C.lilac} />
+            <rect x={-600} y={trackY + 10} width={3200} height={8} rx={4} fill={C.lilac} />
+            <Rings id="obsr" frame={f} path={bell} start={start - 70} period={8} c={OBS_C} maxR={1300} tint tintGain={2.6} width={6} />
+            <Smoke f={f} stack={(t) => ({ x: locoX(t) + TRAIN_STACK.x * OBS_S, y: trackY + TRAIN_STACK.y * OBS_S })} s={OBS_S} />
+            <g transform={`translate(${locoX(f)},${trackY + Math.sin(f / 2) * 1.5})`}>
+              <Train wheel={(f * OBS_V) / (42 * OBS_S) * 57.3} scale={OBS_S} car={<HornBand f={f} blow={1} />} />
+            </g>
+          </Svg>
+        </Layer>
+        <Layer depth={1.25}>
+          <Svg>
+            <rect x={-600} y={930} width={3200} height={400} fill={mix(C.olive, C.oliveLt, 0.25)} />
+            <Rig uid="obsA" def={OBSERVER_A} frame={f} x={OBS_X - 150} y={1060} scale={1.05} pose={obs(0)} expr={exprO} />
+            <Rig uid="obsB" def={OBSERVER_B} frame={f + 11} x={OBS_X + 150} y={1070} scale={1.1} pose={obs(1.7)} expr={exprO} />
+          </Svg>
+        </Layer>
+        <Layer depth={1.6} blur={8}><RailFore frame={f} /></Layer>
+      </Camera>
+      <Svg>
+        <g opacity={pl} transform={`translate(${OBS_X - 150},${300 + (1 - pl) * 24}) scale(${0.6 + 0.4 * pl})`}>
+          <PitchLine x={0} y={0} w={230} frame={f} pitch={pitch} />
+        </g>
+        <g opacity={pl} transform={`translate(${OBS_X + 170},${280 + (1 - pl) * 24}) scale(${0.6 + 0.4 * pl})`}>
+          <PitchLine x={0} y={0} w={230} frame={f + 5} pitch={pitch} />
+        </g>
+      </Svg>
+      <Finish tint={C.oliveLt} grade={0.1} vig={0.3} />
+    </AbsoluteFill>
+  );
+};
+const RailHillsInline: React.FC = () => <RailHills />;
+const RailMidInline: React.FC<{ frame: number }> = ({ frame }) => <RailMid frame={frame} />;
+
 export const CH2B: SceneReg[] = [
   { ids: ["s2_compare"], C: Compare },
   { ids: ["s2_ear"], C: Ear },
@@ -554,4 +626,5 @@ export const CH2B: SceneReg[] = [
   { ids: ["s2_study"], C: StudyScene, post: 12 },
   { ids: ["s2_suitcase"], C: SuitcaseScene },
   { ids: ["s2_train"], C: TrainScene },
+  { ids: ["s2_observers"], C: Observers },
 ];
