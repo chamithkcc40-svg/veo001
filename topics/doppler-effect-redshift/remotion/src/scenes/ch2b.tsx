@@ -512,7 +512,7 @@ export const TrainScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const carX = (t: number) => locoAt(t) - 520 * S;
   // camera pans with the train; whip-pan in from the left (motion blur decays)
   const whip = prog(f, start, start + 12, ease.out);
-  const camX = (locoX - 900) * 0.9 - (1 - whip) * 1400;
+  const camX = locoX - 1150 - (1 - whip) * 1400; // loco held at ~x 1150; Buys Ballot slides past
   const cam = { x: camX, y: -20 + noise1("trcy", f / 30) * 4, zoom: 1.0, rot: 0, frame: f };
   const blow = prog(f, cue("horns") - 4, cue("horns") + 8, ease.out);
   // Buys Ballot: flag raised, drops sharply on the whistle (anticipation: lifts higher first), then jots in notebook
@@ -555,7 +555,7 @@ export const Observers: React.FC<SceneProps> = ({ f, start, end }) => {
   const pass = sync("hornsPass");
   const carC = (t: number) => OBS_X + (t - pass) * OBS_V; // flatcar centre x
   const locoX = (t: number) => carC(t) + 520 * OBS_S;
-  const trackY = 760;
+  const trackY = 600;
   const bell = (t: number) => ({ x: carC(t) + 70 * OBS_S, y: trackY - 104 * OBS_S - 150 * OBS_S });
   // observers: cup ears, heads follow the car, surprised on the pass
   const look = tw(f, [pass - 26, pass + 16], [-1, 1], ease.inOut);
@@ -578,8 +578,8 @@ export const Observers: React.FC<SceneProps> = ({ f, start, end }) => {
     <AbsoluteFill>
       <Camera cam={cam}>
         <Layer depth={0.08}><RailSky frame={f} /></Layer>
-        <Layer depth={0.2} blur={3}><Svg><g transform="translate(0,120)"><RailHillsInline /></g></Svg></Layer>
-        <Layer depth={0.45} blur={1.5}><Svg><g transform="translate(0,140)"><RailMidInline frame={f} /></g></Svg></Layer>
+        <Layer depth={0.2} blur={3}><Svg><g transform="translate(0,-110)"><RailHillsInline /></g></Svg></Layer>
+        <Layer depth={0.45} blur={1.5}><Svg><g transform="translate(0,-90)"><RailMidInline frame={f} /></g></Svg></Layer>
         <Layer depth={1}>
           <Svg>
             {/* low-angle ground: track bed close to camera */}
@@ -597,19 +597,19 @@ export const Observers: React.FC<SceneProps> = ({ f, start, end }) => {
         </Layer>
         <Layer depth={1.25}>
           <Svg>
-            <rect x={-600} y={930} width={3200} height={400} fill={mix(C.olive, C.oliveLt, 0.25)} />
-            <Rig uid="obsA" def={OBSERVER_A} frame={f} x={OBS_X - 150} y={1060} scale={1.05} pose={obs(0)} expr={exprO} />
-            <Rig uid="obsB" def={OBSERVER_B} frame={f + 11} x={OBS_X + 150} y={1070} scale={1.1} pose={obs(1.7)} expr={exprO} />
+            <rect x={-600} y={990} width={3200} height={400} fill={mix(C.olive, C.oliveLt, 0.25)} />
+            <Rig uid="obsA" def={OBSERVER_A} frame={f} x={OBS_X - 170} y={1110} scale={1.08} pose={obs(0)} expr={exprO} />
+            <Rig uid="obsB" def={OBSERVER_B} frame={f + 11} x={OBS_X + 170} y={1120} scale={1.12} pose={obs(1.7)} expr={exprO} />
           </Svg>
         </Layer>
         <Layer depth={1.6} blur={8}><RailFore frame={f} /></Layer>
       </Camera>
       <Svg>
-        <g opacity={pl} transform={`translate(${OBS_X - 150},${300 + (1 - pl) * 24}) scale(${0.6 + 0.4 * pl})`}>
-          <PitchLine x={0} y={0} w={230} frame={f} pitch={pitch} />
+        <g opacity={pl} transform={`translate(${OBS_X - 480},${640 + (1 - pl) * 24}) scale(${0.6 + 0.4 * pl})`}>
+          <PitchLine x={0} y={0} w={230} frame={f} pitch={pitch} tail="right" />
         </g>
-        <g opacity={pl} transform={`translate(${OBS_X + 170},${280 + (1 - pl) * 24}) scale(${0.6 + 0.4 * pl})`}>
-          <PitchLine x={0} y={0} w={230} frame={f + 5} pitch={pitch} />
+        <g opacity={pl} transform={`translate(${OBS_X + 500},${620 + (1 - pl) * 24}) scale(${0.6 + 0.4 * pl})`}>
+          <PitchLine x={0} y={0} w={230} frame={f + 5} pitch={pitch} tail="left" />
         </g>
       </Svg>
       <Finish tint={C.oliveLt} grade={0.1} vig={0.3} />
