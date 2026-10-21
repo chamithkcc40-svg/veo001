@@ -432,10 +432,46 @@ export const AndroMap: React.FC<SceneProps> = ({ f, start, end }) => {
       </g>
     );
   });
+  // Pip pops up in the corner on "Why" (anticipation dip, overshoot), hand to chin, head tilts on "flee"
+  const pipIn = sp(f, why - 4, fps, spr.bouncy);
+  const pipP = track(f, [
+    [why - 4, { ...POSE.handOnChin, bodyY: 10, lookX: -0.7, lookY: -0.4 }],
+    [why + 8, { ...POSE.handOnChin, bodyY: -6, lookX: -0.8, lookY: -0.5, headTilt: 4 }],
+    [flee, { ...POSE.handOnChin, lookX: -0.8, lookY: -0.5, headTilt: 12 }],
+    [end + 20, { ...POSE.handOnChin, lookX: -0.6, lookY: -0.3, headTilt: 14, armL: { a: -30, b: -70 }, handL: "open" }],
+  ], 8);
+  const fw = PLATE_SCREEN * (1 + 5 * open), fh = fw * (PLATE_H / PLATE_W);
+  return (
+    <AbsoluteFill>
+      <Camera cam={camBg}><Space frame={f} dust={false} nebula={[C.magenta, C.purple]} /></Camera>
+      <Svg>
+        <g transform={`translate(960,540) scale(${Z}) translate(${-fx},${-fy})`}>
+          {/* faint sky-map grid: concentric distance rings around US (appear with the pull back) */}
+          {[180, 360, 540, 720].map((r, i) => <ellipse key={r} cx={US.x} cy={US.y} rx={r} ry={r * 0.47} fill="none" stroke={alpha(C.lilac, 0.12 * pull)} strokeWidth={2 / Z} strokeDasharray={`${6 / Z} ${10 / Z}`} />)}
+          <UsMarker f={f} o={pull} s={0.8 + 0.2 * pull} />
+          {spirals}
+        </g>
+        {open < 1 && (
+          <g opacity={1 - open}>
+            <rect x={960 - fw / 2} y={540 - fh / 2} width={fw} height={fh} rx={8 * (1 + 4 * open)} fill="none" stroke={alpha(C.lilac, 0.75)} strokeWidth={10} />
+          </g>
+        )}
+      </Svg>
+      <AbsoluteFill style={{ opacity: 1 - open, background: `radial-gradient(ellipse ${fw * 0.6}px ${fh * 0.6}px at 960px 540px, transparent 80%, ${alpha(C.plum, 0.9)} 100%)` }} />
+      <Camera cam={camBg}><Layer depth={1.7} blur={5}><Svg><Dust seed="amdust" frame={f} n={20} area={[-400, -300, 2700, 1700]} size={[2, 6]} color={C.lilac} opacity={0.3} speed={1.4} /></Svg></Layer></Camera>
+      <AndroCard f={f} inP={cardIn} outP={cardOut} shift={tagShift} kms={kms} statusP={statusP} />
+      <Pill f={f} fps={fps} at={rushing + 4} out={end + 30} text="~15 spirals by 1914 · nearly all receding" x={960} y={96} color={C.lilac} size={32} />
+      {pipIn > 0.01 && <Svg><Rig uid="pipMap" def={PIP} frame={f} x={1710} y={1150 + (1 - pipIn) * 420} scale={1.45} pose={pipP} expr="puzzled" /></Svg>}
+      <ExaggeratedTag opacity={prog(f, toward, toward + 12, ease.out)} x={1824} y={180} />
+      <Finish tint={C.violet} grade={0.1} vig={0.34} />
+    </AbsoluteFill>
+  );
+};
 
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
   { ids: ["s3_dome"], C: DomeScene },
   { ids: ["s3_slipher"], C: SlipherScene },
-  { ids: ["s3_dome", "s3_slipher"], C: DomeTags }, // tags ride across the dome -> interior hard cut
+  { ids: ["s3_dome", "s3_slipher"], C: DomeTags },
+  { ids: ["s3_andromeda", "s3_map"], C: AndroMap }, // tags ride across the dome -> interior hard cut
 ];
