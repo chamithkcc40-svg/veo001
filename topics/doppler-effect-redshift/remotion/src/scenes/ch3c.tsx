@@ -310,7 +310,31 @@ export const SlipherScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const pushT = prog(f, spirals - 6, end, ease.inOut);
   const z = 1.04 + 0.5 * pushT;
   const cam = { x: mix2(-20, (hp.x - 960) * 0.9, pushT), y: mix2(10, (hp.y - 62 * SL.s * 0.78 - 540) * 0.9, pushT), zoom: z, rot: 0, frame: f, shake: 1.2, seed: "slh" };
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Layer depth={0.35}><DomeInterior frame={f} slit={1} red scope={false} /></Layer>
+        <Layer depth={0.6} blur={1.5}><Svg><Dust seed="sldust" frame={f} n={26} color={alpha(C.red, 1)} opacity={0.35} size={[1.5, 3.5]} speed={0.4} /></Svg></Layer>
+        <Layer depth={1}>
+          <Svg>
+            <Spectrograph f={f} />
+            {/* plate holder slot on the spectrograph: empty once the plate is pulled */}
+            {!hasPlate && <g transform="translate(905,470) rotate(-8)"><rect x={-60} y={96} width={120} height={14} rx={5} fill={alpha(C.lilac, 0.9)} /></g>}
+            <Rig uid="slipherMS" def={SLIPHER} frame={f} x={SL.x} y={SL.y} scale={SL.s} pose={P} expr={expr} light={-1} propR={hasPlate ? plate : undefined} />
+            {/* red lamp rim light on his left side (key from the lamp at screen left) */}
+            <GlowDot id="slrim" cx={360} cy={560} r={520} color={C.red} o={0.12 + 0.03 * noise1("sllamp", f / 6)} />
+          </Svg>
+        </Layer>
+        <Layer depth={1.5} blur={8}><Svg><rect x={1500} y={-100} width={220} height={1400} rx={60} fill={mix(C.plum, C.night, 0.7)} /></Svg></Layer>
+      </Camera>
+      <Finish tint={C.red} grade={0.08} vig={0.4} />
+    </AbsoluteFill>
+  );
+};
 
 export const CH3C: SceneReg[] = [
   { ids: ["s3_barcode"], C: BarcodeScene },
+  { ids: ["s3_dome"], C: DomeScene },
+  { ids: ["s3_slipher"], C: SlipherScene },
+  { ids: ["s3_dome", "s3_slipher"], C: DomeTags }, // tags ride across the dome -> interior hard cut
 ];
