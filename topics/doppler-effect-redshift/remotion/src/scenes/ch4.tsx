@@ -252,7 +252,7 @@ export const ScaleScene: React.FC<SceneProps> = ({ f, start, end }) => {
       {dev < 1 && (
         // the same negative plate, in the exact screen position s4_plate ended on, fades out while it
         // swells (develop) - the stars "invert" into the real sky beneath it
-        <Svg><g opacity={1 - dev} transform={`translate(${PLATE_END.x + PLATE_END.w / 2},${PLATE_END.y + PLATE_END.h / 2}) scale(${PZ * (1 + 0.12 * dev)}) translate(${-PL.x},${-PL.y})`}><NegPlate f={f} blink={1} /></g>
+        <Svg><g opacity={1 - dev} transform={`translate(${PLATE_END.x + PLATE_END.w / 2},${PLATE_END.y + PLATE_END.h / 2}) scale(${PZ * (1 + 0.12 * dev)}) translate(${-PL.x},${-PL.y})`}><NegPlate f={f} blink={1} /><ellipse cx={VAR.x} cy={VAR.y} rx={46} ry={41} fill="none" stroke={C.red} strokeWidth={7} /></g>
           <rect width={1920} height={1080} fill={C.white} opacity={0.35 * Math.sin(dev * Math.PI)} /></Svg>
       )}
       <Pill f={f} fps={fps} at={whole + 6} out={far + 4} text="a galaxy of its own" x={SMUDGE.x + 40} y={760} color={C.sunLt} size={34} />
@@ -302,7 +302,7 @@ export const TapesScene: React.FC<SceneProps> = ({ f, start, end }) => {
   const tagP = zips.map((z) => sp(f, z + 8, fps, spr.bouncy));
   const spin = zips.reduce((a, z) => a + 900 * prog(f, z - 2, z + 12, ease.out), 0);
   const track = prog(f, start, end + 20, ease.inOutSine); // lateral track toward the far end of the row
-  const camX = mix2(-40, 640, track);
+  const camX = mix2(40, 640, track); // starts where s4_scale ended (continuous drift)
   const cam = { x: camX, y: tw(f, [start, end], [10, -20], ease.inOutSine), zoom: tw(f, [start, end], [0.98, 1.04], ease.inOutSine), rot: 0, frame: f };
   const subject = (
     <Svg>
