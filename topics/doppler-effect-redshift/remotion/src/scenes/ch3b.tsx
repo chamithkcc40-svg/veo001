@@ -90,8 +90,8 @@ export const TooSmall: React.FC<SceneProps> = ({ f, start, end }) => {
           </Svg>
         </Layer>
       </Camera>
-      <Pill f={f} fps={fps} at={small + 6} out={end + 6} text="too small to see" x={1500} y={170} color={C.sunLt} size={36} />
-      <Pill f={f} fps={fps} at={start + 12} out={wrong + 4} text="his guess: stars visibly coloured" x={1440} y={720} color={C.lilac} size={28} />
+      <Pill f={f} fps={fps} at={small + 6} out={end + 6} text="too small to see" x={1280} y={640} color={C.sunLt} size={38} />
+      <Pill f={f} fps={fps} at={start + 6} out={wrong + 14} text="his guess: stars visibly coloured" x={1280} y={640} color={C.lilac} size={30} />
       <Finish tint={C.sun} grade={0.12} vig={0.34} />
     </AbsoluteFill>
   );
@@ -195,7 +195,7 @@ const QuillSky: React.FC<{ f: number; end: number }> = ({ f, end }) => {
       <Layer depth={0.6}><Pines seed="qp" n={16} y={900} scale={[0.5, 0.9]} color={mix(C.violet, C.night, 0.75)} frame={f} /></Layer>
       <Layer depth={1}>
         <Svg>
-          <DotArrow t={t} p0={p0} p1={p1} p2={p2} tail={0.5} size={1.2} />
+          <g opacity={1 - prog(f, land + 2, land + 14, ease.in)}><DotArrow t={t} p0={p0} p1={p1} p2={p2} tail={0.5 * (1 - prog(f, land, land + 12, ease.in)) + 0.02} size={1.2} /></g>
           {/* telescope on a little rock: recoils on arrival, rim glow pulses */}
           <path d={`M${scope.x - 220},${scope.y + 120} Q${scope.x},${scope.y - 10} ${scope.x + 240},${scope.y + 120} Z`} fill={mix(C.violet, C.night, 0.45)} />
           <GlowDot id="qscope" cx={scope.x + 60} cy={scope.y - 170} r={200} color={C.sun} o={0.5 * hit * (f >= land ? 1 : 0)} />
