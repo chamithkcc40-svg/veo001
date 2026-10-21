@@ -1,0 +1,130 @@
+{
+ "id": "Ch3-Light",
+ "samples": 24,
+ "movingShare": 0.875,
+ "refShare": 0.903,
+ "target": 0.813,
+ "pass": true,
+ "res": [
+  {
+   "frame": 30,
+   "diff": 2.62,
+   "moving": true
+  },
+  {
+   "frame": 90,
+   "diff": 9.04,
+   "moving": true
+  },
+  {
+   "frame": 149,
+   "diff": 6.49,
+   "moving": true
+  },
+  {
+   "frame": 209,
+   "diff": 11.44,
+   "moving": true
+  },
+  {
+   "frame": 269,
+   "diff": 8.15,
+   "moving": true
+  },
+  {
+   "frame": 329,
+   "diff": 5.91,
+   "moving": true
+  },
+  {
+   "frame": 388,
+   "diff": 1.86,
+   "moving": true
+  },
+  {
+   "frame": 448,
+   "diff": 5.04,
+   "moving": true
+  },
+  {
+   "frame": 508,
+   "diff": 4.79,
+   "moving": true
+  },
+  {
+   "frame": 568,
+   "diff": 6.53,
+   "moving": true
+  },
+  {
+   "frame": 627,
+   "diff": 3.07,
+   "moving": true
+  },
+  {
+   "frame": 687,
+   "diff": 2.25,
+   "moving": true
+  },
+  {
+   "frame": 747,
+   "diff": 0.89,
+   "moving": false
+  },
+  {
+   "frame": 807,
+   "diff": 1.96,
+   "moving": true
+  },
+  {
+   "frame": 866,
+   "diff": 2.37,
+   "moving": true
+  },
+  {
+   "frame": 926,
+   "diff": 2.25,
+   "moving": true
+  },
+  {
+   "frame": 986,
+   "diff": 1.65,
+   "moving": true
+  },
+  {
+   "frame": 1046,
+   "diff": 1.28,
+   "moving": false
+  },
+  {
+   "frame": 1105,
+   "diff": 14.46,
+   "moving": true
+  },
+  {
+   "frame": 1165,
+   "diff": 2.43,
+   "moving": true
+  },
+  {
+   "frame": 1225,
+   "diff": 1.9,
+   "moving": true
+  },
+  {
+   "frame": 1285,
+   "diff": 5.18,
+   "moving": true
+  },
+  {
+   "frame": 1344,
+   "diff": 1.48,
+   "moving": false
+  },
+  {
+   "frame": 1404,
+   "diff": 1.81,
+   "moving": true
+  }
+ ]
+}

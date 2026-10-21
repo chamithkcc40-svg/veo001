@@ -13,7 +13,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T8.0 Cold open (Ch0-ColdOpen, f0-339, 4 scenes; review/ch0/)
 - [x] T8.1 Chapter 1 One Siren, Two Sounds (Ch1-Siren, f339-869, 5 scenes; review/ch1/)
 - [x] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes; src/scenes/ch2.tsx, ch2b.tsx, ch2c.tsx; review/ch2/)
-- [~] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes) STOPPED AT: s3_lab/blue/galaxy (ch3.tsx) + s3_toosmall/s3_quill (ch3b.tsx) done; building ch3c.tsx (s3_barcode, s3_dome, s3_slipher, s3_andromeda, s3_map)
+- [x] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes; src/scenes/ch3.tsx, ch3b.tsx, ch3c.tsx; review/ch3/)
 - [ ] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes)
 - [ ] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes)
 - [ ] T9 Assembly
@@ -78,6 +78,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Ch1 One Siren, Two Sounds (1 rework loop: Nell MS scale, sign layout, split-wipe push, roof framing): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (split pass 0.7 f), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 
 - Ch2 Ripples (1 rework loop: black frames under the ear iris and twist curl fixed with post frames; paper title re-centred; window push strengthened): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (horns pass on sync.hornsPass, twist curl on fwip 2174, coloured-light shimmer on 2301, window push lands on glass shimmer 2388), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
+- Ch3 Light Has a Siren Too (1 rework loop: Slipher name tag now exits before the push so it never covers his face; map gets a settle orbit + stronger outward drift; dome handheld): story 9, staging 8, character 8, motion 8, depth/light 9, style 9, captions 9, audio sync 9 (slide sfx 3231 on the line slide, clink on the plate lift, whoosh_out on 'nearly all'), pacing/variety 9. Motion 87.5 % (24 pairs; target 81.3 %; first pass 83.3 %). tsc OK, audit OK.
 
 ## Gaps
 
@@ -88,4 +89,4 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T8.3: write src/scenes/ch3.tsx (10 scenes s3_lab ... s3_map; opens in the star field the s2_paper push lands on, neon chapter card, wave-spacing-to-colour strip, galaxy blue/red shift, too-small star colours, Slipher plate/barcode, Andromeda blueshift, map), register CH3, then stills + motion check.
+T8.4: write src/scenes/ch4.tsx (s4_dome, s4_plate, s4_scale, s4_tapes) then ch4b.tsx (s4_chart, s4_grid, s4_peak) and ch4c.tsx (s4_lemaitre, s4_twist, s4_road, s4_dough, s4_ray), register CH4*, then stills + motion check.
