@@ -169,3 +169,57 @@ export const LabSeq: React.FC<SceneProps> = ({ f, start, end }) => {
   const mU = f < sq + 10 ? lamToU(lam) : f < st ? tw(f, [blueAt - 8, blueAt + 6], [0.45, 0.14], ease.out) : tw(f, [redAt - 8, redAt + 6], [0.14, 0.98], ease.out);
   const mO = prog(f, sc - 6, sc + 6, ease.out) * (1 - prog(f, bloomAt + 6, bloomAt + 14, ease.in));
   const mLabel = f >= redAt - 2 ? "RED" : f >= blueAt - 2 && f >= sq ? "BLUE" : undefined;
+  const cardOut = sc - 12;
+  const stripO = prog(f, cardOut - 4, cardOut + 14, ease.out);
+  const eyeO = prog(f, sq + 2, sq + 14, ease.out) * (1 - prog(f, st + 4, st + 14, ease.in));
+  const eyeWide = clamp((sx - 960) / 200);
+  // ring emission: white while still; tinted by the Rings engine once the star moves
+  const ringStop = bloomAt + 4;
+  const ringO = 1 - 0.65 * waveIn;
+  // galaxy sits where the star was, glides to centre as it blooms
+  const gx = mix2(sx, 960, bloom), gy = mix2(STAR0.y, 430, bloom);
+  // camera: drift (lab) -> track the star (blue/red) -> push on bloom -> pull on "redshift"
+  const track2 = prog(f, sq, sq + 20, ease.inOut) * (1 - bloom);
+  const camX = tw(f, [start, sq], [-30, 20], ease.inOutSine) * (1 - track2) + (sx - 960) * 0.45 * track2;
+  const zoom = 1 + 0.03 * prog(f, start, sq, ease.inOutSine) + 0.12 * prog(f, bloomAt - 4, bloomAt + 18, ease.inOut) - 0.14 * prog(f, rs - 6, rs + 24, ease.inOut);
+  const cam = { x: camX, y: noise1("labcy", f / 40) * 6, zoom, rot: 0, frame: f };
+  // REDSHIFT: 7 red rings collapse onto letter slots, each letter pops as its ring lands
+  const word = "REDSHIFT";
+  const wordY = 800;
+  const landAt = (i: number) => rs + 4 + i * 2;
+  const wordOut = prog(f, end - 8, end + 4, ease.in);
+  const dsX = (1 - arrive) * 70; // the double stars converge to the test star
+  return (
+    <AbsoluteFill>
+      <Camera cam={cam}>
+        <Layer depth={0.3}><LabBg frame={f} strip={stripO} /></Layer>
+        <AbsoluteFill style={{ opacity: 1 - arrive }}><Space frame={f} dust={false} /></AbsoluteFill>
+        <Layer depth={0.3} blur={0}>
+          <Svg>
+            {stripO > 0.01 && <StripMarker u={mU} o={mO * stripO} label={mLabel} y={160} />}
+          </Svg>
+        </Layer>
+        <Layer depth={1}>
+          <Svg>
+            <Rings id="labr" frame={f} path={starPath} start={cue("lightWave") - 2} stop={ringStop} period={12} c={LAB_C} maxR={900} tint tintGain={2.2} width={5} wavy={7} opacity={ringO} />
+            {waveIn > 0.01 && <WaveLine f={f} x0={300} x1={1620} y={760} lam={lam} reveal={prog(f, sc - 10, sc + 16, ease.out)} o={waveIn} />}
+            {waveIn > 0.01 && (
+              <text x={960} y={700} textAnchor="middle" fontFamily={F.display} fontWeight={600} fontSize={30} letterSpacing="0.14em" fill={alpha(C.lilac, 0.8 * waveIn)}>
+                {lam > 120 ? "WIDE SPACING" : lam < 70 ? "TIGHT SPACING" : "SPACING"}
+              </text>
+            )}
+            {bloom < 1 && (
+              <g opacity={1 - bloom}>
+                {arrive < 1 && <GlowDot id="dsb" cx={sx - dsX} cy={STAR0.y - dsX * 0.4} r={120} color={C.blue} o={0.6 * (1 - arrive)} />}
+                {arrive < 1 && <GlowDot id="dsr" cx={sx + dsX} cy={STAR0.y + dsX * 0.6} r={120} color={C.red} o={0.6 * (1 - arrive)} />}
+                <TestStar x={sx} y={STAR0.y} f={f} v={v} s={(0.4 + 0.6 * arrive) * (1 + bloom * 0.8)} />
+              </g>
+            )}
+            {bloom > 0 && (
+              <g opacity={Math.min(1, bloom * 1.6)}>
+                <Galaxy id="labgal" x={gx} y={gy} r={190 * galScale * (0.5 + 0.5 * bloom)} frame={f} shift={galShift} tilt={0.3} rot={-20} glow={1.15} dots={80} />
+              </g>
+            )}
+            <ViewerEye f={f} x={1730} y={STAR0.y} o={eyeO} wide={eyeWide} />
+          </Svg>
+        </Layer>
