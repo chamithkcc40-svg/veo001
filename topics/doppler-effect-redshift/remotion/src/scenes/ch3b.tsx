@@ -96,3 +96,40 @@ export const TooSmall: React.FC<SceneProps> = ({ f, start, end }) => {
     </AbsoluteFill>
   );
 };
+
+// ------------------------------------------------------------------ s3_quill
+// Shot A (2947-2985) study MS: Doppler writes with a small smile; the last ink line peels off the page
+//   as a dotted arrow (whoosh 2961) and shoots out of frame top-right -> MATCH CUT on the arrow:
+// Shot B (2985-3126) night sky WS over a pine ridge: the arrow enters bottom-left, arcs across the sky
+//   and lands on a telescope ("astronomers would one day use it"); on "how stars move" the stars grow
+//   small motion arrows (measured); "They did." -> stamp check slams in (stamp 3083) with dust puff.
+const CUT = 2985;
+/** point on the quadratic arc for t 0..1 + its tangent angle */
+const arcPt = (t: number, p0: number[], p1: number[], p2: number[]) => {
+  const u = 1 - t;
+  const x = u * u * p0[0] + 2 * u * t * p1[0] + t * t * p2[0];
+  const y = u * u * p0[1] + 2 * u * t * p1[1] + t * t * p2[1];
+  const dx = 2 * u * (p1[0] - p0[0]) + 2 * t * (p2[0] - p1[0]);
+  const dy = 2 * u * (p1[1] - p0[1]) + 2 * t * (p2[1] - p1[1]);
+  return { x, y, a: (Math.atan2(dy, dx) * 180) / Math.PI };
+};
+/** dotted arrow drawn along an arc up to t; dots trail and fade (follow-through) */
+const DotArrow: React.FC<{ t: number; p0: number[]; p1: number[]; p2: number[]; color?: string; tail?: number; size?: number }> = ({ t, p0, p1, p2, color = C.sunLt, tail = 1, size = 1 }) => {
+  if (t <= 0) return null;
+  const n = 34;
+  const dots: React.ReactNode[] = [];
+  for (let i = 0; i <= n; i++) {
+    const u = (i / n) * t;
+    const age = t - u; // 0 at the head
+    if (age > tail) continue;
+    const p = arcPt(u, p0, p1, p2);
+    dots.push(<circle key={i} cx={p.x} cy={p.y} r={7 * size * (1 - age / (tail * 1.4))} fill={color} opacity={clamp(1 - age / tail)} />);
+  }
+  const h = arcPt(t, p0, p1, p2);
+  return (
+    <g style={{ filter: `drop-shadow(0 0 10px ${alpha(color, 0.9)})` }}>
+      {dots}
+      <path d={`M0,0 L-34,-20 L-26,0 L-34,20 Z`} transform={`translate(${h.x},${h.y}) rotate(${h.a}) scale(${size})`} fill={color} />
+    </g>
+  );
+};
