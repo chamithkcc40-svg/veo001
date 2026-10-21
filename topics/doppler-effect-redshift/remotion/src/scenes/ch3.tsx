@@ -54,3 +54,52 @@ export const NeonCard: React.FC<{ f: number; at: number; out: number; num: strin
     </div>
   );
 };
+
+// ------------------------------------------------------------------ spacing -> colour helpers
+/** colour along the rainbow strip, u 0 (violet) .. 1 (red) */
+export const rainbowAt = (u: number) => {
+  const x = clamp(u) * (RAINBOW.length - 1);
+  const i = Math.min(RAINBOW.length - 2, Math.floor(x));
+  return mix(RAINBOW[i], RAINBOW[i + 1], x - i);
+};
+const LAM_MIN = 46, LAM_MAX = 150; // px wavelength drawn for violet .. red
+export const lamToU = (lam: number) => clamp((lam - LAM_MIN) / (LAM_MAX - LAM_MIN));
+
+/** a travelling wave line between x0..x1 whose wavelength = lam and colour follows it */
+export const WaveLine: React.FC<{ f: number; x0: number; x1: number; y: number; lam: number; amp?: number; w?: number; o?: number; reveal?: number }> = ({ f, x0, x1, y, lam, amp = 34, w = 8, o = 1, reveal = 1 }) => {
+  const col = rainbowAt(lamToU(lam));
+  const xe = x0 + (x1 - x0) * reveal;
+  let d = "";
+  const phase = f * 0.32; // waves travel to the right (light moving)
+  for (let x = x0; x <= xe; x += 4) {
+    const env = Math.min(1, (x - x0) / 60, (x1 - x) / 60); // soft ends
+    const yy = y + Math.sin(((x - x0) / lam) * Math.PI * 2 - phase) * amp * Math.max(0, env);
+    d += `${x === x0 ? "M" : "L"}${x},${yy}`;
+  }
+  return (
+    <g opacity={o}>
+      <path d={d} stroke={col} strokeWidth={w * 2.6} fill="none" strokeLinecap="round" opacity={0.25} style={{ filter: "blur(8px)" }} />
+      <path d={d} stroke={col} strokeWidth={w} fill="none" strokeLinecap="round" />
+      <path d={d} stroke={alpha(C.white, 0.55)} strokeWidth={w * 0.3} fill="none" strokeLinecap="round" transform="translate(0,-2)" />
+    </g>
+  );
+};
+
+// ------------------------------------------------------------------ the test star's motion (one clock)
+// v(t): still -> right toward the viewer (+2.4 px/f) -> reverses on the sweep sfx (2680) -> left (-2.4).
+// Ring speed LAB_C = 5, so v/c <= 0.48 (no shock cone; Rings asserts it).
+const LAB_C = 5;
+const STAR0 = { x: 960, y: 470 };
+const smooth = (t: number, a: number, b: number) => { const u = clamp((t - a) / (b - a)); return u * u * (3 - 2 * u); };
+const starV = (t: number) => 2.4 * smooth(t, cue("squeezeWaves") + 6, cue("squeezeWaves") + 26) - 4.8 * smooth(t, cue("stretchThem") - 8, cue("stretchThem") + 12);
+const X_CACHE = new Map<number, number>();
+export const starX = (t: number) => {
+  const k = Math.round(t * 4) / 4;
+  const hit = X_CACHE.get(k);
+  if (hit !== undefined) return hit;
+  let x = STAR0.x;
+  for (let s = cue("squeezeWaves"); s < k; s += 0.5) x += starV(s) * 0.5;
+  X_CACHE.set(k, x);
+  return x;
+};
+const starPath = (t: number) => ({ x: starX(t), y: STAR0.y });
