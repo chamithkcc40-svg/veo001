@@ -181,13 +181,14 @@ const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
 // opens and a pale beam of starlight pours in. Name tag + timeline carry over into s3_slipher.
 const EVEN_XS = [240, 720, 1200, 1680];
 const TAG_AT = () => cue("slipher") + 2;
-const DomeTags: React.FC<{ f: number; out: number }> = ({ f, out }) => {
+/** overlay registered over s3_dome + s3_slipher so the tags ride across the hard cut (no re-entrance) */
+export const DomeTags: React.FC<SceneProps> = ({ f, end }) => {
   const { fps } = useVideoConfig();
   return (
-    <>
-      <Timeline f={f} fps={fps} at={cue("tens") + 8} out={out} active={["1912-1914"]} x={520} y={52} />
-      <NameTag f={f} fps={fps} at={TAG_AT()} out={out} name="Vesto Slipher" sub="Lowell Observatory · 1912-1914" x={110} y={700} />
-    </>
+    <AbsoluteFill>
+      <Timeline f={f} fps={fps} at={cue("tens") + 8} out={end - 6} active={["1912-1914"]} x={520} y={52} />
+      <NameTag f={f} fps={fps} at={TAG_AT()} out={end - 6} name="Vesto Slipher" sub="Lowell Observatory · 1912-1914" x={110} y={700} />
+    </AbsoluteFill>
   );
 };
 
@@ -246,7 +247,6 @@ export const DomeScene: React.FC<SceneProps> = ({ f, start, end }) => {
         <Layer depth={0.85}><Pines seed="dnear" n={9} y={860} scale={[0.75, 1.05]} color={mix(C.violet, C.night, 0.7)} x0={-500} x1={2500} frame={f} /></Layer>
         <Layer depth={1.4} blur={7}><Pines seed="dfore" n={4} y={1220} scale={[1.6, 2.2]} color={C.night} x0={-300} x1={2400} frame={f} /></Layer>
       </Camera>
-      <DomeTags f={f} out={scene_end_slipher()} />
       <Finish tint={C.violet} grade={0.12} vig={0.36} />
       <BarWipe t={unwipe} xs={EVEN_XS} />
     </AbsoluteFill>
