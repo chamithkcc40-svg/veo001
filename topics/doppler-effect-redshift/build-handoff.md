@@ -15,7 +15,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T8.2 Chapter 2 Ripples (Ch2-Ripples, f869-2387, 12 scenes; src/scenes/ch2.tsx, ch2b.tsx, ch2c.tsx; review/ch2/)
 - [x] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes; src/scenes/ch3.tsx, ch3b.tsx, ch3c.tsx; review/ch3/)
 - [x] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes; src/scenes/ch4.tsx, ch4b.tsx, ch4c.tsx; review/ch4/)
-- [ ] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes)
+- [x] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes; src/scenes/ch5.tsx; review/ch5/)
 - [ ] T9 Assembly
 - [ ] T10 Final QA
 - [ ] T11 Render kit and docs
@@ -38,6 +38,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Remotion 4.0.535 pinned exactly for remotion, @remotion/cli, @remotion/bundler, @remotion/renderer, @remotion/google-fonts. React 18.3.1, TypeScript 5.6.3.
 - Browser: `npx remotion browser ensure` downloaded chrome-headless-shell into node_modules/.remotion (works).
 - Skill: remotion-motion-graphics (SKILL.md, motion-patterns.md, design-rules.md, theme.ts) read from /mnt/skills.
+- Chat 2026-10-22: sandbox fresh; resources.zip identical to committed resources/ (diff -rq clean); npm ci + browser ensure OK, tsc OK.
 - Chat 2026-10-21 (2): sandbox reset again; npm ci + browser ensure OK, tsc OK.
 - Chat 2026-10-21: sandbox reset; reinstalled via npm ci (Remotion 4.0.535 pinned), `npx remotion browser ensure` OK, tsc OK, bundle OK.
 - Transcription: platform audio_transcribe tool (whisper-1, word timestamps) instead of a local model (memory rule).
@@ -75,6 +76,8 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - s4_twist reuses the Ch2 TwistCard + CurlReveal exactly: 07 asks for 'the same page curl' (motif recall), and the road curls out of it (so the curl is not used 3x in a row: twist in, road out, then hard cut to kitchen).
 - s4_peak hides captions after 'The': the gold title on screen IS the spoken line; doubling it would clutter the peak.
 - s4_lemaitre astronomers drawn with the shared Rig in silhouette mode (Observer A, Slipher, Observer B builds): no new character drawn, consistent rigs.
+- Close hold motion comes from a Hubble-flow galaxy field (d grows as e^(Ht)), not just a slow push: it keeps the 6.8 s end-screen hold moving AND restates the law visually; it stays inside x 300-1620 / y < 660 so the end-screen corners and caption band stay clear.
+- No new SFX cues for the close-hold ring-waves: the score carries the end screen, and extra hits under the end cards would compete with them.
 - Resources unzipped to resources/ even though the zip was named resources.zip (prompt mentions reference.zip): same content intent.
 
 ## Scores per chapter
@@ -85,6 +88,8 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Ch3 Light Has a Siren Too (1 rework loop: Slipher name tag now exits before the push so it never covers his face; map gets a settle orbit + stronger outward drift; dome handheld): story 9, staging 8, character 8, motion 8, depth/light 9, style 9, captions 9, audio sync 9 (slide sfx 3231 on the line slide, clink on the plate lift, whoosh_out on 'nearly all'), pacing/variety 9. Motion 87.5 % (24 pairs; target 81.3 %; first pass 83.3 %). tsc OK, audit OK.
 - Ch4 The Running Universe (1 rework loop: chart punch-in now fully releases so the docked card clears captions; grid sheet resized to stay in frame; peak far shells redden harder; ray uses integrated phase so wiggles widen smoothly and colour runs blue->cream->red along the path; crowd silhouettes raised): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (stretch 4552 on the sheet squeeze, deep whoosh into the pull, pop 4824 on the chart flare, twist curl 4890, nope 5046 on the X, glide 5247 on the ray head), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 
+- Ch5 Close (1 rework loop: Pip moved to x1400 so captions never cover him; first motion pass 45.8 % because the night hold was near-static -> added a cycling Hubble-flow galaxy field (30 galaxies, speed proportional to distance, reddening as they recede), a drifting nebula, star drift, continuous red drop ring-waves and a stronger hold push): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (soft siren pass on closePass 5412 is time-locked to the visual pass; sparkles 5471/5591 on the lift-off and tag), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
+
 ## Gaps
 
 ## Blockers
@@ -94,4 +99,4 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T8.5: write src/scenes/ch5.tsx (s5_street: dusk Street kit, Pip + ambulance soft pass on sync.closePass 5412 with Rings blue->red and PitchLine drop; s5_sky: crane-up to night sky, red rings drift up into galaxies, 'LISTEN FOR THE DROP' small, sparkles 5471/5591, clear upper corners for the end screen), register CH5, then stills + motion check.
+T9: verify Film/Root wiring (chapter windows contiguous 0-5790, Full = sum of chapters, one <Audio> mix.wav with trimBefore), render boundary stills at each chapter join in Full vs the chapter comps, then mark T9.

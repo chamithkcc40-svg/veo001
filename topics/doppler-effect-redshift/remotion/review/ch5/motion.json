@@ -1,0 +1,130 @@
+{
+ "id": "Ch5-Close",
+ "samples": 24,
+ "movingShare": 1,
+ "refShare": 0.903,
+ "target": 0.813,
+ "pass": true,
+ "res": [
+  {
+   "frame": 9,
+   "diff": 13.62,
+   "moving": true
+  },
+  {
+   "frame": 28,
+   "diff": 11.3,
+   "moving": true
+  },
+  {
+   "frame": 47,
+   "diff": 19.42,
+   "moving": true
+  },
+  {
+   "frame": 65,
+   "diff": 12.1,
+   "moving": true
+  },
+  {
+   "frame": 84,
+   "diff": 9.11,
+   "moving": true
+  },
+  {
+   "frame": 102,
+   "diff": 7.44,
+   "moving": true
+  },
+  {
+   "frame": 121,
+   "diff": 5.16,
+   "moving": true
+  },
+  {
+   "frame": 140,
+   "diff": 10.34,
+   "moving": true
+  },
+  {
+   "frame": 158,
+   "diff": 15.96,
+   "moving": true
+  },
+  {
+   "frame": 177,
+   "diff": 18.09,
+   "moving": true
+  },
+  {
+   "frame": 196,
+   "diff": 3.96,
+   "moving": true
+  },
+  {
+   "frame": 214,
+   "diff": 1.95,
+   "moving": true
+  },
+  {
+   "frame": 233,
+   "diff": 1.75,
+   "moving": true
+  },
+  {
+   "frame": 251,
+   "diff": 1.93,
+   "moving": true
+  },
+  {
+   "frame": 270,
+   "diff": 1.77,
+   "moving": true
+  },
+  {
+   "frame": 289,
+   "diff": 2.17,
+   "moving": true
+  },
+  {
+   "frame": 307,
+   "diff": 2.35,
+   "moving": true
+  },
+  {
+   "frame": 326,
+   "diff": 2.04,
+   "moving": true
+  },
+  {
+   "frame": 345,
+   "diff": 1.95,
+   "moving": true
+  },
+  {
+   "frame": 363,
+   "diff": 2.93,
+   "moving": true
+  },
+  {
+   "frame": 382,
+   "diff": 2.49,
+   "moving": true
+  },
+  {
+   "frame": 400,
+   "diff": 2.82,
+   "moving": true
+  },
+  {
+   "frame": 419,
+   "diff": 1.66,
+   "moving": true
+  },
+  {
+   "frame": 438,
+   "diff": 2.27,
+   "moving": true
+  }
+ ]
+}
