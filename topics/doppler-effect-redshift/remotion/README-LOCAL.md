@@ -45,3 +45,20 @@ foreach ($c in $ch) {
 
 Low RAM? use `--concurrency 1`. Render a single chapter again after an edit; the rest stay valid.
 Or render everything in one go: `npx remotion render src/index.ts Full out/full.mp4 --codec h264 --crf 17 --audio-codec aac --audio-bitrate 320k`.
+
+## 5. Join chapters (no video re-encode)
+`scripts/join.ps1` writes `out/concat.txt`, stream-copies the six videos, and lays the original
+`public/audio/mix.wav` under them ONCE (AAC 320k). This avoids the tiny AAC priming gaps that a
+plain audio stream-copy concat leaves at every join.
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/join.ps1
+```
+Result: `out/doppler-effect-full.mp4` (193.0 s).
+
+## 6. Final checks
+```powershell
+ffprobe -v error -show_entries format=duration -of csv=p=0 out/doppler-effect-full.mp4   # ~193.0
+ffmpeg -nostats -i out/doppler-effect-full.mp4 -af ebur128=peak=true -f null - 2>&1 | Select-String "I:|Peak:"
+```
+Expect about **-14.0 LUFS** integrated and a true peak at or below **-1.0 dBTP**.
+Integrity checks that need no render: `python scripts/assembly_check.py` (timeline, captions, mix length, loudness).
