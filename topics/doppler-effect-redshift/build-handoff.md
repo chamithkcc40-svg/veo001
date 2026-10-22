@@ -18,7 +18,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes; src/scenes/ch5.tsx; review/ch5/)
 - [x] T9 Assembly (scripts/assembly_check.py PASS; chapter joins pixel-identical to Full)
 - [x] T10 Final QA (review/final/: 48-frame sweep of Full + chapter joins)
-- [ ] T11 Render kit and docs
+- [x] T11 Render kit and docs (remotion/README-LOCAL.md, remotion/scripts/join.ps1, credits.md)
 
 ## Resource inventory
 - VO timing (T4): parts concatenated with no gap (part_01 0.000-79.308 s, part_02 starts at 79.307771 s; total 185.678 s). Global timeline adds a 0.5 s head before "Listen." -> last word ends at 185.71 s global; end-screen tail to 193.0 s (5790 frames).
@@ -77,6 +77,8 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - s4_peak hides captions after 'The': the gold title on screen IS the spoken line; doubling it would clutter the peak.
 - s4_lemaitre astronomers drawn with the shared Rig in silhouette mode (Observer A, Slipher, Observer B builds): no new character drawn, consistent rigs.
 - s4_chart and s5_sky run past the reference's longest shot (9.9 s): s4_chart is one sentence-driven chalkboard build and s5_sky is the end-screen hold that 06/07 require; both keep a new visual event at least every 2-3 s.
+- No GitHub Actions render workflow: notes.txt was not supplied, so ACTIONS: yes was never requested.
+- join.ps1 stream-copies the chapter VIDEO and muxes mix.wav once instead of copying chapter audio: AAC priming adds about 21 ms per join otherwise; tested with synthetic clips (durations exact).
 - Grain offset now follows the GLOBAL frame (FilmOffset context set by Film): before, chapter renders differed from Full by 0.1-0.5 luma at every join; now 0.000 at all 10 join frames, so a stream-copy concat equals Full.
 - Caption pages shorter than 0.4 s (3 of 164, fast speech) merge into the next page of the same sentence (<= 6 words) in build_timing.py: unreadable flashes otherwise; wording unchanged, 161 pages.
 - Close hold motion comes from a Hubble-flow galaxy field (d grows as e^(Ht)), not just a slow push: it keeps the 6.8 s end-screen hold moving AND restates the law visually; it stays inside x 300-1620 / y < 660 so the end-screen corners and caption band stay clear.
@@ -95,12 +97,14 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Final QA (T10): continuity OK across the 48-frame Full sweep (Pip, Nell, Hubble/Doppler/Slipher rigs, ambulance, galaxy palette blue->cream->red identical in every chapter); fixed 1 issue (s4_chart HUBBLE/SLIPHER cards overlapped before docking -> rest positions 740/1290). Pacing: 45 shots, 13.7 cuts/min (ref 13.4), mean shot 4.29 s (ref 4.2), longest shot 10.97 s s5_sky (ref 9.9; continuous crane-up + end-screen hold, kept moving by the Hubble flow); motion share per chapter 95.8/100/100/87.5/100/100 % (target 81.3 %); the longest static stretch measured around Ch3's static samples is 0.8 s (ref 1.33 s). Captions: 161 pages, >= 0.4 s each, inside 5 % margins, every sample frame clear of faces. Audio: -14.0 LUFS, -1.3 dBTP, mix 193.000 s = timeline. Final scores: every category >= 8 (see per-chapter scores).
 
 ## Gaps
+- none below 8 in any score. Only deviation from a reference number: two shots longer than its 9.9 s max (s4_chart 10.6 s, s5_sky 10.97 s), kept on purpose and always in motion (see Decisions).
 
 ## Blockers
 - none
 
 ## Unverified
+- Full-length MP4 never rendered here (by rule); chapter joins verified at still level (pixel-identical to Full), join script verified on synthetic clips only.
 - T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T11: write README-LOCAL.md (Windows: Node 22, winget FFmpeg, npm ci, studio, per-chapter render commands, concat list + ffmpeg -f concat -c copy, loudness check), credits.md (fonts OFL, no logos, final duration 193.0 s, preview checklist); no Actions workflow (no notes.txt -> ACTIONS not requested).
+None: all tasks done. Producer renders locally per remotion/README-LOCAL.md and runs the preview checklist.
