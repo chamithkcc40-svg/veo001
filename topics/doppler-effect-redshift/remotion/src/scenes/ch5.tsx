@@ -26,7 +26,7 @@ import { SceneProps, SceneReg } from "../chapters/types";
 
 const mix2 = (a: number, b: number, t: number) => a + (b - a) * t;
 const AMB_S = 0.72, AMB_Y = 836, AMB_V = 18; // softer, a touch slower than the cold open; enters from off-left (< ring speed)
-const PIP_X = 1240; // Pip on the right this time (mirror of the cold open staging)
+const PIP_X = 1400; // Pip on the right this time (mirror of the cold open staging)
 const RING_C = 26, RING_P = 7;
 const ambX = (t: number) => PIP_X + (t - sync("closePass")) * AMB_V; // drives left -> right
 const sirenAt = (t: number) => ({ x: ambX(t) - AMB_SIREN.x * AMB_S, y: AMB_Y + AMB_SIREN.y * AMB_S }); // facing +1 mirrors x
