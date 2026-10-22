@@ -17,7 +17,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes; src/scenes/ch4.tsx, ch4b.tsx, ch4c.tsx; review/ch4/)
 - [x] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes; src/scenes/ch5.tsx; review/ch5/)
 - [x] T9 Assembly (scripts/assembly_check.py PASS; chapter joins pixel-identical to Full)
-- [ ] T10 Final QA
+- [x] T10 Final QA (review/final/: 48-frame sweep of Full + chapter joins)
 - [ ] T11 Render kit and docs
 
 ## Resource inventory
@@ -76,6 +76,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - s4_twist reuses the Ch2 TwistCard + CurlReveal exactly: 07 asks for 'the same page curl' (motif recall), and the road curls out of it (so the curl is not used 3x in a row: twist in, road out, then hard cut to kitchen).
 - s4_peak hides captions after 'The': the gold title on screen IS the spoken line; doubling it would clutter the peak.
 - s4_lemaitre astronomers drawn with the shared Rig in silhouette mode (Observer A, Slipher, Observer B builds): no new character drawn, consistent rigs.
+- s4_chart and s5_sky run past the reference's longest shot (9.9 s): s4_chart is one sentence-driven chalkboard build and s5_sky is the end-screen hold that 06/07 require; both keep a new visual event at least every 2-3 s.
 - Grain offset now follows the GLOBAL frame (FilmOffset context set by Film): before, chapter renders differed from Full by 0.1-0.5 luma at every join; now 0.000 at all 10 join frames, so a stream-copy concat equals Full.
 - Caption pages shorter than 0.4 s (3 of 164, fast speech) merge into the next page of the same sentence (<= 6 words) in build_timing.py: unreadable flashes otherwise; wording unchanged, 161 pages.
 - Close hold motion comes from a Hubble-flow galaxy field (d grows as e^(Ht)), not just a slow push: it keeps the 6.8 s end-screen hold moving AND restates the law visually; it stays inside x 300-1620 / y < 660 so the end-screen corners and caption band stay clear.
@@ -91,6 +92,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Ch4 The Running Universe (1 rework loop: chart punch-in now fully releases so the docked card clears captions; grid sheet resized to stay in frame; peak far shells redden harder; ray uses integrated phase so wiggles widen smoothly and colour runs blue->cream->red along the path; crowd silhouettes raised): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (stretch 4552 on the sheet squeeze, deep whoosh into the pull, pop 4824 on the chart flare, twist curl 4890, nope 5046 on the X, glide 5247 on the ray head), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
 
 - Ch5 Close (1 rework loop: Pip moved to x1400 so captions never cover him; first motion pass 45.8 % because the night hold was near-static -> added a cycling Hubble-flow galaxy field (30 galaxies, speed proportional to distance, reddening as they recede), a drifting nebula, star drift, continuous red drop ring-waves and a stronger hold push): story 9, staging 8, character 8, motion 9, depth/light 8, style 9, captions 9, audio sync 9 (soft siren pass on closePass 5412 is time-locked to the visual pass; sparkles 5471/5591 on the lift-off and tag), pacing/variety 9. Motion 100 % (24 pairs). tsc OK, audit OK.
+- Final QA (T10): continuity OK across the 48-frame Full sweep (Pip, Nell, Hubble/Doppler/Slipher rigs, ambulance, galaxy palette blue->cream->red identical in every chapter); fixed 1 issue (s4_chart HUBBLE/SLIPHER cards overlapped before docking -> rest positions 740/1290). Pacing: 45 shots, 13.7 cuts/min (ref 13.4), mean shot 4.29 s (ref 4.2), longest shot 10.97 s s5_sky (ref 9.9; continuous crane-up + end-screen hold, kept moving by the Hubble flow); motion share per chapter 95.8/100/100/87.5/100/100 % (target 81.3 %); the longest static stretch measured around Ch3's static samples is 0.8 s (ref 1.33 s). Captions: 161 pages, >= 0.4 s each, inside 5 % margins, every sample frame clear of faces. Audio: -14.0 LUFS, -1.3 dBTP, mix 193.000 s = timeline. Final scores: every category >= 8 (see per-chapter scores).
 
 ## Gaps
 
@@ -101,4 +103,4 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T10: final QA - continuity sheet (Pip/Nell/ambulance/galaxy across chapters, one still per chapter), caption safe-area scan over ~40 frames of Full (caption box inside 5% margins, not over faces), pacing vs reference numbers (cuts/min from scenes, longest static via motion jsons), re-score, then T11 docs.
+T11: write README-LOCAL.md (Windows: Node 22, winget FFmpeg, npm ci, studio, per-chapter render commands, concat list + ffmpeg -f concat -c copy, loudness check), credits.md (fonts OFL, no logos, final duration 193.0 s, preview checklist); no Actions workflow (no notes.txt -> ACTIONS not requested).
