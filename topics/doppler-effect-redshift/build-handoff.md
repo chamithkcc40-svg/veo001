@@ -38,6 +38,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - Remotion 4.0.535 pinned exactly for remotion, @remotion/cli, @remotion/bundler, @remotion/renderer, @remotion/google-fonts. React 18.3.1, TypeScript 5.6.3.
 - Browser: `npx remotion browser ensure` downloaded chrome-headless-shell into node_modules/.remotion (works).
 - Skill: remotion-motion-graphics (SKILL.md, motion-patterns.md, design-rules.md, theme.ts) read from /mnt/skills.
+- Chat 2026-10-22 (2): sandbox fresh; resources.zip identical to committed resources/ (diff -rq clean); npm ci + browser ensure OK, tsc OK, asset_audit OK (0 missing/0 unused), assembly_check PASS (-14.0 LUFS, -1.3 dBTP, 193.000 s), 5 spot stills of Full render correctly. CHANGE REQUEST empty, so no revision.
 - Chat 2026-10-22: sandbox fresh; resources.zip identical to committed resources/ (diff -rq clean); npm ci + browser ensure OK, tsc OK.
 - Chat 2026-10-21 (2): sandbox reset again; npm ci + browser ensure OK, tsc OK.
 - Chat 2026-10-21: sandbox reset; reinstalled via npm ci (Remotion 4.0.535 pinned), `npx remotion browser ensure` OK, tsc OK, bundle OK.
