@@ -84,8 +84,8 @@ export const ChartScene: React.FC<SceneProps> = ({ f, start, end }) => {
   // cards: slide in from both sides on the card_slide sfx, bump together (overshoot), then dock as axis labels
   const inL = sp(f, start + 2, fps, spr.snappy), inR = sp(f, start + 6, fps, spr.snappy);
   const dock = sp(f, dist - 10, fps, spr.smooth);
-  const cA = { x: mix2(mix2(-300, 800, inL), AX.x + AX.w / 2, dock), y: mix2(430, AX.y + 66, dock), s: mix2(1, 0.62, dock), rot: mix2(-4 + 4 * inL, 0, dock) };
-  const cB = { x: mix2(mix2(2220, 1140, inR), AX.x - 70, dock), y: mix2(450, AX.y - AX.h / 2, dock), s: mix2(1, 0.62, dock), rot: mix2(5 - 2 * inR, -90, dock) };
+  const cA = { x: mix2(mix2(-300, 740, inL), AX.x + AX.w / 2, dock), y: mix2(430, AX.y + 66, dock), s: mix2(1, 0.62, dock), rot: mix2(-4 + 4 * inL, 0, dock) };
+  const cB = { x: mix2(mix2(2220, 1290, inR), AX.x - 70, dock), y: mix2(450, AX.y - AX.h / 2, dock), s: mix2(1, 0.62, dock), rot: mix2(5 - 2 * inR, -90, dock) };
   const axes = prog(f, dist - 4, dist + 16, ease.out);
   const dotP = DOTS.map((_, i) => sp(f, taps[i] ?? taps[taps.length - 1], fps, spr.bouncy));
   const line = prog(f, pattern, pattern + 26, ease.inOut);
