@@ -18,6 +18,7 @@ import { StreetClouds, StreetFar, StreetGround, StreetHedges, StreetHouses, Stre
 import { Rings } from "../kit/info/Rings";
 import { PitchLine } from "../kit/info/PitchLine";
 import { Galaxy } from "../kit/info/Galaxy";
+import { Nebula } from "../kit/env/Space";
 import { Ambulance, AMB_SIREN } from "../kit/props/Props";
 import { Rig } from "../kit/rig/Rig";
 import { PIP } from "../kit/rig/characters";
@@ -57,6 +58,30 @@ const LiftRings: React.FC<{ f: number; at: number; fps: number; spread: number }
           {gp > 0.01 && <Galaxy id={"lift" + k} x={x} y={y} r={(20 + (k % 3) * 8) * gp} frame={f} shift={0.55 + 0.08 * k} tilt={0.4} rot={k * 50} dots={22} glow={1.2} />}
         </g>
       );
+    })}
+  </Svg>
+);
+
+/** Hubble flow for the final hold: seeded galaxies drift OUTWARD from the centre with speed proportional
+ *  to distance (the law, as a picture), redden as they recede, and fade before the end-screen corners
+ *  (upper-left / upper-right) and the caption band. 24 galaxies = the 24 of Hubble's 1929 plot. */
+const HUB_C = { x: 960, y: 380 };
+const HubbleField: React.FC<{ f: number; at: number; fps: number }> = ({ f, at, fps }) => (
+  <Svg>
+    {Array.from({ length: 24 }).map((_, k) => {
+      const b = at + k * 7; // staggered births, centre-out
+      const age = f - b;
+      if (age < 0) return null;
+      const th = rr("hub" + k, 0, Math.PI * 2), d0 = rr("hubd" + k, 30, 190);
+      const grow = Math.exp(age / (fps * 6.5)); // distance x speed: d(t) = d0 * e^(Ht)
+      const x = HUB_C.x + Math.cos(th) * d0 * grow * 1.6, y = HUB_C.y + Math.sin(th) * d0 * grow * 0.75;
+      const inBand = 1 - prog(Math.abs(x - 960), 520, 700, ease.out); // fade before the corner cards
+      const above = 1 - prog(y, 600, 700, ease.out); // never into the tag / caption band
+      const born = sp(f, b, fps, spr.bouncy);
+      const o = clamp(born) * inBand * above;
+      if (o < 0.02) return null;
+      const r = (8 + rr("hubr" + k, 0, 10)) * (0.8 + 0.2 * grow) * born;
+      return <Galaxy key={k} id={"hub" + k} x={x} y={y} r={r} frame={f} shift={clamp(0.2 + 0.25 * (grow - 1))} tilt={rr("hubt" + k, 0.2, 0.6)} rot={k * 37} spin={0.3} dots={14} glow={1.3} opacity={o} />;
     })}
   </Svg>
 );
@@ -107,7 +132,9 @@ export const CloseScene: React.FC<SceneProps> = ({ f, start, end }) => {
         <TiltLayer k={1.3} ty={ty}><Layer depth={1.6} blur={8}><StreetHedges tod="night" frame={f} /></Layer></TiltLayer>
       </Camera>
       <AbsoluteFill style={{ transform: `scale(${hold})`, transformOrigin: "960px 420px" }}>
-        <Svg><g opacity={prog(f, hear + 60, hear + 150, ease.inOut)}><Stars seed="closesky" frame={f} n={70} oy={-10 * holdT} h={860} maxR={2.6} color={C.lilac} /></g></Svg>
+        <Svg><g opacity={prog(f, hear + 60, hear + 150, ease.inOut)}><Stars seed="closesky" frame={f} n={70} ox={-60 * holdT} oy={-40 * holdT} h={860} maxR={2.6} color={C.lilac} /></g></Svg>
+        <g style={{ opacity: prog(f, hear + 70, hear + 130, ease.inOut) }}><Nebula frame={f * 4} tint={C.magenta} tint2={C.violet} /></g>
+        <HubbleField f={f} at={hear + 84} fps={fps} />
         <LiftRings f={f} at={hear + 6} fps={fps} spread={1 + 0.22 * holdT} />
         {/* the drop, as a picture: a soft red ring-wave pulses out from behind the tag every 40 frames */}
         <Svg>{[0, 1, 2, 3, 4].map((k) => { const b = last + 24 + k * 40, a = f - b; if (a < 0 || a > 70) return null; return <ellipse key={k} cx={960} cy={664} rx={120 + a * 9} ry={(120 + a * 9) * 0.32} fill="none" stroke={C.red} strokeWidth={3} opacity={0.4 * (1 - a / 70)} />; })}</Svg>
