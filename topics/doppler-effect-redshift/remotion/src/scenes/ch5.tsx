@@ -66,22 +66,23 @@ const LiftRings: React.FC<{ f: number; at: number; fps: number; spread: number }
  *  to distance (the law, as a picture), redden as they recede, and fade before the end-screen corners
  *  (upper-left / upper-right) and the caption band. 24 galaxies = the 24 of Hubble's 1929 plot. */
 const HUB_C = { x: 960, y: 380 };
+const HUB_N = 30, HUB_T = 150; // 30 galaxies on a 5 s cycle: a continuous outward flow, never a static field
 const HubbleField: React.FC<{ f: number; at: number; fps: number }> = ({ f, at, fps }) => (
   <Svg>
-    {Array.from({ length: 24 }).map((_, k) => {
-      const b = at + k * 7; // staggered births, centre-out
-      const age = f - b;
-      if (age < 0) return null;
-      const th = rr("hub" + k, 0, Math.PI * 2), d0 = rr("hubd" + k, 30, 190);
-      const grow = Math.exp(age / (fps * 6.5)); // distance x speed: d(t) = d0 * e^(Ht)
-      const x = HUB_C.x + Math.cos(th) * d0 * grow * 1.6, y = HUB_C.y + Math.sin(th) * d0 * grow * 0.75;
-      const inBand = 1 - prog(Math.abs(x - 960), 520, 700, ease.out); // fade before the corner cards
-      const above = 1 - prog(y, 600, 700, ease.out); // never into the tag / caption band
-      const born = sp(f, b, fps, spr.bouncy);
-      const o = clamp(born) * inBand * above;
+    {Array.from({ length: HUB_N }).map((_, k) => {
+      const b = at + k * 5; // first births staggered centre-out
+      if (f < b) return null;
+      const age = (f - b) % HUB_T, gen = Math.floor((f - b) / HUB_T);
+      const th = rr(`hub${k}-${gen}`, 0, Math.PI * 2), d0 = rr(`hubd${k}-${gen}`, 24, 90);
+      const grow = Math.exp(age / (fps * 1.45)); // distance x speed: d(t) = d0 * e^(Ht)
+      const x = HUB_C.x + Math.cos(th) * d0 * grow * 1.6, y = HUB_C.y + Math.sin(th) * d0 * grow * 0.8;
+      const inBand = 1 - prog(Math.abs(x - 960), 480, 660, ease.out); // fade before the corner cards
+      const above = 1 - prog(y, 560, 660, ease.out); // never into the tag / caption band
+      const born = sp(f - gen * HUB_T, b, fps, spr.bouncy); // each rebirth pops out of the centre
+      const o = clamp(born) * inBand * above * (1 - prog(age, HUB_T - 12, HUB_T, ease.in));
       if (o < 0.02) return null;
-      const r = (8 + rr("hubr" + k, 0, 10)) * (0.8 + 0.2 * grow) * born;
-      return <Galaxy key={k} id={"hub" + k} x={x} y={y} r={r} frame={f} shift={clamp(0.2 + 0.25 * (grow - 1))} tilt={rr("hubt" + k, 0.2, 0.6)} rot={k * 37} spin={0.3} dots={14} glow={1.3} opacity={o} />;
+      const r = (10 + rr(`hubr${k}`, 0, 12)) * (0.7 + 0.18 * grow) * born;
+      return <Galaxy key={k} id={"hub" + k} x={x} y={y} r={r} frame={f} shift={clamp(0.15 + 0.12 * (grow - 1))} tilt={rr("hubt" + k, 0.2, 0.6)} rot={k * 37} spin={0.6} dots={14} glow={1.6} opacity={o} />;
     })}
   </Svg>
 );
@@ -137,7 +138,7 @@ export const CloseScene: React.FC<SceneProps> = ({ f, start, end }) => {
         <HubbleField f={f} at={hear + 84} fps={fps} />
         <LiftRings f={f} at={hear + 6} fps={fps} spread={1 + 0.22 * holdT} />
         {/* the drop, as a picture: a soft red ring-wave pulses out from behind the tag every 40 frames */}
-        <Svg>{[0, 1, 2, 3, 4].map((k) => { const b = last + 24 + k * 40, a = f - b; if (a < 0 || a > 70) return null; return <ellipse key={k} cx={960} cy={664} rx={120 + a * 9} ry={(120 + a * 9) * 0.32} fill="none" stroke={C.red} strokeWidth={3} opacity={0.4 * (1 - a / 70)} />; })}</Svg>
+        <Svg style={{ filter: `drop-shadow(0 0 10px ${alpha(C.red, 0.8)})` }}>{Array.from({ length: 9 }).map((_, k) => { const b = last + 24 + k * 34, a = f - b; if (a < 0 || a > 80) return null; const q = ease.out(a / 80); return <ellipse key={k} cx={960} cy={664} rx={140 + q * 760} ry={(140 + q * 760) * 0.3} fill="none" stroke={C.red} strokeWidth={8 - 5 * q} opacity={0.75 * (1 - q)} />; })}</Svg>
         {f > last + 40 && <Svg><path d={`M${shootX},${shootY} l-140,46`} stroke={alpha(C.white, 0.7 * shootO)} strokeWidth={3} strokeLinecap="round" /></Svg>}
       </AbsoluteFill>
       <Dust seed="close5d" frame={f} n={16} color={C.lilac} opacity={0.3} size={[2, 5]} speed={0.4} />
