@@ -23,3 +23,25 @@ Do not upgrade packages: every `remotion` / `@remotion/*` package is pinned to 4
 ```powershell
 npx remotion studio src/index.ts
 ```
+
+## 4. Render per chapter (recommended)
+Each chapter is a window onto one global timeline, so the six files join frame-exactly.
+Same encoder settings for every chapter are REQUIRED for the stream-copy join below.
+```powershell
+mkdir out -Force
+$ch = "Ch0-ColdOpen","Ch1-Siren","Ch2-Ripples","Ch3-Light","Ch4-Universe","Ch5-Close"
+foreach ($c in $ch) {
+  npx remotion render src/index.ts $c "out/$c.mp4" --codec h264 --crf 17 --audio-codec aac --audio-bitrate 320k --concurrency 2
+}
+```
+| Composition | Frames (global) | Length |
+|---|---|---|
+| Ch0-ColdOpen | 0-339 | 11.30 s |
+| Ch1-Siren | 339-869 | 17.67 s |
+| Ch2-Ripples | 869-2387 | 50.60 s |
+| Ch3-Light | 2387-3830 | 48.10 s |
+| Ch4-Universe | 3830-5334 | 50.13 s |
+| Ch5-Close | 5334-5790 | 15.20 s |
+
+Low RAM? use `--concurrency 1`. Render a single chapter again after an edit; the rest stay valid.
+Or render everything in one go: `npx remotion render src/index.ts Full out/full.mp4 --codec h264 --crf 17 --audio-codec aac --audio-bitrate 320k`.
