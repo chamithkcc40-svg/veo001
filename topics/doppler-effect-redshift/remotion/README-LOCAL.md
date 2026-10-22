@@ -62,3 +62,13 @@ ffmpeg -nostats -i out/doppler-effect-full.mp4 -af ebur128=peak=true -f null - 2
 ```
 Expect about **-14.0 LUFS** integrated and a true peak at or below **-1.0 dBTP**.
 Integrity checks that need no render: `python scripts/assembly_check.py` (timeline, captions, mix length, loudness).
+
+## 7. What to check in preview (Studio, with sound)
+- Siren drops: the pitch falls exactly as the ambulance passes Pip (Full f140, f579 split, f5412 close).
+- Pond (Ch2): rings bunch ahead of the bug, spread behind it; no ring ever overtakes the bug.
+- Train horns (f2133): the horn bends down as the train passes the listeners.
+- Barcode slide (Ch3, about f3231): the dark lines slide toward red together on the click.
+- Hubble chart (Ch4, f4234-4552): cards slide in side by side, dock as axis labels, dots land on chalk taps.
+- Close (Ch5): red rings lift into galaxies, the field keeps spreading, the corners stay clear for end-screen cards.
+- Captions: one line, bottom centre, never over a face; the voice always sits clearly above music and ambience.
+- No black frames at chapter joins (f339, f869, f2387, f3830, f5334).
