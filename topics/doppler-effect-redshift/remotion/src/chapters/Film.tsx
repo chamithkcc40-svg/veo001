@@ -6,6 +6,7 @@ import React from "react";
 import { AbsoluteFill, Audio, staticFile, useCurrentFrame } from "remotion";
 import { C } from "../theme";
 import { Captions } from "../kit/Captions";
+import { FilmOffset } from "../kit/fx";
 import { REGISTRY, sceneWindow } from "./registry";
 
 export const Film: React.FC<{ from: number; to: number; audio?: boolean }> = ({ from, audio = true }) => {
@@ -17,6 +18,7 @@ export const Film: React.FC<{ from: number; to: number; audio?: boolean }> = ({ 
   });
   const hide = active.some((r) => r.hideCaptions?.(f));
   return (
+    <FilmOffset.Provider value={from}>
     <AbsoluteFill style={{ backgroundColor: C.night, overflow: "hidden" }}>
       {active.map((r) => {
         const w = sceneWindow(r);
@@ -26,5 +28,6 @@ export const Film: React.FC<{ from: number; to: number; audio?: boolean }> = ({ 
       {!hide && <Captions offset={from} />}
       {audio && <Audio src={staticFile("audio/mix.wav")} trimBefore={from} />}
     </AbsoluteFill>
+    </FilmOffset.Provider>
   );
 };

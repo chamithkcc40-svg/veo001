@@ -5,6 +5,10 @@ import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { C } from "../theme";
 import { alpha, rr, noise1 } from "../util";
 
+/** global-frame offset of the current window (set by Film): grain must follow the GLOBAL frame so a
+ *  chapter render is pixel-identical to the same frames of Full (seamless concat). */
+export const FilmOffset = React.createContext(0);
+
 export const Grade: React.FC<{ tint?: string; amount?: number; top?: number; bottom?: number }> = ({ tint = C.violet, amount = 0.14, top = 0.12, bottom = 0.22 }) => (
   <AbsoluteFill style={{ pointerEvents: "none" }}>
     <AbsoluteFill style={{ backgroundColor: tint, mixBlendMode: "soft-light", opacity: amount }} />
@@ -15,7 +19,7 @@ export const Grade: React.FC<{ tint?: string; amount?: number; top?: number; bot
 const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")`;
 
 export const Grain: React.FC<{ opacity?: number }> = ({ opacity = 0.05 }) => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() + React.useContext(FilmOffset);
   return (
     <AbsoluteFill style={{
       pointerEvents: "none", backgroundImage: NOISE, backgroundSize: "240px",
