@@ -119,7 +119,7 @@ export const CloseScene: React.FC<SceneProps> = ({ f, start, end }) => {
     </Svg>
   );
   const tagP = sp(f, last + 14, fps, spr.smooth); // final small text (sparkle 5591 lands on it)
-  const holdT = prog(f, last, end + 20, ease.inOutSine), hold = 1 + 0.05 * holdT; // slow push + drift in the hold
+  const holdT = prog(f, last, end + 20, ease.inOutSine), hold = 1 + 0.12 * holdT; // slow push + drift in the hold
   const shP = prog(f, end - 110, end - 84, ease.inOut), shootX = mix2(1500, 1180, shP), shootY = mix2(240, 345, shP), shootO = Math.sin(shP * Math.PI); // one shooting star mid-hold (centre band, not the end-screen corners)
   return (
     <AbsoluteFill style={{ clipPath: `circle(${iris}px at ${IRIS.x}px ${IRIS.y}px)` }}>
@@ -135,7 +135,7 @@ export const CloseScene: React.FC<SceneProps> = ({ f, start, end }) => {
       <AbsoluteFill style={{ transform: `scale(${hold})`, transformOrigin: "960px 420px" }}>
         <Svg><g opacity={prog(f, hear + 60, hear + 150, ease.inOut)}><Stars seed="closesky" frame={f} n={70} ox={-60 * holdT} oy={-40 * holdT} h={860} maxR={2.6} color={C.lilac} /></g></Svg>
         <g style={{ opacity: prog(f, hear + 70, hear + 130, ease.inOut) }}><Nebula frame={f * 4} tint={C.magenta} tint2={C.violet} /></g>
-        <HubbleField f={f} at={hear + 84} fps={fps} />
+        <HubbleField f={f} at={hear + 56} fps={fps} />
         <LiftRings f={f} at={hear + 6} fps={fps} spread={1 + 0.22 * holdT} />
         {/* the drop, as a picture: a soft red ring-wave pulses out from behind the tag every 40 frames */}
         <Svg style={{ filter: `drop-shadow(0 0 10px ${alpha(C.red, 0.8)})` }}>{Array.from({ length: 9 }).map((_, k) => { const b = last + 24 + k * 34, a = f - b; if (a < 0 || a > 80) return null; const q = ease.out(a / 80); return <ellipse key={k} cx={960} cy={664} rx={140 + q * 760} ry={(140 + q * 760) * 0.3} fill="none" stroke={C.red} strokeWidth={8 - 5 * q} opacity={0.75 * (1 - q)} />; })}</Svg>
