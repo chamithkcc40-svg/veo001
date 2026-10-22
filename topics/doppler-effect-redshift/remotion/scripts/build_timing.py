@@ -345,6 +345,18 @@ for k, p in enumerate(pages):
     # hold the page until the next page starts if the gap is short (< 0.8 s), else 12 frames after the last word
     p['e'] = nxt if nxt - last < 24 else last + 12
     p['text'] = ' '.join(words[i]['text'] for i in p['w'])
+# readability: a page shorter than 12 frames (0.4 s, fast speech) merges into the next page of the
+# same sentence when the result stays <= 6 words; it keeps the earlier start and the later end.
+k = 0
+while k < len(pages) - 1:
+    a, b = pages[k], pages[k + 1]
+    same = any(s['first'] <= a['w'][0] and b['w'][-1] <= s['last'] for s in sentences)
+    if a['e'] - a['s'] < 12 and same and len(a['w']) + len(b['w']) <= 6:
+        a['w'] = a['w'] + b['w']; a['e'] = b['e']
+        a['text'] = ' '.join(words[i]['text'] for i in a['w'])
+        del pages[k + 1]
+    else:
+        k += 1
 
 
 # ---------------------------------------------------------------- audio-visual sync points (T7)

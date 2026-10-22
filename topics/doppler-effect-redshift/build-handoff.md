@@ -16,7 +16,7 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - [x] T8.3 Chapter 3 Light Has a Siren Too (Ch3-Light, f2387-3830, 10 scenes; src/scenes/ch3.tsx, ch3b.tsx, ch3c.tsx; review/ch3/)
 - [x] T8.4 Chapter 4 The Running Universe (Ch4-Universe, f3830-5334, 12 scenes; src/scenes/ch4.tsx, ch4b.tsx, ch4c.tsx; review/ch4/)
 - [x] T8.5 Close (Ch5-Close, f5334-5790, 2 scenes; src/scenes/ch5.tsx; review/ch5/)
-- [ ] T9 Assembly
+- [x] T9 Assembly (scripts/assembly_check.py PASS; chapter joins pixel-identical to Full)
 - [ ] T10 Final QA
 - [ ] T11 Render kit and docs
 
@@ -76,6 +76,8 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - s4_twist reuses the Ch2 TwistCard + CurlReveal exactly: 07 asks for 'the same page curl' (motif recall), and the road curls out of it (so the curl is not used 3x in a row: twist in, road out, then hard cut to kitchen).
 - s4_peak hides captions after 'The': the gold title on screen IS the spoken line; doubling it would clutter the peak.
 - s4_lemaitre astronomers drawn with the shared Rig in silhouette mode (Observer A, Slipher, Observer B builds): no new character drawn, consistent rigs.
+- Grain offset now follows the GLOBAL frame (FilmOffset context set by Film): before, chapter renders differed from Full by 0.1-0.5 luma at every join; now 0.000 at all 10 join frames, so a stream-copy concat equals Full.
+- Caption pages shorter than 0.4 s (3 of 164, fast speech) merge into the next page of the same sentence (<= 6 words) in build_timing.py: unreadable flashes otherwise; wording unchanged, 161 pages.
 - Close hold motion comes from a Hubble-flow galaxy field (d grows as e^(Ht)), not just a slow push: it keeps the 6.8 s end-screen hold moving AND restates the law visually; it stays inside x 300-1620 / y < 660 so the end-screen corners and caption band stay clear.
 - No new SFX cues for the close-hold ring-waves: the score carries the end screen, and extra hits under the end cards would compete with them.
 - Resources unzipped to resources/ even though the zip was named resources.zip (prompt mentions reference.zip): same content intent.
@@ -99,4 +101,4 @@ Topic: doppler-effect-redshift / framework: remotion / aspect: 16:9 1920x1080 / 
 - T7 mix not auditioned by a human ear (sandbox has no playback; the AI listening tool refused audio). Objective checks passed: 0 click candidates, voice-to-bed >= 7.6 dB on every sentence (median 18.1 dB), chapters -13.6..-14.4 LUFS.
 
 ## Next action
-T9: verify Film/Root wiring (chapter windows contiguous 0-5790, Full = sum of chapters, one <Audio> mix.wav with trimBefore), render boundary stills at each chapter join in Full vs the chapter comps, then mark T9.
+T10: final QA - continuity sheet (Pip/Nell/ambulance/galaxy across chapters, one still per chapter), caption safe-area scan over ~40 frames of Full (caption box inside 5% margins, not over faces), pacing vs reference numbers (cuts/min from scenes, longest static via motion jsons), re-score, then T11 docs.

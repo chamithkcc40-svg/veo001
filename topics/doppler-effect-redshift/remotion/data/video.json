@@ -4807,23 +4807,15 @@
   {
    "w": [
     79,
-    80
-   ],
-   "s": 921,
-   "ch": 2,
-   "e": 932,
-   "text": "like ripples"
-  },
-  {
-   "w": [
+    80,
     81,
     82,
     83
    ],
-   "s": 932,
+   "s": 921,
    "ch": 2,
    "e": 976,
-   "text": "on a pond."
+   "text": "like ripples on a pond."
   },
   {
    "w": [
@@ -5448,24 +5440,16 @@
   {
    "w": [
     256,
-    257
-   ],
-   "s": 2876,
-   "ch": 3,
-   "e": 2885,
-   "text": "The shift"
-  },
-  {
-   "w": [
+    257,
     258,
     259,
     260,
     261
    ],
-   "s": 2885,
+   "s": 2876,
    "ch": 3,
    "e": 2918,
-   "text": "was far too small"
+   "text": "The shift was far too small"
   },
   {
    "w": [
@@ -5593,23 +5577,15 @@
   {
    "w": [
     297,
-    298
-   ],
-   "s": 3311,
-   "ch": 3,
-   "e": 3321,
-   "text": "the source"
-  },
-  {
-   "w": [
+    298,
     299,
     300,
     301
    ],
-   "s": 3321,
+   "s": 3311,
    "ch": 3,
    "e": 3362,
-   "text": "is moving away."
+   "text": "the source is moving away."
   },
   {
    "w": [
